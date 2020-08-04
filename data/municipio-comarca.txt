@@ -1,0 +1,55 @@
+# Quelle: https://de.wikipedia.org/wiki/Landschaftszonen_auf_Mallorca
+municipio	comarca
+Alaró	Raiguer
+Alcúdia	Raiguer
+Algaida	Pla de Mallorca
+Andratx	Serra de Tramuntana
+Ariany	Pla de Mallorca
+Artà	Llevant
+Banyalbufar	Serra de Tramuntana
+Binissalem	Raiguer
+Búger	Raiguer
+Bunyola	Serra de Tramuntana
+Calvià	Serra de Tramuntana
+Campanet	Raiguer
+Campos	Migjorn
+Capdepera	Llevant
+Consell	Raiguer
+Costitx	Pla de Mallorca
+Deià	Serra de Tramuntana
+Escorca	Serra de Tramuntana
+Esporles	Serra de Tramuntana
+Estellencs	Serra de Tramuntana
+Felanitx	Migjorn
+Fornalutx	Serra de Tramuntana
+Inca	Raiguer
+Lloret de Vistalegre	Pla de Mallorca
+Lloseta	Raiguer
+Llubí	Pla de Mallorca
+Llucmajor	Migjorn
+Manacor	Llevant
+Mancor de la Vall	Raiguer
+Maria de la Salut	Pla de Mallorca
+Marratxí	Raiguer
+Montuïri	Pla de Mallorca
+Muro	Pla de Mallorca
+Palma	Palma
+Petra	Pla de Mallorca
+Pollença	Serra de Tramuntana
+Porreres	Pla de Mallorca
+Puigpunyent	Serra de Tramuntana
+Sa Pobla	Raiguer
+Sant Joan	Pla de Mallorca
+Sant Llorenç des Cardassar	Llevant
+Santa Eugènia	Pla de Mallorca
+Santa Margalida	Pla de Mallorca
+Santa María del Camí	Raiguer
+Santanyí	Migjorn
+Selva	Raiguer
+Sencelles	Pla de Mallorca
+ses Salines	Migjorn
+Sineu	Pla de Mallorca
+Sóller	Serra de Tramuntana
+Son Servera	Llevant
+Valldemossa	Serra de Tramuntana
+Vilafranca de Bonany	Pla de Mallorca
