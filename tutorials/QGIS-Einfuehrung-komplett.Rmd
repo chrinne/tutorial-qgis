@@ -27,7 +27,7 @@ lang: de-DE
 
 ## GIS
 
-Ein **G**ographisches **I**nformations **S**ystem (und bitte nie "... ein GIS-System ...") soll folgende Aufgaben bewältigen: Raumdaten (z.B. Punkte und Vektoren) als auch Sachdaten verwalten, Analysen ermöglichen und Informationen visualisieren. Im Kern ist das also Datenbanksoftware, Statistiksoftware und Grafiksoftware in einem Paket. Das schafft bei der Nutzung performante Übergänge für die Informationen und erleichtert uns die Arbeit. 
+Ein **G**eographisches **I**nformations **S**ystem (und bitte nie "... ein GIS-System ...") soll folgende Aufgaben bewältigen: Raumdaten (z.B. Punkte und Vektoren) als auch Sachdaten verwalten, Analysen ermöglichen und Informationen visualisieren. Im Kern ist das also Datenbanksoftware, Statistiksoftware und Grafiksoftware in einem Paket. Das schafft bei der Nutzung performante Übergänge für die Informationen und erleichtert uns die Arbeit. 
 
 Es gab und gibt aber auch deutliche Unterschiede zu den genannten IT-Bereichen. So haben GIS (pl.) im Desktop-Bereich über viele Jahre mit einzelnen Dateien (\*.shp) als Datenquelle gearbeitet und mit jedem Arbeitsschritt eine neue Datei produziert. Ein absolutes *no go* für ein Datenbanksystem. GIS [pl.] entdecken erst langsam den 2.5D oder echten 3D-Bereich, sie sind nicht wirklich mit CAD-Programmen vergleichbar. Die statistischen Optionen stehen den Möglichkeiten in R oder anderen Softwarepaketen deutlich nach. Dennoch, ein GIS ist für die meisten Aufgaben in der Archäologie ein unverzichtbares und oft einfaches Werkzeug. Und im Vergleich zu den Bereichen "Schreiben" und "Grafik" haben wir relativ viele gute freie Software zu Auswahl.
 
