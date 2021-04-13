@@ -1,0 +1,132 @@
+--- 
+title: "GIS Einführung mit QGIS"
+author: "Christoph Rinne"
+email: crinne@ufg.uni-kiel.de
+date: "`r format(Sys.time(), '%d. %B %Y')`"
+license: "CC-BY 4.0"
+header-includes: 
+  \renewcommand{\contentsname}{Inhalt} 
+  \renewcommand{\figurename}{Abb.}
+  \renewcommand{\tablename}{Tab.}
+bibliography: QGIS-cours-references.bib
+csl: journal-of-archaeological-science.csl
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    df_print: kable
+urlcolor: blue
+link-citations: yes # make citations hyperlinks
+linkcolor: blue
+number_sections: yes
+lang: de-DE
+description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
+---
+
+# Rasterdaten
+
+## Einleitung
+
+Rasterdaten stellen eine deutlich anders gestaltete Datenform als Vektordaten dar. Grundlage ist eine Rasterzelle mit definierter Dimension, die jeweils einen Wert repräsentiert. Jede Zelle liegt orthogonal im Koordiatensystem und ist quadratisch, lediglich Surfer nutzt auch rechteckige Zellen. Die Definition eines flächigen Datenbestandes ist damit recht einfach möglich, impliziert aber zugleich ein größeres Datenvolumen gegenüber Vektordaten. Stark heterogene Werte wie Höhenangaben werden effizienter und deshalb öfter als Raster dargestellt. Im Unterschied werden lineare Strukturen oder Flächen, z.B. Flüsse oder Bebauung, als Vektoren effizienter abgebildet. Hinzu kommen eingescannte Pläne, die Linien zeigen aber nur als Raster vorliegen. 
+
+Rasterdaten liegen oft als GeoTIF vor. Wesentlicher Unterschied zum "normalen" TIF ist 1. der veränderte Wertebereich der Zellen, so sind auch negative Zahlen möglich, und 2. die implizite Information zur geographischen Lage. Ein alternatives Format ist das GRD-Format, dieses kann als Text, wie das aktuelle Höhenmodell, oder auch binär kodiert vorliegen. 
+
+Die Werte der Rasterzellen können mit benachbarten Zellen des selben Rasters oder mit überlagernder Zellen anderer Raster verrechnet werden.  Damit lassen sich viele neue Modelle und abgeleitete Daten erstellen, so z.B. Hangneigung, Exposition oder Abflussmodelle.
+
+## Fallbeispiel
+
+Das Fallbeispiel für Rasterdaten ist eine kleine geomagnetische Prospektion auf dem Fundplatz von Closos de Can Gaià bei Portocolom auf Mallorca (39.4191°N, 3.2443°E). Der Fundplatz ist einer der wenigen auf Mallorca mit mehreren schiffsförmigen Wohnbauten der Bronzezeit (Navetas), die hier in einfacher, doppelter und sogar dreifacher Ausführung vorkommen. Die Prospektion erfolgte 2010 im Rahmen eines ERASMUS-Austausches. Über die Jahre haben auf diesem Fundplatz zahlreiche Untersuchungen stattgefunden @freyNavetasEsClosos1966a; @serveraDatacionsRadiocarboniquesAls2005a; @belenguerariasIndustriaOssiaDels2005; @fornesMasQueCasa2009a; @rinneProspeccionesGeofisicasEls2012a; @rinnePlanimetriaElsClosos2013a; @picornell-gelabertLandscapePracticesEveryday2017. Der Fundplatz ist heute mit Informationstafeln touristisch erschlossen und kann frei begangen werden. 
+
+Die geophysikalische Prospketion erfolgte mit einem 1-Sonden-Gradiometer (Bartington) in Feldern von *a priori* 10 m Kantenlänge und einer Messdichte von 0,25 m auf 0,125 m entlang ausgelegter Maßbänder. Die Felder sind aufgrund der dichten Vegetation, überwiegend Macchie, stark gegliedert. Damit ist auch die gesamte Beurteilung beeinträchtigt. Die abschließende Einmessung der Felder konnte nur mit einem einfachen GPS erfolgen, hierfür wurden alle Feldkanten und ein Teil der benachbarten Straße mit einer hohen Messdichte (1 Hz) langsam abgeschritten. In Kombination mit den Luftbildern [IDEIB](http://www.caib.es/sites/sitibsa/ca/ideib-81258/) kann die abschließende Lagegenauigkeit der Prospektionsfelder auf unter 1 m geschätzt werden.
+
+Die Daten für diese Übung liegen vor:
+
+- pp_magnetik_2010.txt: Feldecken als Liste mit Feldnummer, Rechts- und Hochwert (EPSG: 25831) als TAB-getrennte Spalten.
+- closos_1.grd, ... : Felder 1 bis 4 als Surfer Grid (Textformat) mit einer Interpolation der ursprünglichen Messwerte auf 0,10 x 0,10 m.
+
+Zudem werden folgende WMS (*web map services*) Luftbilder des IDEIB genutzt (diese Serveradressen können sich ändern):
+- 2018: https://ideib.caib.es/geoserveis/rest/services/imatges/GOIB_Ortofoto_2018_IB/MapServer/WMTS
+- 1956: https://ideib.caib.es/geoserveis/rest/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMTS
+
+Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt. Öffnen Sie dazu den Data Source Manager (\<strg> + \<l>), wählen Sie "Getrennte Text" und setzen Sie nachfolgend die notwendigen Parameter. Danach zoomen Sie bitte auf diese Punkte, z.B. über das Kontextmenü.  Wählen Sie für die spätere Unterscheidung der Felder eine kategorisierte Symbologie auf Basis der Spalte "FeldNr".
+
+![Closos Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Ergebnisse der geophysikalischen Prospektion 2010 (Kartengrundlage: IDEIB, EPSG: 25831)](./images/07_Closos-overview.jpg)
+
+## WMS - Web Map Services
+
+Sie finden Daten wie das verwendete Höhenmodell nicht nur zum *download* im Internet sondern auch als interaktive Webdienste. Besonders weit verbreitet sind WMS für Rasterdaten, z.B. Karten oder Orthofotos, und WFS (*web feature services*) für Objektdaten. Für die Nutzung müssen Sie die Serveradresse des Dienstes bei QGIS eintragen, ggf. ergänzt um eine Anmeldeinformation für den Server. Nach dem Einbinden des Dienstes in das Projekt wird bei jeder Aktualisierung des Bildschirmes, z.B. zoomen, eine Anfrage an der Server gestartet und der benötigte Ausschnitt heruntergeladen. Dies impliziert eine gute Netzwerkanbindung und ggf. Wartezeit.
+
+WMS-Dienste tragen Sie über den *Data Source Manager* (\<strg> + \<l>) ein. Wählen Sie im zugehörigen Fenster [Neu], übertragen Sie die URL aus der Datenliste (s.o.) in das entsprechende Feld, vergeben Sie einen strukturierten Namen, z.B. SP-IB-OrthoFoto2018 oder SP-IB-OrthoFoto1956 und bestätigen Sie mit [OK]. Nachdem Sie den Dienst eingetragen haben wählen Sie [Verbinden], im Reiter "Teilsets" können Sie je nach Dienst einzelne Elemente markieren und gezielt hinzufügen. Für die Luftbilder gibt es jeweils nur ein Element, welches Sie bitte hinzufügen.
+
+**WMS-Karten können in QGIS lokal gespeichert werden**.  Wählen Sie hierfür aus dem Kontextmenü des jeweiligen Layers "Exportieren -> Speichern als" und neuen Fenster "Rasterlayer speichern unter..." tragen Sie folgende Parameter ein: Ausgabemodus: Rasterrohdaten, Format: GeoTIFF, deaktivieren Sie für diesen Fall "VRT erzeugen", wählen Sie einen Speicherort und Dateinamen, KBS: 25831, Ausdehnung: [Kartenausschnittausdehnung], Auflösung: jeweils 0.2 (beachte Sie die Anzahl der abhängigen Spalten und Zeilen) und bestätigen Sie abschließend mit [OK].  Anschließend steht der gewählte Kartenauschnitt lokal zur Verfügung, die weitere Arbeit wird damit 1. etwas schneller und 2. können die Daten im Rasterrechner genutzt werden. Anmerkung: Server begrenzen üblicherweise die Anzahl und den Umfang der Zugriffe. 
+
+## Georeferenzieren
+
+Neben digitalen Primärdaten (Höhenmodell, Luftbild, geophysikalische Messdaten) liegen oft Altdaten in Form eingescannter Pläne vor. Diese digitale Daten ohne geographischen Bezug müssen erst georeferenziert werden. Hierbei findet, ja nach Anforderung, eine mehrstufige Veränderung über eine zunehmende Anzahl an Parametern statt. Bei der **Lineare Transformation** stehen Ausgangs- und Zielraster (Matrizen) über eine lineare Funktion in Beziehung. Hierbei übliche Transformationen sind das Skalieren und Schieben. Demnach ist diese Tranfsormation für orthogonale, in sich stimmige Rasterdaten wie Grabungspläne in einem lokalen Koordinatensystem geeignet. Die **Helmert Transformation** verändert die Daten über sieben Parameter, eine allgemeine Verschiebung des Ursprungs sowie Skalierung und Rotation für jede der drei Achsen des dreidimensionalen Raumes. Sie ähnelt damit der Linearen Transformation, behandelt die Achsen aber unabhängig und kann damit Verzerrungen ausgleichen. **Polynomiale Transformationen** liegen als Transformationen erster, zweiter und dritter Ordnung vor.  Die erste Ordnung (affine) erlaubt gleichfalls Rotation, Verschiebung und Skalierung unter Beibehaltung der Proportion der Achsen. Die zweite Ordnung erlaubt auch Krümmungen und damit die Korrektur perspektivischer Verzerrungen von Luftbildern. Diese Transformation wird oft eingesetzt. Die weiteren Transformationen bieten komplexere Veränderungen der Daten bei geringerer Abweichung an den Referenzpunkten. Eine höhere Genauigkeiten der dazwischen oder am Bildrand liegenden Daten ist nicht zwingend gegeben.
+
+### Georeferenzierung in QGIS
+
+QGIS nutzt hier die **Erweiterung GDAL-Georeferenzierung**, diese ist installiert, muss aber unter den Erweiterungen noch aktiviert werden. Danach steht das Werkzeug unter "Raster -> Georeferenzierung" zur Verfügung. Aktivieren Sie vor der Georeferenzierung den **Fang** zum präzisen Markieren der Referenzpunkte über "Ansicht -> Werkzeugkästen -> Einrastwerkzeugleiste". Damit erscheint ein Magnet-Icon in der Symbolleiste, über das Sie die notwendigen Einstellungen vornehmen können.
+
+Im Fenster der Georeferenzierung öffnen Sie als erstes ein neues Raster (\<strg> + \<o>) und starten Sie mit **closos_1.grd**. Über "Einstellungen -> Rastereigenschaften" können Sie die Darstellung des Raster verändern, gerade bei Magnetikdaten kann dies für das erkennen von Feldgrenzen und bei vorliegenden Leerwerten in den Feldecken hilfreich sein. Deaktivieren Sie für das vorliegende Raster unter Transparenz den "Leerwert".
+
+Unter "Einstellungen -> Transformationsparameter" werden die Transformationsparameter eingestellt. Diese sind für das geladene Raster: 
+
+- Transformationstyp: Polynomial 1. 
+- Abtastmethode: Es ist das Interpolationsverfahren für die neu zu berechnenden Zellen. "Nächster Nachbar" bewertet die Proximität und führt zu vergleichsweise härteren Kanten als "Kubisches Spline". Die genuine Messung ist keine Punktmessung, sondern Ergebnis eines Messbereiches mit diversen magnetischer Feldern, Proximität und Intensität spielen hier gleichfalls eine Rolle. Jede Interpolation führt zu einer Veränderung der Daten und sollte deshalb kritisch hinterfragt werden. Wählen Sie "Nächster Nachbar". 
+- Ziel-KBS: EPSG:25831. 
+- Ausgaberaster: Ein Name wird vorgegeben, kann aber geändert werden. 
+- Passpunkte speichern: Ist eher vorteilhaft. 
+- Falls nötig 0 für Transparenz verwenden: Ein wichtiger Punkt. Die "0" ist bei den vorliegenden Messwerten ein gültiger Wert und darf deshalb nicht als "Leerwert" definiert werden. Auch bei S/W- und Graustufenbildern ist "0" (Schwarz) ein gültiger Wert. Bei Farbbildern  ist "0" für alle Kanäle eher selten und ein guter Wert für Fehlende Werte. In unserem Rasterdatensatz ist 1.70141e+38 als Leerwert bereits definiert, wählen Sie keine zusätzliche Transparenz. 
+- Zielauflösung setzen: Wird keine Änderung eingetragen, wird die Auflösung des Eingangsrasters gewählt. 
+- Wenn fertig in QGIS laden: Meist die gewünschte Aktion.
+
+Wählen Sie nun "Bearbeiten -> Punkt hinzufügen" (\<strg> + \<a>) und markieren Sie nacheinander einen Punkt im Raster und dann den korrespondierenden Referenzpunkt in der Karte. Die Referenzpunkte in der Karte können in einem neuen Fenster wahlweise von Hand eingetragen oder mit [Aus Kartenansicht] in der Karte markiert werden. Wiederholen Sie den Vorgang für die vier Ecken, nutzen Sie beim Raster das Scrollrad der Maus zum Zoomen. Rote Linien zeigen die projektive Verschiebung der Punkte, dies kann ein Hinweis auf mögliche Fehler sein, irritiert bisweilen aber auch nur. Die additiv geführte Punktliste gibt berechnete Fehlerwerte aus und erlaubt das aktivieren oder deaktivieren einzelner Punkt. 
+
+Mit dem Öffnen eines neuen Rasters (\<strg> + \<o>) oder dem Schließen des Fensters können die Messpunkte gespeichert werden. Wiederholen Sie den Vorgang für die verbleibenden Raster. Wählen Sie jeweils mindestens 3 Punkte. Beachten Sie, dass Feld 3 um 90° gedreht ist. 
+
+## Rasterdaten & Rasterrechner
+
+### Magnetikdaten
+
+Setzen Sie für alle vier Prospektionsflächen die Symbologie im Farbverlauf auf "Weiß nach Schwarz", Min: -15, Max: +15 und Kontrastverbesserung: "Strecken auf MinMax". Damit werden die verfügbaren Graustufenwerte zwischen -15 nT (nano Tesla) und +15 nT verteilt, die jeweils außerhalb liegenden Werte werden Weiß oder Schwarz dargestellt. 
+
+Betrachten Sie die Flächen einen Augenblick, Sie erkennen unschwer die sehr heterogenen und kontrastreichen Daten im Norden und jenseits der Straße im Süden sowie die eher "weicheren" Werte zwischen den Navetas. Dies wird durch den Untergrund verursacht. Es handelt sich um Kalkstein in dessen zahlreichen Klüften und Kavernen toniges Sediment abgelagert ist. Der Kalk liefert kein, der tonige Boden ein deutliches Signal und im Ergebnis entsteht das von uns zu erkennende Bild. Im Umkehrschluss steht zwischen den Navetas der Kalkfelsen nicht unmittelbar an der Oberfläche an. 
+
+Vor allem im Feld 1 sind einige rundliche Anomalien eher positiver (dunkler) Messwerte zu erkennen. Markieren Sie bei den Layern das Messfeld 1 und prüfen Sie die Messwerte mit der Objektabfrage (?-Icon) aus der Menüleiste. Die Messwerte liegen überwiegend zwischen 7 und 16 nT nur bei der Anomalie mit weißem Rand werden 50 nT erreicht. 
+
+**Aufgabe**: Wir vermuten potentielle Gruben bei 7 nT bis 16 nT und wollen diese hervorheben. Ziel ist es alle Messwerte in diesem Bereich auf "1" (Wahr) zu setzen, alle anderen auf nicht definiert. Damit ist nachfolgend auch die Vektorisierung  der herausgestellten Strukturen möglich. Starten Sie den **Rasterrechner** ("Raster -> Rasterrechner"). Oben links haben Sie die verfügbaren Layer und jeweils vorhandenen Bänder (Farbkanäle), oben rechts notwendige Parameter und unten viel Platz für die Berechnungsformel.
+
+Fügen Sie mit einem Doppelklick das Band 1 des Messfeldes 1 zum Ausdruck hinzu (closos_1_modifiziert\@1). Tragen Sie oben rechts den Namen für die Ausgabedatei ein, z.B. closos_1_7-16nT. Für die Ausdehnung dieser Datei klicken Sie auf [Gewählte Layerausdehnung] und das entsprechende KBS der Ursprungsdatei oder des Projektes. 
+
+Der Rasterrechner kennt keine *if-than-else*-Syntax. Sie sehen aber folgende Operatoren: ">", "<", "/" (Division) und "und", mehr brauchen wir nicht. Ist eine Bedingung wahr, ist der Rückgabewert 1 sonst 0. Ergänzen Sie den Ausdruck zu ```("closos_1_modifiziert@1">6)```, am unteren Rand steht dann "Ausdruck gültig" (leider nicht das Ergebnis). Schreiben Sie nun folgendes:
+
+```
+(("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17)) /
+(("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17))
+```
+Was steht da? Es ist ein Bruch mit identischem Zähler und Nenner, jeweils zwei Bedingungen mit einem "und" verknüpft. Sind beide Bedingungen wahr ist der Rückgabewert 1 ansonsten 0. Sind beide Bedingungen wahr steht da also 1/1 (= 1) ansonsten 0/0 (nicht definiert). Das ist alles. Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Länge und Umfang ins Verhältnis setzen um die Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für jede Anomalie berechnen lassen und abschließend  auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
+
+| Anmerkung |
+|----|
+|Wenn **Fehler** auftreten prüfen Sie bitte als erstes die Layernamen, *copy & paste* kann die Ursache sein. |
+
+### Luftbilder und Vegetation
+
+Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegenherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau!). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. Falls Sie mein erster schneller Ansatz interessiert:
+
+```
+(("orthoaktuell@2">50) and ("orthoaktuell@2" < 110) and 
+("orthoaktuell@3">50) and ("orthoaktuell@3" < 110) and 
+("orthoaktuell@1" < ("orthoaktuell@2"*0.8))) /
+(("orthoaktuell@2">50) and ("orthoaktuell@2" < 110) and 
+("orthoaktuell@3">50) and ("orthoaktuell@3" < 110) and 
+("orthoaktuell@1" < ("orthoaktuell@2"*0.8)))
+```
+Nach einer kurzen Überprüfung der Werte liegen Grün und Blau annähernd paritätisch zwischen 50 und 110 während Rot stets etwas niedriger liegt bis maximal 80% des Blau- oder Grünwertes. Im Ergebnis stehen also über und unter dem Bruch identische Ausdrücke mit jeweils drei verknüpften Bedingungen. Im Projekt können Sie mit "Rasterlayerstatistik" die Summe der Pixel abfragen und erhalten damit die Anzahl der Pixel da in jeder zelle ja "1" steht. In der Information zum Layer finden Sie die Pixelgröße: 0.2000203817314166743 * 0.2000264054513337941. Aus dem Produkt aller Werte ergibt sich die jeweils ermittelte Fläche an Vegetation:
+
+- 1956: 17500 m²
+- 2018: 57536 m²
+
+Anmerkung: Ich verwende das Resultat im nächsten Abschnitt zur Kartenerstellung und verzichte deshalb an dieser Stelle auf eine Abbildung. 

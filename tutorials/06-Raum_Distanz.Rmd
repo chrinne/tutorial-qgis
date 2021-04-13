@@ -1,0 +1,206 @@
+--- 
+title: "GIS Einführung mit QGIS"
+author: "Christoph Rinne"
+email: crinne@ufg.uni-kiel.de
+date: "`r format(Sys.time(), '%d. %B %Y')`"
+license: "CC-BY 4.0"
+header-includes: 
+  \renewcommand{\contentsname}{Inhalt} 
+  \renewcommand{\figurename}{Abb.}
+  \renewcommand{\tablename}{Tab.}
+bibliography: QGIS-cours-references.bib
+csl: journal-of-archaeological-science.csl
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    df_print: kable
+urlcolor: blue
+link-citations: yes # make citations hyperlinks
+linkcolor: blue
+number_sections: yes
+lang: de-DE
+description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
+---
+
+# Raum & Distanz
+
+## Einleitung
+
+Analysen zu archäologischen Fundplätzen und ihrem Umfeld hat es auch vor der *Computer-Revolution* in der Archäologie in den 1980ern und den modernen GIS, ab den 1990ern, gegeben. Ein schönes Beispiel für klassische Techniken der Umfeldanalyse ist die Arbeit von Linke  [@linkeFruhesBauerntumUnd1976a]. Die Ursprünge in unserem Fach liegen in der **Siedlungsarchäologie**, in der Fundstellen, das Umfeld und Informationen zur Vegetation oder das Klima verknüpft und möglichst quantitativ in ihrer Bedingtheit analysiert werden. Hier gibt es eine umfangreiche Literatur, von der ich nur eines nennen will [@jankuhnEinfuhrungSiedlungsarchaologie1977a]. Die uns heute geläufigen theoretischen Grundlagen (zum Beispiel zur Zentralität), die Methoden und auch die Technik kommen aber aus der Geographie, insbesondere der Kultur- und Sozialgeographie [@christallerZentralenOrteSuddeutschland1933a; @haggettEinfuhrungKulturUnd1973a]. Mit Blick auf Raum und Distanz möchte ich aus der "Findungsphase" im Fach mit Bezug auf das Thema "Raum um die Fundplätze" auf Arbeiten von Zimmermann verweisen [@zimmermannWieVieleBandkeramiker2003a; @zimmermannLandschaftsarchaologieIIUberlegungen2004a] und für Analysen auf der Basis der Distanz auf etwas ältere Arbeiten [@siegmundTriangulationAlsMethode1992a; @zimmermannTesselierungUndTriangulation1992a]. Die Verfügbarkeit von Hard- und Software hat zu einem großen Spektrum diverser Interpolationsverfahren geführt, die Punktinformationen in die Fläche übertragen. Eine gute Zusammenfassungen zu diesem Themenkomplex  finden Sie bei  Herzog [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Daneben gibt es zahlreiche spezielle Entwicklungen und Phasen spezifischer Fragestellungen im Fach (z.B. **Aktivitätsareale** , **Archäoprognose**, **Least cost**), auf die ich hier nur hinweisen möchte [@kunowArchaoprognoseBrandenburgII2007; @czieslaSiedlungsdynamikAufSteinzeitlichen1990; @herzogBerechnungOptimalenWegen2013a]. Nach einer gewissen Konsolidierung im Fach ist meiner Ansicht nach aktuell wieder eine Beschleunigung zu erkennen, die durch bessere technischen Möglichkeiten, neue Methoden der Informationsverarbeitung und mit der Programmiersprache R den alten, vorgenannten Ansätzen, neue Perspektiven im Fach eröffnet [@nakoinzModellingHumanBehaviour2016].  Dieser extrem verkürzte Abriss zu GIS in der Archäologie blendet zahlreiche Fragestellungen und vor allem die internationale, oft englischsprachige Literatur aus. Letztere finden Sie aber mit etwas Routine und spezifischen Stichworten in den Repositorien der Fachliteratur.
+
+## Umkreisanalyse
+
+### Vorbemerkungen
+
+Der Gedanke, das Umfeld einer Siedlung als Aktivitäts- und Nutzungsareal für soziale und ökonomische Bedürfnisse zu betrachten, liegt auf der Hand. Damit ergibt sich als erstes die Frage nach dem Radius um die Siedlung. Weitere Fragen ergeben sich aus dem verfügbaren Raum und den möglichen Nachbarn: Wie viel Platz habe ich eigentlich? Welche Siedlung ist gleichzeitig? Diese und weitere, eher archäologische Fragen werden von Linke diskutiert [@linkeFruhesBauerntumUnd1976a, 24]. Weitere Fragen ergeben sich aus der Geographie, z.B. durch Berge und Flüsse, die unsere Mobilität beeinflussen. Diese Fragen sind nicht neu und inzwischen oft behandelt [u.a. @herzogBerechnungOptimalenWegen2013a]. Die jeweilige Antwort beeinflusst als grundlegende Entscheidung das Ergebnis der Analyse. Diese Voraussetzungen (Parameter) sollten anhand der jeweils vorliegenden Daten und der eigenen Fragestellung angemessen als auch nachvollziehbar dargelegt werden.
+
+![Umkreisanalyse von Linke mit quantitativer Auswertung (1976)](./images/06_Linke.png)
+
+Um die Technik der Umkreisanalyse von Linke auf unsere Daten anzuwenden, will ich die Frage zur Lage der Talaiots im Geländerelief betrachten: ist diese exponiert, im mittleren Hangbereich oder eher in Tallage? Mein Ansatz ist der Vergleich der Höhenlage des Talaiot zum Umfeld. Dabei sind folgende Angaben zu ermitteln: 1. Die Reliefenergie im Umfeld und 2. die Lage des Talaiot zum Umfeld. Für die Frage der Kreisgröße berücksichtige ich als erstes die Auflösung unseres DGM von 200 m je Rasterzelle und entscheide mich, mangels einfach zu begründender Maße für einen Start mit r = 1 km.
+
+### Umsetzen in QGIS
+
+Als Daten verwende ich den originalen Rasterdatensatz des DGM 'PNOA_MDT200_ETRS89_HU31_Baleares.asc' und aus der SpatiaLite Datenbank die erstellte *view* mit den gefilterten talaiots ```CREATE VIEW "talaiots" AS select * from sites where Tipo_yacim like 'Talaiot%'```.    
+
+Die Berechnung und Darstellung des Umkreises kann 1. in QGIS erfolgen, wahlweise in eine temporäre Datei oder eine neue shp-Datei, oder 2. in SpatiaLite. Ersteres ist schnell und einfach, letzteres kann wegen der veränderten Geometrie (Punkt zu Polygon) nicht mehr als *spatial views* ausgeführt werden, sondern führt mit ```create table <name> as select ...``` ebenfalls zu redundanten Daten. Wesentlicher Vorteil: die Erstellung ist mit der SQL-Anweisung unmissverständlich nachvollziehbar. Die Analyse ist ansonsten identisch.
+
+#### Puffer erstellen
+
+Im Menü von QGIS wählen Sie "Vektor -> Geometrieverarbeitung -> **Puffer**" oder suchen in der *toolbox* nach 'puffer' womit Sie auch weitere Varianten finden. Wir nutzen den einfachen 'Puffer', setzen Sie hier folgende Parameter: "Eingabelayer": talaiots, "Abstand": 1000, belassen Sie den Rest auf den Vorgaben und erstellen einen temporären Layer. Wiederholen Sie den Vorgang, setzen Sie diesmal aber Segmente auf 100. Vergleichen Sie das Ergebnis bei einer großen Auflösung und lesen Sie dazu die Erläuterung rechts im Fenster zum Algorithmus. Starten Sie zum Vergleich auch nochmals die Funktion 'Vektoren puffern' aus der GDAL *toolbox* und vergleichen Sie die Angaben und das Ergebnis. Bei letzterer haben Sie mehr Optionen bezgl. der Auflösung sich überlagernder Puffer und keine Angaben zur Approximation an den Kreis. Die Auflösung des Kreises in Liniensegmente erfolgt aber dennoch. Bei der automatisch ermittelten Segmentzahl im vorgannten Fall werden 30 Segmente pro Viertelkreis erstellt. 
+
+#### Rasterstatistik je Vektor (Kreis)
+
+Im Ergebnis haben wir viele Kreise. Suchen Sie in der *toolbox* nach '**Zonenstatistik**' (zonal stat) und starten Sie diese. Wählen Sie folgende Parameter: "Rasterlayer": das Geländemodell (DGM 200 alias mdt 200), "Rasterkanal": Kanal 1, "Zonenvektorlayer": Puffer, "Ausgabespaltenpräfix": s_ (die Vergabe ist frei wählbar, sollte kurz sein und nicht mit einer Zahl starten) und bei "Zu berechnende Statistken": Wählen Sie bitte alle aus, bis auf 'Summe' und 'Alle'. Im Ergebnis haben Sie bei der Attributtabelle des Verktolayers für jede gewählte Statistik eine neue Spalte. Die Reliefenergie ist per Definition die Höhendifferenz in einer Flächeneinheit, Sie ist damit unabhängig von der absoluten Höhe über dem Meer.  Zu den ermittelten Werten nachfolgend eine sehr knappe Erläuterung:
+  
+  - Anzahl: Anzahl der betroffenen Zellen
+- Summe: Summe der Zellwerte
+- Eindeutige Werte: Anzahl der unterschiedlichen Werte
+- Mittelwert: der Durchschnitt der gültigen Zellwerte
+- Median: Der Wert in der Mitte der aufsteigend sortierten Zellwerte
+- Standardabweichung: Der Durchschnitt der Differenz jedes Zellwertes zum  Mittelwert aller Zellwerte.
+- Minimalwert: der kleinste Wert in einer Zelle
+- Maximalwert: der größte Wert in einer Zelle
+- Bereich: Differenz zwischen den beiden vorgenannten Min. und Max.
+- Minderheit: am seltensten vorkommende Wert 
+- Mehrheit: am häufigsten auftretende Wert
+- Varianz: das Quadrat der Standardabweichung (Summe der quadrierten Differenzen, Teil der Berechnung).
+
+Es gibt hier zahlreiche Werte, die einen Hinweis auf die Reliefenergie geben, vor allem:
+  
+  - Bereich: Die Differenz zwischen dem kleinsten und größten Wert, wobei ein einzelner Gipfel das Ergebnis deutlich  beeinflusst (z.B. der Kilimandscharo). In so einem Fall liegen der Mittelwert und der Median weiter auseinander.
+- Standardabweichung: Gibt es viele Hügel und Täler sind viele Werte über ein breites Mittelfeld verteilt, die Standardabweichung ist demnach groß bzw. breit.
+
+Wollten wir uns einen Überblick über ein Attribut, also eine der zuvor erläuterten Zahlen, von allen Umkreisen verschaffen, können wir aus dem Menü mit "Vektor -> Analyse-Werkzeuge -> Grundstatistik .." grundlegende statistische Angaben für das jeweils gewählte Attribut abfragen. Hier begegnen uns dieselbe Werte, dazu einige weitere Angaben: 
+  
+  - Anzahl: Anzahl der betroffenen Datensätze
+- Eindeutige Werte: Anzahl der unterschiedlichen Werte
+- Fehlende Leerwerte (NULL): Anzahl von Zeilen ohne Information
+- Minimalwert: der kleinste Wert in einer Zeile
+- Maximalwert: der größte Wert in einer Zeile
+- Bereich: Differenz zwischen den beiden vorgenannten Min. und Max
+- Summe: Summe der Werte
+- Mittelwert: der Durchschnitt der gültigen Werte
+- Median: der Wert in der Mitte der aufsteigend sortierten Werte
+- Standardabweichung: der Durchschnitt der Differenz jedes Wertes zum  Mittelwert aller Werte
+- Variationskoeffizient: Standardabweichung dividiert durch den Mittelwert. Durch diese Normierung ist dieses Maß unabhängig von der Größe der Werte.  Ist der Wert größer als 1 ist die Streuung größer als der Mittelwert.
+- Minderheit: am seltensten vorkommender Wert 
+- Mehrheit: am häufigsten auftretender Wert 
+- Erstes Viertel: der 25%-Grenzwert der aufsteigend sortierten Werte. 
+- Drittes Viertel: der 75%-Grenzwert der aufsteigend sortierten Werte.
+- Interquartilabstand (IQR): Abstand zwischen dem 2. und dem 3. Quartil
+
+#### Visualisierung & Überblick
+
+Kartieren Sie einige der vorgenannten Werte (Bereich, Standardabweichung, Variationskoeffizient und Interquartilabstand). Für die Werte von "Bereich" (range) wähle ich die Farbskala RdGy und fünf Klassen mit gleicher Anzahl (Quantile). Es verwundert nicht, dass die sehr hohen Werte in der Tramuntana zu finden sind und die niedrigen Werte in den zentralen Ebenen von Mallorca. 
+
+Der Wechsel auf die Standardabweichung bei Beibehaltung der grafischen Parameter verändert das Bild nur ein wenig, am ehesten noch im mittleren Höhenbereich. Das Problem sind die Klassengrenzen. Betrachten Sie die Histogramme für beide Attribute und verschieben Sie die Grenzwerte nach ihrer Interpretation der "Gipfel" und "Täler" in der Verteilung. Mit Blick auf die vorangehende Erläuterung scheint Folgendes sichtbar: einzelne Gipfel verzerren das Bild. Aus diesem Grund tendiere ich zur Standardabweichung als Indikator einer allgemeine Reliefenergie, die allgemein üblichen Maximaldifferenz scheint mir für unsere Frage weniger geeignet. 
+
+### Exponiert oder im Tal?
+
+Ich vergleiche als erstes den Höhenwert der Position des Taliot mit dem Median des Umfeldes (z_m - median). Auch für diesen Wert erstelle ich eine abgestufte Symbologie mit fünf Klassen, kontrolliere direkt das Histogramm und verschiebe die Grenzwerte entsprechend den erkennbaren Abschnitten der Verteilung. Die daraus resultierende Karte zeigt keine räumliche Differenzierung, lediglich die Talaiots im Mittelfeld (+/- 6 m zum Median) liegen sicher aufgrund der fehlenden Reliefenergie in den Ebenen.
+
+![Histogramm der Differenz von der Lage des Talaiot zum Median des Umfeld (r = 1 km)](.\images\06_z_m_minus_median.png)
+
+Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich behelfe mir, indem ich die Standardabweichung zum Mittelwert als zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen" Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir uns die weiteren Eigenschaften ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
+  
+  ![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km)](.\images\06_z_m_minus_mean_stdev.png)
+
+![Karte der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km)](.\images\06_z_m_minus_mean_stdev_karte.png)
+
+### Puffer in SpatiaLite
+
+Leider ist es nicht möglich, dynamische Geometrien in einer *spatial view* zu verarbeiten. Da hierbei neue Geometrien erstellt werde, kann für diese natürlich nicht auf ein originäres Objekt wie bei den *spatial views* verwiesen werden. Für die Puffer zu unseren Punkten müssen wir einen anderen Weg beschreiten. Die mit der SQL-Anweisung zusammengestellten Daten werden einfach in eine neue Tabelle geschrieben. Die Syntax hierzu ähnelt derjenigen der zuvor erstellten Sichten (*views*). 
+
+```{sql 'create table statement', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+create table talaiots_1km as
+SELECT "talaiots"."PK_UID" as pkuid,
+"talaiots"."Nr" as nr,
+"talaiots"."Nombre_yac" as nombre_yac,
+"talaiots"."z_m" as z_m,
+ST_Buffer("talaiots"."geom", 1000) as r1km
+FROM "talaiots"
+```
+
+Im Ergebnis haben Sie eine Tabelle mit einer Geometriespalte, die aber noch nicht als Geometrie in der Datenbank registriert ist. Dies ist in der SpatialLite GUI aber sehr einfach möglich. Öffnen in der  Tabelle links im Hierarchiebaum das Kontextmenü zur Geometriespalte "r1km" und wählen Sie "recover geometry column". Im folgenden Fenster müssen Sie die Parameter der Geometrie angeben: SRID (EPSG-Code), Geometrietyp und Dimension. Für den soeben erstellten Puffer sind dies: 25831, POLYGON, XY. Danach stehen die Daten als Geometrietabelle zur Verfügung. Alternativ können Sie die genannten Informationen auch als Anfügeabfrage in den relevanten Tabellen "von Hand" einfügen.
+
+Leider  werden bei der folgenden Zonenstatistik die Spalten für die zu berechnenden Werte zwar angelegt aber nicht gefüllt. Da die Spalten angelegt werden, liegt kein Schreibschutz vor und beide Datenquellen haben das selben Koordinatensystem. Warum dies also nicht funktioniert kann ich z.Z. nicht erklären. Der Weg ist nach meinem Verständnis deutlich eleganter als die erste Variante, scheitert aber leider vor dem Ziel aus mir nicht verständlichen Gründen. Eventuell sehen Sie ja einen Fehler.
+
+## Thiessen-Polygon, Voronoi-Diagram und Interpolation
+
+Thiessen-Polygone (alternativ Delaunay-Triangulation) sind eine Dreiecksvermaschung, bei der innerhalb des Umkreises zum gebildeten Dreieck kein weiterer Punkt liegt. Die Fundplätze bilden dabei die Knotenpunkte der Strecken. Um die Fundplätze in das Zentrum einer Fläche zu bringen und so die Informationen des Punktes in die umliegende Fläche zu übertragen, wird auf jede Kante die Mittelsenkrechte gebildet und bis zum Schnittpunkt mit einer anderen Mitttelsenkrechten verlängert. Es entsteht ein dualer Graph, der durch erneutes Bilden der Mittelsenkrechten wieder zum Ausgangsmodell führt.
+
+Bei diesem Verfahren gibt es methodische Probleme, zu denen noch spezifische der Archäologie zu ergänzen sind. Das grundlegende archäologische Problem gleich vorweg: Im Unterschied zu gezielt verteilten und erhobenen Messwerten in der Geographie sind archäologische Nachweis-Daten durch viele Faktoren beeinflusst: Aktivität von Ehrenamtlichen, Erhaltung, Vegetation, Landschaftsnutzung etc. Wir müssen also mit dem Fehlen relevanter Informationen rechnen. 
+
+Ein methodisches Problem der Triangulation ist der Randeffekt des Netzes. Da hier die jeweiligen Nachbarn fehlen, werden besonders lange Strecken gebildet. Auch ignoriert die geradlinige Verbindung zwischen den Punkten weitere beeinflussende Faktoren der unterstellten räumlichen Nähe: Gebirgszüge, Steilhänge, Flüsse etc. Wird in dem abgeleitete Voronoi-Diagram mit dem Punkt im Zentrum  die Information unverändert auf die Fläche übertragen, entstehen an den Grenzen zum benachbarten Feld Sprünge in den Information statt fließende Übergänge. Aufgrund dieser Nachteile sind zahlreiche weitere Interpolationsverfahren entwickelt worden. Ein weit verbreitetes ist das *inverse distance weighting* (**IDW**). Die hierbei gewählte Gewichtung muss angemessen sein und kann durch eine Potenz variiert werden. Das in der Geographie ebenfalls gerne genutzte *kriging*  bietet noch mehr Justierungsmöglichkeiten, wodurch sich z.B. bei Höhenmodellen sehr gute Approximationen an die Wirklichkeit erzielen lassen. Diese letztgenannten Berechnungen werden nicht nur rechnerisch komplexer, sondern vor allem im Rahmen einer auf archäologischen Argumenten beruhenden Modellbildung schwieriger begründbar. Für die Anwendung in der Archäologie lesen Sie hierzu zum Einstieg bitte [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Jüngere Darstellung mit komplexen, interdisziplinär ausgearbeiteten und begründeten Modellierungen von Informationen in die Fläche finden Sie u.a. bei Daniel Knitter [@nakoinzRegressionInterpolation2016; @knitterLandUsePatterns2019].
+
+## Thiessen-Polygone und triangulierte Distanzen
+
+### Vorgehen in QGIS
+
+Wie zu Beginn dieses Kapitels erwähnt sind die triangulierte Distanzen ein schlichtes aber durchaus interessantes Maß [@siegmundTriangulationAlsMethode1992a; @zimmermannTesselierungUndTriangulation1992a]. Wir können dies bei unserem vorliegenden Datensatz zu den Talaiots mal durchspielen. Dabei haben wir aus der archäologischen Perspektive bestimmte Vorteile. Durch die klare Begrenzung des Untersuchungsgebietes als Insel sind Kanteneffekte zwar zu erwarten, entsprechen aber der unabdingbaren Realität auch wenn die "Wege" an einige Stellen über das Wasser führen. Der monumentale Charakter und der relativ späte Landesausbau mit dem vorhandenen Bewusstsein für diesen Denkmaltyp hat zu einer erwartbar guten Kenntnis (nicht zwingend Erhaltung) geführt. Wir können zudem mehrstufig Arbeiten und die gesamte Insel mit den Landschaftsgebieten (*comarcas*) oder der zuvor herausgestellten Lage vergleichen.
+
+Der Weg ist mehrstufig. Wenn Sie ausschließlich in QGIS arbeiten wollen, müssen Sie folgende Schritte durchlaufen:
+  
+  1. Starten Sie QGIS mit GRASS-Erweiterung (anderes Icon im Startmenü), nutzen Sie nacheinander die folgenden Funktionen aus der Werkzeugkiste und speichern Sie das jeweilige Ergebnis temporär.
+2. v.delaunay (die QGIS eigene Delaunay-Triangulation kann die *spatial view* 'talaiots' nicht verarbeiten). Zumindest bei meiner Version von v.delaunay konnte kein Liniengraph, sondern nur die Polygone ausgegeben werden.
+2. Polygone zu Linien: Im Ergebnis haben Sie eine Polylinie um jedes Dreieck.
+3. Linien sprengen: Im Ergebnis haben Sie einzelne Linien. Fast jede Linie im Netz ist aber doppelt vorhanden, für jedes angrenzende Dreieck einmal.
+4. Doppelte Geometrien löschen: Sie erhalten alle Distanzen einmalig.
+5. Ergänzen Sie mit dem Feldrechner eine Spalte für die Linienlänge ($length).
+6. Exportieren Sie alle Längenmaße für eine statistische Analyse, z.B. in R. 
+
+Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. 
+
+### Vorgehen in SpatiaLite
+
+Mit SQL wird der Weg wegen der komplexen Syntax in zwei Schritten durchgeführt. Nutzen Sie die SpatiaLite GUI und führen Sie folgende SQL-Anweisung aus:
+  
+  ```{sql 'Delaunay-Triangulation in SpatiaLite', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+create table talaiot_dist as
+select st_DelaunayTriangulation(st_collect(geom),1) as geom
+from talaiots;
+```
+
+Die Rückgabe der Abfrage ist ein Objekt vom Typ *Multilinestring*, das für die weitere Bearbeitung in eine Tabelle geschrieben wird. Die verwendete Funktion st_DelaunayTriangulation erwartet **ein** Geometrieobjekt, dieses wird mit der Funktion *st_collect()* aus allen Geometrien in der Spalte 'geom' der Abfrage erstellt. Die Funktion st_DelaunayTriangulation gibt mit der Option *edges_only* die Kanten statt der Polygone aus. Die Übergabe dieses Parameters erfolgt ausschließlich durch 0 (falsch) oder 1 (wahr).
+
+Die neue Tabelle 'talaiot_dist' enthält genau eine Geometrie (geom) vom Typ *Multilinestring*, also eine Geometriekollektion, für das wir die Anzahl der enthaltenen Elemente abfragen.
+
+```{sql 'Anzahl der Elemente in der *GeomCollection* abfragen.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+select NumGeometries(geom)
+from talaiot_dist;
+```
+
+Die nachfolgende Abfrage wird als Sicht gespeichert und hat zwei Abschnitte, die mit *WITH RECURSIVE* zusammengefasst werden. Im ersten Abschnitt gibt es zudem noch eine Unterabfrage.
+
+```{sql 'ReKursion für einen Zähler und Abfrage der Länge des jeweiligen Elementes.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+create view talaiot_dist_length as
+WITH RECURSIVE
+cnt(x) AS (
+  SELECT 1
+  UNION ALL
+  SELECT x+1 FROM cnt
+  LIMIT (select NumGeometries(geom) from talaiot_dist)
+)
+SELECT st_length(GeometryN(geom, x)) as l FROM cnt, talaiot_dist;
+```
+
+Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit '1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.). 
+
+Das zweite Element ist eine Schlichte Abfrage über zwei Tabellen, den erzeugten Zähler cnt mit dem Element x und die Tabelle mit der einen Geometrie vom Typ *Multilinestring*. Abgefragt wird nun die Länge (*st_length()*) für jedes x-te Element des *Multilinestring* (*GeometryN()*). Nach der Aktualisierung der Datenbank (*refresh*) steht die Sicht zur Verfügung, kann über das Kontextmenü z.B. in eine CSV-Datei exportiert und für eine statistische Analyse verwendet werden. 
+
+### Deutung des Ergebnnisses
+
+```{R include=FALSE}
+l<-c(41352, 14586, 16399, 16588, 20102, 3555, 63906, 39984, 15652, 1211, 1388, 1414, 177, 1507, 1133, 2029, 7534, 9479, 23142, 32011, 4775, 36646, 4840, 4120, 2700, 1715, 1210, 13519, 13189, 9833, 9207, 6280, 8860, 10465, 12752, 7392, 3272, 6622, 262, 6520, 632, 6321, 291, 6311, 9272, 9748, 538, 10204, 2843, 12703, 4565, 1796, 3461, 2728, 2797, 5279, 7192, 10383, 15857, 4295, 3119, 3666, 1281, 2147, 2658, 1570, 4220, 36006, 39529, 25492, 15657, 10280, 5918, 7031, 4943, 10154, 30179, 17065, 13353, 3720, 11239, 3835, 9446, 8588, 2360, 3314, 4654, 2248, 6754, 9171, 7765, 1726, 829, 851, 1788, 2851, 2663, 3022, 4404, 3300, 3626, 2513, 522, 2532, 4252, 4341, 19411, 8548, 14284, 4703, 12520, 9635, 5142, 843, 4409, 3286, 1281, 488, 1595, 2606, 3518, 1323, 1091, 659, 4019, 961, 4278, 2990, 5978, 3973, 6725, 4765, 5760, 4918, 8307, 7940, 6587, 8467, 7648, 1252, 8154, 4615, 4411, 5500, 4104, 4086, 891, 664, 385, 484, 7774, 7566, 4420, 2863, 1749, 1910, 1360, 1702, 2830, 2863, 3618, 3231, 1464, 2863, 3476, 1845, 4246, 6046, 5371, 390, 1217, 1577, 444, 1994, 10461, 8818, 5185, 8668, 15709, 9693, 21714, 17117, 14993, 2236, 657, 2798, 6247, 5360, 6909, 10895, 5702, 7492, 9708, 10725, 9794, 5563, 1201, 16120, 13456, 13150, 6976, 10394, 8997, 8193, 3776, 1503, 3069, 2314, 7563, 2589, 7120, 3788, 7466, 7736, 6537, 6166, 4782, 1963, 491, 5091, 5068, 4921, 2425, 682, 1902, 1330, 1677, 1746, 1426, 1883, 2890, 3043, 4154, 4531, 2292, 2464, 1891, 8023, 3982, 8591, 8881, 6476, 5210, 4007, 3794, 354, 4840, 3164, 7282, 7729, 9181, 4917, 7022, 4893, 8480, 6483, 5480, 6507, 6524, 1150, 1558, 1261, 1916, 1724, 885, 2823, 2760, 2960, 1820, 1544, 398, 1261, 771, 1091, 1000, 158, 901, 2531, 2314, 1705, 1714, 1511, 3301, 1253, 2990, 6158, 6922, 6482, 5592, 6973, 4718, 7749, 4074, 5752, 6622, 1886, 7213, 8726, 9984, 4452, 3080, 1628, 1871, 3742, 3122, 2390, 963, 2906, 793, 3197, 9626, 9217, 10980, 2427, 1541, 2588, 2179, 460, 2085, 1972, 2434, 2956, 1216, 1589, 2013, 2261, 451, 5986, 5986, 6168, 5434, 6262, 3723, 7012, 13473, 13865, 10396, 9361, 1603, 803, 2400, 13384, 12950, 11460, 2581, 6906, 6407, 9436, 9517, 5947, 7560, 2957, 6926, 4013, 3226, 5236, 5494, 7034, 3446, 3633, 3851, 5569, 6407, 6855, 7499, 7257, 6450, 6240, 1855, 5934, 2786, 4596, 3392, 3169, 707, 2786, 5330, 5200, 3344, 5658, 2757, 5187, 6524, 5911, 2460, 3776, 3677, 211, 2458, 2621, 5283, 4208, 840, 5440, 5871, 6673, 6154, 2234, 1151, 1162, 1931, 1565, 5508, 738, 2269, 269, 2350, 1039, 3189, 4466, 3732, 2734, 4059, 10311, 10045, 2445, 9202, 8801, 954, 1273, 1486, 1520, 10237, 10364, 7728, 7050, 1704, 1106, 1032, 2842, 1162, 1272, 873, 1436, 6972, 4621, 10610, 7422, 10132, 10322, 9020, 7142, 2764, 637, 2227, 4645, 3790, 9418, 7008, 9380, 7424, 4584, 1722, 3018, 1718, 5714, 4817, 3204, 5728, 6759, 4395, 4373, 1118, 3816, 711, 3972, 6080, 4074, 5168, 2398, 3259, 2959, 891, 1115, 1938, 1350, 3250, 3154, 3118, 955, 2745, 1632, 2830, 2740, 2623, 559, 1769, 7404, 7564, 303, 8915, 4829, 1347, 2181, 1230, 1605, 3057, 4334, 5344, 2026, 4792, 1562, 4301, 1443, 4828, 572, 5153, 5806, 7086, 6783, 5940, 4812, 939, 1948, 1161, 1097, 206, 4313)
+```
+
+```{R 'Histogram of the triangulated length', fig.height = 4, echo=TRUE}
+hist((l/1000)[l<30000], breaks=seq(0,30,1), 
+     main='Triangulierte Distanzen', xlab = 'Distanz (km)', ylab = 'Häufigkeit') 
+```
+
+Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 30000 m gefilter ([l<30000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 30 km mit Intervallen von 1 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt.
+
+Das Histogramm  der triangulierten Distanzen zeigt einen deutlichen Gipfel bei 2 - 3 km, eine leichte Schulter bei 5 km nachfolgend leichte aber auch unscharfe Häufungen bei den Vielfachen von 5 km. Das Histogramm weist auf Agglomerationen von Talaiots in einem Abstand von 2-3 km hin, diese könnten sich dann in Abständen von ca. 5 km wiederholen. Dazwischen klaffen aber auch Lücken, die wegen des Vielfachen von 5 km möglicherweise durch fehlende Gruppen verursacht worden sein könnten. Letzteres ist lediglich aus der Wiederholung der Distanz abgeleitet und kann auch andere Gründe haben.  
