@@ -26,17 +26,17 @@ description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
 
 # Vorwort {-}
 
-Dieses Tutorial ist für Archäologen gedacht und will einen Einstieg in die einzelnen Aspekte der Arbeit mit und in die Bereiche eines Geographischen Informationssystem bieten. Dabei werden immer wieder archäologische Aspekte und Fragen mit Raumbezug aufgegriffen um damit zugleich auf die Entwicklung und Bedeutung im Fach hinzuweisen. Dies erfolgt auf der Basis von Daten für die Baleareninsel Mallorca eine Insel mit einer großen kulturelle Vielfalt und reichem Denkmalbestand. 
+Dieses Tutorial ist für Archäologen gedacht und will einen Einstieg in die einzelnen Aspekte der Arbeit mit und in die Bereiche eines geographischen Informationssystems bieten. Dabei werden immer wieder archäologische Aspekte und Fragen mit Raumbezug aufgegriffen um damit zugleich auf die Entwicklung und Bedeutung im Fach hinzuweisen. Dies erfolgt auf der Basis von Daten für die Baleareninsel Mallorca, eine Insel mit großer kulturellen Vielfalt und reichem Denkmalbestand. 
 
-Die Kapitel sind einzelnen Aufgabenbereichen gewidmet und behandeln: 
-1. Die Grundlagen und verfügbare freie Software, einschließlich des downloads und installation von QGIS.
-2. Allgemeines zu Datentypen, die Datenhaltung und Organisation von kleineren Projekten als auch der Einstieg in QGIS werden hier behandelt.
-3. Die erste Arbeit mit tabellierten Daten zu den Objekten führt dann auch schon in die Verwendung vorhandener Funktionen und die Arbeit mit dem Feldrechner ein.
-4. Es folgt eine erste Übung mit räumlichen Abfragen und einer ersten Quellenkritik zum Datenbestand.
-5. Ein wichtiger Aspekt ist die Verwendung von Datenbanken in QGIS, hier werden SpatiaLite und GeoPackages behandelt.
-6. Das Kapitel Raum & Distanz wiederholt Aspekte der drei vorangehenden Kapitel und führt in das Thema Umfeldanalyse ein.
-7. Raster oder Bilder sind ein ganz anderer und bisher nicht behandelter Datentyp. Die Werkzeuge zur Bearbeitung werden hier vorgestellt.
-8. Im letzten Kapitel wird das erstellen von Karten behandelt.
+Die Kapitel sind einzelnen Aufgabenbereichen gewidmet und behandeln:    
+1. Die Grundlagen und verfügbare freie Software, einschließlich des downloads und installation von QGIS.     
+2. Allgemeines zu Datentypen, die Datenhaltung und Organisation von kleineren Projekten als auch der Einstieg in QGIS werden hier behandelt.    
+3. Die erste Arbeit mit tabellierten Daten zu den Objekten führt dann auch schon in die Verwendung vorhandener Funktionen und die Arbeit mit dem Feldrechner ein.     
+4. Es folgt eine erste Übung mit räumlichen Abfragen und einer ersten Quellenkritik zum Datenbestand.     
+5. Ein wichtiger Aspekt ist die Verwendung von Datenbanken in QGIS, hier werden SpatiaLite und GeoPackages behandelt.     
+6. Das Kapitel Raum & Distanz wiederholt Aspekte der drei vorangehenden Kapitel und führt in das Thema Umfeldanalyse ein.     
+7. Raster oder Bilder sind ein ganz anderer und bisher nicht behandelter Datentyp. Die Werkzeuge zur Bearbeitung werden hier vorgestellt.     
+8. Im letzten Kapitel wird das erstellen von Karten behandelt.     
 
 Dieses Tutorial ist keine Einführung in die Methoden und theoretischen Grundlagen räumlicher Analysen in der Archäologie. Es ist auch kein Ersatz für das umfangreiche Handbuch zu QGIS.
 
@@ -50,7 +50,7 @@ Die verwendete **QGIS-Version 3.165 LTR** und kann bei [https://qgis.org](https:
 
 Ein **G**eographisches **I**nformations **S**ystem (und bitte nie "... ein GIS-System ...") soll folgende Aufgaben bewältigen: Raumdaten (z.B. Punkte und Vektoren) als auch Sachdaten verwalten, Analysen ermöglichen und Informationen visualisieren. Im Kern ist das also Datenbanksoftware, Statistiksoftware und Grafiksoftware in einem Paket. Das schafft bei der Nutzung performante Übergänge für die Informationen und erleichtert uns die Arbeit. 
 
-Es gab und gibt aber auch deutliche Unterschiede zu den genannten IT-Bereichen. So haben GIS (pl.) im Desktop-Bereich über viele Jahre mit einzelnen Dateien (\*.shp) als Datenquelle gearbeitet und mit jedem Arbeitsschritt eine neue Datei produziert. Ein absolutes *no go* für ein Datenbanksystem. GIS [pl.] entdecken erst langsam den 2.5D oder echten 3D-Bereich, sie sind nicht wirklich mit CAD-Programmen vergleichbar. Die statistischen Optionen stehen den Möglichkeiten in R oder anderen Softwarepaketen deutlich nach. Dennoch, ein GIS ist für die meisten Aufgaben in der Archäologie ein unverzichtbares und oft einfaches Werkzeug. Und im Vergleich zu den Bereichen "Schreiben" und "Grafik" haben wir relativ viele gute freie Software zu Auswahl.
+Es gab und gibt aber auch deutliche Unterschiede zu den genannten IT-Bereichen. So haben GIS (pl.) im Desktop-Bereich über viele Jahre mit einzelnen Dateien (\*.shp) als Datenquelle gearbeitet und mit jedem Arbeitsschritt eine neue Datei produziert. Ein absolutes *no go* für ein Datenbanksystem. GIS [pl.] entdecken erst langsam den 2.5D oder echten 3D-Bereich, sie sind nicht wirklich mit CAD-Programmen vergleichbar. Die statistischen Optionen stehen den Möglichkeiten in R oder anderen Softwarepaketen deutlich nach. Und ein Grafikprogramm soll QGIS mit Sicherheit auch nicht sein. Dennoch, ein GIS ist für die meisten Aufgaben in der Archäologie ein unverzichtbares und oft einfach zu nutzendes Werkzeug. Und im Vergleich zu den Bereichen "Schreiben" und "Grafik" haben wir relativ viele gute freie Software zu Auswahl.
 
 Diese Einführung ist kein Ersatz für das umfangreiche [Handbuch zu QGIS im Internet](https://docs.qgis.org/3.10/de/docs/user_manual/index.html). Erläuterungen u.a. zu den diversen Werkzeug- bzw. Icon-Leisten finden Sie dort unter "[GUI](https://docs.qgis.org/3.10/de/docs/user_manual/introduction/qgis_gui.html)".
 
@@ -88,7 +88,7 @@ Ich wähle den Download, nicht die Netzwerkinstallation, und hier die langfristi
 Die Installation ist einfach: Bestätigen Sie die üblichen Vorgaben und bei *Komponenten auswählen* die Vorgabe ohne Daten. 
 
 QGIS bietet eine Grundkonfiguration, dazu können viele Optionen aktiviert oder als zusätzliche Werkzeuge (Plugins) installiert werden. Wenn **Ihr Menü anders aussieht** als in meinem Beispiel, sind diese modularen Konfigurationsmöglichkeiten mit Sicherheit die Ursache. Die Einstellungen zu Optionen und Plugins werden im Nutzerprofil eingetragen und bei Updates der Software übertragen, es wird also leicht vergessen, ob etwas Standard ist oder nur schon Gewohnheit. <br>
-Es wird viel installiert, u.a. auch Teile von Grass und SAGA. Der Grund ist einfach, es wird auf die jeweils gebotenen Werkzeuge zugegriffen, denn "das Rad zweimal zu erfinden" macht keinen Sinn. Dennoch ist vieles doppelt vorhanden und mit leichten Variationen. Wenn Sie nachvollziehbar handeln wollen, notieren Sie bei Bedarf bitte Paket und Version.
+Es wird viel installiert, u.a. auch Teile von Grass und SAGA. Der Grund ist einfach, es wird auf die jeweils gebotenen Werkzeuge zugegriffen, denn "das Rad zweimal zu erfinden" macht keinen Sinn. Dennoch ist vieles doppelt vorhanden und mit leichten Variationen. Wenn Sie nachvollziehbar handeln wollen, notieren Sie bei Bedarf bitte Paket, Version und natürlich die verwendeten Parameter und Werte.
 
 ## QGIS Grundlegendes
 
@@ -124,18 +124,22 @@ Unter "Projekt -> Eigenschaften" legen Sie die Parameter des Projektes fest. Her
 Das KBS muss dem Projektmaßstab und der Lage angemessen sein. WGS84 (EPSG 4326) passt weltweit, ist aber für ein kleinräumiges Projekt eher ungeeignet. Da ich mit Gradangaben bei Distanzen nicht wirklich etwas anfangen kann, wohl aber mit Metern, verwende ich meist ein  projiziertes KBS der jeweiligen Region, z.B. DHDN 3° Streifen Gauß-Krüger (GK) Zone 3 (EPSG 31467). Für ein Projekt in Norddeutschland, hier sind 2 bis 3 Zonen bei GK betroffen, wäre ein UTM sinnvoll. Der rosafarbene Rahmen zeigt die jeweilige Gültigkeit des gewählten Systems an und erleichtert die Entscheidung.<br>
 Bei UTM müssen Sie noch zwischen ETRS89 und WGS84 als Ellipsoid wählen. Aktuell ist der Unterschied marginal. 
 
-### KBS: Vom Geoid zur Karte
+## KBS: Vom Geoid zur Karte
 
-Ausgangspunkt für eine Karte ist ein reguläres Netz über einer Kugel, bzw. Elipsoid, als Modell unserer Erde. Der Diercke Weltatlas der Schule bietet auch eine digital Infoseite zur [Kartenprojektion](https://diercke.westermann.de/content/kartenprojektionen-978-3-14-100800-5-11-4-1), ansonsten auch Wikipedia, Stichwort [Kartennetzentwurf](https://de.wikipedia.org/wiki/Kartennetzentwurf). Die Punkte der Erde werden von einem Elipsoid als Modell der Erde nach bestimmten Regeln in eine Ebene projiziert. Es gibt also mindestens eine mathematisch definierte gewölbte Oberfläche (Elipsoid) als Modell zur Beschreibung der Lage auf der Erdoberfläche und bei Bedarf eine Projektionsanweisung in die Fläche zur kartografischen Darstellung.  
+Ausgangspunkt für eine Karte ist ein reguläres Netz über einer Kugel, bzw. Elipsoid, als Modell unserer Erde. Der Diercke Weltatlas der Schule bietet auch eine digital Infoseite zur [Kartenprojektion](https://diercke.westermann.de/content/kartenprojektionen-978-3-14-100800-5-11-4-1), ansonsten auch Wikipedia, Stichwort [Kartennetzentwurf](https://de.wikipedia.org/wiki/Kartennetzentwurf). Die Punkte der Erde werden von einem Elipsoid als Modell der Erde nach bestimmten Regeln in eine Ebene projiziert. 
+
+Es gibt also mindestens eine mathematisch definierte gewölbte Oberfläche (Elipsoid) als Modell zur Beschreibung der Lage auf der Erdoberfläche und bei Bedarf eine Projektionsanweisung in die Fläche zur kartografischen Darstellung.  Beide Parameter werden für jede Karte benannt und sind für jedes unserer Projekt und jeden Datensatz mit Koordinaten anzugeben. Das Thema Koordinatenbezugssystem (KBS) ist damit unabdingbar grundlegend.  
 
 Zwei wichtige Eigenschaften von Karten sind:
 
 - Winkeltreu: Dies bedeutet, die Himmelsrichtungen und Winkel werden exakt wiedergegeben. Vom Nordpol 1 km nach Süden laufen, 1 km nach Osten (90°) laufen und 1 km nach Norden laufen (90°) führt (auf der Karte) nicht wieder zum Ausgangspunkt.
 - Abstandstreu: Ist der Gegenentwurf, die winkel werden nicht getreu dargestellt, dafür aber die Abstände.
 
-Großmaßstäbigen Karten sind eher abstandstreu (Seekarten) während kleinmaßstäbige Karten eher winkeltreu sind (Wanderkarte). Letzteres führt aber zu Fehlern an den Kartenschnitten die ausgeglichen werden müssen.  Diese "Fehler" treten an allen Übergängen zwischen den Projektionssystemen auf und vor allem gilt eine Projektionsanweisung auch nur im definierten Bereich, außerhalb werden die Verzerrungen immer größer.
+Die meisten unserer Karten sind eher abstandstreu wodurch es zu geneigten Längengraden kommt (z.B. [Diercke Deutschlandkarte](https://diercke.westermann.de/content/deutschland-verwaltungsgliederung-978-3-14-100850-0-24-1-1)). Seekarten sind wegen der Navigation stets  winkeltreu. An den Kartenschnitten hierdurch zu Sprüngen, versuchen Sie also nicht, mehrere Karten aneinanderzukleben. Analog kommt es an den Übergängen zwischen Projektionen zu Veränderungen die es zu bedenken gilt. Vor allem gilt eine Projektionsanweisung auch nur im definierten Bereich, außerhalb werden die Verzerrungen immer größer.
 
-Ihr Arbeitsgebiet entscheidet also über das zu wählende KBS. Mit Grad, z.B. WGS84, sind Sie weltweit gut aufgestellt. Bei der Kartendarstellung für Schleswig-Holstein in Grad ergibt sich aber für viele Betrachter eine ungewohnte Perspektive. Die Datenerhebung und die Darstellung sind aber zweierlei und natürlich können Sie mit Gradangaben arbeiten und diese für die Darstellung in ein karthesisches System projizieren. Was bei Punkten gut und schnell möglich ist, kann bei der Arbeit mit Flächen, vor allem bei Rasterdaten aber schnell zu Problemen führen. Konstantes Umprojizieren bei einem heterogenen Datenbestand ist eher hinderlich. Insofern empfiehlt sich bei räumlich kleineren Projekten ein angemessenes,  projiziertes und einheitlich angewendetes KBS. 
+Ihr Arbeitsgebiet entscheidet also über das zu wählende KBS. Mit Grad, z.B. WGS84, sind Sie weltweit gut aufgestellt. Bei der Kartendarstellung für Schleswig-Holstein in Grad ergibt sich aber für viele Betrachter eine ungewohnte Perspektive. Die Datenerhebung und die Darstellung sind aber zweierlei und natürlich können Sie mit Gradangaben arbeiten und diese für die Darstellung in ein karthesisches System projizieren. Was bei Punkten gut und schnell möglich ist, kann bei der Arbeit mit Flächen, vor allem bei Rasterdaten aber schnell zu Problemen führen. Konstantes Umprojizieren bei einem heterogenen Datenbestand ist eher hinderlich. Insofern empfiehlt sich bei räumlich kleineren Projekten ein angemessenes,  projiziertes und möglichst einheitlich angewendetes KBS. 
 
 Wer die Wahl hat hat die Qual. <br> 
 Mit Blick auf die späteren Beispieldaten folgende Info: In Spanien wurde früh auf das Elipsoid ED50 (European Datum 1950) umgestellt und die Abweichung zu dem aktuell üblichen ETRS89 sind immerhin gut 190 m, obwohl in beiden Fällen "UTM" als projizierte Darstellung gewählt wurde. Die deutsche Teilung hat ähnliche Problem mit dem Elipsoid als Modell der Erdoberfläche produziert, die bis heute nachwirken (Bessel/Rauenberg im Westen vs Krassowsky/Pulkovo im Osten). Sie merken KBS sind eine recht komplexe Angelegenheit. Mit den **EPSG-Codes** ist inzwischen wenigstens eine einheitliche Nomenklatur gegeben, die auch im Internet mit Informationen hinterlegt ist. Zu dem eigentlichen Datenbestand von [EPSG](https://epsg.org) gibt es diverse Online-Websiten, traditionell ist [SpatialReference.org](https://www.spatialreference.org) etwas neuer mit anderen Optionen [EPSG.io](https://epsg.io/). 
+
+![Karte von Menorca im Museum von Mahon mit zwei Koordinatensystemen: Längengrad bezogen auf Paris und Cadiz.](./images/00_MenorcaMeridian.JPG)
