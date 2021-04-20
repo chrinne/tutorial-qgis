@@ -1,0 +1,543 @@
+# Quelle: Micó Pérez, R., 2005. Cronología absoluta y periodización de la prehistoria des las Islas Baleares, British Archaeological Reports. International Series. Archaeopress, Oxford.
+c14ID;site;island;monument;context;county;labcode;bp;std;sample;resource
+1;Albufera d'Alcúdia;Mallorca;Sondeo polínico;Z = -19,5m;Alcúdia/Muro;;32790;;Desconocido;Micó 2005, 24
+2;Albufera d'Alcúdia;Mallorca;Sondeo polínico;;Alcúdia/Muro;Ua-2732;7060;110;Desconocido;Micó 2005, 25
+3;Albufera d'Alcúdia;Mallorca;Sondeo polínico;Ubicación:39°47'33'' N / 3°6'45'' E. Z = -5,45m;Alcúdia/Muro;ETH-11906;6270;70;Desconocido;Micó 2005, 25
+4;Albufera d'Alcúdia;Mallorca;Sondeo polínico;Ubicación:39°47'33'' N / 3°6'45'' E. Z = -4,00m;Alcúdia/Muro;ETH-11905;2440;490;Desconocido;Micó 2005, 26
+5;Albufera d'Alcúdia;Mallorca;Sondeo polínico;Ubicación:39°47'33'' N / 3°6'45'' E. Z = -3,15m;Alcúdia/Muro;ETH-11904;-108;1;Desconocido;Micó 2005, 26
+59;Ca Na Cotxera;Mallorca;Asentamiento al aire libre;Nivel C. Hueso atlas de oveja.;Muro;KIA-17389;3770;30;Hueso fauna doméstica;Micó 2005, 63
+60;Ca Na Cotxera;Mallorca;Asentamiento al aire libre;Nivel B según Cantarellas (aunque probablemente del nivel C). Hogar. Testigo 8, z = -62cm.;Muro;Y-5515;3750;100;Carbón;Micó 2005, 64
+61;Ca Na Cotxera;Mallorca;Asentamiento al aire libre;Nivel C. Falange de bóvido.;Muro;KIA-17390;3710;25;Hueso fauna doméstica;Micó 2005, 64
+84;Can Roig Nou;Mallorca;Asentamiento de estructuras naviformes;Estructura de habitación naviforme. Muestra NL-458;Felanitx;UBAR-391;2310;80;Hueso fauna doméstica;Micó 2005, 80
+87;Canyamel;Mallorca;Asentamiento de estructuras naviformes;Estructura B. Cuadrante SW del conjunto doble. Muestra NL-453;Capdepera;UBAR-387;3060;50;Hueso fauna doméstica;Micó 2005, 83
+94;Capocorb Vell;Mallorca;Talayot;Talayot cuadrado A. Galería inferior. Viga e soporte conservada. Muestra de anillos exteriores.;Llucmajor;KIA-12697;2775;35;Madera;Micó 2005, 88
+96;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Nivel 5b. Fosa-hogar bajo losa umbral n° 14. Muestra CG-141.;Felanitx;KIA-11221;3390;30;Carbón;Micó 2005, 91
+97;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Nivel 5b. Fosa-hogar bajo losa umbral n° 14. Muestra CG-124.;Felanitx;KIA-11223;3340;30;Carbón;Micó 2005, 92
+98;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Muestra CG-21;Felanitx;KIA-11222;3245;25;Carbón;Micó 2005, 92
+99;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Muestra CG-142;Felanitx;KIA-11224;3200;25;Carbón;Micó 2005, 93
+100;Closos de Can Gaiá;Mallorca;Hábitat en piedra;Estructura rectangular de losas ortostáticas. Posible alacén. UE-26. Muestra CG-2085;Felanitx;KIA-11233;3065;35;Hueso fauna doméstica;Micó 2005, 93
+101;Closos de Can Gaiá;Mallorca;Hábitat en piedra;Estructura rectangular de losas ortostáticas. Posible alacén. UE-32. Muestra CG-1939;Felanitx;KIA-11241;3040;25;Hueso fauna doméstica;Micó 2005, 94
+102;Closos de Can Gaiá;Mallorca;Hábitat en piedra;„Naveta 1“. Nivel 3b. U.E.9. Muestra CG-3398;Felanitx;KIA-11231;2960;25;Hueso fauna doméstica;Micó 2005, 94
+103;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Nivel 5a. U.E.4, o bien UE 36.;Felanitx;UtC-8145;2926;44;Carbón;Micó 2005, 95
+104;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Nivel 5a. U.E. 36. Muestra CG-3043.;Felanitx;KIA-11242;2890;35;Hueso fauna doméstica;Micó 2005, 95
+105;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Nivel 4. U.E. 4 y 5;Felanitx;UtC-8144;2876;39;Carbón;Micó 2005, 96
+106;Closos de Can Gaiá;Mallorca;Asentamiento de estructuras naviformes;„Naveta 1“. Nivel 5a. U.E.4 y 5, o bien UE 36.;Felanitx;UtC-8146;2865;41;Carbón;Micó 2005, 96
+107;Closos de Can Gaiá;Mallorca;Hábitat en piedra;„Naveta 1“. Nivel 3. UE 34. Muestra CG-1588.;Felanitx;KIA-11232;2790;40;Hueso fauna doméstica;Micó 2005, 97
+108;Closos de Can Gaiá;Mallorca;Hábitat en piedra;„Naveta 1“. Nivel 3b. UE 9.;Felanitx;UtC-8141;2775;41;Carbón;Micó 2005, 97
+109;Closos de Can Gaiá;Mallorca;Hábitat en piedra;„Naveta 1“. Nivel 3. UE 34. Muestra CG-1317.;Felanitx;KIA-11229;2740;30;Hueso fauna doméstica;Micó 2005, 98
+110;Closos de Can Gaiá;Mallorca;Hábitat en piedra;Estructura rectangular de losas ortostáticas. Posible alacén. UE-18. Muestra CG-1147;Felanitx;KIA-11239;2650;25;Hueso fauna doméstica;Micó 2005, 98
+111;Closos de Can Gaiá;Mallorca;Indeterminada;Muestra CG-34.;Felanitx;KIA-11219;170;20;Carbón;Micó 2005, 99
+112;Closos de Can Gaiá;Mallorca;Asentamiento histórico;„Naveta 1“. Nivel II. Hogar asociado a cerámicas de época bizantina.;Felanitx;UtC-8143;;;Desconocido;Micó 2005, 99
+113;Corral des Porc;Mallorca;Cueva natural de inhumación;Cueva natural de inhumación. Muestra NL-452.;Lloseta;UBAR-386;3260;160;Hueso humano;Micó 2005, 100
+117;Cova de Can Martorellet;Mallorca;Cueva natural de inhumación.;Cueva natural de inhumación colectiva. Muestra 1.;Pollen?a;KIA-15714;3555;30;Hueso humano;Micó 2005, 103
+118;Cova de Can Martorellet;Mallorca;Cueva natural de inhumación;Cueva natural de inhumación colectiva. Muestra 3.;Pollen?a;KIA-15721;3450;30;Hueso humano;Micó 2005, 104
+119;Cova de Can Martorellet;Mallorca;Cueva natural de inhumación;Cueva natural de inhumación colectiva. Muestra 4.;Pollen?a;KIA-15722;3380;30;Hueso humano;Micó 2005, 104
+120;Cova de Can Martorellet;Mallorca;Cueva natural de inhumación;Cueva natural de inhumación colectiva. Cámara 25, n° 737. Peine de madera.;Pollen?a;UtC-7860;3360;40;Madera;Micó 2005, 105
+121;Cova de Can Martorellet;Mallorca;Cueva natural de inhumación;Cueva natural de inhumación colectiva. Muestra 2.;Pollen?a;KIA-15720;3025;40;Hueso humano;Micó 2005, 105
+122;Cova de Canet;Mallorca;Natural;Cata 4- Z = -20 a -40 cm (nivel de arcilla „terrarossa“). Muestra formada por conchas identificadas tentativamente como Tudorella ferruginea, Vallonia pulchella y Cryptomphalus asperus.;Esporles;P-2540;32400;;Conchas;Micó 2005, 106
+123;Cova de Canet;Mallorca;Natural;Cata I. Nivel B. Z = -3m. Nivel con huesos de Myotragus balearicus.;Esporles;P-2408;9170;570;Carbón;Micó 2005, 107
+124;Cova de Canet;Mallorca;Natural;Cata II. Nivel D. Z = -1m;Esporles;Beta-6948;6370;320;Carbón;Micó 2005, 107
+125;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -650cm;Sóller;SC-RAA 2;107000;;Hueso Myotragus;Micó 2005, 109
+126;Cova de Moleta;Mallorca;Natural;Sector X base. Muestra de travertino del suelo de la cueva (núcleo de calcita).;Sóller;Y-1f;80000;;Carbonatos;Micó 2005, 109
+127;Cova de Moleta;Mallorca;Natural;Sector X base. Muestra procedente del centro de una estalagmita.;Sóller;QL-128;58000;;Carbonatos;Micó 2005, 110
+128;Cova de Moleta;Mallorca;Natural;Sector X base. Muestra procedente de la parte exterior de una estalagmita.;Sóller;QL-127;48000;;Carbonatos;Micó 2005, 110
+129;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -650cm;Sóller;HAR-2911;44800;1600;Hueso Myotragus;Micó 2005, 111
+130;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -600cm;Sóller;SIO-1h;42000;1000;Hueso Myotragus;Micó 2005, 111
+131;Cova de Moleta;Mallorca;Natural;Sector X. Z = -150cm;Sóller;OxA-493;36000;2500;Hueso Myotragus;Micó 2005, 112
+132;Cova de Moleta;Mallorca;Natural;Sector M 12.;Sóller;HAR-299;35400;1400;Hueso Myotragus;Micó 2005, 112
+133;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -450cm;Sóller;SC-RAA 1;34000;;Hueso Myotragus;Micó 2005, 113
+134;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -750 cm;Sóller;SIO-1g;32000;715;Hueso Myotragus;Micó 2005, 113
+135;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -604cm;Sóller;UCLA-1704a;28600;600;Hueso Myotragus;Micó 2005, 114
+136;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -475cm;Sóller;SIO-1c;27000;600;Hueso Myotragus;Micó 2005, 114
+137;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -555cm;Sóller;HAR-2910;25800;1300;Hueso Myotragus;Micó 2005, 115
+138;Cova de Moleta;Mallorca;Natural;Sector X 15.;Sóller;HAR-2971;25700;1100;Hueso Myotragus;Micó 2005, 115
+139;Cova de Moleta;Mallorca;Natural;Sector E. Z = -400 a -450 cm;Sóller;SI-647;23880;1480;Hueso Myotragus;Micó 2005, 116
+140;Cova de Moleta;Mallorca;Natural;Sector X 11.;Sóller;HAR-2933;23500;1600;Hueso Myotragus;Micó 2005, 116
+141;Cova de Moleta;Mallorca;Natural;Sector X 7B. Z = -50cm;Sóller;HAR-2968;23300;800;Hueso Myotragus;Micó 2005, 117
+142;Cova de Moleta;Mallorca;Natural;Sector E. Z = -355cm;Sóller;HAR-2912;23200;2300;Hueso Myotragus;Micó 2005, 117
+143;Cova de Moleta;Mallorca;Natural;Sector X 7E. Z = -100cm;Sóller;HAR-2932;19700;1110;Hueso Myotragus;Micó 2005, 118
+144;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -400cm;Sóller;UCLA-1704e;18980;200;Hueso Myotragus;Micó 2005, 118
+145;Cova de Moleta;Mallorca;Natural;Sector X. Z = -350 a -400cm;Sóller;SI-650;18785;555;Hueso Myotragus;Micó 2005, 119
+146;Cova de Moleta;Mallorca;Natural;Sector F. Z = -300cm;Sóller;SI-649;18100;600;Hueso Myotragus;Micó 2005, 119
+147;Cova de Moleta;Mallorca;Natural;Sector E. Z = -350cm;Sóller;UCLA-1704d;16850;200;Hueso Myotragus;Micó 2005, 120
+148;Cova de Moleta;Mallorca;Natural;Sector X 7C. Z = -65cm;Sóller;HAR-2934;16500;2300;Hueso Myotragus;Micó 2005, 120
+149;Cova de Moleta;Mallorca;Natural;Sector X 7G. Z = -145cm;Sóller;HAR-2909;16400;1200;Hueso Myotragus;Micó 2005, 121
+150;Cova de Moleta;Mallorca;Natural;Sector X. Z = -300cm;Sóller;SI-648;16335;415;Hueso Myotragus;Micó 2005, 121
+151;Cova de Moleta;Mallorca;Natural;Sector D. Z = -250 a -300cm;Sóller;SI-646;15885;655;Hueso Myotragus;Micó 2005, 122
+152;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -350cm;Sóller;UCLA-1704b;14650;850;Hueso Myotragus;Micó 2005, 122
+153;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -350cm;Sóller;SI-645;14465;315;Hueso Myotragus;Micó 2005, 123
+154;Cova de Moleta;Mallorca;Natural;Sector X 13.;Sóller;HAR-2931;14200;1100;Hueso Myotragus;Micó 2005, 123
+155;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -400cm;Sóller;OxA-495;14150;200;Hueso Myotragus;Micó 2005, 124
+156;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -350cm;Sóller;SI-654a;14000;350;Hueso Myotragus;Micó 2005, 124
+157;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -350cm;Sóller;SIO-1e;14000;350;Hueso Myotragus;Micó 2005, 125
+158;Cova de Moleta;Mallorca;Natural;Sector E. Z = -350cm;Sóller;SIO-1a-RAA;14000;;Hueso Myotragus;Micó 2005, 125
+159;Cova de Moleta;Mallorca;Natural;Sector E. Z = -600cm;Sóller;OxA-496;12890;180;Hueso Myotragus;Micó 2005, 126
+160;Cova de Moleta;Mallorca;Natural;Sector EF. Z = 200 a -300cm;Sóller;OxA-499;12100;180;Hueso Myotragus;Micó 2005, 126
+161;Cova de Moleta;Mallorca;Natural;Sector O. Z = -175cm;Sóller;OxA-497;12020;160;Hueso Myotragus;Micó 2005, 127
+162;Cova de Moleta;Mallorca;Natural;Sector O. Z = -175cm. Peso de la muestra: 39,6g;Sóller;KBN-640c;10625;3517;Hueso Myotragus;Micó 2005, 127
+163;Cova de Moleta;Mallorca;Natural;Sector Z. Z = -300cm;Sóller;OxA-494;10500;500;Hueso Myotragus;Micó 2005, 128
+164;Cova de Moleta;Mallorca;Natural;Sector E. Z = -300cm;Sóller;OsA-498;9000;3000;Hueso Myotragus;Micó 2005, 128
+165;Cova de Moleta;Mallorca;Natural;Sector X. Z = -100cm;Sóller;UCLA-1704f;8800;400;Hueso Myotragus;Micó 2005, 129
+166;Cova de Moleta;Mallorca;Natural;Sector O. Estrato 7. Z = -150cm;Sóller;UCLA-1704c;8570;350;Hueso Myotragus;Micó 2005, 129
+167;Cova de Moleta;Mallorca;Natural;Sector oeste („F“). Z = -150cm. Peso de la muestra:85g;Sóller;KBN-640b;8448;1180;Hueso Myotragus;Micó 2005, 130
+168;Cova de Moleta;Mallorca;Natural;Procedencia inédita.;Sóller;UCLA-1704j;8300;100;Hueso Myotragus;Micó 2005, 130
+169;Cova de Moleta;Mallorca;Natural;Sector O. Estrato 7. Z = -150cm. Peso de la muestra: 500g;Sóller;KBN-640a;7135;80;Hueso Myotragus;Micó 2005, 131
+170;Cova de Moleta;Mallorca;Indeterminada;Sector O Estrato 7. Z = -150cm. Peso de la muestra: 500g. Muestra SM 54.;Sóller;KBN-640d;5935;110;Hueso humano;Micó 2005, 131
+171;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Área central. Tibia. Muestra SM-CD-150;Sóller;KIA-14003;4165;30;Hueso humano;Micó 2005, 132
+172;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Procedencia inédita. Tibia.;Sóller;KIA-20462;4135;25;Hueso humano;Micó 2005, 132
+173;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Área central. Diáfisis fémur. Muestra SM-CD-100-150;Sóller;KIA-14026;4055;30;Hueso humano;Micó 2005, 133
+174;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Área central. Tibia. Muestra SM-X-200-300;Sóller;KIA-13998;4005;50;Hueso humano;Micó 2005, 133
+175;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Área central. Diáfisis tibia. Muestra SM-O-100-150;Sóller;KIA-14008;3990;50;Hueso humano;Micó 2005, 134
+176;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Área central. Fragmento de hueso. Muestra SM-O-100-150;Sóller;KIA-14004;3880;30;Hueso humano;Micó 2005, 134
+177;Cova de Moleta;Mallorca;Cueva natural de inhumación;Procedencia inédita. Falange humana. Muestra SM-E 008H;Sóller;KIA-20213;3850;25;Hueso humano;Micó 2005, 135
+178;Cova de Moleta;Mallorca;Cueva natural de inhumación;Vértebra torácica humana. Muestra SM Mu 031 H.;Sóller;Beta—135404;3680;60;Hueso humano;Micó 2005, 135
+179;Cova de Moleta;Mallorca;Cueva natural de inhumación;„Moleta Petita“. Área central. Fémur. Muestra SM-E-200-300;Sóller;KIA-13997;3615;55;Hueso humano;Micó 2005, 136
+180;Cova de Moleta;Mallorca;Cueva natural de inhumación;Sector O. Estrato 5. Hogar. Z = -75cm. Peso de la muestra:100g;Sóller;Y-2359;2910;120;Hueso sp;Micó 2005, 136
+181;Cova de Moleta;Mallorca;Cueva natural de inhumación;Sector O (III). Nivel inferior. Z = -60cm;Sóller;SI-652;2765;120;Carbón;Micó 2005, 137
+182;Cova de Moleta;Mallorca;Cueva natural de inhumación;Procedencia inédita. Hueso largo humano. Muestra SM-Mu 145-H;Sóller;KIA-20463;2670;25;Hueso humano;Micó 2005, 137
+183;Cova de Moleta;Mallorca;Cueva natural de inhumación;Mandíbula de cabra doméstica. Muestra SMLC-25-50cm;Sóller;BM-1507;2360;90;Hueso fauna doméstica;Micó 2005, 138
+184;Cova de Moleta;Mallorca;Cueva natural de inhumación;Sectores C/D. Z = -50cm. Hogar de cocina asociado a restos de huesos de cabras, ovejas...Muestra:hueso de cabra;Sóller;SI-651A;2180;115;Hueso fauna doméstica;Micó 2005, 138
+185;Cova de Moleta;Mallorca;Cueva natural de inhumación;Sectores C/D. Z = -50cm. Dientes de cabra del mismo muestreo que SI-651A.;Sóller;SI-651B;1595;100;Hueso fauna doméstica;Micó 2005, 139
+190;Cova de Son Puig;Mallorca;Cueva de inhumación en cal;Cueva artificial circular. Muestra asociada a cerámica clásica;Deià;Y-2673;2180;100;Hueso humano;Micó 2005, 144
+191;Cova de Son Puig;Mallorca;Cueva de inhumación en cal;Cueva artificial circular. Sector centro-posterior („rear center“). Fragmentos de hueso. Z = 100cm Peso de la muestra: 500g;Deià;Y-1791;2180;80;Hueso humano;Micó 2005, 145
+193;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;Nivel inferior. Sección J6. Z = -160cm. Referencia muestra 19;Deià;BM-1994R;5160;100;Carbón;Micó 2005, 148
+194;Cova dels Morts-Son Gallard;Mallorca;Cueva natural de inhumación;Sector 6 (área del parapeto). Nivel 2. Z = -90cm. Muestra AMG 45. Peso de la muestra: 100g;Deià;Y-1789;3790;80;Carbón;Micó 2005, 148
+195;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;;Deià;KIA-23434;3745;25;Hueso fauna doméstica;Micó 2005, 149
+196;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;Hueso de bóvido (?).;Deià;KIA-23435;3660;25;Hueso fauna doméstica;Micó 2005, 149
+197;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;Hueso de ovicáprido.;Deià;KIA-23734;3595;30;Hueso fauna doméstica;Micó 2005, 150
+198;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;Hueso de ovicáprido.;Deià;KIA-23436;3570;33;Hueso fauna doméstica;Micó 2005, 150
+199;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;;Deià;KIA-23441;3485;30;Hueso fauna doméstica;Micó 2005, 151
+200;Cova dels Morts-Son Gallard;Mallorca;Cueva natural de inhumación;Procedencia inédita.;Deià;KIA-21215;3295;30;Hueso humano;Micó 2005, 151
+201;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;;Deià;KIA-23732;2725;30;Hueso fauna doméstica;Micó 2005, 152
+202;Cova dels Morts-Son Gallard;Mallorca;Cueva de inhumación en cal;Sector centro derecha. Z = -50cm. Huesos quemados en „cremation pit“. Peso de la muestra: 400g;Deià;Y-1859;2230;100;Hueso humano;Micó 2005, 152
+203;Cova dels Morts-Son Gallard;Mallorca;Cueva de inhumación en cal;Procedencia inédita.;Deià;KIA-21214;2135;30;Hueso humano;Micó 2005, 153
+204;Cova dels Morts-Son Gallard;Mallorca;Indeterminada;Bajo roca „F“. Z = -90cm. Referencia muestra 2 y 3;Deià;BM-1993R;1240;100;Carbón;Micó 2005, 153
+237;Cova des Moro;Mallorca;Natural;Cueva natural. Hueso de Eliomys morpheus.;Manacor;Beta-162613;12250;80;Hueso Eliomys;Micó 2005, 172
+238;Cova des Moro;Mallorca;Natural;Cueva natural. Sin contexto. Cráneo de Myotragus balearicus con los cuernos roídos en „v“.;Manacor;UtC-6671;9410;42;Hueso Myotragus;Micó 2005, 173
+239;Cova des Moro;Mallorca;Cueva natural de habitación;Cueva natural . Estructura de combustión n°5. Muestra R4/R5. UE3.;Manacor;UtC-7877;3961;42;Carbón;Micó 2005, 173
+240;Cova des Moro;Mallorca;Cueva natural de inhumación;Cueva natural. Cráneo humano (CM95-6) de la sala inferior, hallado en posición secundaria (contexto detrítico).;Manacor;UtC-7878;3840;60;Hueso humano;Micó 2005, 174
+241;Cova des Moro;Mallorca;Cueva natural de habitación;Cueva natural. UE 406 (mezclado). Mandíbula de cabra.;Manacor;Beta-155645;3750;40;Hueso fauna doméstica;Micó 2005, 174
+242;Cova des Moro;Mallorca;Cueva natural de habitación;Cueva natural. UE 106. Hueso de cabra.;Manacor;Beta-162615;3420;50;Hueso fauna doméstica;Micó 2005, 175
+243;Cova des Moro;Mallorca;Cueva natural de habitación;Cueva natural. UE 406 (mezclado). Bóvido.;Manacor;Beta-162619;2860;50;Hueso fauna doméstica;Micó 2005, 175
+254;Cova dets Alexandres;Mallorca;Natural;Nivel a una cota de z = -60 a -70cm, de un sondeo de 6m de profundidad.;Escorca;P-2705;4070;250;Carbón;Micó 2005, 184
+255;Cova Estreta;Mallorca;Natural;Cueva natural. Huesos de Hypnomis morpheus asociados a coprolitos de Myotragus balearicus.;Pollen?a;UtC-5175;6357;44;Hueso Hypnomis;Micó 2005, 185
+256;Cova Estreta;Mallorca;Natural;Cueva natural. Fémur de Myotragus balearicus.;Pollen?a;UtC-5171;5720;60;Hueso Myotragus;Micó 2005, 186
+257;Cova Gregòria;Mallorca;Cueva natural de inhumación;Cueva B. Inhumación colevtiva. Hueso pequeno de extremidades hallado en superficie. Recogido por M. Van Stryckdonck.;Valldemossa;KIA-23406;3115;30;Hueso humano;Micó 2005, 187
+258;Cova Gregòria;Mallorca;Cueva natural de inhumación;Cueva A. Inhumación colectiva. Fémur humano recogido por M. Davies. Muestra SFO.CG.R1;Valldemossa;KIA-23137;2620;35;Hueso humano;Micó 2005, 188
+259;Cova Gregòria;Mallorca;Cueva natural de inhumación;Cueva A. Inhumación colectiva. Fémur humano recogido por M. Davies. Muestra SFO.CG.L2;Valldemossa;KIA-23134;2585;30;Hueso humano;Micó 2005, 188
+260;Cova Gregòria;Mallorca;Cueva natural de inhumación;Cueva A. Inhumación colectiva. Fémur humano recogido por M. Davies. Muestra SFO.CG.L3;Valldemossa;KIA-23133;2520;30;Hueso humano;Micó 2005, 189
+261;Cova Gregòria;Mallorca;Cueva natural de inhumación;Cueva A. Inhumación colectiva. Fémur humano recogido por M. Davies. Muestra SFO.CG.R5;Valldemossa;KIA-23135;2510;30;Hueso humano;Micó 2005, 189
+262;Cova Gregòria;Mallorca;Cueva natural de inhumación;Cueva A. Inhumación colectiva. Fémur humano recogido por M. Davies. Muestra SFO.CG.R4;Valldemossa;KIA-23136;2460;30;Hueso humano;Micó 2005, 190
+263;Cova Simó;Mallorca;Cueva natural de habitación;Cueva natural. Sector G8. UE35. M1 o m 2 izquierdo de ovicáprido (muestra: MNIB 80508).;Escorca;Beta-154196;3760;40;Hueso fauna doméstica;Micó 2005, 192
+264;Cova Simó;Mallorca;Cueva natural de habitación;Cueva natural. UE-64/F-7. Molar de ovicáprido;Escorca;KIA-15726;3740;30;Hueso fauna doméstica;Micó 2005, 192
+265;Cova Simó;Mallorca;Cueva natural de habitación;Cueva natural. Sector G8. UE33. G8. Interior de hogar. Diáfisis tibia izquierda de ovicáprido (muestra: MNIB 66498).;Escorca;KIA-14323;3670;30;Hueso fauna doméstica;Micó 2005, 193
+266;Cova Simó;Mallorca;Cueva natural de habitación;Cueva natural. UE66/F7. Falange de fauna;Escorca;KIA-15727;3470;30;Hueso fauna doméstica;Micó 2005, 193
+267;Cova Simó;Mallorca;Cueva natural de habitación;Cueva natural. UE48/CS-5. Hueso de ovicáprido;Escorca;KIA-17391;3435;25;Hueso fauna doméstica;Micó 2005, 194
+268;Cova Simó;Mallorca;Cueva natural de habitación;Cueva natural. Sector F9. UE35. F9. Fragmento del extremo proximal de metacarpo derecho de Capra hircus (muestra: MNIB 66500).;Escorca;KIA-14324;955;40;Hueso fauna doméstica;Micó 2005, 194
+269;Cova Simó;Mallorca;Indeterminada;Cueva natural. Sector G8. UE48/F7. Molar.;Escorca;KIA-15725;370;25;Hueso fauna doméstica;Micó 2005, 195
+271;Es Figueral de Son Real;Mallorca;Hábitat en piedra;Estructura naviforme sobre monumento elevado central. Estrato III. Incendio. Peso de la muestra = 60g;Santa Margalida;Y-1856;2960;80;Carbón;Micó 2005, 197
+272;Es Figueral de Son Real;Mallorca;Hábitat en piedra;Estructura naviforme sobre monumento elevado central. Escombrera en muro curvo que reacondiciona el naviforme. Peso de la muestra = 60 g.;Santa Margalida;Y-1857;2920;80;Carbón;Micó 2005, 198
+273;Es Figueral de Son Real;Mallorca;Asentamiento histórico;Complejo norte. Hogar en el sector de la plataforma elevada. Peso de la muestra = 60 g.;Santa Margalida;Y-1858;990;80;Carbón;Micó 2005, 198
+294;Hospitalet;Mallorca;Asentamiento de estructuras naviformes;Naviforme occidental („de ponent“). Hogar central. Muestra NL-457.;Manacor;UBAR-390;3140;60;Carbón;Micó 2005, 213
+295;Hospitalet;Mallorca;Asentamiento de estructuras naviformes;Naviforme occidental („de ponent“). Hogar central. Muestra NL-456.;Manacor;UBAR-389;3110;50;Carbón;Micó 2005, 214
+296;Hospitalet;Mallorca;Asentamiento de estructuras naviformes;Naviforme occidental („de ponent“). Hogar central. Muestra NL-455.;Manacor;UBAR-388;3070;50;Carbón;Micó 2005, 214
+297;Hospitalet;Mallorca;Asentamiento postalayótico;;Manacor;KIA-23769;2205;30;Hueso fauna doméstica;Micó 2005, 215
+320;Pollentia;Mallorca;Asentamiento histórico;Estuco de un edificio del periodo romano republicano, datado por paralelos en 30 arq ANE.;Alcúdia;Y-2668;8000;;Carbonatos;Micó 2005, 231
+321;Pou Celat;Mallorca;Asentamiento postalayótico;Hueso de fauna hallado en el relleno de la muralla. Muestra 7A;Porreres;KIA-15713;2405;30;Hueso fauna doméstica;Micó 2005, 232
+322;Puig de sa Morisca;Mallorca;Hábitat indeterminado;Hueso de cabra de un contexto previo a la construcción de la torre. Muestra SM00-14;Calvià;KIA-17998;2985;25;Hueso fauna doméstica;Micó 2005, 233
+323;Puig de sa Morisca;Mallorca;Hábitat indeterminado;Hueso de oveja de un contexto previo a la construcción de la torre. Muestra SM00-17.;Calvià;KIA-17979;2885;25;Hueso fauna doméstica;Micó 2005, 234
+324;Puig de sa Morisca;Mallorca;Hábitat indeterminado;Hueso de cerdo de un contexto previo a la construcción de la torre. Muestra SM99-11;Calvià;KIA-17980;2835;35;Hueso fauna doméstica;Micó 2005, 234
+325;Puig de sa Morisca;Mallorca;Hábitat indeterminado;Molar de bóvido de un contexto previo a la construcción de la torre. Muestra SM00-16;Calvià;KIA-17981;2660;30;Hueso fauna doméstica;Micó 2005, 235
+326;Puig de sa Morisca;Mallorca;Hábitat indeterminado;Hueso de cabra de un contexto previo a la construcción de la torre. Muestra SM99-64.;Calvià;KIA-18734;2525;25;Hueso fauna doméstica;Micó 2005, 235
+327;Puig de sa Morisca;Mallorca;Hábitat indeterminado;;Calvià;UtC-10028;2507;37;Carbón;Micó 2005, 236
+328;Puig de sa Morisca;Mallorca;Hábitat indeterminado;;Calvià;UtC-10031;2466;49;Hueso fauna doméstica;Micó 2005, 236
+329;Puig de sa Morisca;Mallorca;Hábitat indeterminado;;Calvià;UtC-10033;2466;43;Hueso fauna doméstica;Micó 2005, 237
+330;Puig de sa Morisca;Mallorca;Asentamiento postalayótico;;Calvià;UtC-10029;2387;43;Hueso fauna doméstica;Micó 2005, 237
+331;Puig de sa Morisca;Mallorca;Asentamiento postalayótico;;Calvià;UtC-10032;2373;42;Hueso fauna doméstica;Micó 2005, 238
+332;Puig de sa Morisca;Mallorca;Asentamiento postalayótico;;Calvià;UtC-10030;2358;38;Hueso fauna doméstica;Micó 2005, 238
+333;Puig de sa Morisca;Mallorca;Asentamiento histórico;;Calvià;UtC-10026;1764;36;Madera;Micó 2005, 239
+334;Puig de sa Morisca;Mallorca;Asentamiento histórico;;Calvià;UtC-10027;1007;35;Carbón;Micó 2005, 239
+336;Puig d'en Pau;Mallorca;Hábitat indeterminado;Asentamiento. UE200.;Costitx;KIA-14821;2770;30;Hueso fauna doméstica;Micó 2005, 241
+337;Puig d'en Pau;Mallorca;Hábitat indeterminado;Asentamiento. UE186.;Costitx;KIA-14823;2735;40;Hueso fauna doméstica;Micó 2005, 242
+338;Puig d'en Pau;Mallorca;Hábitat indeterminado;Asentamiento. UE207.;Costitx;KIA-14820;2590;35;Hueso fauna doméstica;Micó 2005, 242
+339;Puig d'en Pau;Mallorca;Hábitat indeterminado;Asentamiento. UE554.;Costitx;KIA-14822;2545;30;Hueso fauna doméstica;Micó 2005, 243
+340;Puig d'en Pau;Mallorca;Hábitat indeterminado;Asentamiento. UE434.;Costitx;KIA-12700;1260;40;Hueso fauna doméstica;Micó 2005, 243
+341;Pula;Mallorca;Hábitat en piedra;Nivel inferior de la estratigrafía del sector porche, adosado al monumento escalonado o túmulo. Capa de cenizas (según Roselló Bordoy 1992).;Son Servera;P-1404;3260;60;Carbón;Micó 2005, 244
+342;Pula;Mallorca;Hábitat en piedra;Relleno de la cámara superior del sector del monumento escalonado. Incendio. (según Rosselló Bordoy 1992).;Son Servera;BM-1998R;2990;100;Carbón;Micó 2005, 245
+354;S'Aigua Dolça;Mallorca;Dolmen;Inhumación colectiva. Cámara. U.E. 19.;Artà;KIA-15223;3485;40;Hueso humano;Micó 2005, 253
+355;S'Aigua Dolça;Mallorca;Dolmen;Inhumación colectiva. Cámara. U.E. 13.;Artà;UtC-4744;3460;40;Hueso humano;Micó 2005, 254
+356;S'Aigua Dolça;Mallorca;Dolmen;Inhumación colectiva. Cámara. U.E. 17.;Artà;KIA-15224;3420;30;Hueso humano;Micó 2005, 254
+357;S'Aigua Dolça;Mallorca;Dolmen;Inhumación colectiva. Cámara. U.E. 10.;Artà;UtC-4736;3380;40;Hueso humano;Micó 2005, 255
+358;S'Aigua Dolça;Mallorca;Dolmen;Inhumación colectiva. Cámara. U.E. 14.;Artà;UtC-4739;3365;30;Hueso humano;Micó 2005, 255
+364;S'llla dels Porros;Mallorca;Hábitat en piedra;Fragmento proximal de radio de bóvido adulto.;Santa Margalida;KIA-11868;3100;25;Hueso fauna doméstica;Micó 2005, 261
+365;S'llla dels Porros;Mallorca;Hábitat en piedra;Fragmento de mandíbula inferior de bóvido. Muestra IP-97-UE118.;Santa Margalida;KIA-11246;3040;30;Hueso fauna doméstica;Micó 2005, 261
+366;S'llla dels Porros;Mallorca;Hábitat en piedra;Primera falange de cabra. Muestra IPC-97-UE110.;Santa Margalida;KIA-11243;2975;25;Hueso fauna doméstica;Micó 2005, 262
+367;S'llla dels Porros;Mallorca;Hábitat en piedra;Fragmento de cuerno de cabra. Muestra IPC-97-UE-112.;Santa Margalida;KIA-11244;2765;30;Hueso fauna doméstica;Micó 2005, 262
+368;S'llla dels Porros;Mallorca;Varia funerario;Cámara B. Capa inferior. Muestra SR-1848.;Santa Margalida;I-4584;2430;200;Carbón;Micó 2005, 263
+369;S'llla dels Porros;Mallorca;Varia funerario;Huesos de feto o neonato. Muestra IP-98-1-I.;Santa Margalida;KIA-11245;2410;25;Hueso humano;Micó 2005, 263
+370;S'llla dels Porros;Mallorca;Varia funerario;Huesos de feto o neonato. Muestra IPC-96-2.;Santa Margalida;KIA-11240;2395;25;Hueso humano;Micó 2005, 264
+371;S'llla dels Porros;Mallorca;Varia funerario;Vértebra humana. Muestra IP-N-7.;Santa Margalida;KIA-11869;2375;25;Hueso humano;Micó 2005, 264
+372;S'llla dels Porros;Mallorca;Varia funerario;Vértebra humana. Muestra IP-97-SW-7.;Santa Margalida;KIA-11870;2285;25;Hueso humano;Micó 2005, 265
+373;S'llla dels Porros;Mallorca;Varia funerario;Ìsquion derecho. Muestra IPC-50-1964.;Santa Margalida;KIA-13535;2275;25;Hueso humano;Micó 2005, 265
+374;S'llla dels Porros;Mallorca;Varia funerario;Tercera vértebra lumbar. IP-97-SW-6.;Santa Margalida;KIA-13537;2185;30;Hueso humano;Micó 2005, 266
+375;S'llla dels Porros;Mallorca;Varia funerario;Hueso sacro. Muestra IP-96-NW-1.;Santa Margalida;KIA-13567;2170;55;Hueso humano;Micó 2005, 266
+376;S'llla dels Porros;Mallorca;Varia funerario;Hueso sacro. Muestra IPB-conj. 7-10-1961.;Santa Margalida;KIA-13533;2165;35;Hueso humano;Micó 2005, 267
+377;S'llla dels Porros;Mallorca;Varia funerario;Temporal iyquierdo. Muestra IPB-7-1960.;Santa Margalida;KIA-13531;2005;25;Hueso humano;Micó 2005, 267
+378;S'llla dels Porros;Mallorca;Varia funerario;Hueso humano sin especificar. Muestra IPA-4-1964.;Santa Margalida;KIA-13532;1905;25;Hueso humano;Micó 2005, 268
+379;S'llla dels Porros;Mallorca;Varia funerario;Inhumación individual en culillas. Uso final de la necrópolis.;Santa Margalida;I-4524;1850;95;Hueso humano;Micó 2005, 268
+380;S'llla dels Porros;Mallorca;Varia funerario;Fragmento de hueso. Muestra IPC/19641.;Santa Margalida;KIA-14002;1555;35;Hueso humano;Micó 2005, 269
+381;S'Lllot;Mallorca;Hábitat en piedra;Corte XIV. Nivel de base, bajo nivel 8. Nivel inferior de monumento central. Z = -5m.;Sant Llorenç;Hv-1716;3080;75;Carbón;Micó 2005, 271
+382;S'Lllot;Mallorca;Hábitat en piedra;Corte XIV. Encima del nivel de base, sobre nivel 8, Nivel superior de la cámara del monumento central.;Sant Llorenç;Hv-1717;2960;90;Carbón;Micó 2005, 271
+383;S'Lllot;Mallorca;Asentamiento talayótico;Corte XIV. Habitación adosada al monumento central. Bajo nivel 7. Hogar. Z = -150cm.;Sant Llorenç;Hv-1718;2690;60;Carbón;Micó 2005, 272
+387;Sa Punta;Mallorca;Varia funerario;Cueva natural. Ataùd tauromorfo. Muestra en superficie.;Pollen?a;CSIC-37;2270;110;Madera;Micó 2005, 276
+396;Santa Catalina de Sena;Mallorca;Asentamiento histórico;Estuco.;Palma;Y-2671;950;100;Carbonatos;Micó 2005, 285
+397;Santa Ponça;Mallorca;Sondeo polínico;Base del sondeo de 15,3m de profundidad.;Calvià;;6930;80;Desconocido;Micó 2005, 286
+405;Ses Paísses;Mallorca;Hábitat en piedra;Nivel de incendio de la casa 12, aunque seguramente es un error y corresponde a la n° 10. Z = -90. Peso de la muestra = 100g.;Artà;Gif-1247;2900;110;Carbón;Micó 2005, 292
+406;Ses Paísses;Mallorca;Asentamiento talayótico;Sector Puerta Este/Norte, zona Habitación 20. Hueso animal sp. Ref. SP00-UE60.;Artà;KIA-14319;2565;30;Hueso fauna doméstica;Micó 2005, 293
+407;Ses Paísses;Mallorca;Asentamiento talayótico;Sector Puerta Este/Sur, zona „Corral“. UE77. Mandíbula de ovicáprido. Ref. SP00-UE77.;Artà;KIA-11867;2525;25;Hueso fauna doméstica;Micó 2005, 293
+408;Ses Paísses;Mallorca;Asentamiento talayótico;Sector Puerta Este/Sur, zona „Corral“. UE72. Pelvis, probablemente de oveja. Ref.SP00-UE72.;Artà;KIA-11890;2475;25;Hueso fauna doméstica;Micó 2005, 294
+409;Ses Roques de Son Baduia;Mallorca;Asentamiento al aire libre;Nivel rojo inferior, previo al edificio naviforme.;Valldemossa;UtC-7115;3400;35;Hueso fauna doméstica;Micó 2005, 295
+410;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Ocupación del edificio naviforme sobre fragmentos de campaniforme. Cuadrante 3E8.;Valldemossa;UtC-7109;3100;35;Hueso fauna doméstica;Micó 2005, 296
+411;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Edificio naviforme. Junto muro.;Valldemossa;UtC-7114;3090;35;Hueso fauna doméstica;Micó 2005, 296
+412;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Bajo muro de edificio naviforme. Mismo lugar que KIK-913. Cuadrante 3G5.;Valldemossa;UtC-7050;3045;40;Hueso fauna doméstica;Micó 2005, 297
+413;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Bajo muro de edificio naviforme.;Valldemossa;UtC-7112;3030;70;Hueso fauna doméstica;Micó 2005, 297
+414;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Edificio naviforme. Junto muro.;Valldemossa;UtC-7113;2990;35;Hueso fauna doméstica;Micó 2005, 298
+415;Ses Roques de Son Baduia;Mallorca;Varia funerario;Cuadrante 3E8.;Valldemossa;UtC-9019;2960;40;Hueso humano;Micó 2005, 298
+416;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Edificio naviforme. Parte inferior del relleno del muro (mismo lugar que KIK-913). Cuadrante 3 G5.;Valldemossa;UtC-7110;2960;35;Hueso fauna doméstica;Micó 2005, 299
+417;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Edificio naviforme. Cata exploratoria.;Valldemossa;UtC-4859;2930;35;Hueso fauna doméstica;Micó 2005, 299
+418;Ses Roques de Son Baduia;Mallorca;Varia funerario;Cuadrante 4E5.;Valldemossa;UtC-9020;2900;45;Hueso humano;Micó 2005, 300
+419;Ses Roques de Son Baduia;Mallorca;Asentamiento de estructuras naviformes;Nivel III, sobre nivel campaniforme y tierra estéril. Cuadrante 3E8.;Valldemossa;UtC-7111;2880;40;Hueso fauna doméstica;Micó 2005, 300
+420;Ses Roques de Son Baduia;Mallorca;Indeterminada;Nivel II. Tras abandono naviforme. Casi superficial en el sector del relleno de un muro. Cuadrante 2G8.;Valldemossa;UtC-7108;2865;35;Hueso fauna doméstica;Micó 2005, 301
+421;Ses Roques de Son Baduia;Mallorca;Indeterminada;Nivel I. Tras abandono naviforme. Casi superficial en sector del relleno de un muro. Cuadrante 3G8.;Valldemossa;UtC-7107;2805;35;Hueso fauna doméstica;Micó 2005, 301
+427;Ses Talaies de Can Jordi;Mallorca;Asentamiento talayótico;Hábitación radial adosada a talayot. Muestra de material empleado en la techumbre.;Santanyí;;2580;30;Carbón;Micó 2005, 305
+435;Son Bauló de Dalt;Mallorca;Dolmen;Hueso de un individuo. Muestra 2.;Santa Margalida;KIA-13224;3480;30;Hueso humano;Micó 2005, 310
+436;Son Bauló de Dalt;Mallorca;Dolmen;Muestra NL-449;Santa Margalida;UBAR-385;3470;120;Hueso humano;Micó 2005, 311
+437;Son Bauló de Dalt;Mallorca;Dolmen;Hueso de un individuo. Muestra 3.;Santa Margalida;KIA-13225;3365;30;Hueso humano;Micó 2005, 311
+438;Son Bauló de Dalt;Mallorca;Dolmen;Hueso probablemente humano. Muestra 1. „Mixed sample“.;Santa Margalida;KIA-11903;3305;25;Hueso sp;Micó 2005, 312
+440;Son Boronat;Mallorca;Varia funerario;Cueva natural de enterramiento. Ataúd. Muestra SB1. Madera de Picea sp. o Larix sp. Madera de alerce según Kew Gardens (Waldren 1986:tabla 16a).;Calvià;BM-1518;2390;45;Madera;Micó 2005, 314
+441;Son Boronat;Mallorca;Varia funerario;Cueva natural de enterramiento. Ataúd. Madera de Picea sp. o Larix sp. Muestra SB1;Calvià;BM-1517;2350;35;Madera;Micó 2005, 315
+443;Son Ferragut (Puig Morter);Mallorca;Asentamiento talayótico;Edificio Alfa. Conjunto VA1. Cuadro 4 (K5). Habitación SE (Estancia A). Viga de Olea europaea.;Sineu;IRPA-1258;2590;30;Carbón;Micó 2005, 317
+444;Son Ferragut (Puig Morter);Mallorca;Asentamiento talayótico;Edificio Alfa. Conjunto VA2. Cuadro 2 (L3). Habitación SE (Estancia A). Viga de Olea europaea.;Sineu;IPRA-1257;2560;30;Carbón;Micó 2005, 318
+445;Son Ferragut (Puig Morter);Mallorca;Asentamiento talayótico;Edificio Alfa. Conjunto IVA2. Cuadro 2 (J2). Fragmento distal de húmero de Bos taurus.;Sineu;Beta-123762;2520;60;Hueso fauna doméstica;Micó 2005, 318
+446;Son Ferragut (Puig Morter);Mallorca;Asentamiento talayótico;Edificio Alfa. Conjunto IIIA1. Cuadro 6 (H9). Pasillo. Peine de Erica sp.;Sineu;UtC-9489;2470;35;Madera;Micó 2005, 319
+447;Son Ferragut (Puig Morter);Mallorca;Asentamiento talayótico;Edificio Alfa. Conjunto VA1. Cuadro 2/4 (M2/K5). Estancia A. Madera de Pinus halepensis.;Sineu;Beta-123763;2420;40;Carbón;Micó 2005, 319
+448;Son Ferragut (Puig Morter);Mallorca;Asentamiento talayótico;Edificio Alfa. Conjunto VIA2. Cuadro 3 (D4/D6). Estancia B. Diáfisis y epífisis de ovicáprido.;Sineu;Beta-123761;2410;80;Hueso fauna doméstica;Micó 2005, 320
+449;Son Ferrandell-Oleza/olivar;Mallorca;Natural;Madera de olivo actual. Parte central expuesta de un tronco de 2m de diámetro.;Valldemossa;BM-2002R;230;110;Madera;Micó 2005, 321
+450;Son Ferrandell-Oleza/olivar;Mallorca;Natural;Madera de olivo actual. Centro del árbol.;Valldemossa;BM-2001R;30;100;Madera;Micó 2005, 322
+451;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Hogar en la base de los fundamentos del muro E.;Valldemossa;BM-1843R;4030;110;Carbón;Micó 2005, 324
+452;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). SW-EF/16. Inferior del asentamiento, cerca del muro Sur. Hueso largo trabajado (muestra 83B22).;Valldemossa;CAMS-7244;3850;70;Hueso fauna doméstica;Micó 2005, 324
+453;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Muro N. Hogar en base de entrada norte.;Valldemossa;QL-1636;3790;90;Carbón;Micó 2005, 325
+454;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector EW INT-CC. Relleno interior de muro.;Valldemossa;UtC-9023;3680;45;Carbón;Micó 2005, 325
+455;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector EW INT-B. Relleno interior de muro. En contacto con la muestra analizada KIK-1123/UtC-9023.;Valldemossa;UtC-9022;3620;50;Hueso sp;Micó 2005, 326
+456;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector WC EXW. Contexto contra el paramento externo del muro W. Ref. n° 100.;Valldemossa;UtC-8952;3585;35;Hueso fauna doméstica;Micó 2005, 326
+457;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector SWF. Nivel II de QB3. Sobre relleno de la roca.;Valldemossa;UtC-2742;3550;110;Carbón;Micó 2005, 327
+458;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). SWF-A3, bajo muro Sur. Botón de colmillo.;Valldemossa;CAMS-7074;3540;70;Hueso fauna doméstica;Micó 2005, 327
+459;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). CH1. Bajo relleno del muro adosado a al muro Sur.;Valldemossa;QL-4042;3490;80;Carbón;Micó 2005, 328
+460;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Relleno de terraza antigua 1-2 (AT1-2).;Valldemossa;QL-1859;3490;30;Hueso fauna doméstica;Micó 2005, 328
+461;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Bajo muro, probablemente de la estructura „H4“.;Valldemossa;KIA-20484;3480;25;Hueso fauna doméstica;Micó 2005, 329
+462;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). SW. Sector muro Sur.;Valldemossa;QL-4100;3470;50;Hueso fauna doméstica;Micó 2005, 329
+463;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector EW INT-B. Relleno sedimentario en una grieta de la roca bajo la esquina SE del muro perimetral.;Valldemossa;UtC-9021;3460;45;Hueso sp;Micó 2005, 330
+464;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector CH1.;Valldemossa;QL-4043;3450;110;Hueso fauna doméstica;Micó 2005, 330
+465;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector WCS. Huesos procedente de la base del canal.;Valldemossa;KIA-16267;3430;30;Hueso fauna doméstica;Micó 2005, 331
+466;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector SW. A6 Hueso procedente de la base del muro Sur.;Valldemossa;KIA-16268;3405;35;Hueso fauna doméstica;Micó 2005, 331
+467;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Bajo lajas del extremo sur del canal WC. Huesos de bóvido y cabra.;Valldemossa;BM-2312R;3390;100;Hueso fauna doméstica;Micó 2005, 332
+468;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Sector EXW-A16. Procedente de las „construcciones de piedra al W de las estructuras de piedra“. Botón de colmillo (muestra 83B17).;Valldemossa;CAMS-7243;3360;60;Hueso fauna doméstica;Micó 2005, 332
+469;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Corte exploratorio Oeste. Nivel II.;Valldemossa;BM-1988R;3350;310;Hueso fauna doméstica;Micó 2005, 333
+470;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Exterior W1 (EXW1). Abandono. Muestra del Círculo 1. Z = 0/10cm.;Valldemossa;BM-1698R;3350;100;Hueso fauna doméstica;Micó 2005, 333
+471;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento al aire libre;Asentamiento antiguo (OS). Muestra hallada en el relleno del muro delimitador del espacio H4.;Valldemossa;UtC-3192;3310;70;Hueso fauna doméstica;Micó 2005, 334
+472;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento de estructuras naviformes;Asentamiento antiguo (OS). Sector WCS. Interior estructura central de piedra CSS.;Valldemossa;QL-1896;3280;120;Hueso fauna doméstica;Micó 2005, 334
+473;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento de estructuras naviformes;Asentamiento antiguo (OS). Estructura CSS.;Valldemossa;QL-4040;3260;100;Carbón;Micó 2005, 335
+474;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento de estructuras naviformes;Asentamiento antiguo (OS). Sector WC. Exterior cercano al canal.;Valldemossa;QL-?;3240;30;Desconocido;Micó 2005, 335
+475;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento de estructuras naviformes;Asentamiento antiguo (OS). Sector cercano a muro Sur.;Valldemossa;QL-4191;3180;80;Desconocido;Micó 2005, 336
+476;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento de estructuras naviformes;Asentamiento antiguo (OS). Exterior de la zona de captación del canal. Z = 0/10cm. Abandono del asentamiento.;Valldemossa;HAR-3490;3070;50;Hueso fauna doméstica;Micó 2005, 336
+477;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento de estructuras naviformes;Asentamiento antiguo (OS). Estructura de cabana circular CHS. Abandono del asentamiento.;Valldemossa;QL-4044;2990;160;Desconocido;Micó 2005, 337
+478;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Sector muro sur (SW).;Valldemossa;QL-4041;2750;120;Desconocido;Micó 2005, 337
+479;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Sector EXW. Cuadro Q15-16, junto a la acequia.;Valldemossa;BM-2297R;2280;120;Carbón;Micó 2005, 338
+480;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Estructura C2, bajo empedrado. Base de terraza moderna. Carbón producto de la quema de vegetación natural.;Valldemossa;BM-1982R;2050;110;Carbón;Micó 2005, 338
+481;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Base de muro de terraza moderna. Tal vez producto de la quema de la vegetación.;Valldemossa;QL-1861;1730;12;Carbón;Micó 2005, 339
+482;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Niveles superiores. Tal vez producto de incendios naturales o de la quema de la vegetación.;Valldemossa;QL-1858;1670;15;Carbón;Micó 2005, 339
+483;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Niveles superiores. Tal vez producto de incendios naturales o de la quema de la vegetación.;Valldemossa;QL-1860;1650;15;Carbón;Micó 2005, 340
+484;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Sector SW. Nivel QAO.;Valldemossa;IRPA-893;1600;50;Carbón;Micó 2005, 340
+485;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Sector OSW. Nivel QD13.;Valldemossa;IRPA-888;1530;50;Carbón;Micó 2005, 341
+486;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento histórico;Asentamiento antiguo (OS). Zona EW1. Hogar.;Valldemossa;IRPA-1052;1040;50;Carbón;Micó 2005, 341
+487;Son Ferrandell-Oleza-OS;Mallorca;Asentamiento histórico;Asentamiento antiguo (OS). Zona EW2. Hogar. Muestra obtenida de la flotación de sedimentos.;Valldemossa;IRPA-1023;850;40;Carbón;Micó 2005, 342
+488;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Sector WWE. Nivel QC18.;Valldemossa;IRPA-892;185;40;Carbón;Micó 2005, 342
+489;Son Ferrandell-Oleza-OS;Mallorca;Indeterminada;Asentamiento antiguo (OS). Sector EW. Nivel Q154.;Valldemossa;IRPA-889;110;40;Carbón;Micó 2005, 343
+490;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). I/M-1/5. Artefacto indeterminado de hueso fabricado sobre tibia (muestra 83B30).;Valldemossa;CAMS-7072;3840;70;Hueso fauna doméstica;Micó 2005, 344
+491;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Zona de combustión al oeste del asentamiento W17. Cuadro J9. Vertedero. Asociada a supuesta estructura dolménica.;Valldemossa;QL-1592;3700;30;Carbón;Micó 2005, 345
+492;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Sector W40. Cuadro J3 (ref. G13) (ref antigua: cata exploratoria S. sección Q-J3). Hogar en zona de vertedero. Asociada a supuesta estructura dolménica.;Valldemossa;BM-1981R;3640;100;Carbón;Micó 2005, 345
+493;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5M9. Hueso de bóvido entre el paramento interior de la cámara y el del exterior de la estructura.;Valldemossa;KIA-10583;3625;30;Hueso fauna doméstica;Micó 2005, 346
+494;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5M6. Hueso de bóvido entre el paramento interior de la cámara y el del exterior de la estructura.;Valldemossa;KIA-10582;3625;30;Hueso fauna doméstica;Micó 2005, 346
+495;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 6M4. Hueso de bóvido entre el paramento interior de la cámara y el del exterior de la estructura.;Valldemossa;UtC-10079;3605;35;Hueso fauna doméstica;Micó 2005, 347
+496;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5M5. Hueso de ovicáprido en el interior de la cámara.;Valldemossa;KIA-11228;3565;35;Hueso fauna doméstica;Micó 2005, 347
+497;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5L7. Hueso de ovicáprido en el interior de la cámara.;Valldemossa;KIA-10560;3550;30;Hueso fauna doméstica;Micó 2005, 348
+498;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5M3. Hueso de bóvido entre el paramento interior de la cámara y el del exterior de la estructura.;Valldemossa;KIA-10557;3540;30;Hueso fauna doméstica;Micó 2005, 348
+499;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica.;Valldemossa;KIA-12268;3460;30;Hueso fauna doméstica;Micó 2005, 349
+500;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Hueso hallado en el exterior del muro E.;Valldemossa;KIA-12273;3450;30;Hueso fauna doméstica;Micó 2005, 349
+501;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Hueso hallado en el exterior del muro E.;Valldemossa;KIA-12270;3445;40;Hueso fauna doméstica;Micó 2005, 350
+502;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5L8. Hueso de bóvido hallado en el interior de la cámara.;Valldemossa;KIA-10558;3445;30;Hueso fauna doméstica;Micó 2005, 350
+503;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Cuadro 5L7. Hueso de ovicáprido de la antecámara del supuesto dolmen.;Valldemossa;KIA-10559;3440;35;Hueso fauna doméstica;Micó 2005, 351
+504;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica.;Valldemossa;KIA-12267;3440;30;Hueso fauna doméstica;Micó 2005, 351
+505;Son Ferrandell-Oleza-WOS;Mallorca;Asentamiento al aire libre;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Sector 2M4.;Valldemossa;KIA-12275;3420;40;Hueso fauna doméstica;Micó 2005, 352
+506;Son Ferrandell-Oleza-WOS;Mallorca;Hábitat indeterminado;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Sector 2M8.;Valldemossa;KIA-12274;3130;35;Hueso fauna doméstica;Micó 2005, 352
+507;Son Ferrandell-Oleza-WOS;Mallorca;Indeterminada;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Muestra „from the outer W wall“.;Valldemossa;KIA-12272;1835;25;Carbón;Micó 2005, 353
+508;Son Ferrandell-Oleza-WOS;Mallorca;Indeterminada;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Muestra procedente del extremo sur del interior de la cámara.;Valldemossa;KIA-12269;1725;25;Carbón;Micó 2005, 353
+509;Son Ferrandell-Oleza-WOS;Mallorca;Indeterminada;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Sector 9M5.;Valldemossa;IRPA-1303;1715;35;Carbón;Micó 2005, 354
+510;Son Ferrandell-Oleza-WOS;Mallorca;Indeterminada;Al oeste del asentamiento antiguo (WOS). Asociada a supuesta estructura dolménica. Muestra procedente de la zona central.;Valldemossa;IRPA-1304;1620;30;Carbón;Micó 2005, 354
+511;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Exterior del Talayot 1, delante de la entrada. Sector 1A. Nivel IV (preconstructivo) o stratum 5. En intersticio de la roca. Zona del hogar exterior. Muestra n° 11. Fase 1.;Valldemossa;IRPA-1041;2970;55;Carbón;Micó 2005, 357
+512;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Bajo muro del Talayot 1.;Valldemossa;UtC-4731;2960;35;Hueso sp;Micó 2005, 357
+513;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Bajo la entrada del Talayot 1.;Valldemossa;UtC-4575;2950;35;Hueso sp;Micó 2005, 358
+514;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Bajo la entrada del Talayot 1.;Valldemossa;UtC-4363;2950;25;Carbón;Micó 2005, 358
+515;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Asociada genéricamente al Talayot 1. Fase 1.;Valldemossa;HAR-3413;2910;100;Carbón;Micó 2005, 359
+516;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Interior cámara. Contexto 126. Fase 1.;Valldemossa;IRPA-1043;2910;50;Carbón;Micó 2005, 359
+517;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). En intersticio de la roca bajo la cámara del Talayot 1. Nivel preconstructivo (stratum 5). Muestra 1. Fase 1.;Valldemossa;QL-1531;2910;40;Carbón;Micó 2005, 360
+518;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1. Fase 5 (2a ocupación en el interior cámara). Hueso en hogar. Muestra 6.;Valldemossa;BM-1842N;2850;70;Hueso fauna doméstica;Micó 2005, 360
+519;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Exterior del Talayot 1. Sector entrada. Stratum 4 (tierra roja sobre roca madre). Muestra 2. Fase 1.;Valldemossa;IRPA-813;2830;100;Carbón;Micó 2005, 361
+520;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Interior cámara. Contexto 126. Fase 1.;Valldemossa;IRPA-907;2815;60;Carbón;Micó 2005, 361
+521;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Exterior del Talayot 4. Contexto 033, anterior a estructura 002. Fase 1.;Valldemossa;UtC-1155;2810;70;Hueso fauna doméstica;Micó 2005, 362
+522;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Interior cámara. Contexto 120. Fase 4.;Valldemossa;IRPA-1042;2790;50;Carbón;Micó 2005, 362
+523;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Exterior del Talayot 1. Muestra 4. Fase 2.;Valldemossa;Ql-4190;2730;30;Carbón;Micó 2005, 363
+524;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Estructura talayótica cerca del Talayot 1.;Valldemossa;KIA-20208;2705;30;Hueso fauna doméstica;Micó 2005, 363
+525;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Torre de vigía („watching tower“, WT). Hogar en la base de muro semicircular.;Valldemossa;QL-4074;2700;30;Carbón;Micó 2005, 364
+526;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Interior cámara. Contexto 109. Fase 4.;Valldemossa;IRPA-880;2680;60;Carbón;Micó 2005, 364
+527;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Torre de vigía („watching tower“, WT). Hogar en la base de muro semicircular.;Valldemossa;BM-1511(?);2670;60;Carbón;Micó 2005, 365
+528;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Anexo a la Casa de los Caballos 1 (HH1) (anterior a la HH). Cara interna del muro norte. Estrato 4.;Valldemossa;QL-4075;2660;30;Carbón;Micó 2005, 365
+529;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 2. Sector 2B. Estrato 3 (base).;Valldemossa;IRPA-1044;2625;60;Carbón;Micó 2005, 366
+530;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Estructura a 10 m al sur del Talayot 1 (XMI). Nivel 2 inferior.;Valldemossa;UtC-1262;2600;70;Hueso fauna doméstica;Micó 2005, 366
+531;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Interior cámara. Contexto 115. Fase 3.;Valldemossa;IPRA-881;2580;60;Carbón;Micó 2005, 367
+532;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 2. Sector 2A. Estrato 3. Hogar junto la base de la columna central.;Valldemossa;QL-4098;2580;30;Carbón;Micó 2005, 367
+533;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1. Estrato de incendio sobre el del piso en el interior cámara. A 65 cm bajo la superficie del T1. Muestra 10. Fase 4.;Valldemossa;IRPA-1012;2560;80;Carbón;Micó 2005, 368
+534;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Exterior del talayot 3. Contexto 012. Bajo piedras en la entrada a la estructura 1, junto a la estructura 2. Momento de preconstrucción.;Valldemossa;UtC-5126;2560;40;Hueso fauna doméstica;Micó 2005, 368
+535;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Contexto 112. Abandono dentro del T4. Fase 2.;Valldemossa;IRPA-1016;2545;45;Carbón;Micó 2005, 369
+536;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1. Interior cámara, cerca de la base de la columna. Nivel de ocupación. Muestra 3. Fase 2.;Valldemossa;HAR-3458;2540;60;Carbón;Micó 2005, 369
+537;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1.;Valldemossa;QL-1534;2540;40;Carbón;Micó 2005, 370
+538;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1. Fase 5 (2a ocupación en el interior cámara). A 100cm bajo la superficie del T1. Muestra 8.;Valldemossa;IRPA-986;2520;50;Carbón;Micó 2005, 370
+539;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 2. Sector 1B. Estrato 2. Nivel de incendio. Testigo de la Sección II.;Valldemossa;IRPA-1045;2500;50;Carbón;Micó 2005, 371
+540;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1. Estrato 3 (2° nivel de ocupación). Interior cámara. Muestra 5. Fase 4.;Valldemossa;QL-1533;2500;40;Carbonatos;Micó 2005, 371
+541;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Esxterior del Talayot 4. Contexto 002 dentro de muro 002. Fase 1 de las estructuras exteriores.;Valldemossa;UtC-1154;2490;80;Hueso fauna doméstica;Micó 2005, 372
+542;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 1. Segunda ocupación del interior de la cámara. A35 cm bajo la superficie del T1. Muestra 9. Fase 5.;Valldemossa;IPRA-989;2490;50;Carbón;Micó 2005, 372
+543;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 4. Contexto 103. Abandono. Fase 7.;Valldemossa;IPRA-1015;2475;40;Carbón;Micó 2005, 373
+544;Son Ferrandell-Oleza-YS;Mallorca;Talayot;Asentamiento reciente (YS). Talayot 2. Sector 2B. Estrato 2.;Valldemossa;HAR-3459;2460;80;Carbón;Micó 2005, 373
+545;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento talayótico;Asentamiento reciente (YS). Exterior Talayot 3. Contexto 014. Nivel constructivo. Estructura 2 (al E del T3). Carbón de Olea.;Valldemossa;UtC-5123;2460;30;Carbón;Micó 2005, 374
+546;Son Ferrandell-Oleza-YS;Mallorca;Hábitat indeterminado;Asentamiento reciente (YS). Talayot 2. Sector 2B. Estrato 1. Abandono;Valldemossa;I-5398;2400;60;Carbón;Micó 2005, 374
+547;Son Ferrandell-Oleza-YS;Mallorca;Asentamiento histórico;Asentamiento reciente (YS). Sección WW. Estrato 1. Muro de cabana al sur del corte HH (house of the Horses). Z = 0 a -80cm;Valldemossa;IPRA-885;2100;65;Carbón;Micó 2005, 375
+548;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal entre las ruinas del T1. Fase 5.;Valldemossa;IRPA-778 (frac. 100%);1990;60;Carbonatos;Micó 2005, 375
+549;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal.;Valldemossa;IRPA-710 (fracción 53%);1965;55;Carbonatos;Micó 2005, 376
+550;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal.;Valldemossa;IRPA-710 (fracción 98%);1790;60;Carbonatos;Micó 2005, 376
+551;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal.;Valldemossa;IRPA-710 (fracción 16%);1560;60;Carbonatos;Micó 2005, 377
+552;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal entre las ruinas del T1. Fase 5.;Valldemossa;IRPA-778 (frac. 50%);1520;60;Carbonatos;Micó 2005, 377
+553;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal entre las ruinas del T1. Fase 5.;Valldemossa;IRPA-778 (frac. 17%);1520;60;Carbonatos;Micó 2005, 378
+554;Son Ferrandell-Oleza-YS;Mallorca;Varia funerario;Asentamiento reciente (YS). Talayot 1. Enterramiento en cal entre las ruinas del T1. Fase 5.;Valldemossa;IRPA-778 (frac. 30%);1490;60;Carbonatos;Micó 2005, 378
+555;Son Ferrandell-Oleza-YS;Mallorca;Indeterminada;Asentamiento reciente (YS). Talayot 2. Carbón sobre el suelo de la entrada.;Valldemossa;IRPA-886;680;50;Carbón;Micó 2005, 379
+556;Son Fornés;Mallorca;Talayot;Talayot 2. Interior de la cámara. Estrato III (antiguo III/2 inferior). Z = -3,57m.;Montu?ri;UGRA-123;2700;120;Carbón;Micó 2005, 381
+557;Son Fornés;Mallorca;Talayot;Talayot 3. Conjunto IV A2. Triangulado n°6. 1a falange de Capra hircus.;Montu?ri;KIA-22259;2695;25;Hueso fauna doméstica;Micó 2005, 382
+558;Son Fornés;Mallorca;Varia funerario;Zona E1 aneja al Talayot 2. Conjunto VI B2/a. Triangulado n°16. Falange medial del 5° dedo de la mano derecha.;Montu?ri;KIA-23147;2645;35;Hueso humano;Micó 2005, 382
+559;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 3 (HT-3). Corte 17 sur (ZA/SW). Estrato III (antiguo II). Carbones hallados sobre piso de habitación.;Montu?ri;I-11381;2560;85;Carbón;Micó 2005, 383
+560;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 5 (HT-5). Corte 18. Estrato V (antiguo III). Junto escalera. Viga.;Montu?ri;I-11382;2540;85;Carbón;Micó 2005, 383
+561;Son Fornés;Mallorca;Talayot;Talayot 2. Interior de la cámara. Estrato II (antiguo II/2). Z = -4,70m.;Montu?ri;I-12124;2540;80;Carbón;Micó 2005, 384
+562;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 5 (HT-5). Estrato V (antiguo V/2). Sector E. Piso. Viga. Z = -1,54m.;Montu?ri;URGA-122;2490;130;Carbón;Micó 2005, 384
+563;Son Fornés;Mallorca;Asentamiento talayótico;Zona B. Sector „Entrada poblado“. Conjunto 1. Junto a Estructura circular y muro 3. Z = -5,45 m.;Montu?ri;I-12126;2490;80;Carbón;Micó 2005, 385
+564;Son Fornés;Mallorca;Talayot;Talayot 1. Corte X. Estrato II. Mandíbula derecha de Ovis aries.;Montu?ri;UtC-9327;2490;50;Hueso fauna doméstica;Micó 2005, 385
+565;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 1 (HT-1). Corte 1. Estrato II. Nivel superior del hogar.;Montu?ri;I-12123;2470;80;Carbón;Micó 2005, 386
+566;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 1 (HPT-1). Sector B. Estrato II2. Piso de habitación.;Montu?ri;KIA-11887;2460;25;Hueso fauna doméstica;Micó 2005, 386
+567;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 1 (HT-1). Corte 1. Estrato II (antiguo II/2). Z = -3,28m.;Montu?ri;UGRA-121;2450;190;Carbón;Micó 2005, 387
+568;Son Fornés;Mallorca;Asentamiento talayótico;Edificio rectangular G4. Subconjunto II A2. Vértebra lumbar de ovicáprido.;Montu?ri;KIA-20461;2450;25;Hueso fauna doméstica;Micó 2005, 387
+569;Son Fornés;Mallorca;Asentamiento postalayótico;Recinto limitado por la muralla G1. Subconjunto V A3. Pelvis de Bos taurus.;Montu?ri;KIA-20473;2425;25;Hueso fauna doméstica;Micó 2005, 388
+570;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 5 (HT-5). Estrato V. Sobre losas planas del hogar.;Montu?ri;I-12125;2410;80;Carbón;Micó 2005, 388
+571;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 2 (HPT-2). Estrato II2. Piso de habitación.;Montu?ri;KIA-11889;2405;25;Hueso fauna doméstica;Micó 2005, 389
+572;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 3 (HPT-3). Corte 14bis. Estrato III/2A. Viga.;Montu?ri;UAB-12;2355;70;Carbón;Micó 2005, 389
+573;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 5 (HT-5). Corte 18-Este- Estrato III (antiguo Iia). Muestra junto a escalera.;Montu?ri;CSIC-530;2350;50;Carbón;Micó 2005, 390
+574;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 1 (HT-1). Corte 1. Estrato II.;Montu?ri;CSIC-529;2350;50;Carbón;Micó 2005, 390
+575;Son Fornés;Mallorca;Asentamiento talayótico;Habitación talayótica 2 (HT-2). Corte 7. Estrato III2 (antiguo III).;Montu?ri;CSIC-439A=CSIC-439B;2325;35;Carbón;Micó 2005, 391
+576;Son Fornés;Mallorca;Talayot;Talayot 1. Interior cámara. Cortes 9/12. Estrato II.;Montu?ri;CSIC-438;2320;50;Carbón;Micó 2005, 391
+577;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 1 (HPT-1). Estrato II2. Piso de habitación. Cerealia sp.;Montu?ri;KIA-12698;2295;25;Semilla varia;Micó 2005, 392
+578;Son Fornés;Mallorca;Asentamiento postalayótico;"Habitación postalayótica 1 (HPT-1). Sector B. Estrato II. X = 4,70m; Y = 2,60m; Z = -5,17m.";Montu?ri;UAB-6;2280;75;Carbón;Micó 2005, 392
+579;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 1 (HPT-1). Estrato I2 (antiguo estrato I5 base). Z = de -4,55/60 a -4,89m.;Montu?ri;KIA- 11888;2270;25;Hueso fauna doméstica;Micó 2005, 393
+580;Son Fornés;Mallorca;Varia funerario;Zona E3. Conjunto II A8. Triangulado n°2. Falange proximal del 3° dedo de la mano derecha.;Montu?ri;KIA-23120;2265;30;Hueso humano;Micó 2005, 393
+581;Son Fornés;Mallorca;Asentamiento postalayótico;"Habitación postalayótica 1 (HPT-1). Estrato I2 (antiguo I/5base). Z = -4,86m; X = 3,00m; Y = 4,70m.";Montu?ri;UAB-3;2245;70;Carbón;Micó 2005, 394
+582;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 2 (HPT-2). Estrato II2 (antiguo I/3). Viga sobre enlosado.;Montu?ri;UAB-7;2230;75;Carbón;Micó 2005, 394
+583;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 3 (HPT-3). Estrato III/2.;Montu?ri;KIA-11886;2210;25;Hueso fauna doméstica;Micó 2005, 395
+584;Son Fornés;Mallorca;Varia funerario;Zona C-Sur. Estrato II. Sepultura n°2. Mujer adulta. Inhumación en cal en el interior de una fosa poco profunda al aire libre. Falange proximal del 5° dedo de la mano izquierda;Montu?ri;UtC-2287;2150;40;Hueso humano;Micó 2005, 395
+585;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 1 (HPT-1). Estrato I2. Relleno de cisterna.;Montu?ri;UAB-13;2140;90;Carbón;Micó 2005, 396
+586;Son Fornés;Mallorca;Varia funerario;Zona B. Estrato superficial. Sepultura n° 1. Mujer adulta e individuo perinatal. Inhumación en cal en el interior de una fosa poco profunda al aire libre.;Montu?ri;UtC-2286;2100;40;Hueso humano;Micó 2005, 396
+587;Son Fornés;Mallorca;Varia funerario;Zona G. Conjunto I A2. Tumba 3. Hombre adulto. Inhumación en estructura cistoide.;Montu?ri;KIA-23128;2095;30;Hueso humano;Micó 2005, 397
+588;Son Fornés;Mallorca;Asentamiento histórico;Habitación postalayótica 3 (HPT-3). Corte 14bis. Estrato III (antiguo IV/2-3). Relleno en cisterna.;Montu?ri;UAB-9;2030;70;Carbón;Micó 2005, 397
+589;Son Fornés;Mallorca;Asentamiento postalayótico;Habitación postalayótica 2 (HPT-2). Estrato II (antiguo I/2). Triangulado n°8. Z = -5,71m. ;Montu?ri;UAB-8;1970;80;Carbón;Micó 2005, 398
+590;Son Fornés;Mallorca;Asentamiento histórico;Zona Z/N. Corte 1 de la campana de 1982. Zona cisterna W. Z = -5,47m.;Montu?ri;UAB-4;1350;70;Carbón;Micó 2005, 398
+591;Son Maimó;Mallorca;Varia funerario;Cueva artificial funeraria. Nivel II. Ataúd.;Petra;QL-144;2370;50;Madera;Micó 2005, 399
+592;Son Marroig;Mallorca;Cueva natural de inhumación;Cueva natural funeraria. Sector central. Nivel inferior. Z = -50. Peso de la muestra: 500g.;Deià;Y-1824;3470;120;Hueso humano;Micó 2005, 400
+593;Son Mas;Mallorca;Asentamiento al aire libre;Zona exterior santuario. Cuadrante 12W.9.;Valldemossa;UtC-4676;3775;35;Carbón;Micó 2005, 402
+594;Son Mas;Mallorca;Asentamiento al aire libre;Zona exterior satuario. Cuadrante 8O.9. Nivel III 9. Fase pre-construcción. Muestra 2.;Valldemossa;IRPA-909;3580;60;Carbón;Micó 2005, 403
+595;Son Mas;Mallorca;Asentamiento al aire libre;Zona exterior santuario. Cuadrante 9O.5. Nivel III 8. Fase pre-construccón Muestra 1.;Valldemossa;IRPA-908;3570;70;Carbón;Micó 2005, 403
+596;Son Mas;Mallorca;Asentamiento al aire libre;Zona exterior santuario. Cuadrante 7O.7. Nivel III. Z = 0 -20cm.;Valldemossa;UtC-2020;3510;60;Carbón;Micó 2005, 404
+597;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 8J.3a. Nivel preconstructivo.;Valldemossa;UtC-5892;3060;35;Mezcla;Micó 2005, 404
+598;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 6N.5. Contacto entre niveles pretalayótico/talayótico. Monumento preconstructivo.;Valldemossa;UtC-2756;3020;60;Hueso fauna doméstica;Micó 2005, 405
+599;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 6L.4. Nivel III. Monumento preconstructivo.;Valldemossa;IRPA-1053;2990;50;Carbón;Micó 2005, 405
+600;Son Mas;Mallorca;Hábitat indeterminado;Procedencia de la muestra desconocida.;Valldemossa;KIA-20203;2980;30;Hueso fauna doméstica;Micó 2005, 406
+601;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 12L.5. Base de la „roca mirador“.;Valldemossa;UtC-2747;2970;70;Hueso fauna doméstica;Micó 2005, 406
+602;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 6L7. Nivel III. Monumento preconstructivo.;Valldemossa;IRPA-1094;2970;40;Carbón;Micó 2005, 407
+603;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 7N.2. Nivel II. Monumento preconstructivo.;Valldemossa;IRPA-976;2960;60;Carbón;Micó 2005, 407
+604;Son Mas;Mallorca;Hábitat indeterminado;Hueso bajo raíz.;Valldemossa;UtC-9017;2940;45;Hueso fauna doméstica;Micó 2005, 408
+605;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 8L.8. Nivel II. Bajo construcción. Monumento preconstructivo.;Valldemossa;IRPA-984;2930;40;Carbón;Micó 2005, 408
+606;Son Mas;Mallorca;Hábitat indeterminado;Procedencia de la muestra desconocida.;Valldemossa;KIA-20199;2910;25;Hueso fauna doméstica;Micó 2005, 409
+607;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 6K.6. Nivel II.;Valldemossa;UtC-3044;2880;80;Hueso fauna doméstica;Micó 2005, 409
+608;Son Mas;Mallorca;Hábitat indeterminado;Zona exterior santuario. Cuadrante 8J.3b. Nivel preconstructivo.;Valldemossa;UtC-5891;2875;35;Mezcla;Micó 2005, 410
+609;Son Mas;Mallorca;Hábitat indeterminado;Procedencia de la muestra desconocida.;Valldemossa;KIA-20487;2845;25;Hueso fauna doméstica;Micó 2005, 410
+610;Son Mas;Mallorca;Hábitat indeterminado;Zona exterior santuario. Cuadrante 12J.6.;Valldemossa;UtC-2736;2830;140;Hueso fauna doméstica;Micó 2005, 411
+611;Son Mas;Mallorca;Hábitat indeterminado;Nivel II.;Valldemossa;UtC-8954;2795;35;Hueso sp;Micó 2005, 411
+612;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 8K.9a. Relleno interior del muro del santuario.;Valldemossa;UtC-5420;2735;30;Carbón;Micó 2005, 412
+613;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 8L.5. Nivel II inferior.;Valldemossa;UtC-1256;2700;60;Hueso fauna doméstica;Micó 2005, 412
+614;Son Mas;Mallorca;Hábitat indeterminado;Zona exterior santuario. Cuadrante 10S.8. Nivel II. Monumento de construcción.;Valldemossa;IRPA-1055;2700;50;Hueso fauna doméstica;Micó 2005, 413
+615;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 5M.5. Hueso en intersticio de la roca.;Valldemossa;UtC-2759;2690;70;Hueso fauna doméstica;Micó 2005, 413
+616;Son Mas;Mallorca;Indeterminada;Cuadrante 8J.6a. Carbón asiciado a enterramiento desarticulado por la construcción del santuario.;Valldemossa;UtC-4675;2655;35;Carbón;Micó 2005, 414
+617;Son Mas;Mallorca;Hábitat indeterminado;Hogar.;Valldemossa;UtC-8953;2610;35;Carbón;Micó 2005, 414
+618;Son Mas;Mallorca;Hábitat indeterminado;Zona interior santuario. Cuadrante 10L.2. Nivel II base. Monumento de construcción.;Valldemossa;UtC-1255;2600;70;Hueso fauna doméstica;Micó 2005, 415
+619;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 18U.9. Relleno interior de un muro.;Valldemossa;UtC-4170;2590;50;Carbón;Micó 2005, 415
+620;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 19V.1. Parte superior de nivel con objetos de plomo.;Valldemossa;UtC-4166;2590;35;Carbón;Micó 2005, 416
+621;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 8K.9b. Relleno muro santuario.;Valldemossa;UtC-5428;2590;30;Hueso sp;Micó 2005, 416
+622;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 13U.9a. Nivel III.;Valldemossa;IRPA-1051;2580;70;Carbón;Micó 2005, 417
+623;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 7L.7a. Relleno de muro santuario.;Valldemossa;UtC-5421;2580;25;Hueso sp;Micó 2005, 417
+624;Son Mas;Mallorca;Hábitat indeterminado;Cuadrante 7L.7b. Relleno de muro santuario.;Valldemossa;UtC-5374;2565;30;Carbón;Micó 2005, 418
+625;Son Mas;Mallorca;Varia funerario;Zona exterior santuario. Cuadrante 8J.6b. Inhumación desarticulada por construcción del santuario. Falanges humanas.;Valldemossa;UtC-4857;2565;30;Hueso humano;Micó 2005, 418
+626;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 7N.8. Nivel III.;Valldemossa;UtC-1002;2520;80;Carbón;Micó 2005, 419
+627;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 5L.6. Nivel III inferior.;Valldemossa;IRPA-1025;2520;60;Hueso fauna doméstica;Micó 2005, 419
+628;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 6K.9a. Nivel I.;Valldemossa;UtC-1257;2510;70;Hueso fauna doméstica;Micó 2005, 420
+629;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 8M.6. Base umbral de entrada. Bajo suelo de grava. Nivel II en contacto con I.;Valldemossa;IRPA-836;2500;45;Hueso fauna doméstica;Micó 2005, 420
+630;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 19V.1. Parte inferior del nivel asociado a objetos de plomo.;Valldemossa;UtC-4167;2490;35;Carbón;Micó 2005, 421
+631;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 16S.2. Nivel I. Hueso en intersticio de la roca.;Valldemossa;UtC-3190;2480;50;Hueso fauna doméstica;Micó 2005, 421
+632;Son Mas;Mallorca;Hábitat indeterminado;Nivel II. Hogar.;Valldemossa;IRPA-1250;2480;30;Carbón;Micó 2005, 422
+633;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 5L.3. Nivel de habitación en el sector del muro absidal trasero.;Valldemossa;QL-4246;2470;25;Carbón;Micó 2005, 422
+634;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 6K.9b.;Valldemossa;UtC-1258;2440;90;Mezcla;Micó 2005, 423
+635;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 13U.9b. Nivel III.;Valldemossa;IRPA-1066;2430;40;Hueso fauna doméstica;Micó 2005, 423
+636;Son Mas;Mallorca;Hábitat indeterminado;Sector „barrio“. Cuadrante 13X.4. Edificio absidal. Bajo muro.;Valldemossa;UtC-5426;2430;25;Carbón;Micó 2005, 424
+637;Son Mas;Mallorca;Asentamiento postalayótico;Sector „barrio“. Cuadrante 18Y.1. Asociación a objetos de plomo.;Valldemossa;UtC-3188;2400;70;Carbón;Micó 2005, 424
+638;Son Mas;Mallorca;Asentamiento postalayótico;Sector „barrio“. Cuadrante 16V.2. Fibras adheridas a un fragmento cerámico hallado en el edificio absidal.;Valldemossa;UtC-3933;2390;50;Fibra vegetal;Micó 2005, 425
+639;Son Mas;Mallorca;Asentamiento postalayótico;Zona exterior santuario. Cuadrante 10L.2. Esquina suroeste. Nivel II.;Valldemossa;UtC-1003;2360;140;Hueso fauna doméstica;Micó 2005, 425
+640;Son Mas;Mallorca;Asentamiento postalayótico;Sector „barrio“. Cuadrante 17Y.7. Asociación a objetos de plomo.;Valldemossa;UtC-3189;2240;50;Carbón;Micó 2005, 426
+641;Son Mas;Mallorca;Santuario;Zona interior santuario. Cuadrante 8M.6. Bajo umbral entrada. Nivel II medio.;Valldemossa;UtC-1001;2220;70;Carbón;Micó 2005, 426
+642;Son Mas;Mallorca;Asentamiento postalayótico;Sector „barrio“. Cuadrante 17Y.4. Asociación a objetos de plomo.;Valldemossa;UtC-3045;2210;110;Carbón;Micó 2005, 427
+643;Son Mas;Mallorca;Santuario;Sobre muro de la fachada del santuario. Cuadrante 7O.7. Niveles superiores.;Valldemossa;QL-4200;2210;90;Hueso fauna doméstica;Micó 2005, 427
+644;Son Mas;Mallorca;Hábitat indeterminado;Nivel II.;Valldemossa;UtC-9018;2200;40;Hueso fauna doméstica;Micó 2005, 428
+645;Son Mas;Mallorca;Asentamiento postalayótico;Sector „barrio“. Cuadrante 18Y.6. Asociación a objetos de plomo.;Valldemossa;UtC-3046;2140;70;Carbón;Micó 2005, 428
+646;Son Mas;Mallorca;Santuario;Sobre muro de la fachada del santuario. Cuadrante 7O.7. Nivel superior.;Valldemossa;QL-4201;2050;150;Hueso fauna doméstica;Micó 2005, 429
+647;Son Mas;Mallorca;Asentamiento histórico;Sector „barrio“. Cuadrante 18Y.2. Contexto con hallazgos de plomo.;Valldemossa;IRPA-1026;1940;40;Carbón;Micó 2005, 429
+648;Son Mas;Mallorca;Indeterminada;Cuadrante 8L.3. Nivel II.;Valldemossa;IRPA-1024;530;50;Carbón;Micó 2005, 430
+649;Son Matge;Mallorca;Cueva de inhumación en cal;Nivel de enterramientos en cal Z = -165cm.;Valldemossa;IRPA-749;24220;535;Carbonatos;Micó 2005, 433
+650;Son Matge;Mallorca;Natural;Suelo del abrigo.;Valldemossa;IRPA-762 (frac. 49%);23731;460;Carbonatos;Micó 2005, 433
+651;Son Matge;Mallorca;Natural;Suelo del abrigo.;Valldemossa;IRPA-762 (frac. 100%);22460;400;Carbonatos;Micó 2005, 434
+652;Son Matge;Mallorca;Natural;Suelo del abrigo.;Valldemossa;IRPA-762 (frac. 19%);18300;240;Carbonatos;Micó 2005, 434
+653;Son Matge;Mallorca;Natural;Recinto Este. Corte NE/SW. Estrato 35 (estr. XIII). Z = -375cm. Muestra ABSM 55/ESP.;Valldemossa;QL-29;6680;120;Hueso Myotragus;Micó 2005, 435
+654;Son Matge;Mallorca;Natural;Recinto Este. Corte NE/SW. Estrato 34 (estr. XI). Coprolitos de Myotragus balearicus. Muestra ABSM 53/ESP.;Valldemossa;CSIC-177;5820;360;Coprolito;Micó 2005, 435
+655;Son Matge;Mallorca;Indeterminada;Recinto Este. Perfil frontal. Estrato 33 (estr. XIV) sobre lecho de piedras. Z = -325cm. Muestra ABSM 52/ESP.;Valldemossa;I-5516;5750;115;Carbón;Micó 2005, 436
+656;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -150cm. Muestra ABSM-QL10.;Valldemossa;IRPA-751 (frac. 21%);5270;80;Carbonatos;Micó 2005, 436
+657;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Estrato 28. Nivel de habitación con huesos de animales domésticos. Muestra ABSM 51/NECP.;Valldemossa;QL-988;4650;120;Carbón;Micó 2005, 437
+658;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -150cm. Muestra ABSM-QL?10.;Valldemossa;IRPA-751 (frac. 20%);4620;80;Carbonatos;Micó 2005, 437
+659;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Nicho en roca. Hueso no trabajado.;Valldemossa;CAMS-7071;4200;70;Hueso sp;Micó 2005, 438
+660;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -150cm. Muestra ABSM-QL10.;Valldemossa;IRPA-751 (frac. 19%);4190;70;Carbonatos;Micó 2005, 438
+661;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Estrato 26 (estr. XI). Z = 350cm. Hueso de las extremidades. Muestra ABSM 50a/NECP.;Valldemossa;BM-1408;4090;390;Hueso Myotragus;Micó 2005, 439
+662;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Sector EE40. Estrato 27. Nivel de arcillas compactas de 75cm de potencia con presencia de sílex y Myotragus. Z = -347cm.;Valldemossa;UtC-9269;4060;40;Carbón;Micó 2005, 439
+663;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Corte NE/SW. Estrato 24 (estr. IX-X). M.M. 43. Z = -285cm. Nivel de habitación con hogar. Carbonato formado por hoguera pretalayótica. Muestra ABSM 50/NECP.;Valldemossa;QL-23;4020;50;Carbonatos;Micó 2005, 440
+664;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Corte NE/SW. Estrato 22 (estr. IX). Z = -230cm. Probable hogar asociado a huesos de Myotragus quemados y descarnados. Muestra ABSM 49/EBP.;Valldemossa;CSIC-178;3980;170;Carbón;Micó 2005, 440
+665;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Corte NE/SW. Estrato 20 (estr. IX). Z = -250cm. M.M. 37. Carbonato formado por hoguera pretalayótica. Muestra ABSM 48/EBP.;Valldemossa;QL-5b;3970;100;Carbonatos;Micó 2005, 441
+666;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Artefacto indeterminado de hueso. ;Valldemossa;CAMS-7073;3910;70;Hueso fauna doméstica;Micó 2005, 441
+667;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Hueso no trabajado.;Valldemossa;CAMS-7070;3840;90;Hueso sp;Micó 2005, 442
+668;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Perfil frontal. Estrato 18 (estr. IX). Hiato. Nivel estéril bajo nivel con cerámicas incisas.  Z = -250cm. Muestra ABSM 46/EBP.;Valldemossa;Y-2682;3820;120;Carbón;Micó 2005, 442
+669;Son Matge;Mallorca;Cueva natural de habitación;Corte 3C. Z = -240cm.;Valldemossa;BM-1995R;3770;100;Carbón;Micó 2005, 443
+670;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Estratos 12 u 11 (EE-18). Taller metalúrgico asociado a cerámica campaniforme. Muestra ABSM 43b.;Valldemossa;IRPA-835;3700;60;Carbón;Micó 2005, 443
+671;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Perfil frontal. Estrato 17 (estr. VII). M.M. 44. Z = -200cm. Carbonato formado por hoguera pretalayótica. Muestra ABSM 43a/EBP-LBP.;Valldemossa;QL-24;3670;70;Carbonatos;Micó 2005, 444
+672;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -150cm. Muestra ABSM-QL10.;Valldemossa;IRPA-751 (frac. 19%);3660;70;Carbonatos;Micó 2005, 444
+673;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Corte NE/SW. Estrato 16 (estr. IV). Z = -160cm. Muestra ABSM 42/LBP.;Valldemossa;CSIC-179;3620;80;Carbón;Micó 2005, 445
+674;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Corte NE/SW. Estrato 14 (estr. III/IV ó IV sólo). Z = -150cm. Muestra ABSM 41/LBP.;Valldemossa;CSIC-180;3480;80;Carbón;Micó 2005, 445
+675;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Perfil frontal. Estrato 12 (estr. V). Nivel de habitacón. M.M. 37. Z = -115cm. Carbonato formado por hoguera pretalayótica. Muestra ABSM 39/LBP.;Valldemossa;QL-5a;3420;100;Carbonatos;Micó 2005, 446
+676;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7242;3390;70;Hueso fauna doméstica;Micó 2005, 446
+677;Son Matge;Mallorca;Cueva natural de habitación;Recinto Este. Perfil frontal. Estrato 11 (estr. V). Cuadr. MM 37. Z = -95cm. Último nivel pretalayótico y último nivel con hogar. Carbonato formado por hoguera pretalayótica. Muestra ABSM 38/LBP.;Valldemossa;QL-5;3350;60;Carbonatos;Micó 2005, 447
+678;Son Matge;Mallorca;Cueva natural de inhumación murada;Recinto Este. Perfil frontal. Estrato 7 (estr. IV). „Enterramiento talayótico“ colectivo. Z = -120cm. ABSM 36.;Valldemossa;Y-2667;3200;100;Carbón;Micó 2005, 447
+679;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7241;3180;100;Hueso fauna doméstica;Micó 2005, 448
+680;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7240;3070;100;Hueso fauna doméstica;Micó 2005, 448
+681;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-804 (frac. 23,13%);3070;60;Carbonatos;Micó 2005, 449
+682;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7075;3060;100;Hueso fauna doméstica;Micó 2005, 449
+683;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este o Central. Niveles de enterramientos en cal. Carbón incluido en „material constructivo“ („mortar“).;Valldemossa;BM-2140R;3040;110;Carbón;Micó 2005, 450
+684;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7246;2980;70;Hueso fauna doméstica;Micó 2005, 450
+685;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/10cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-806 (frac. 17,82%);2980;60;Carbonatos;Micó 2005, 451
+686;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-804 (frac. 19,09%);2930;60;Carbonatos;Micó 2005, 451
+687;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7239;2910;70;Hueso fauna doméstica;Micó 2005, 452
+688;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7245;2910;70;Hueso fauna doméstica;Micó 2005, 452
+689;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-804 (frac. 19,40%);2900;60;Carbonatos;Micó 2005, 453
+690;Son Matge;Mallorca;Cueva natural de habitación;Recinto Central. Nicho en roca. Mango de punzón metálico.;Valldemossa;CAMS-7238;2830;120;Hueso fauna doméstica;Micó 2005, 453
+691;Son Matge;Mallorca;Cueva natural de habitación;Recinto Oeste. Estrato 8 (est. III/IV). Nivel de habitación. Muestra ABSM 28.;Valldemossa;QL-986;2820;50;Carbón;Micó 2005, 454
+692;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/10cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-806 (frac. 18,43%);2760;60;Carbonatos;Micó 2005, 454
+693;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Oeste. Estrato 9 (est. III-base). Cuadr. MM33. Nivel inferior de la necrópolis en cal. Z = -75cm. Muestra ABSM 26.;Valldemossa;QL-7;2730;100;Carbonatos;Micó 2005, 455
+694;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Oeste. Estrato 9 (estr. III). Cuadr. MM35. Nivel inferior de la necrópolis en cal. Z = -100cm. Muestra ABSM 25.;Valldemossa;QL-11;2700;80;Carbón;Micó 2005, 455
+695;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/10cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-806 (frac. 26,14%);2700;60;Carbonatos;Micó 2005, 456
+696;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-804 (frac 19,04%);2700;60;Carbonatos;Micó 2005, 456
+697;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -95 cm. Muestra ABSM-QL6.;Valldemossa;IRPA-811 (frac. 20%);2650;60;Carbonatos;Micó 2005, 457
+698;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/10cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-806 (frac. 19,19%);2640;60;Carbonatos;Micó 2005, 457
+699;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 6 (estr. III-base). Cuadr. MM 35. Nivel inferior de la necrópolis en cal. Z = -90cm.;Valldemossa;QL-27;2640;50;Carbón;Micó 2005, 458
+700;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/15cm. Muestra ABSM-QLCE(23).;Valldemossa;IRPA-695 (frac. 52%);2620;60;Carbonatos;Micó 2005, 458
+701;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -95 cm. Muestra ABSM-QL6.;Valldemossa;IRPA-811 (frac. 20%);2620;60;Carbonatos;Micó 2005, 459
+702;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -110cm. Muestra ABSM-QL?9.;Valldemossa;IRPA-750 (frac. 18%);2610;60;Carbonatos;Micó 2005, 459
+703;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-804 (frac 19,33%);2590;60;Carbonatos;Micó 2005, 460
+704;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 6 (estr. III). Nivel inferior de la necrópolis en cal. Z = -60/-90cm.;Valldemossa;QL-9c;2570;100;Carbón;Micó 2005, 460
+705;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -85cm. Muestra ABSM-QLNR4.;Valldemossa;IPRA-790 (frac. 50%);2570;60;Carbonatos;Micó 2005, 461
+706;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -65cm. Muestra ABSM-QL?13;Valldemossa;IRPA-803 (frac. 19,45%);2560;60;Carbonatos;Micó 2005, 461
+707;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -45cm. Muestra ABSM-QL?7.;Valldemossa;IRPA-676 (frac. 50%);2550;60;Carbonatos;Micó 2005, 462
+708;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 6 (estr. III). Cuadr. MM37. Nivel inferior de la necrópolis en cal. Z = -90cm.;Valldemossa;QL-4;2540;110;Carbón;Micó 2005, 462
+709;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -90cm. Muestra ABSM-QL?8.;Valldemossa;IRPA-752 (frac. 21%);2540;60;Carbonatos;Micó 2005, 463
+710;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -95cm. Muestra ABSM-QL6.;Valldemossa;IRPA-811 (frac. 21%);2530;60;Carbonatos;Micó 2005, 463
+711;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -95cm. Muestra ABSM-QL6.;Valldemossa;IRPA-811 (frac. 20%);2530;60;Carbonatos;Micó 2005, 464
+712;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 6 (estr. III). Cuadr. MM33. Nivel inferior de la necrópolis en cal. Z = -75cm.;Valldemossa;QL-6;2520;80;Carbón;Micó 2005, 464
+713;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Central. Cuadr. MM 22. Z = -55cm.;Valldemossa;QL-26;2520;80;Carbón;Micó 2005, 465
+714;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -110cm. Muestra ABSM-QL?9.;Valldemossa;IRPA-750 (frac. 18%);2520;60;Carbonatos;Micó 2005, 465
+715;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -150cm. Muestra ABSM-QL?10.;Valldemossa;IRPA-751 (frac. 21%);2500;60;Carbonatos;Micó 2005, 466
+716;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 6 (estr. III). Cuadr. MM33. Nivel inferior de la necrópolis en cal. Z = -90cm.;Valldemossa;QL-10;2480;70;Carbón;Micó 2005, 466
+717;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -95cm. Muestra ABSM-QL6.;Valldemossa;IRPA-811 (frac. 19%);2460;60;Carbonatos;Micó 2005, 467
+718;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -90cm. Muestra ABSM-QL?8.;Valldemossa;IRPA-752 (frac. 21%);2440;60;Carbonatos;Micó 2005, 467
+719;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -85cm. Muestra ABSM-QLNR4.;Valldemossa;IRPA-790 (frac. 100%);2430;60;Carbonatos;Micó 2005, 468
+720;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -65cm. Muestra ABSM-QL?13;Valldemossa;IRPA-803 (frac. 21,49%);2430;60;Carbonatos;Micó 2005, 468
+721;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 6 (estr. III). Cuadr. MM33. Nivel inferior de la necrópolis en cal. Z = -40cm.;Valldemossa;Y-2669;2400;80;Carbonatos;Micó 2005, 469
+722;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -90cm. Muestra ABSM-QL?8.;Valldemossa;IRPA-752 (frac. 18%);2390;60;Carbonatos;Micó 2005, 469
+723;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -85cm. Muestra ABSM-QLNR4.;Valldemossa;IRPA-790 (frac. 14%);2360;60;Carbonatos;Micó 2005, 470
+724;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -30cm. Muestra ABSM-QL?12.;Valldemossa;IRPA-789 (frac. 21%);2350;60;Carbonatos;Micó 2005, 470
+725;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP3.;Valldemossa;IRPA-808 (frac. 19,15%);2350;60;Carbonatos;Micó 2005, 471
+726;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -45cm. Muestra ABSM-QL?7.;Valldemossa;IRPA-676 (frac. 25%);2330;60;Carbonatos;Micó 2005, 471
+727;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -45cm. Muestra ABSM-QL?7.;Valldemossa;IPRA-676 (frac. 100%);2330;60;Carbonatos;Micó 2005, 472
+728;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -65cm. Muestra ABSM-QL?13;Valldemossa;IRPA-803 (frac. 19,67%);2320;60;Carbonatos;Micó 2005, 472
+729;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -90cm. Muestra ABSM-QL?8.;Valldemossa;IRPA-752 (frac. 20%);2310;70;Carbonatos;Micó 2005, 473
+730;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 5 (estr. II/III). Cuadr. MM 8. Nivel intermedio de la necrópolis en cal. Z = -60cm.;Valldemossa;QL-5c;2290;100;Carbón;Micó 2005, 473
+731;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/10cm. Muestra ABSM-NOP2.;Valldemossa;IRPA-806 (frac. 18,59%);2290;60;Carbonatos;Micó 2005, 474
+732;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -30cm. Muestra ABSM-QL?12.;Valldemossa;IRPA-789 (frac. 100%);2280;60;Carbonatos;Micó 2005, 474
+733;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP3.;Valldemossa;IRPA-808 (frac. 20,84%);2270;60;Carbonatos;Micó 2005, 475
+734;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -65cm. Muestra ABSM-QL?13;Valldemossa;IRPA-803 (frac. 19,3%);2270;60;Carbonatos;Micó 2005, 475
+735;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 4 (estr. II). Nivel superior de la necrópolis en cal. Z = -50cm. Huesos de cabra.;Valldemossa;BM-1409;2267;192;Hueso fauna doméstica;Micó 2005, 476
+736;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 4 (estr. II). Cuadr. MM 44. Nivel superior de la necrópolis en cal. Z = -50cm.;Valldemossa;QL-22;2260;60;Carbonatos;Micó 2005, 476
+737;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -65cm. Muestra ABSM-QL?13;Valldemossa;IRPA-803 (frac. 20,08);2250;60;Carbonatos;Micó 2005, 477
+738;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP3.;Valldemossa;IRPA-808 (frac. 19,82%);2250;60;Carbonatos;Micó 2005, 477
+739;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP3.;Valldemossa;IRPA-808 (frac. 20,73%);2250;60;Carbonatos;Micó 2005, 478
+740;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Nivel postalayótico. Cuadr. MM 35. Z = -80cm.;Valldemossa;Y-2672;2240;80;Carbonatos;Micó 2005, 478
+741;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 4 (estr. II). Nivel superior de la necrópolis en cal. Z = -50cm.;Valldemossa;QL-1a;2240;70;Carbonatos;Micó 2005, 479
+742;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 4 (estr. II). Nivel superior de la necrópolis en cal. Cuadr. MM 36. Z = -30cm.;Valldemossa;QL-9;2200;100;Carbonatos;Micó 2005, 479
+743;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -30cm. Muestra ABSM-QL?12.;Valldemossa;IRPA-789 (frac. hueso);2200;85;Carbonatos;Micó 2005, 480
+744;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 3 (estr. I/II). Nivel superior de la necrópolis en cal/final. Z = -25cm.;Valldemossa;QL-11c;2170;100;Carbón;Micó 2005, 480
+745;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -110cm. Muestra ABSM-QL?9.;Valldemossa;IRPA-750 (frac. 20%);2150;60;Carbonatos;Micó 2005, 481
+746;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -110cm. Muestra ABSM-QL?9.;Valldemossa;IRPA-750 (frac. 20%);2100;60;Carbonatos;Micó 2005, 481
+747;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -90cm. Muestra ABSM-QL?8.;Valldemossa;IRPA-752 (frac. 20%);2090;60;Carbonatos;Micó 2005, 482
+748;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 2 (estr. I).Cuadr. MM 36. Nivel superior de la necrópolis en cal/final. Z = -45cm.;Valldemossa;QL-8;2080;90;Carbón;Micó 2005, 482
+749;Son Matge;Mallorca;Cueva de inhumación en cal;Recinto Este. Perfil frontal. Estrato 2 (estr. I). Nivel superior de la necrópolis en cal/final. Z = -15cm.;Valldemossa;QL-7a;2070;120;Carbonatos;Micó 2005, 483
+750;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/15cm. Muestra ABSM-QLCE(23).;Valldemossa;IRPA-695 (frac. 24%);2050;60;Carbonatos;Micó 2005, 483
+751;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/15cm. Muestra ABSM-QLCE(23).;Valldemossa;IRPA-695 (frac. 100%);2040;60;Carbonatos;Micó 2005, 484
+752;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -10/25cm. Muestra ABSM-NOP3.;Valldemossa;IRPA-808 (frac. 19,45%);1970;60;Carbonatos;Micó 2005, 484
+753;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -0/15cm. Muestra ABSM-QLCE(23).;Valldemossa;IRPA-695 (frac. 12%);1960;100;Carbonatos;Micó 2005, 485
+754;Son Matge;Mallorca;Cueva de inhumación en cal;Z = -5/10cm.;Valldemossa;IRPA-805;1800;65;Hueso sp;Micó 2005, 485
+755;Son Matge;Mallorca;Cueva de inhumación en cal;Muestra ABSM PT L 45.;Valldemossa;IPRA-776 (?);;;;Micó 2005, 486
+762;Son Oms;Mallorca;Hábitat indeterminado;Nivel con roca descompuesta por la acción del fuego.;Palma;QL-19;20750;;Carbonatos;Micó 2005, 491
+763;Son Oms;Mallorca;Asentamiento de estructuras naviformes;Naviforme sur. Nivel de abandono. Carbón vegetal del hogar.;Palma;QL-20;2920;60;Carbón;Micó 2005, 492
+764;Son Oms;Mallorca;Asentamiento talayótico;Hogar al norte del monumento D, bajo el nivel de inhumaciones sin ajuar. Peso de la muestra: 100g.;Palma;Y-2666;2490;40;Carbón;Micó 2005, 492
+765;Son Oms;Mallorca;Hábitat indeterminado;Semillas de trigo y cebada.;Palma;BM-1696;2290;40;Semilla cereal;Micó 2005, 493
+766;Son Real;Mallorca;Varia funerario;Tumba 67. Microtalayot cuadrado, variante A. Fase Son Real I.;Santa Margalida;U-;2525;65;Hueso humano;Micó 2005, 494
+767;Son Real;Mallorca;Varia funerario;Tumba 90. Planta rectangular, variante A. Fase Son Real II.;Santa Margalida;U-;2515;70;Hueso humano;Micó 2005, 495
+768;Son Real;Mallorca;Varia funerario;Tumba 20. Micronaveta. Fase Son Real II.;Santa Margalida;U-;2495;50;Hueso humano;Micó 2005, 495
+769;Son Real;Mallorca;Varia funerario;Tumba 3. Microtalayot circular, variante A. Fase Son Real I.;Santa Margalida;U-;2430;60;Hueso humano;Micó 2005, 496
+770;Son Real;Mallorca;Varia funerario;Tumba 88. Planta rectangular, variante A. Fase Son Real II.;Santa Margalida;U-;2340;75;Hueso humano;Micó 2005, 496
+771;Son Real;Mallorca;Varia funerario;Tumba 65. Micronaveta, variante C. Transición a la fase Son Real III.;Santa Margalida;U-;2285;75;Hueso humano;Micó 2005, 497
+772;Son Real;Mallorca;Varia funerario;Tumba 1. Microtalaiot circular, variante A. Fase Son Real I (reutilización);Santa Margalida;U-;2175;80;Hueso humano;Micó 2005, 497
+800;Torrent d'en Barragot;Mallorca;Varia funerario;Cueva cerca de la costa. Hueso humano en superficie recogido por M. Van Strydonck en octubre de 2003.;Ses Salines;KIA-22648;2515;25;Hueso humano;Micó 2005, 514

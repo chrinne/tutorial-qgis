@@ -28,9 +28,21 @@ description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
 
 ## Daten 
 
-Quelle: Internet. </br>
-Bis auf die Fundplatzdaten stammen die Daten vom Spanischen [Instituto Geográfico Nacional](http://www.ign.es) und hier aus dem [*Centro de descargas*](http://centrodedescargas.cnig.es/CentroDescargas/#) unter "Productos" - "Información geográfica de referencia" und "Modelos Digitales de Elevaciones". Weitere Details sind über die Metadaten bei den Daten selbst zu finden. Die Verfügbarkeit von diesen Daten ist in [INSPIRE](https://inspire.ec.europa.eu/) begründet. Eine kurze Einführung zu diesem Thema finden Sie auf der Seite der deutschen Geodateninfrastuktur [GDI-DE](https://www.gdi-de.org/DE/GDI-DE/INSPIRE/inspire.html?lang=de).
+### Datenquelle Internet
+
+Die Übung beruht auf Daten aus dem Internet und bis auf die Fundplatzdaten stammen die Daten vom Spanischen [Instituto Geográfico Nacional](http://www.ign.es) und hier aus dem [*Centro de descargas*](http://centrodedescargas.cnig.es/CentroDescargas/#) unter "Productos" - "Información geográfica de referencia" und "Modelos Digitales de Elevaciones". Weitere Details sind über die Metadaten bei den Daten selbst zu finden. Die Verfügbarkeit von diesen Daten ist in [INSPIRE](https://inspire.ec.europa.eu/) begründet. Eine kurze Einführung zu diesem Thema finden Sie auf der Seite der deutschen Geodateninfrastuktur [GDI-DE](https://www.gdi-de.org/DE/GDI-DE/INSPIRE/inspire.html?lang=de).
 Beachten Sie bitte, dass freie Zugänglichkeit (CC-BY) nicht gleichbedeutend ist mit rechtsfreiem Raum. Das Mindeste ist zitieren, Genaueres entnehmen Sie bitte den jeweiligen &copy;-Hinweisen. 
+
+Zwei unterschiedliche Nutzungsformen für Daten aus dem Internet stehen zur Verfügung:
+
+| Nutzung | Vorteil | Nachteil |
+|---------|----|----| 
+| *Download* der Daten mit anschließender lokaler Verwendung | stets verfügbar, erweitert nutzbar | statisch, veralten |
+| Webdienst (*wms*, *wcs*, *wfs*), die Daten werden bei Bedarf dynamisch von einem Server abgerufen | stets aktuell | Serveradressen und Angebote können sich ändern oder entfallen | 
+
+In QGIS können Webdiensten unterschiedlich eingebunden und genutzt werden: Sie haben eine Serveradresse von einem Anbieter aus dem Internet und tragen diese z.B. bei den "WMS/WMTS" in der Datenquellenverwaltung ein. Sie nutzen ein entsprechendes Plugin, z.B. QuickMapServices,  um dynamisch auf öffentliche Daten zuzugreifen (hier die *O*pen *S*treet *M*ap). Oder Sie nutzen ein Plugin wie QuickOSM, um die Daten zu recherchieren und herunterzuladen. 
+
+Im Kapitel der Rasterverarbeitung werden wir Orthofotos als *wms* einbinden, einen Ausschnitt herunterladen und auswerten. Beim [ideIB](http://ideib.caib.es) finden Sie zahlreiche weitere WMS-Dienste, u.a. eine [Basiskarte für die Balearen](http://ideib.caib.es/cataleg/srv/spa/catalog.search#/metadata/AABE16F1-D7CC-40C3-8A74-D910CD8DE03F). Die dort genannte WMS-Adresse: "https://ideib.caib.es/geoserveis/services/public/GOIB_MapaBase_IB/MapServer/WMSServer" tragen  Sie in der Datenquellenverwaltung (\<strg> + \<l>)  -> WMS/WMTS, [Neu] unter URL ein und geben Sie dem neuen Eintrag einen sinnvollen Namen, z.B. SP-Balears Basiskarte.
 
 ### mallorca-sites.txt
 
@@ -47,6 +59,12 @@ Tal;Rom;Islam;perioden
 Beachten Sie bitte Folgendes: Die erste Zeile enthält einen Verweis auf die Quelle, die zweite Zeile enthält Spaltennamen, die Spalten selbst sind mit einem ";" getrennt und wir dürfen erwarten, dass in "x_utm" und "y_utm" entsprechende Koordinaten des jeweiligen Fundplatzes als **Punkt** stehen. Versierte Nutzer kontrollieren eben auch noch die Zeichenkodierung: UTF-8.
 
 Die Webseite existiert nicht mehr (die Webadresse schon!). Die Daten wurden fast ausnahmslos von J. Aramburu zusammengestellt, die Begriffe sind sowohl auf Spanisch und Katalanisch und die utm-Koordinaten haben in zahlreichen Fällen einen Fehler von bis zu 200 m überwiegend N-S wegen eines nicht dokumentierten Wechsels zwischen ED50 und ETR89. Zudem ist die Liste nicht vollständig, wichtige Fundorte, insbesondere der jüngeren Forschung, fehlen. Für unsere Übung ignorieren wir diese Probleme und nehmen die Daten wie sie sind.
+
+### municipio-comarca.txt
+Die einzelnen Munizipien (Gemeinden) werden größeren Regionen zugewiesen, die weitgehend naturräumlichen Einheiten entsprechen. 
+
+### pop-balears.txt - pop_balears.csv
+Die Quelle ist das [Instituto Nacional de Estadística](https://www.ine.es) und listet die Einwohnerzahlen für die Baleareninseln nach Gemeinden und Zensus. Für die Übung wurden die originalen Daten der Felder "Población de Hecho" (faktisch) und "Población de Derecho" (rechtlich) gemittelt. Die Dateien unterscheiden sich minimal aber mit erheblichen Konsequenzen im Namen und den Spaltenbezeichnungen.
 
 ### Líneas límite municipales
 
@@ -82,7 +100,7 @@ Da die Endung \*.asc lautet (steht für ASCII, ist in Wirklichkeit aber UTF-8 un
 
 ## Planen Sie ihr Projekt
 
-Legen Sie für Ihr Projekt einen Ordner an. Verwalten Sie innerhalb dieses Ordners die projektbezogenen Daten. Ich selbst trenne oft nach Dateiformaten (shp, raster, analoge_Karten, text, datenbank), daneben gelegentlich aber auch nach Anbieter. Zudem arbeite ich bisweilen mit digitalen Verweisen ([mklink](https://docs.microsoft.com/de-de/windows-server/administration/windows-commands/mklink)) auf andere Ordner.  
+Legen Sie für Ihr Projekt einen Ordner an. Verwalten Sie innerhalb dieses Ordners die projektbezogenen Daten. Ich selbst trenne oft nach Dateiformaten (shp, raster, analoge_karten, text, datenbank), daneben gelegentlich aber auch nach Anbieter, um Urheberrechte einfacher zu erkennen. Zudem arbeite ich bisweilen mit digitalen Verweisen ([mklink](https://docs.microsoft.com/de-de/windows-server/administration/windows-commands/mklink)) auf andere Ordner.  
 
 Egal wofür Sie sich entscheiden, seien Sie möglichst stringent auch bei den Dateinamen. Projekte können schnell unübersichtlich werden.
 
@@ -96,8 +114,7 @@ Definieren Sie als erstes das **Koordinatenbezugssystem** (KBS) für Ihr Projekt
  
 Mit \<strg> + \<l> starten Sie die **Datenquellenverwaltung** ( "Layer -> Datenquellenverwaltung").
 
-Die Fundpunkte (mallorca-sites.txt) können mit "**Getrennte Texte**" eingelesen werden. <br>
-In dem neuen Fenster bitte Folgendes eintragen: 
+Die Fundpunkte (mallorca-sites.txt) können mit "**Getrennte Texte**" eingelesen werden. In dem neuen Fenster bitte Folgendes eintragen: 
 
   1. Dateiname: rechts mit den [...] die Datei *mallorca-sites.txt* wählen. 
   2. Layername: Fundplätze, 
@@ -142,20 +159,16 @@ Nun ändern Sie die **Symbolisierung für den Raster-Layer** "DGM 200" und teste
 
 Variante 1: Darstellungsart: **Einkanalgraustufen**, Grauer Kanal: Kanal 1 (ist aber egal, da kein Farbbild vorliegt, z.B. **R**ot**G**rün**B**lau), Farbverlauf: Weiß nach Schwarz, Min: -0.1, Max: 800, Kontrastverbesserung: Strecken auf MinMax. [Anwenden]. Beachten Sie die Serra de Tramuntana im Nordwesten, wenn Sie die Einstellung auf "Strecken und Zuschneiden" wechseln. Anmerkung: Sie haben 256 Grauwerte von Weiß bis Schwarz, aktuell werden diese zwischen -0.1 und 800 stetig verteilt, alles darüber wird Schwarz, alles darunter Weiß und eben nicht abgeschnitten. Klappen Sie das folgende Menü Min/Max-Werteeinstellungen für weitere Optionen auf, u.a. für ein Zurücksetzen auf Min/Max der Daten.
 
-Variante 2: Darstellungsart: **Einkanalpseudofarben**. Diese Einstellung hat sehr viele Optionen, diese lasse ich hier beiseite. Zwei wichtige Hinweise: 
+Variante 2: Darstellungsart: **Einkanalpseudofarben**. Diese Einstellung hat sehr viele Optionen, diese lasse ich hier beiseite. Zwei wichtige Hinweise: 1. Die Klassengrenzen werden je nach Ihrer Vorgabe präzise berechnet und ensprechend auch in der Legende angezeigt. Drei oder mehr Stellen nach dem Komma suggerieren aber bei den vorliegenden Werten eine falsche Präzision. Sie sollten die Werte als auch die Beschriftung mit einem Doppelklick markieren und runden. 2. Ergänzen Sie hier bei Beschriftungssuffix ein "m" oder Layernamen "m über NN". 
 
-- Die Klassengrenzen werden präzise bestimmt und ensprechend auch in der Legende angezeigt: drei oder mehr Stellen nach dem Komma sind vielfach übertrieben und suggerieren bei den hier vorliegenden Werten eine falsche Präzision. Sie sollten  die Werte als auch Beschriftung mit einem Doppelklick markieren und runden. 
-- Ergänzen Sie hier bei Beschriftungssuffix ein "m" oder besser direkt beim Layernamen "m über NN". Einheiten und Bezug sind wichtig. (Anmerkung: Es gibt auch Unterschiede bei der Meereshöhe, in Deutschland gelten der Amsterdammer, der Danziger oder Hamburger Pegel, in Spanien der von Alicante. Weitere Infos bei [Wikipedia](https://de.wikipedia.org/wiki/H%C3%B6he_%C3%BCber_dem_Meeresspiegel)).
+Bei Variante 2 is das Mittelmeer rot, das geht nun gar nicht. Natürlich könnten wir die Skala unten beschneiden, was aber auch die Legende beeinflussen würde. Wechseln Sie zu **Transparenz**. Im *header* der Datei stand ```NODATA_VALUE -999```, entsprechend sehen wir hier -999. Das ist offensichtlich aber nicht sehr genau eingetragen und wir behelfen uns wie folgt: Das Icon "grünes Plus" am rechten Rand ergänzt einen weiteren Transparenzbereich, bei dem wir "Von" "-999" "Nach" "0" eintragen, [Anwenden] und  [OK]. Wenn Sie das Ergebnis kontrollieren erkennen Sie zwei Dinge: 1. Im Nordwesten, im feuchten Niederungsgebiet des Raiguer, sind einzelne Zellen nun leer und 2. wird die Küste mit Rasterzellen von 200 m x 200 m nur ungenau nachgezeichnet. Ein Trick für Letzteres: Sie ergänzen bei den autonomen Gebieten eine mit dem grünen "+" eine weitere Füllung, schieben diese nach unten, ändern diese auf einfache "Rand:Linie", setzen Sie weiß, Strichbreite auf 10 mm und Versatz auf -5. Wenn's wirklich schön werden müssen Sie ein Polygon für das Mittelmeer erzeugen und als Schnittmaske oben drauf legen.
 
-Das Mittelmeer ist rot, das geht nun gar nicht. Natürlich könnten wir die Skala unten beschneiden, das aber auch die Legende beeinflussen würde. Wechseln Sie zu **Transparenz**. Im *header* der Datei stand ```NODATA_VALUE -999```, entsprechend sehen wir hier -999. Das ist offensichtlich aber nicht sehr genau eingetragen und wir behelfen uns wie folgt: Das Icon "grünes Plus" am rechten Rand ergänzt einen weiteren Transparenzbereich, bei dem wir "Von" "-999" "Nach" "0" eintragen. [Anwenden],  [OK]. Wenn Sie das Ergebnis kontrollieren erkennen Sie zwei Dinge: 1. Im Nordwesten, im feuchten Niederungsgebiet des Raiguer, sind einzelne Zellen nun leer und 2. wird die Küste mit Rasterzellen von 200 m x 200 m nur ungenau nachgezeichnet. Ein Trick für Letzteres: Sie ergänzen bei den autonomen Gebieten eine weitere Füllung, schieben diese nach unten, ändern diese auf einfache Linie, setzen Sie weiß, Strichbreite auf 10 mm und Versatz auf -5. Ist nicht wirklich schön. Wenn's wirklich schön werden soll, hilft nur eins, ein Polygon für das Mittelmeer erzeugen und als Maske oben drauf legen.
-
-Die Optionen der Symbolisierung des Layers Fundplätze (Punkte) ist weitgehend identisch mit Linien- und Polygon-Layern. Wählen Sie im *drop down* am oberen Fensterrand statt "Einzelsymbol" "Kategorisert", Wert: Tipo, klicken Sie auf [Klassifizieren], beschriften Sie wie folgt: 0 - unbekannt, 100 - Abri, 200 - Siedlung, 300 - Hügel, 400 - Höhle/Heiligtum, 410 - Kultort und löschen Sie das letzte Symbol, indem Sie es markieren und unten auf das Icon "rote Minus" klicken. [OK] zum Schließen des Fensters.   
-Nennen Sie nun diesen Layer "Fundplatztypen".   
+Die Symbologie für Punktlayer ist weitgehend identisch mit Linien- und Polygon-Layern. Wählen Sie im *drop down* am oberen Fensterrand statt "Einzelsymbol" "Kategorisert", Wert: Tipo, klicken Sie auf [Klassifizieren], beschriften Sie wie folgt: 0 - unbekannt, 100 - Abri, 200 - Siedlung, 300 - Hügel, 400 - Höhle/Heiligtum, 410 - Kultort und löschen Sie das letzte Symbol mit dem "rote Minus", [OK]. Nennen Sie nun diesen Layer "Fundplatztypen".   
 
 Textbasierte Quellen wie in diesem Fall können in QGIS nicht editiert werden, für die nachfolgende Arbeit exportieren wir diese Daten deshalb in eine Shape-Datei. Dafür wählen Sie im Kontextmenü des Layers "Fundplatztypen" Exportieren -> Objekt speichern als. Ich lege dafür in meinem Projektordner einen neuen Ordner "shp" an und speichere Sie dort im shp-Format mit den Namen "mallorca-sites", KBS: 25831, Kodierung: UTF-8, Geometrie: automatisch und [x] Gespeicherte Daten zur Karte hinzufügen, [OK].
 
-Dem neuen Layer weise ich den bereits erstellten Stil zu. Hierzu Kontextmenü Layer "Fundplatztypen" Stile -> Stil kopieren -> Alle Stilkategorien, Kontextmenü des neuen Layers Stile -> Stil einfügen -> Alle Stilkategorien. Fertig. Löschen Sie den alten Layer "Fundplatztypen" und benennen Sie den neuen Layer genau so.
+Dem neuen Layer weise ich den bereits erstellten Stil zu. Hierzu Kontextmenü Layer "Fundplatztypen" Stile -> Stil kopieren -> Alle Stilkategorien, Kontextmenü des neuen Layers Stile -> Stil einfügen -> Alle Stilkategorien. Fertig. Löschen Sie den alten Layer "Fundplatztypen" und benennen Sie den neuen Layer genau so. 
 
-Die Karte ist nun wunderbar bunt und sowohl visuell als auch didaktisch und methodisch noch eine Katastrophe. 
+Die Karte ist nun wunderbar bunt und sowohl visuell als auch didaktisch und methodisch noch eine Katastrophe. Anm.: Der Consell de Mallorca (Rat) unterhält einen eigenen Webdienst u.a. mit Archäologischen Fundplätzen (*Jacimientos arqueológicos*). [Visor Patrimonio Histórico](http://www.conselldemallorca.info/sit/phistoric/index_es.html) 
 
 ![Mallorca und alle Fundplätze aus *mallorca_sites.txt*](./images/02_Mallorca_Fundplaetze.jpg)
