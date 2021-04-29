@@ -20,7 +20,7 @@ urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
 number_sections: yes
-lang: de-DE
+#lang: de-DE
 description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
 ---
 
@@ -46,6 +46,7 @@ Gefilterte Datenbestände haben mehrere Besonderheiten bzw. Vorteile:
 
 - reduzierte Daten ohne die Datenquelle zu ändern oder einen neuen, redundanten Datensatz zu erzeugen und
 - spezifische Informationen einer Datenquelle können als getrennte Layer mehrfach eingefügt und in der Abfolge der Darstellung eindeutig priorisiert werden.
+- Gefilterte Datenbestände werden für das Editieren gesperrt.
 
 ## Räumliche Abfragen
 
@@ -53,17 +54,17 @@ Gefilterte Datenbestände haben mehrere Besonderheiten bzw. Vorteile:
 
 Räumliche Abfragen sind eine  Kernaufgabe eines GIS, für Vektordaten finden Sie dies unter "Vektor -> Forschungswerkzeuge -> Nach Position selektieren". Ziel ist es, nur die Gemeinden der Balearen zu erhalten, also alle Gemeinden innerhalb der entsprechenden Polygone des Layers "Autonome Gebiete".
 
-Es gibt zwei mögliche Wege: 1. "Autonome Gebiete (gefiltert)" "enthält" "Gemeinden" und 2. "Gemeinden" "sind innerhalb" "Autonome Gebiete (gefiltert)". Beides führt zum Ziel, Variante 1 nach > 200 Sekunden, Variante 2 nach < 4 Sekunden (Zeit variiert nach Rechnerleistung). Diese Info finden Sie im Protokoll auf dem zweiten Reiter des zugehörigen Fensters. Der Unterschied ist gravierend, Gründe kenne ich nicht, vermute aber folgendes: Bei 1. wird für jedes Polygon der Inseln nachgesehen, welche Gemeinden betroffen sind. Wenn Sie genau hinsehen, sind es neben den drei großen Inseln sehr viele kleine Polygone, für die jeweils alle Gemeinden überprüft werden. Bei 2. wird für jede Gemeinde geprüft, ob es in einem Polygon der Autonomen Gebiete liegt, für die Masse ist dies schnell erledigt. Dies hat keine Allgemeingültigkeit, eventuell ist dieser Algorithmus auch nur schlecht programmiert und mit einem anderen Tool geht es eventuell schneller. Lerne: Prüfe erst mit einem kleinen Datensatz und dann mit dem großen.
+Es gibt zwei mögliche Wege: 1. "Autonome Gebiete (gefiltert)" "enthält" "Gemeinden" und 2. "Gemeinden" "sind innerhalb" "Autonome Gebiete (gefiltert)". Das Ergebnis ist ein gefilterter Datenbestand oder verändert die vorhandene Auswahl. Beides führt zum Ziel, Variante 1 nach > 200 Sekunden, Variante 2 nach < 4 Sekunden (Zeit variiert nach Rechnerleistung). Diese Info finden Sie im Protokoll auf dem zweiten Reiter des zugehörigen Fensters. Der Unterschied ist gravierend, Gründe kenne ich nicht, vermute aber folgendes: Bei 1. wird für jedes Polygon aller Gemeinden und der vielen kleinen Inseln nachgesehen, ob dies zutrifft. Bei 2. wird für jede Gemeinde geprüft, ob es in den drei Polygon des gefilterten Autonomen Gebietes liegt, für die Masse der Gemeinden ist dies schnell erledigt. Merke: Prüfe erst mit einem kleinen Datensatz und dann mit dem großen.
 
-Für die weitere Arbeit könnten wir diese Daten in eine neue shp-Datei exportieren, das schafft aber redundante Daten. Zudem sind da noch Evissa und Menorca dabei. Ich filter lieber den originalen Datenbestand auf ```"CODNUT3" = 'ES532'```.
+Für die weitere Arbeit könnten wir diese Daten in eine neue shp-Datei exportieren, das schafft aber redundante Daten. Zudem sind da noch Formentera, Evissa und Menorca dabei. Ich filter lieber den originalen Datenbestand der Gemeinden auf ```"CODNUT3" = 'ES532'```.
 
 ### Werkzeugkiste
 
-Öffnen Sie nun die Werkzeugkiste (*toolbox*) mit "Verarbeitung -> Werkzeugkiste" oder \<strg>+\<alt>+\<t>. Hier finden Sie alle Funktionen und ganz oben die "kürzlich verwendeten". Ich persönlich verlaufe mich in den Menüs regelmäßig. Mit den "kürzlich verwendeten", der Suche oder der angebotenen hierarchischen Ablage komme ich viel schneller zum Ziel.  
+Öffnen Sie nun die Werkzeugkiste (*toolbox*) mit "Verarbeitung -> Werkzeugkiste" oder \<strg>+\<alt>+\<t>. Hier finden Sie alle Funktionen und ganz oben die "kürzlich verwendeten". Ich persönlich "verlaufe" mich in den Menüs regelmäßig. Mit den "kürzlich verwendeten", der Suche oder der angebotenen hierarchischen Ablage komme ich viel schneller zum Ziel.  
 
 ### Punkte in Polygon
 
-Wir zählen zuerst die Talaiots je Munizipium: "Vektor -> Analyse Werkzeuge -> Punkte in Polygon zählen" oder in der *toolbox* 'zählen' suchen. Letzteres listet dann auch gleich Alternativen oder weitere interessante Funktionen. 
+Wir zählen zuerst die Talaiots je Munizipium: "Vektor -> Analyse Werkzeuge -> Punkte in Polygon zählen" oder in der *toolbox* 'zählen' suchen. 
 
 In **Punkte in Polygon zählen** sind die Angaben für Polygon = Gemeinden und Punkte = Talaiots klar. **Gewichtungsfeld** ist interessant, statt Punkte zu zählen wird die Summe des angegeben Feldes berechnet. Als Gedankenspiel: wir haben Gräberfelder und gewichten (summieren) die jeweils aufgeführten Gräber oder Bestatteten. **Klassenfeld** ist auch interessant, dann wird die Vielfalt in dem ausgewählten Feld gezählt, nicht die Menge. In der Archäologie kennen wir das z.B. als einen Index für die Bewertung von 'Reichtum' bei Gräbern (u.a. @siklosiTracesSocialInequality2013a, 31-40). Den Zählfeldnamen ändern wir in "Talaiots". Das Ergebnis wird als temporärer Layer erzeugt und kann bei Bedarf als neue Datei gespeichert werden.
      
@@ -71,10 +72,10 @@ In **Punkte in Polygon zählen** sind die Angaben für Polygon = Gemeinden und P
 
 **Unsere Frage** zielte auf die Verteilung und die Repräsentanz unseres Datenbestandes. Wir setzen deshalb die Zählung ins Verhältnis zur Fläche und Visualisieren das Ergebnis.
     
-Nennen Sie den neuen Layer "**Talaiots je Munizipium**". Da das Ergebnis noch keine Bedeutung hat, machen wir direkt weiter. Öffnen Sie die Attributtabelle und dort den Feldrechner (Abakus). Erstellen Sie ein neues Dezimalfeld mit 3 Nachkommastellen, nennen es "Talaits_qkm" (Talaiots je Quadratkilometer) und verwenden folgende Anweisung: ``` "Talaiots" /($area/1000000)```. Erläuterung: Die Einheit unseres Kooridnatensystems ist Meter, die Fläche ist demnach m², durch die Division erhalten wir km², das Hundertfache des sonst so beliebten ha (Hektar). Wählen Sie bei der Eigenschaft des Layers -> Symbolisierung "Abgestuft", als Wert das neue Feld "Talaiots_qkm" und denken Sie bei der Wahl für den Farbverlauf an die Rot-Grün-Schwäche (ca. 9% der Männer). Wählen Sie "Gleiche Anzahl (Quantile)", bei Klassen "4" und dann [Klassifizieren]. Wechseln Sie auf den Reiter "Histogramm", bestätigen Sie [Werte laden] und betrachten Sie die Häufigkeitsverteilung.     
+Nennen Sie den neuen Layer "**Talaiots je Munizipium**". Da das Ergebnis noch keine Bedeutung hat, machen wir direkt weiter. Öffnen Sie die Attributtabelle und dort den Feldrechner (Abakus). Erstellen Sie ein neues Dezimalfeld (numeric) mit 3 Nachkommastellen (Genauigkeit), nennen es "Talaits_qkm" (Talaiots je Quadratkilometer) und verwenden folgende Anweisung: ```"Talaiots" /($area/1000000)```. Erläuterung: Die Einheit unseres Kooridnatensystems ist Meter, die Fläche ist demnach m², durch die Division erhalten wir km², das Hundertfache des sonst so beliebten ha (Hektar). Wählen Sie bei der Eigenschaft des Layers -> Symbolisierung "Abgestuft", als Wert das neue Feld "Talaiots_qkm" und denken Sie bei der Wahl für den Farbverlauf an die Rot-Grün-Schwäche (ca. 9% der Männer). Wählen Sie "Gleiche Anzahl (Quantile)", bei Klassen "4" und dann [Klassifizieren]. Wechseln Sie auf den Reiter "Histogramm", bestätigen Sie [Werte laden] und betrachten Sie die Häufigkeitsverteilung.     
 Anmerkung zur **Statistik**: Vier Quantile (= Quartile) sind eine allgemeine (pauschale) Teilung in 25%-Schritte von mindestens ordinal skalierten Werten, um Verteilungen vergleichen zu können. Ich will nicht vergleichen sondern darstellen und finde, diese pauschalen Klassengrenzen trennen meine Daten nicht dem Datenbestand angemessen. Deshalb ändere ich dies Grenzen und trenne an den erkennbaren Brüchen in den Daten: <0.015 für eigentlich keine, <0.05 wenige, <0.1 ordentliches Mittelfeld, > 0.1 die "Reichen"  und bestätige mit [OK]. Schieben Sie den Punktlayer "Talaiots" über den neuen Layer.
 
-Eine **erste Deutung** einzelner Auffälligkeiten ist möglich. Die Gemeinden sind überwiegend kleine *a priori* politische Einheiten, Sie sind aber zugleich abhängig von einer traditionellen, teils naturräumlichen Gliederung (*comarcas*). Wechseln Sie dafür zwischen DGM (Höhenmodell) und Dichtekarte hin und her. Natürlich fällt das Hochgebirge mit über 1000 m Höhe um den Puig Major (1445 m) aus, deshalb verändere ich die Symbologie für das DGM auf maximal 1000 und bekomme mehr Dynamik in den Rest. Der östliche Abhang der Tramuntana und im Übergang zur Ebene (Raiguer) sehe ich mehrere Agglomerationen, ich vermute einen Zusammenhang zur Hydrologie oder dem Baumaterial (ich notiere zwei weitere Fragen). Die nördliche Mitte (Pla de Mallorca) ist recht regelhaft belegt, wogegen der südliche Abschnitt (Migjorn), insbesondere die Gemeinde Llucmajor, trotz flacher Landschaft erstaunlich leer ist (könnte an moderner Landwirtschaft liegen). Palma hat erstaunlicherweise mehr Talaiots als Llucmajor: Die hohe Bevölkerungszahl und der hier erfolgte Landesausbau sind kein Problem?.    
+Eine **erste Deutung** einzelner Auffälligkeiten ist möglich. Die Gemeinden sind überwiegend kleine *a priori* politische Einheiten, Sie sind aber zugleich abhängig von einer traditionellen, teils naturräumlichen Gliederung (*comarcas*). Wechseln Sie dafür zwischen DGM (Höhenmodell) und Dichtekarte hin und her. Natürlich fällt das Hochgebirge mit über 1000 m Höhe um den Puig Major (1445 m) aus, deshalb verändere ich die Symbologie für das DGM auf maximal 800 und bekomme mehr Dynamik in den Rest. Der östliche Abhang der Tramuntana und im Übergang zur Ebene (Raiguer) sehe ich mehrere Agglomerationen, ich vermute einen Zusammenhang zur Hydrologie oder dem Baumaterial (ich notiere zwei weitere Fragen). Die nördliche Mitte (Pla de Mallorca) ist recht regelhaft belegt, wogegen der südliche Abschnitt (Migjorn), insbesondere die sehr große Gemeinde Llucmajor, trotz flacher Landschaft erstaunlich leer ist (könnte an moderner Landwirtschaft liegen). Palma hat erstaunlicherweise mehr Talaiots als Llucmajor: Die hohe Bevölkerungszahl und der hier erfolgte Landesausbau sind kein Problem?.    
 **Die Frage** zur Bevölkerungsentwicklung und -dichte wird als nächstes thematisiert.
 
 ## Übung zum Vorangehenden
@@ -85,7 +86,7 @@ Sie sollen das Vorangehende wiederholen und mehr über Mallorca lernen. Deshalb 
 2. Stellen Sie eine Verbindung (join) zwischen dem Layer "Gemeinden" und der zuvor importierten Tabelle her (NAMEUNIT, municipio).
 3. Verändern Sie die Symbologie für den Layer auf "Kategorisiert", Wert ist das neue Feld "municipio-comarca_comarca" (hätten Sie beim *join* umbenennen können!) und zufällige Farben.
 
-Wiederholen Sie das ganze für die Tabelle zu den Bevölkerungszahlen (pop-balears.txt). Betrachten Sie erst die Rohdaten, importieren Sie und finden Sie selbständig die Felder für den *join*.
+Wiederholen Sie das ganze für die Tabelle zu den Bevölkerungszahlen (pop-balears.txt). Betrachten Sie erst die Rohdaten, importieren Sie und finden Sie selbständig die Felder für den *join*. Verwenden Sie diesesmal die Option "Benutzerfeldnamenpräfix" ("pop_").
 
 ## Karte mit Diagramm - Die Bevölkerungsentwicklung       
 
@@ -104,14 +105,15 @@ Menorca |39178|4,1|2,7|5,7|2,9|0,3|-0,6|16,1|10,9|15,0|15,9|35,7
 
 Tabelle zur Bevölkerungsentwicklung. Einwohner für 1900 und nachfolgende Steigerung (%) zum jeweils vorangehenden Zensus. Quelle der Rohdaten: [INE](https://www.ine.es).
 
-Öffnen Sie die Eigenschaften für den **Layer "Gemeinden** mit angehängten Bevölkerungszahlen. Ziel ist die Darstellung des jüngsten Zensus (2011) als abgestufter Farbverlauf je Polygon mit 4 Klassen. Für die **Symbologie** starte ich wie im vorigen Beispiel  mit den Quantilen, kontrolliere das Histogramm und bilde dann folgende Klassen: bis 7100, bis 12100, bis 54000, bis 403000. Um die niedrigste Klasse gegen die Gemeinden ohne Werte abzugrenzen, erhalten diese einen schwachen Farbwert (10%).
+Öffnen Sie die Eigenschaften für den **Layer "Gemeinden** mit angehängten Bevölkerungszahlen. Ziel ist die Darstellung des jüngsten Zensus (2011) als abgestufter Farbverlauf je Polygon mit 4 Klassen. Für die **Symbologie** starte ich wie im vorigen Beispiel  mit den Quantilen, kontrolliere das Histogramm und bilde dann folgende Klassen: bis 7500, bis 20000, bis 54000, bis 403000. Ich kontrolliere erneut das Histogramm und erhöhe Anzahl der Balken (Histogrammkästchen) auf 100. Um die niedrigste Klasse gegen die Gemeinden ohne Werte abzugrenzen, erhalten diese einen schwachen Farbwert (10%).
 
 Die **Beschriftung** aller Gemeinden in der Karte kann die Darstellung überfluten, deshalb will ich nur die größere Hälfte beschriften. Wählen Sie bei Beschriftung statt "keine Beschriftung" "Einzelne Beschriftung" und öffnen bei Wert mit [E] den Ausdruckseditor. Dort ergänzen Sie folgenden Ausdruck:
 
 ```
 if(
   $area>
-    (array_get(array_sort(array_agg($area)),
+    (array_get(
+        array_sort(array_agg($area)),
         round((count("NAMEUNIT")/2),0))),
   "NAMEUNIT", "") 
 ```
@@ -122,12 +124,12 @@ if(
 - array_sort () : sortiert unsere Liste ohne weitere Anweisung aufsteigend.
 - array_get () : liefert uns aus einem array den Wert des n-ten Elementes
   - Der erste Teil ist die eben erklärte Liste.
-  - round((count("NAMEUNIT")/2),0)) : zählt die Anzahl der Namen (Gemeinden), teilt diese durch 2 und rundet das Ergebnis auf 0 Stellen nach dem Komma (Ganzzahl). Ein 1/2 Element kann es bei ungerader Zählung ja nicht geben.
+  - Der zweite Teil ist: round((count("NAMEUNIT")/2),0)). Dies zählt die Anzahl der Namen (Gemeinden), teilt diese durch 2 und rundet das Ergebnis auf 0 Stellen nach dem Komma (Ganzzahl). Ein 1/2 Element kann es bei ungerader Zählung ja nicht geben.
 - "NAMEUNIT", "" : ist die Rückgabe der *if*-Bedingung, die das ganze klammert. Die Bedingung ist: die aktuelle Fläche ($area) sei größer als der ausgezählte Grenzwert in der Mitte der Reihe. Wenn das wahr ist, folgt der erste Wert (NAMEUNIT), wenn nicht eine leere Zeichenkette.
 
-Bestätigen Sie den Ausdruckseditor mit [OK]. Wechseln Sie noch zur Platzierung und wählen hier "Frei (langsam)". Die vorangehnde Regel hätten wir auch unter "Regelbasierte Beschriftung definieren können, Rückgabewerte der *if*-Bedingung sollten dann 1 (wahr), 0 (falsch) sein. Hier habe ich aber nicht die Platzierungsoptionen.
+Bestätigen Sie den Ausdruckseditor mit [OK]. Wechseln Sie noch zur Platzierung und wählen hier "Horizontal (langsam)". Die vorangehnde Regel hätten wir auch unter "Regelbasierte Beschriftung definieren können, Rückgabewerte der *if*-Bedingung sollten dann 1 (wahr), 0 (falsch) sein. Hier habe ich aber nicht die Platzierungsoptionen.
 
-Im Register **Diagramme** wähle ich Histogramm und bei den Attributen ergänze ich die Felder pop_1900 bis pop_2011 mit dem [grünen Plus] bei "Zugewiesene Attribute". Die Farbe und der Legendeneintrag sind jetzt leidige Handarbeit. Die Farbe wird automatisch zufällig zugewiesen und stört, ich setze alles auf ein mittleres Grau (40%) und übertrage es mit der Pipette auf die anderen Felder. Die Legendenbeschriftung kürze ich auf das Jahr des Zensus. Unter Darstellung setze ich die Breite auf 1,5. Wichtig wird jetzt der Bereich **Größe**. Anders als bei Kreisdiagrammen (Durchmesser) kann das Histogramm keine feste Größe bekommen sondern wird anhand des größten Wertes eines Attributes skaliert. Wählen Sie das Attribut pop_2011, klicken Sie auf [suchen], weisen Sie der Balkenlänge "100" zu. Wegen der großen Unterschiede im Datenbestand ist diese Skalierung insgesamt schwierig. Wir könnten eine logarithmische Skalierung erwägen, das ginge bei der Zuweisung der Attribute zu Beginn mit dem [E] über dem grünen Plus. Den Ausdrucksgenerator haben Sie schon kennengelernt, der Ausdruck ```log10("pop_2011")``` bereitet Ihnen also keine Probleme. Das muss aber für alle Attribute wiederholt werden. Zudem ist unsere Sehweise für logarithmische Skalierung nicht gut ausgeprägt und zerstört obendrein die Dramatik der Zahlen, deshalb nehme ich davon Abstand.   
+Im Register **Diagramme** wähle ich Histogramm und bei den Attributen ergänze ich die Felder pop_1900 bis pop_2011 mit dem [grünen Plus] bei "Zugewiesene Attribute". Die Farbe und der Legendeneintrag sind jetzt leidige Handarbeit. Die Farbe wird automatisch zufällig zugewiesen und stört, ich setze alles auf ein mittleres Grau (40%) und übertrage es mit der Pipette auf die anderen Felder. Die Legendenbeschriftung kürze ich auf das Jahr des Zensus. Unter Darstellung setze ich die Balkenbreite auf 1,5. Wichtig wird jetzt der Bereich **Größe**. Anders als bei Kreisdiagrammen (Durchmesser) kann das Histogramm keine feste Größe bekommen sondern wird anhand des größten Wertes eines Attributes skaliert. Wählen Sie das Attribut pop_2011 und wichtig(!) klicken Sie auf [suchen], weisen Sie der Balkenlänge "100" zu. Wegen der großen Unterschiede im Datenbestand ist diese Skalierung insgesamt schwierig. Wir könnten eine logarithmische Skalierung erwägen, das ginge bei der Zuweisung der Attribute zu Beginn mit dem [E] über dem grünen Plus. Den Ausdrucksgenerator haben Sie schon kennengelernt, der Ausdruck ```log10("pop_2011")``` bereitet Ihnen also keine Probleme. Das muss aber für alle Attribute wiederholt werden. Zudem ist unsere Sehweise für logarithmische Skalierung nicht gut ausgeprägt und zerstört obendrein die Dramatik der Zahlen, deshalb nehme ich davon Abstand.   
 
 ![Mallorca. Talaiots je km² pro Gemeinde und jeweilige Bevölkerungsentwicklung von 1900 bis 2011.](./images/03_Mallorca_Histogram_Pop.jpg)
 
