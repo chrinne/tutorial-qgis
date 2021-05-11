@@ -143,7 +143,7 @@ Die schnelle **Erläuterung und Deutung**. Wir erkennen nun leicht, dass nicht a
   
 ## Polygone auflösen: Die Landschaftszonen
 
-Ich möchte nun die Umweltaspekte betrachten und beginne mit den *comarcas* als Landschaftseinheiten. Da mir eine entsprechende Karte fehlt, generiere ich diese aus den Gemeinden durch das Auflösen nach Attribut. Diese Attribute haben Sie als Übung im vorangehende Kapitel selbständig verknüpft (s.o.). 
+Ich möchte nun die Umweltaspekte betrachten und beginne mit den *comarcas* als Landschaftseinheiten. Da mir eine entsprechende Karte fehlt, generiere ich diese aus den Gemeinden durch das Auflösen nach Attribut. Diese Attribute haben Sie als Übung im vorangehende Kapitel selbständig verknüpft (s.o., Tabelle municipio-comarca). 
 
 Wählen Sie "Vektor -> Geoverarbeitungswerkzeuge -> Auflösen", Eingabelayer: Gemeinden, Feld(er) auflösen: "com_comarcas" (das Präfix "com_" hatte ich gesetzt), temporär erzeugen und mit [Starte] ausführen. Das Ergebnis ist erneut nur temporär vorhanden, zeigt überflüssige Spalten mit falschen Werten (jeweils den Wert des 1. Datensatzes),  müsste bereinigt und bei Bedarf als eigener, eigentlich redundanter Datensatz (shp) gespeichert werden. Nennen Sie den Layer "comarcas", das dt. Wort ist mir zu lang, wählen Sie eine klassifizierte Symbologie und eine Beschriftung aller Polygone mit dem Feld "com_comarcas". Die neue (technische) GIS-Aufgabe ist damit erledigt.
 

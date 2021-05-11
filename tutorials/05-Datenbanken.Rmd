@@ -99,7 +99,7 @@ Insgesamt stellt sich mir die Arbeit mit den Daten in QGIS im Vergleich zu Daten
 Es gibt zwei grundlegende Unterschiede bei DBMS: 1. Die für den Desktop und die Nutzung durch eine Person oder einen begrenzten Nutzerkreis in einem eher lokalen Netzwerk gedachten Systeme und davon deutlich unterschieden 2. die für Server als Dienst im Netzwerk für viele Nutzer konzipierten Systeme. Dies ist keine scharfe Grenze, denn Sie können einen SQL-Server auf ihrem PC für persönliche Zwecke betreiben oder eine Access-Datenbank erfolgreich in einem mittelständischen Betrieb einsetzen. Ein wesentlicher Aspekt neben dem System ist auch der Aufbau der Datenbank. Für GIS sind oft spezielle Ergänzungen notwendig, die nicht immer integriert sind, z.B. PostgreSQL mit PostGIS. SQL ist die Programmiersprache für das Strukturieren, Verwalten und Verändern von Daten. SQL ist textbasiert und in dieser Form auch von Menschen lesbar, gut archivierbar und trotz zahlreicher Varianten insgesamt gut interoperabel (vgl. [FAIR](https://www.go-fair.org/fair-principles/)).
 
 - Geopackage: Ein freies und offenes DBMS auf der Basis von [SQLite](https://sqlite.org) für den Desktop. Gegenüber [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index), an das es angelehnt ist, kann es zudem auch Rasterdaten verwalten. Der Nutzer sieht nur eine Datei, die alle Daten beinhaltet.
-- SpatiaLite: Ist ein auf SQLite basierendes DBMS mit GIS-Integration speziell für den Desktop. [SQLite](https://sqlite.org) ist frei nutzbar (*public domain*), die GIS-Funktionalität von [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index) ist frei verwendbar und *open-source*. Zur Arbeit mit SpatiaLite bietet QGIS eine integrierte Anwendung, eine ergänzende [SpatiaLite GUI](https://www.gaia-gis.it/fossil/spatialite_gui/index) ist aber empfehlenswert. Im Ergebnis sieht der Nutzer nur eine Datei für Vektordaten und nicht bis zu fünf Dateien je shp-Datei. Rasterdaten müssen aber getrennt verwaltet werden. 
+- [SpatiaLite](http://www.gaia-gis.it/gaia-sins/): Ist ein auf SQLite basierendes DBMS mit GIS-Integration speziell für den Desktop. [SQLite](https://sqlite.org) ist frei nutzbar (*public domain*), die GIS-Funktionalität von SpatiaLite ist frei verwendbar und *open-source*. Zur Arbeit mit SpatiaLite bietet QGIS eine integrierte Anwendung, eine ergänzende [SpatiaLite GUI](http://www.gaia-gis.it/gaia-sins/) ist aber empfehlenswert. Im Ergebnis sieht der Nutzer nur eine Datei für Vektordaten und nicht bis zu fünf Dateien je shp-Datei. Rasterdaten müssen aber getrennt verwaltet werden. 
 - PostgreSQL: Ein freies DBMS für Server und *open source*. Durch die Erweiterung PostGIS ist es im besonderen Maß für die Arbeit mit Geodaten geeignet. Es ist deshalb in größeren Forschungsprojekten und -verbünden beliebt. Die Wartung des Servers (Hardware), des Postgres-Servers (Dienst) und abgestimmt darauf der PostGIS-Version, sollten in ihrem Aufwand nicht unterschätzt werden. Eine Analyse des Bedarfs, der vorhandenen Kompetenz und Ressourcen ist angebracht.
 - MSSQL: Microsoft SQL Server auch mit kostenfrei nutzbaren Versionen.
 - Oracle: Ein traditionsreicher Anbieter von DBMS für Server, auch kostenfrei nutzbaren Versionen. 
@@ -142,7 +142,7 @@ Aus dem Kontextmenü des Layer "Autonome Gebiete" (autonomias) wählen Sie "Expo
 - FID: fid (feature id), 
 - Geometry_Name: geom. 
 
-Die **Nomenklatur für die *feature id* (fid) und vor allem die Geometrie (geom) sollte in der Datenbank einheitlich, kurz und aussagekräftig sein**, das erleichtert die spätere Arbeit ungemein. Wiederholen Sie den Vorgang für die Provinzen (Layername: provincias), Gemeinden (Layername: municipios) und die selbst generierten Dateien comarcas der Landschaftszonen (Layername: comarcas) und mallorca-sites (Layername: sites). Exportieren Sie auch die Datentabelle pop-balears in die GPKG.
+Die **Nomenklatur für die *feature id* (fid) und vor allem die Geometrie (geom) sollte in der Datenbank einheitlich, kurz und aussagekräftig sein**, das erleichtert die spätere Arbeit ungemein. Wiederholen Sie den Vorgang für die Provinzen (Layername: provincias), Gemeinden (Layername: municipios) und die selbst generierten Dateien comarcas der Landschaftszonen (Layername: comarcas) und mallorca-sites (Layername: sites). Exportieren Sie auch die Datentabelle pop-balears in die GPKG, bei Geometrie wählen Sie hier "keine Geometrie".
 
 Exportieren Sie zuletzt die Rasterdatei des Höhenmodelles mdt200 bzw. DGM200 in das Geopackage mallorca. Sie sollten eine Fehlermeldung erhalten:
 
@@ -152,7 +152,7 @@ Cannot create new dataset  D:\CAU\Lehre\20SoSe\GIS\Daten\mallorca\mallorca.gpkg:
 Only Byte, Int16, UInt16 or Float32 supported
 ```
 
-Öffnen Sie die Eigenschaften -> Informationen zu diesem Layer, dort finden Sie u.a. "Daten Typ	Float32 - 64 Bit Fließkommazahl". Das scheint auf den ersten Blick korrekt, ist aber das Problem. Float32 (Gleitkommazahl) kann als 64 Bit oder als 32 Bit vorliegen. Die aktuellen Daten sind 64 bit, der Import ist aber nur für 32 bit Daten möglich, in der Konsequenz müssen wir also erst konvertieren. Öffnen Sie die Werkzeugkiste ("Verarbeitung -> Werkzeugkiste" oder \<strg>+\<alt>+\<t>) und suchen Sie "konvertieren". Wählen Sie aus den GDAL-Tools "Umwandeln (Format konvertieren)": Eingabelayer: DGM200, Ausgabedatentyp: Float32, Umgewandelt: In temporäre Datei. Wiederholen Sie den Export in die GPKG mit dieser Datei und achten Sie auf den Layernamen: mdt200. Da angeblich ein unbekanntes KBS vorliegt, weisen wir das beim Layer durch Klick auf das Fragezeichen rechts neben dem Namen nachträglich zu (EPSG 25831).
+Öffnen Sie die Eigenschaften -> Informationen zu diesem Layer, dort finden Sie u.a. "Daten Typ	Float32 - 64 Bit Fließkommazahl". Das scheint auf den ersten Blick korrekt, ist aber das Problem. Float32 (Gleitkommazahl) kann als 64 Bit oder als 32 Bit vorliegen. Die aktuellen Daten sind 64 bit, der Import ist aber nur für 32 bit Daten möglich, in der Konsequenz müssen wir also erst konvertieren. Öffnen Sie die Werkzeugkiste ("Verarbeitung -> Werkzeugkiste" oder \<strg>+\<alt>+\<t>) und suchen Sie "konvertieren". Wählen Sie aus den GDAL-Tools "Umwandeln (Format konvertieren)": Eingabelayer: DGM200, Fortgeschrittene Parameter -> Ausgabedatentyp: Float32, Umgewandelt: In temporäre Datei. Weisen Sie der temporären Rasterdatei noch die richtige Projektion zu ("Projektion zuweisen", 25831). Wiederholen Sie den Export in die GPKG mit dieser Datei und achten Sie auf den Layernamen: mdt200.
 
 ### Arbeit mit GPKG in QGIS
 
@@ -176,7 +176,7 @@ Die letzte Abfrage liefert folgendes Ergebnis:
 | Alaior | 1950 | 2011 | 
 | Alcúdia | 1950 | 2011 | 
 
-Ohne Hochkomma um den Tabellennamen "pop-balears" führt die zweite Anweisung wegen des "-" zu einer Fehlermeldung. Wir können einzelne Felder wie "municipio" direkt abfragen, nur bei den Zensus die mit dem jeweiligen Jahr benannt sind bekommen wir als Ergebnis die Zahl selbst, egal ob mit oder ohne Hochkomma. 
+Ohne Hochkomma um den Tabellennamen "pop-balears" führt die zweite Anweisung wegen des "-" zu einer Fehlermeldung. Wir können einzelne Felder wie "municipio" direkt abfragen, nur bei den Zensus die mit dem jeweiligen Jahr benannt sind bekommen wir als Ergebnis die Zahl selbst, egal ob mit oder ohne Hochkomma. Erst mit ```select municipio, 1950, 'pop-balears'.'2011' from 'pop-balears';``` bekommen wir für 2011 die eigentlichen Zahlen.
 
 Um erfolgreich weiterzuarbeiten löschen Sie bitte "pop-balears" über das Kontextmenü in der Datenbank. Importieren Sie über "Tabelle -> Layer/Datei importieren" die Datei "pop_balears.csv", achten Sie auch auf den Namen in der Datenbank "pop_balears" und setzen Sie einen Haken für die Zeichencodierung "UTF-8". Führen Sie danach folgende Abfrage aus:
 
@@ -189,7 +189,7 @@ where municipio like "A%";
 Und zum Abschluss:  
 
 ```{sql 'Geometriefunktion',  connection=t1db,  eval=FALSE, message=TRUE, warning=FALSE, include=TRUE, tab.cap = 'Beispiel für eine Abfrage mit GIS-Funktionen.'}
-select c_comarca, st_area(st_transform(geom, 25831))/100000 as a_qkm 
+select m_comarca, st_area(st_transform(geom, 25831))/100000 as a_qkm 
 from comarcas;
 ```
 
@@ -209,10 +209,10 @@ Wie eingangs erläutert, beruht SpatiaLite ebenfalls auf SQLite, es kann keine R
 ### SpatiaLite installieren
 Laden Sie sich bitte von der [Website](http://www.gaia-gis.it/gaia-sins/) die Dateien für SpatiaLite herunter. Unten links sehen Sie die "MS Windows binaries".
 
-1. Wählen Sie hier bei "current stable version"  Ihre Windowsversion 32bit oder 64bit.
-2. Sie sehen eine lange Liste von kleinen Dateien. Laden Sie einfach alle der Reihe nach herunter, auch wenn wir aktuell nicht alle brauchen.
+1. Wählen Sie hier bei "**previous stable version**", je nach System 32bit oder 64bit. Nur bei dieser Version ist die GUI dabei.
+2. Sie sehen eine drei gepackte Dateien. Laden Sie alle herunter, auch wenn wir aktuell nicht alle brauchen.
 3. Zum Entpacken dieser Dateien empfehle ich die freie Software [7-zip](https://www.7-zip.de/). 
-4. Legen Sie im Ordner "Program Files" einen neuen Ordner "spatialite" an und kopieren Sie alles dort hinein (Adminrechte). Das Programm wird nicht installiert, d.h. im Betriebssystem eingebunden, der Ordner kann also überall liegen.
+4. Legen Sie im Ordner "Program Files" (64bit) oder "Program Files (x86)" einen neuen Ordner "spatialite" an und kopieren Sie alles dort hinein (Adminrechte). Da die Datei proj.db in jeder der gepackten Dateien vorliegt, belasse ich ... modules... und ...tools... in ihrem jeweiligen Unterordner. Das Programm wird nicht installiert, d.h. im Betriebssystem eingebunden, der Ordner kann also überall liegen.
 5. Wenn Sie es zukünftig öfter nutzen wollen und mehr Komfort wünschen, können Sie die Datei "spatialite_gui.exe" mit dem Eintrag "An Start anheften" aus dem Kontextmenü in das Startmenü der Programme eintragen.
 
 Zu SpatiaLite gibt es zahlreiche ergänzende Infos:
@@ -224,13 +224,13 @@ Zu SpatiaLite gibt es zahlreiche ergänzende Infos:
  
 ### SpatiaLite GUI
 
-Starten Sie die SpatiaLite-GUI und erstellen Sie mit "Files -> Create a New ..." eine neue SQLite Datenbank im Projektordner, Name: mallorca.sqlite. Diese Datenbank wird unmittelbar geöffnet und verändert die GUI (s. u.). In der Iconleiste sind einige Symbole ausgegraut, wenn Sie nicht alle Teilanwendungen (Dateien) heruntergeladen und im selben Ordner abgelegt haben. 
+Starten Sie die SpatiaLite-GUI und erstellen Sie mit "Menue -> Creating a New ..." eine neue SQLite Datenbank im Projektordner, Name: mallorca.sqlite. Diese Datenbank wird unmittelbar geöffnet und verändert die GUI (s. u.). In der Iconleiste sind einige Symbole ausgegraut, wenn Sie nicht alle Teilanwendungen (Dateien) heruntergeladen haben. 
 
 ![SpatiaLite-GUI](./images/05_SpatiaLite_GUI.jpg)
 
 Importieren Sie nacheinander die shp-Dateien der Verwaltungsgrenzen (autonomias, municipios) und die des Projektes (sites, comarcas): "Files -> Advanced -> Load Shapfile" (nutzen Sie nachfolgend das entsprechende Icon in der Iconleiste). Nach der Auswahl der shp-Datei erscheint ein Fenster, in dem Sie jeweils angepasst folgende Parameter setzen:
 
-- Autonimias: Table name: autonomias, GeomColumn name: geom, SRID: 4258 (EPSG-Code wird leider nicht automatisch ausgelesen, steht in \*.prj), Charset Encoding: UTF-8 (wird leider nicht automatisch ausgelesen, finden Sie in \*.cpg), der Rest bleibt nach Vorgabe.
+- Autonimias: Table name: autonomias, GeomColumn name: geom, SRID: Vorgabe sollte stimmen, Charset Encoding: UTF-8 (wird leider nicht automatisch ausgelesen, finden Sie in \*.cpg), der Rest bleibt nach Vorgabe.
 - Municipios (Gemeinden): Table name: municipios, GeomColumn name: geom, SRID: 4258, Charset Encoding: UTF-8
 - Comarcas (Landschaftszonen): Table name: comarcas, GeomColumn name: geom, SRID: 25831, Charset Encoding: UTF-8.
 
@@ -241,7 +241,7 @@ Falls Sie möchten, können Sie die Abfragen von oben wiederholen, achten Sie ab
 
 Kommen wir zum zweiten wichtigen Aspekt für die Verwendung von SpataLite: gespeicherten Abfragen (*view*) mit Geometrie. Ich greife auf die frühere Abfrage zurück, wobei ich die Geometrie zur Darstellung weglasse: Wieviele Talaiots befinden sich in jeder Gemeinde? 
 
-Ich beginne mit der Auswahl der Gemeinden von Mallorca (codnut3='ES532'). Dazu nutze ich dieses Mal den "Qerry/View Composer" (Files -> Advanced -> Querry..."). Register Main: Main Table: municipios, darunter bitte alle Felder markieren, Register Filter: Filter #1, Enable, Column to be filtered: codnut3, Comparison operator: =, Value: ES532, Reiter View: Create Spatial View, View name: municipios_532, Geometry Column: geom. Im Ergebnis sollten Sie einen neuen Eintrag in Ihrer DB haben, wenn nicht, führen Sie über das Kontextmenü der DB ein "refresh" durch. Verbinden Sie in QGIS im Data Source Manager die SQLite DB erneut und bestätigen Sie im aktuellen Projekt municipios_532 [Hinzufügen]. Die zuvor erstellte SQL-Anweisung erzeugt nicht nur die gefilterte Sicht auf den Datenbestand, sondern trägt zugleich die notwendigen Informationen in den Tabellen zur Verwaltung der Geometrien ein (unter Internal Data). Erst dadurch wird die *view* zur *spatial view* und in QGIS nutzbar.
+Ich beginne mit der Auswahl der Gemeinden von Mallorca (codnut3='ES532'). Dazu nutze ich dieses Mal den "Qerry/View Composer" (Menue -> Advanced -> Querry/V..."). Register Main: Main Table: municipios, darunter bitte alle Felder markieren, Register Filter: Filter #1, Enable, Column to be filtered: codnut3, Comparison operator: =, Value: ES532, Reiter View: Create Spatial View, View name: municipios_532, Geometry Column: geom. Im Ergebnis sollten Sie einen neuen Eintrag in Ihrer DB haben, wenn nicht, führen Sie über das Kontextmenü der DB ein "refresh" durch. Verbinden Sie in QGIS im Data Source Manager die SQLite DB erneut und bestätigen Sie im aktuellen Projekt municipios_532 [Hinzufügen]. Die zuvor erstellte SQL-Anweisung erzeugt nicht nur die gefilterte Sicht auf den Datenbestand, sondern trägt zugleich die notwendigen Informationen in den Tabellen zur Verwaltung der Geometrien ein (unter Internal Data). Erst dadurch wird die *view* zur *spatial view* und in QGIS nutzbar.
 
 Ich wiederhole den Vorgang für meine Fundplätze und Filter auf 'Talaiot...'. Main table: sites und darunter alle Spalten markieren, Filter # 1 enable, Column to be filtered: Tipo_yacim, Comparison operator: like, Value: Talaiot%, View type: Create Spatial View, View_name: talaiots, Geometry column: geom. 
 

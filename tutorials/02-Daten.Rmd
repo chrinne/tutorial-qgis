@@ -172,3 +172,11 @@ Dem neuen Layer weise ich den bereits erstellten Stil zu. Hierzu Kontextmenü La
 Die Karte ist nun wunderbar bunt und sowohl visuell als auch didaktisch und methodisch noch eine Katastrophe. Anm.: Der Consell de Mallorca (Rat) unterhält einen eigenen Webdienst u.a. mit Archäologischen Fundplätzen (*Jacimientos arqueológicos*). [Visor Patrimonio Histórico](http://www.conselldemallorca.info/sit/phistoric/index_es.html) 
 
 ![Mallorca und alle Fundplätze aus *mallorca_sites.txt*](./images/02_Mallorca_Fundplaetze.jpg)
+
+### Darstellung Inselkarte
+
+Eine **Inselkarte**  ist natürlich keine Karte von einer Insel, vielmehr geht es um die Darstellung des Gültigkeitbereiches. Bei den verwendeten Verwaltungsgrenzen des [Instituto Geográfico Nacional](http://www.ign.es) handelt es sich um Inselkarten, die z.B. das Gebiet von Portugal ausklammern. Sie kenne dies auch von Wetterkarten, das Gebiet außerhalb der Vorhersage oft ausgegraut oder abgedunkelt darstellen. 
+
+Auch in der Archäologie müssen wir bei Kartierungen von Befunden oder Funden den Gültigkeitraum abgrenzen und die visuell deutlich machen, nur so ist die Darstellung korrekt. Dies ist in GIS z.B. durch einen weiteren Layer einer Polygonkarte möglich, in der die nicht erhobenen Flächen grau, die erhobenene Flächen aber Transparent dargestellt werden. Damit sind nur die Inhalte im erfassten Bereich sichtbar und der Arbeitsraum unverkennbar visualisiert.
+
+Beim Thema Kartendarstellung gibt es viel zu beachten, u.a. ob jeder Punkt sichtbar, ob dies im dargestellten Maßstab von Belang ist oder ob einzelne Punkte durch andere Verdeckt sind.
