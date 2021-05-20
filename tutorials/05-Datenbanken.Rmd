@@ -114,6 +114,7 @@ Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entsc
 |- Etwas kompaktere Dateigröße, wobei GeoTIF oft <br/> | - Eingeschränkte Funktionalität der SpatiaLite |
 |größer ist als textbasierte Raster (ASC, GRD).| GUI, da Vektordaten nur als *view* zur |
 |- Rasterdaten: MBTiles sind weit verbreitet.| Verfügung stehen. |
+|- Import von dxf-Dateien möglich, leider keine Spezifikation hinterlegt.||
 |- Eine Datei für alles.||
 
 |pro SpatiaLite|contra SpatiaLite|
@@ -121,11 +122,11 @@ Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entsc
 |- Eine Datei für Vektordaten.|- Keine Rasterdaten möglich.
 |- Gute GUI, u.a. mit *spatialview*-Generator.||
 |- Integration von GIS-Funktionen.||
-|- Integrierte Importfunktionen (dxf, shp, asc, excel).|
+|- Integrierte Importfunktionen, auch ganzer Ordner mit Dateien (dxf, shp, asc, excel).|
 |- Anhängen externer Daten (virtuelle Daten).||
 |- Bibliotheken für Rasterdaten, Netzwerk, Routing etc.||
 
-Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. 
+Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html). 
 
 ## GeoPackages in QGIS
 
@@ -241,9 +242,9 @@ Falls Sie möchten, können Sie die Abfragen von oben wiederholen, achten Sie ab
 
 Kommen wir zum zweiten wichtigen Aspekt für die Verwendung von SpataLite: gespeicherten Abfragen (*view*) mit Geometrie. Ich greife auf die frühere Abfrage zurück, wobei ich die Geometrie zur Darstellung weglasse: Wieviele Talaiots befinden sich in jeder Gemeinde? 
 
-Ich beginne mit der Auswahl der Gemeinden von Mallorca (codnut3='ES532'). Dazu nutze ich dieses Mal den "Qerry/View Composer" (Menue -> Advanced -> Querry/V..."). Register Main: Main Table: municipios, darunter bitte alle Felder markieren, Register Filter: Filter #1, Enable, Column to be filtered: codnut3, Comparison operator: =, Value: ES532, Reiter View: Create Spatial View, View name: municipios_532, Geometry Column: geom. Im Ergebnis sollten Sie einen neuen Eintrag in Ihrer DB haben, wenn nicht, führen Sie über das Kontextmenü der DB ein "refresh" durch. Verbinden Sie in QGIS im Data Source Manager die SQLite DB erneut und bestätigen Sie im aktuellen Projekt municipios_532 [Hinzufügen]. Die zuvor erstellte SQL-Anweisung erzeugt nicht nur die gefilterte Sicht auf den Datenbestand, sondern trägt zugleich die notwendigen Informationen in den Tabellen zur Verwaltung der Geometrien ein (unter Internal Data). Erst dadurch wird die *view* zur *spatial view* und in QGIS nutzbar.
+Ich beginne mit der **Auswahl der Gemeinden von Mallorca** (codnut3='ES532'). Dazu nutze ich dieses Mal den "Qerry/View Composer" (Menue -> Advanced -> Querry/V..."). Register Main: Main Table: municipios, darunter bitte alle Felder markieren, Register Filter: Filter #1, Enable, Column to be filtered: codnut3, Comparison operator: =, Value: ES532, Reiter View: Create Spatial View, View name: municipios_532, Geometry Column: geom. Im Ergebnis sollten Sie einen neuen Eintrag in Ihrer DB haben, wenn nicht, führen Sie über das Kontextmenü der DB ein "refresh" durch. Verbinden Sie in QGIS im Data Source Manager die SQLite DB erneut und bestätigen Sie im aktuellen Projekt municipios_532 [Hinzufügen]. Die zuvor erstellte SQL-Anweisung erzeugt nicht nur die gefilterte Sicht auf den Datenbestand, sondern trägt zugleich die notwendigen Informationen in den Tabellen zur Verwaltung der Geometrien ein (unter Internal Data). Erst dadurch wird die *view* zur *spatial view* und in QGIS nutzbar.
 
-Ich wiederhole den Vorgang für meine Fundplätze und Filter auf 'Talaiot...'. Main table: sites und darunter alle Spalten markieren, Filter # 1 enable, Column to be filtered: Tipo_yacim, Comparison operator: like, Value: Talaiot%, View type: Create Spatial View, View_name: talaiots, Geometry column: geom. 
+Ich wiederhole den Vorgang für meine Fundplätze und **Filter auf 'Talaiot...'**. Main table: sites und darunter alle Spalten markieren, Filter # 1 enable, Column to be filtered: Tipo_yacim, Comparison operator: like, Value: Talaiot%, View type: Create Spatial View, View_name: talaiots, Geometry column: geom. 
 
 Nun müssen wir beiden Datenbestände räumlich verbinden, die Funktion dafür lautet: st_within(). Leider geht dies nicht mit dem *composer*.
 
@@ -264,3 +265,5 @@ group by m.pk_uid;
 Die Abfrage braucht etwas Zeit (bei mir 6 Sek.), bitte warten Sie. Bis hierher hätte das auch in einem Rutsch ohne die ersten beiden *views* ausgeführt werden können. Die beiden *views* sind aber durchaus auch sinnvoll anderweitig einsetzbar. Da das Ergebnis nur eine Tabelle ist, müssen wir diese erneut mit unseren *municipios* und deren Geometrie verbinden und als *spatial view* speichern. Starten Sie den *composer*. Main table: talaiots_in_municipios und darunter alle Felder auswählen, Table #2 enable: municipios, Felder: PK_UID, geom, [Inner] Join, Join match #1: PK_UID zu PK_UID, View: Creat Spatial View, View name: talaiots_municipios, Geometry Column Table #2 geometries: geom.
  
 Verbinden Sie die DB in QGIS erneut, fügen Sie die Daten zum Projekt hinzu und warten Sie bis der Vorgang abgeschlossen ist (ca. 12 Sek. bei mir). Das ist natürlich ärgerlich, zumal dies auch bei der Zuweisung der Symbologie (kategorisiert) erneut auftritt. Die Daten sind aber 1. nicht redundant hinterlegt, 2. wirken sich Änderungen an den Fundplätzen direkt auf das Ergebnis aus, die Darstellung ist also stets aktuell und 3. ist die Anweisung in der DB dauerhaft gespeichert und damit dokumentiert. 
+
+Natürlich können Sie statt der Anweisung ```create view <name> as``` auch ```create table <name> as``` verwenden. Damit haben Sie zwar ebenfalls redundante Date geschaffen, da die Abfrage aber als Anweisung gespeichert werden kann ist dies Vorgang 1. dokumentiert und 2. jederzeit bei aktualisierten Datenbestand erneut durchführbar. Es ist also durchaus ein Verbesserung gegenüber dem Erstellen einer neuen shp-Datei. 
