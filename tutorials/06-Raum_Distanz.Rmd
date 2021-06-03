@@ -24,6 +24,11 @@ lang: de-DE
 description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
 ---
 
+```{r R-script-load-library-setup-connection, include=FALSE}
+library(RSQLite)
+t1db<-dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+```
+
 # Raum & Distanz
 
 ## Einleitung
