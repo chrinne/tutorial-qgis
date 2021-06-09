@@ -126,23 +126,34 @@ Leider ist es nicht möglich, dynamische Geometrien in einer *spatial view* zu v
 
 ```{sql 'create table statement', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
 create table talaiots_1km as
-SELECT "talaiots"."PK_UID" as pkuid,
-"talaiots"."Nr" as nr,
-"talaiots"."Nombre_yac" as nombre_yac,
-"talaiots"."z_m" as z_m,
-ST_Buffer("talaiots"."geom", 1000) as r1km
-FROM "talaiots"
+SELECT t.pk_uid, t.nr, t.nombre_yac, t.z_m, 
+ST_Buffer(t.geom, 1000) as geom
+FROM "talaiots" as t
 ```
 
-Im Ergebnis haben Sie eine Tabelle mit einer Geometriespalte, die aber noch nicht als Geometrie in der Datenbank registriert ist. Dies ist in der SpatialLite GUI aber sehr einfach möglich. Öffnen in der  Tabelle links im Hierarchiebaum das Kontextmenü zur Geometriespalte "r1km" und wählen Sie "recover geometry column". Im folgenden Fenster müssen Sie die Parameter der Geometrie angeben: SRID (EPSG-Code), Geometrietyp und Dimension. Für den soeben erstellten Puffer sind dies: 25831, POLYGON, XY. Danach stehen die Daten als Geometrietabelle zur Verfügung. Alternativ können Sie die genannten Informationen auch als Anfügeabfrage in den relevanten Tabellen "von Hand" einfügen.
+Im Ergebnis haben Sie eine Tabelle mit einer Geometriespalte, die aber noch nicht als Geometrie in der Datenbank registriert ist. Dies ist in der SpatialLite GUI aber sehr einfach möglich. Öffnen in der  Tabelle links im Hierarchiebaum das Kontextmenü zur Geometriespalte "r1km" und wählen Sie "recover geometry column". Im folgenden Fenster müssen Sie die Parameter der Geometrie angeben: SRID (EPSG-Code), Geometrietyp und Dimension. Für den soeben erstellten Puffer sind dies: 25831, POLYGON, XY. Danach stehen die Daten als Geometrietabelle zur Verfügung.
 
-Leider  werden bei der folgenden Zonenstatistik die Spalten für die zu berechnenden Werte zwar angelegt aber nicht gefüllt. Da die Spalten angelegt werden, liegt kein Schreibschutz vor und beide Datenquellen haben das selben Koordinatensystem. Warum dies also nicht funktioniert kann ich z.Z. nicht erklären. Der Weg ist nach meinem Verständnis deutlich eleganter als die erste Variante, scheitert aber leider vor dem Ziel aus mir nicht verständlichen Gründen. Eventuell sehen Sie ja einen Fehler.
+Woher Sie diese Informationen bekommen? Die SRID entspricht natürlich der dem Ausgangsdatensatz. Dann gibt es mehrere Optionen:
+
+- Sie fragen die Geometrie als Text ab und prüfen eigenständig. \newline
+- Sie fragen die Informationen direkt aus der Geometrie ab.
+
+Führen Sie dazu die folgenden Abfragen einzeln aus.
+
+```{sql 'get geometry info', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+select st_astext(geom) from talaiots_1km limit 1;
+select geometrytype(geom) from talaiots_1km limit 1;
+select coorddimension(geom) from talaiots_1km limit 1;
+select srid(geom) from talaiots_1km limit 1
+```
+
+Führen Sie nachfolgend die Zonenstatistik in QGIS erneut aus.
 
 ## Thiessen-Polygon, Voronoi-Diagram und Interpolation
 
-Thiessen-Polygone (alternativ Delaunay-Triangulation) sind eine Dreiecksvermaschung, bei der innerhalb des Umkreises zum gebildeten Dreieck kein weiterer Punkt liegt. Die Fundplätze bilden dabei die Knotenpunkte der Strecken. Um die Fundplätze in das Zentrum einer Fläche zu bringen und so die Informationen des Punktes in die umliegende Fläche zu übertragen, wird auf jede Kante die Mittelsenkrechte gebildet und bis zum Schnittpunkt mit einer anderen Mitttelsenkrechten verlängert. Es entsteht ein dualer Graph, der durch erneutes Bilden der Mittelsenkrechten wieder zum Ausgangsmodell führt.
+Thiessen-Polygone (alternativ Delaunay-Triangulation) sind eine Dreiecksvermaschung, bei der innerhalb des Umkreises zum gebildeten Dreieck kein weiterer Punkt liegt. Die Fundplätze bilden die Knoten (Punkte) der Kanten (Linien). Um die Fundplätze in das Zentrum einer Fläche zu bringen und so die Informationen des Punktes in die umliegende Fläche zu übertragen, wird auf jede Kante die Mittelsenkrechte gebildet und bis zum Schnittpunkt mit einer anderen Mitttelsenkrechten verlängert. Es entsteht ein dualer Graph, der durch erneutes Bilden der Mittelsenkrechten wieder zum Ausgangsmodell führt.
 
-Bei diesem Verfahren gibt es methodische Probleme, zu denen noch spezifische der Archäologie zu ergänzen sind. Das grundlegende archäologische Problem gleich vorweg: Im Unterschied zu gezielt verteilten und erhobenen Messwerten in der Geographie sind archäologische Nachweis-Daten durch viele Faktoren beeinflusst: Aktivität von Ehrenamtlichen, Erhaltung, Vegetation, Landschaftsnutzung etc. Wir müssen also mit dem Fehlen relevanter Informationen rechnen. 
+Bei diesem Verfahren gibt es methodische Probleme, zu denen noch spezifische der Archäologie zu ergänzen sind. Das grundlegende archäologische Problem gleich vorweg: Im Unterschied zu strategisch  verteilten (Zufall, Raster etc) und erhobenen Messwerten in der Geographie sind archäologische Nachweis-Daten durch viele Faktoren beeinflusst: Aktivität von Ehrenamtlichen, Erhaltung, Vegetation, Landschaftsnutzung etc. Wir müssen also mit dem Fehlen relevanter Informationen rechnen.
 
 Ein methodisches Problem der Triangulation ist der Randeffekt des Netzes. Da hier die jeweiligen Nachbarn fehlen, werden besonders lange Strecken gebildet. Auch ignoriert die geradlinige Verbindung zwischen den Punkten weitere beeinflussende Faktoren der unterstellten räumlichen Nähe: Gebirgszüge, Steilhänge, Flüsse etc. Wird in dem abgeleitete Voronoi-Diagram mit dem Punkt im Zentrum  die Information unverändert auf die Fläche übertragen, entstehen an den Grenzen zum benachbarten Feld Sprünge in den Information statt fließende Übergänge. Aufgrund dieser Nachteile sind zahlreiche weitere Interpolationsverfahren entwickelt worden. Ein weit verbreitetes ist das *inverse distance weighting* (**IDW**). Die hierbei gewählte Gewichtung muss angemessen sein und kann durch eine Potenz variiert werden. Das in der Geographie ebenfalls gerne genutzte *kriging*  bietet noch mehr Justierungsmöglichkeiten, wodurch sich z.B. bei Höhenmodellen sehr gute Approximationen an die Wirklichkeit erzielen lassen. Diese letztgenannten Berechnungen werden nicht nur rechnerisch komplexer, sondern vor allem im Rahmen einer auf archäologischen Argumenten beruhenden Modellbildung schwieriger begründbar. Für die Anwendung in der Archäologie lesen Sie hierzu zum Einstieg bitte [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Jüngere Darstellung mit komplexen, interdisziplinär ausgearbeiteten und begründeten Modellierungen von Informationen in die Fläche finden Sie u.a. bei Daniel Knitter [@nakoinzRegressionInterpolation2016; @knitterLandUsePatterns2019].
 
@@ -150,19 +161,20 @@ Ein methodisches Problem der Triangulation ist der Randeffekt des Netzes. Da hie
 
 ### Vorgehen in QGIS
 
-Wie zu Beginn dieses Kapitels erwähnt sind die triangulierte Distanzen ein schlichtes aber durchaus interessantes Maß [@siegmundTriangulationAlsMethode1992a; @zimmermannTesselierungUndTriangulation1992a]. Wir können dies bei unserem vorliegenden Datensatz zu den Talaiots mal durchspielen. Dabei haben wir aus der archäologischen Perspektive bestimmte Vorteile. Durch die klare Begrenzung des Untersuchungsgebietes als Insel sind Kanteneffekte zwar zu erwarten, entsprechen aber der unabdingbaren Realität auch wenn die "Wege" an einige Stellen über das Wasser führen. Der monumentale Charakter und der relativ späte Landesausbau mit dem vorhandenen Bewusstsein für diesen Denkmaltyp hat zu einer erwartbar guten Kenntnis (nicht zwingend Erhaltung) geführt. Wir können zudem mehrstufig Arbeiten und die gesamte Insel mit den Landschaftsgebieten (*comarcas*) oder der zuvor herausgestellten Lage vergleichen.
+Wie zu Beginn dieses Kapitels erwähnt sind die triangulierte Distanzen ein schlichtes aber durchaus interessantes Maß [@siegmundTriangulationAlsMethode1992a; @zimmermannTesselierungUndTriangulation1992a]. Wir können dies bei unserem vorliegenden Datensatz zu den Talaiots einmal durchspielen. Dabei haben wir aus der archäologischen Perspektive bestimmte Vorteile. Durch die klare Begrenzung des Untersuchungsgebietes als Insel sind Kanteneffekte zwar zu erwarten, entsprechen aber der unabdingbaren Realität auch wenn die "Wege" an einige Stellen über das Wasser führen. Der monumentale Charakter und der relativ späte Landesausbau mit dem vorhandenen Bewusstsein für diesen Denkmaltyp hat zu einer erwartbar guten Kenntnis (nicht zwingend Erhaltung) geführt. Wir können zudem mehrstufig Arbeiten und die gesamte Insel mit den Landschaftsgebieten (*comarcas*) oder der zuvor herausgestellten Lage vergleichen.
 
 Der Weg ist mehrstufig. Wenn Sie ausschließlich in QGIS arbeiten wollen, müssen Sie folgende Schritte durchlaufen:
   
-  1. Starten Sie QGIS mit GRASS-Erweiterung (anderes Icon im Startmenü), nutzen Sie nacheinander die folgenden Funktionen aus der Werkzeugkiste und speichern Sie das jeweilige Ergebnis temporär.
-2. v.delaunay (die QGIS eigene Delaunay-Triangulation kann die *spatial view* 'talaiots' nicht verarbeiten). Zumindest bei meiner Version von v.delaunay konnte kein Liniengraph, sondern nur die Polygone ausgegeben werden.
+  1. Suchen Sie in der *tool box* die "Delaunay-Triangulation", der Eingabelayer ist "talaiots" und speichern Sie auch zukünftig das jeweilige Ergebnis temporär. Anmerkung: In einer älteren Version von QGIS wurd die *spatial view* nicht erkannt, alternativ konnte die Funktion v.delaunay der Grass-Erweiterung genutzt werden, bei der wiederum die Option Linien ausgeben" scheitert.
 2. Polygone zu Linien: Im Ergebnis haben Sie eine Polylinie um jedes Dreieck.
 3. Linien sprengen: Im Ergebnis haben Sie einzelne Linien. Fast jede Linie im Netz ist aber doppelt vorhanden, für jedes angrenzende Dreieck einmal.
 4. Doppelte Geometrien löschen: Sie erhalten alle Distanzen einmalig.
 5. Ergänzen Sie mit dem Feldrechner eine Spalte für die Linienlänge ($length).
 6. Exportieren Sie alle Längenmaße für eine statistische Analyse, z.B. in R. 
 
-Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. 
+Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. Einige Längen des Randbereiches sind sehr groß und beeinträchtigen die Darstellung. Wenn Sie nur den unteren Bereich der Längen darstellen wollen wählen sie bei "Wert" das [E] und fügen dort folgende Syntax ein: ```if ("l"<20000, "l", '')``` (Wenn die Länge < 20 km ist dann gib die Länge zurück, sonst Nichts).
+
+Wir sehen einen ersten Gipfel der Verteilung um 1,5 km, einen zweiten um 3 km und dann noch Bereich von 4 km bis 8 km und um 10 km. Danach löst sich die Verteilung langsam auf. Wirklich Plakativ ist das Ergebnis nicht, doch die Dopplung von 1,5 km zu 3 km ist auffällig und alles jenseits von 11 km scheint eine "besonders" große Distanz zu sein. An diesem Punkt könnten diverse Hypothese formuliert und geprüft werden.  
 
 ### Vorgehen in SpatiaLite
 
@@ -174,7 +186,7 @@ select st_DelaunayTriangulation(st_collect(geom),1) as geom
 from talaiots;
 ```
 
-Die Rückgabe der Abfrage ist ein Objekt vom Typ *Multilinestring*, das für die weitere Bearbeitung in eine Tabelle geschrieben wird. Die verwendete Funktion st_DelaunayTriangulation erwartet **ein** Geometrieobjekt, dieses wird mit der Funktion *st_collect()* aus allen Geometrien in der Spalte 'geom' der Abfrage erstellt. Die Funktion st_DelaunayTriangulation gibt mit der Option *edges_only* die Kanten statt der Polygone aus. Die Übergabe dieses Parameters erfolgt ausschließlich durch 0 (falsch) oder 1 (wahr).
+Die Rückgabe der Abfrage ist eine Tabelle mit einem Objekt vom Typ *Multilinestring*. Die verwendete Funktion st_DelaunayTriangulation erwartet **ein** Geometrieobjekt, dieses wird mit der Funktion *st_collect()* aus allen Geometrien in der Spalte 'geom' von 'talaiots' erstellt. Die Funktion st_DelaunayTriangulation gibt mit der Option *edges_only* die Kanten statt der Polygone aus. Die Übergabe dieses Parameters erfolgt ausschließlich durch 0 (falsch) oder 1 (wahr).
 
 Die neue Tabelle 'talaiot_dist' enthält genau eine Geometrie (geom) vom Typ *Multilinestring*, also eine Geometriekollektion, für das wir die Anzahl der enthaltenen Elemente abfragen.
 
@@ -197,7 +209,7 @@ cnt(x) AS (
 SELECT st_length(GeometryN(geom, x)) as l FROM cnt, talaiot_dist;
 ```
 
-Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit '1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.). 
+Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit '1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.).   
 
 Das zweite Element ist eine Schlichte Abfrage über zwei Tabellen, den erzeugten Zähler cnt mit dem Element x und die Tabelle mit der einen Geometrie vom Typ *Multilinestring*. Abgefragt wird nun die Länge (*st_length()*) für jedes x-te Element des *Multilinestring* (*GeometryN()*). Nach der Aktualisierung der Datenbank (*refresh*) steht die Sicht zur Verfügung, kann über das Kontextmenü z.B. in eine CSV-Datei exportiert und für eine statistische Analyse verwendet werden. 
 
@@ -208,10 +220,9 @@ l<-c(41352, 14586, 16399, 16588, 20102, 3555, 63906, 39984, 15652, 1211, 1388, 1
 ```
 
 ```{R 'Histogram of the triangulated length', fig.height = 4, echo=TRUE}
-hist((l/1000)[l<30000], breaks=seq(0,30,1), 
+hist((l/1000)[l<25000], breaks=seq(0,25,0.5), 
      main='Triangulierte Distanzen', xlab = 'Distanz (km)', ylab = 'Häufigkeit') 
 ```
 
-Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 30000 m gefilter ([l<30000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 30 km mit Intervallen von 1 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt.
-
-Das Histogramm  der triangulierten Distanzen zeigt einen deutlichen Gipfel bei 2 - 3 km, eine leichte Schulter bei 5 km nachfolgend leichte aber auch unscharfe Häufungen bei den Vielfachen von 5 km. Das Histogramm weist auf Agglomerationen von Talaiots in einem Abstand von 2-3 km hin, diese könnten sich dann in Abständen von ca. 5 km wiederholen. Dazwischen klaffen aber auch Lücken, die wegen des Vielfachen von 5 km möglicherweise durch fehlende Gruppen verursacht worden sein könnten. Letzteres ist lediglich aus der Wiederholung der Distanz abgeleitet und kann auch andere Gründe haben.  
+Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 25000 m gefiltert ([l<25000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 25 km mit Intervallen von 0,5 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt. Vergrößern wir das Intervall auf 1 km entfällt die visuelle Trennung zwischen 1,5 km und 3 km und es bleibt eine leichter Absatzt im Verlauf mit geringer Häufung von Distanzen bei 5 km. Es folgend unscharfe Häufungen bei den Vielfachen von 5 km. 
+Das Histogramm weist auf Agglomerationen von Talaiots in einem Abstand von bis zu 3 km hin, diese könnten sich dann in Abständen von ca. 5 km wiederholen. Dazwischen klaffen aber auch Lücken, die wegen des Vielfachen von 5 km möglicherweise durch fehlende Gruppen verursacht worden sein könnten. Letzteres ist lediglich aus der Wiederholung der Distanz abgeleitet und kann auch andere Gründe haben.  
