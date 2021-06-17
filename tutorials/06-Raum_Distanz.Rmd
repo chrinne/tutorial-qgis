@@ -9,7 +9,7 @@ header-includes:
   \renewcommand{\figurename}{Abb.}
   \renewcommand{\tablename}{Tab.}
 bibliography: QGIS-cours-references.bib
-csl: journal-of-archaeological-science.csl
+csl: journal-of-neolithic-archaeology.csl
 output:
   pdf_document:
     fig_caption: yes
@@ -209,9 +209,17 @@ cnt(x) AS (
 SELECT st_length(GeometryN(geom, x)) as l FROM cnt, talaiot_dist;
 ```
 
-Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit '1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.).   
+Nehmen wir ersteinmal den kürzeren zweiten Teil und reduzieren die Syntax etwas:
 
-Das zweite Element ist eine Schlichte Abfrage über zwei Tabellen, den erzeugten Zähler cnt mit dem Element x und die Tabelle mit der einen Geometrie vom Typ *Multilinestring*. Abgefragt wird nun die Länge (*st_length()*) für jedes x-te Element des *Multilinestring* (*GeometryN()*). Nach der Aktualisierung der Datenbank (*refresh*) steht die Sicht zur Verfügung, kann über das Kontextmenü z.B. in eine CSV-Datei exportiert und für eine statistische Analyse verwendet werden. 
+```{sql 'Extrahieren der Länge des x-ten (ersten) Elementes in der *GeomCollection*', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+SELECT st_length(GeometryN(geom, 1)) as l FROM talaiot_dist;
+```
+
+Der zweite Abschnitt ist im Kern eine Schlichte Abfrage der Länge des jeweils benannten Elementes (1, 2, ...) in dem Multigeometrieobjekt. Wenn wir das für jedes Element durchführen wollen, brauchen wir einen Zähler (cnt) der von 1 bis 518 bzw. dem letzten Element der Multigeometrie zählt. Das liefert uns der erste Teil der komplexen Abfrage.
+
+Der erste Teil erzeugt also den Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit 'SELECT 1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.). Der Zweite Teil ist nun etwas komplexer, er bezieht nämlich den Zähler *cnt* mit der fortlaufenden Zahl *x* ein, so dass durch die Rekursion  dieser zweite Teil entsprechend oft mit jeweils aktuellem *x* durchlaufen wird.  
+
+Nach der Aktualisierung der Datenbank (*refresh*) steht die Sicht zur Verfügung, kann über das Kontextmenü z.B. in eine CSV-Datei exportiert und für eine statistische Analyse verwendet werden. 
 
 ### Deutung des Ergebnnisses
 
@@ -226,3 +234,5 @@ hist((l/1000)[l<25000], breaks=seq(0,25,0.5),
 
 Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 25000 m gefiltert ([l<25000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 25 km mit Intervallen von 0,5 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt. Vergrößern wir das Intervall auf 1 km entfällt die visuelle Trennung zwischen 1,5 km und 3 km und es bleibt eine leichter Absatzt im Verlauf mit geringer Häufung von Distanzen bei 5 km. Es folgend unscharfe Häufungen bei den Vielfachen von 5 km. 
 Das Histogramm weist auf Agglomerationen von Talaiots in einem Abstand von bis zu 3 km hin, diese könnten sich dann in Abständen von ca. 5 km wiederholen. Dazwischen klaffen aber auch Lücken, die wegen des Vielfachen von 5 km möglicherweise durch fehlende Gruppen verursacht worden sein könnten. Letzteres ist lediglich aus der Wiederholung der Distanz abgeleitet und kann auch andere Gründe haben.  
+
+# Literatur
