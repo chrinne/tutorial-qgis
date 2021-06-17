@@ -9,7 +9,7 @@ header-includes:
   \renewcommand{\figurename}{Abb.}
   \renewcommand{\tablename}{Tab.}
 bibliography: QGIS-cours-references.bib
-csl: journal-of-archaeological-science.csl
+csl: journal-of-neolithic-archaeology.csl
 output:
   pdf_document:
     fig_caption: yes
@@ -95,9 +95,9 @@ Setzen Sie für alle vier Prospektionsflächen die Symbologie im Farbverlauf auf
 
 Betrachten Sie die Flächen einen Augenblick, Sie erkennen unschwer die sehr heterogenen und kontrastreichen Daten im Norden und jenseits der Straße im Süden sowie die eher "weicheren" Werte zwischen den Navetas. Dies wird durch den Untergrund verursacht. Es handelt sich um Kalkstein in dessen zahlreichen Klüften und Kavernen toniges Sediment abgelagert ist. Der Kalk liefert kein, der tonige Boden ein deutliches Signal und im Ergebnis entsteht das von uns zu erkennende Bild. Im Umkehrschluss steht zwischen den Navetas der Kalkfelsen nicht unmittelbar an der Oberfläche an. 
 
-Vor allem im Feld 1 sind einige rundliche Anomalien eher positiver (dunkler) Messwerte zu erkennen. Markieren Sie bei den Layern das Messfeld 1 und prüfen Sie die Messwerte mit der Objektabfrage (?-Icon) aus der Menüleiste. Die Messwerte liegen überwiegend zwischen 7 und 16 nT nur bei der Anomalie mit weißem Rand werden 50 nT erreicht. 
+Vor allem im Feld 1 sind einige rundliche Anomalien eher positiver (dunkler) Messwerte zu erkennen. Markieren Sie bei den Layern das Messfeld 1 und prüfen Sie die Messwerte mit der Objektabfrage (?-Icon) aus der Menüleiste. Die Messwerte liegen überwiegend zwischen 7 und 16 nT nur bei der Anomalie mit weißem Rand werden auch über 50 nT erreicht. 
 
-**Aufgabe**: Wir vermuten potentielle Gruben bei 7 nT bis 16 nT und wollen diese hervorheben. Ziel ist es alle Messwerte in diesem Bereich auf "1" (Wahr) zu setzen, alle anderen auf nicht definiert. Damit ist nachfolgend auch die Vektorisierung  der herausgestellten Strukturen möglich. Starten Sie den **Rasterrechner** ("Raster -> Rasterrechner"). Oben links haben Sie die verfügbaren Layer und jeweils vorhandenen Bänder (Farbkanäle), oben rechts notwendige Parameter und unten viel Platz für die Berechnungsformel.
+**Aufgabe**: Wir vermuten potentielle Gruben bei 7 nT bis 16 nT und wollen diese hervorheben. Ziel ist es, alle Messwerte in diesem Bereich auf "1" (Wahr) zu setzen, alle anderen auf nicht definiert. Damit ist nachfolgend auch die Vektorisierung  der herausgestellten Strukturen möglich. Starten Sie den **Rasterrechner** ("Raster -> Rasterrechner"). Oben links haben Sie die verfügbaren Layer und jeweils vorhandenen Bänder (Farbkanäle), oben rechts notwendige Parameter und unten viel Platz für die Berechnungsformel.
 
 Fügen Sie mit einem Doppelklick das Band 1 des Messfeldes 1 zum Ausdruck hinzu (closos_1_modifiziert\@1). Tragen Sie oben rechts den Namen für die Ausgabedatei ein, z.B. closos_1_7-16nT, nutzen Sie aber die [...] um auch den Ordner zu wählen. Für die Ausdehnung dieser Datei klicken Sie auf [Gewählte Layerausdehnung] und das entsprechende KBS der Ursprungsdatei oder des Projektes. 
 
@@ -131,3 +131,6 @@ Nach einer kurzen Überprüfung der Werte liegen Grün und Blau annähernd parit
 - 2018: 57536 m²
 
 Anmerkung: Ich verwende das Resultat im nächsten Abschnitt zur Kartenerstellung und verzichte deshalb an dieser Stelle auf eine Abbildung. 
+
+# Literatur
+
