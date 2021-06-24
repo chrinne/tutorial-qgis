@@ -111,11 +111,15 @@ Was steht da? Es ist ein Bruch mit identischem Zähler und Nenner, jeweils zwei 
 
 | Anmerkung |
 |----|
-|Wenn **Fehler** auftreten prüfen Sie bitte als erstes die Layernamen, *copy & paste* kann die Ursache sein. |
+|Wenn **Fehler** auftreten prüfen Sie bitte als erstes die Layernamen (*copy & paste*) und die gewählte Dimension des Ausgaberasters. |
 
 ### Luftbilder und Vegetation
 
-Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegenherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau!). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. Falls Sie mein erster schneller Ansatz interessiert:
+Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegenherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau!). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. 
+
+Ein erster schneller Ansatz wäre dann, nur den Grünen Kanal auszuwerten: viel Grün (z.B. 0 - 75) entspricht viel Vegetation. Das stimmt aber nicht, denn wir bekommen sehr viele verschatteten (schwarzen) Bereiche mit rein, in denen alle drei Farbkanäle annähernd gleiche und hohe Werte besitzen. Dagegen verlieren wir die hellgrünen Bereiche. Die Aufgabe ist also nicht so trivial.  
+
+Falls Sie mein erster schneller Ansatz interessiert:
 
 ```
 (("orthoaktuell@2">50) and ("orthoaktuell@2" < 110) and 
@@ -125,10 +129,9 @@ Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich 
 ("orthoaktuell@3">50) and ("orthoaktuell@3" < 110) and 
 ("orthoaktuell@1" < ("orthoaktuell@2"*0.8)))
 ```
-Nach einer kurzen Überprüfung der Werte liegen Grün und Blau annähernd paritätisch zwischen 50 und 110 während Rot stets etwas niedriger liegt bis maximal 80% des Blau- oder Grünwertes. Im Ergebnis stehen also über und unter dem Bruch identische Ausdrücke mit jeweils drei verknüpften Bedingungen. Im Projekt können Sie mit "Rasterlayerstatistik" die Summe der Pixel abfragen und erhalten damit die Anzahl der Pixel da in jeder zelle ja "1" steht. In der Information zum Layer finden Sie die Pixelgröße: 0.2000203817314166743 * 0.2000264054513337941. Aus dem Produkt aller Werte ergibt sich die jeweils ermittelte Fläche an Vegetation:
+Nach einer kurzen Überprüfung der Werte liegen Grün und Blau annähernd paritätisch zwischen 50 und 110 während Rot stets etwas niedriger liegt bis maximal 80% des Blau- oder Grünwertes. Im Ergebnis stehen also über und unter dem Bruch identische Ausdrücke mit jeweils drei verknüpften Bedingungen. Das Ergebnis ist sicher nicht optimal, aber besser als die einfache Auswertung des grünen Kanals.
 
-- 1956: 17500 m²
-- 2018: 57536 m²
+In der Information zum Layer finden Sie die Pixelgröße: rund 0.2000 (m) * 0.2000 (m). In der Toolbox können Sie mit "Rasterlayerstatistik" die Summe der Pixel abfragen und erhalten damit die Anzahl der gültigen Pixel da in diesen zelle ja "1" steht. Aus dem Produkt aller Werte ergibt sich die jeweils ermittelte Fläche an Vegetation. Alternativ benutzen Sie "Bericht eindeutiger Rasterwerte" und erhalten direkt auch die Fläche.
 
 Anmerkung: Ich verwende das Resultat im nächsten Abschnitt zur Kartenerstellung und verzichte deshalb an dieser Stelle auf eine Abbildung. 
 
