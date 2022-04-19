@@ -10,6 +10,7 @@ header-includes:
   \renewcommand{\tablename}{Tab.}
 bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
+papersize: a4
 output:
   pdf_document:
     fig_caption: yes
@@ -26,7 +27,7 @@ description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
 
 # Vorwort {-}
 
-Dieses Tutorial ist für Archäologen gedacht und will einen Einstieg in die einzelnen Aspekte der Arbeit mit und in die Bereiche eines geographischen Informationssystems bieten. Dabei werden immer wieder archäologische Aspekte und Fragen mit Raumbezug aufgegriffen um damit zugleich auf die Entwicklung und Bedeutung im Fach hinzuweisen. Dies erfolgt auf der Basis von Daten für die Baleareninsel Mallorca, eine Insel mit großer kulturellen Vielfalt und reichem Denkmalbestand. 
+Dieses Tutorial ist für Archäologen gedacht und will einen Einstieg in die einzelnen Aspekte der Arbeit mit und in die Bereiche eines geographischen Informationssystems bieten. Dabei werden immer wieder archäologische Aspekte und Fragen mit Raumbezug aufgegriffen, um damit zugleich auf die Entwicklung und Bedeutung im Fach hinzuweisen. Dies erfolgt auf der Basis von Daten für die Baleareninsel Mallorca, eine Insel mit großer kulturellen Vielfalt und reichem Denkmalbestand. 
 
 Die Kapitel sind einzelnen Aufgabenbereichen gewidmet und behandeln:    
 1. Die Grundlagen und verfügbare freie Software, einschließlich des downloads und installation von QGIS.     
@@ -52,7 +53,7 @@ Ein **G**eographisches **I**nformations **S**ystem (und bitte nie "... ein GIS-S
 
 Es gab und gibt aber auch deutliche Unterschiede zu den genannten IT-Bereichen. So haben GIS (pl.) im Desktop-Bereich über viele Jahre mit einzelnen Dateien (\*.shp) als Datenquelle gearbeitet und mit jedem Arbeitsschritt eine neue Datei produziert. Ein absolutes *no go* für ein Datenbanksystem. GIS [pl.] entdecken erst langsam den 2.5D oder echten 3D-Bereich, sie sind nicht wirklich mit CAD-Programmen vergleichbar. Die statistischen Optionen stehen den Möglichkeiten in R oder anderen Softwarepaketen deutlich nach. Und ein Grafikprogramm soll QGIS mit Sicherheit auch nicht sein. Dennoch, ein GIS ist für die meisten Aufgaben in der Archäologie ein unverzichtbares und oft einfach zu nutzendes Werkzeug. Und im Vergleich zu den Bereichen "Schreiben" und "Grafik" haben wir relativ viele gute freie Software zu Auswahl.
 
-Diese Einführung ist kein Ersatz für das umfangreiche [Handbuch zu QGIS im Internet](https://docs.qgis.org/3.10/de/docs/user_manual/index.html). Erläuterungen u.a. zu den diversen Werkzeug- bzw. Icon-Leisten finden Sie dort unter "[GUI](https://docs.qgis.org/3.10/de/docs/user_manual/introduction/qgis_gui.html)".
+QGIS bietet eine Menge an Dokumentation, Einführungen und Hilfe [QGIS-Dokumentation](https://qgis.org/de/docs/index.html). Die hier aufgeführten Seiten und Dokumente sind aber nicht immer vollständig übersetzt, Sie kommen um Englisch nicht drumherum. Diese Einführung ist kein Ersatz für das umfangreiche [Handbuch zu QGIS im Internet](https://docs.qgis.org/3.22/de/docs/user_manual/). Erläuterungen u.a. zu den diversen Werkzeug- bzw. Icon-Leisten finden Sie dort unter "[GUI](https://docs.qgis.org/3.22/de/docs/user_manual/introduction/qgis_gui.html)".  Wenn Sie sich auf der Website von QGIS etwas umsehen erkennen Sie die sehr große Nutzergemeinschaft und damit einen großen Fundus an Kompetenz und Hilfestellung im Internet.   
 
 | Anmerkung zum Layout in diesem Text|
 |----|
@@ -71,11 +72,11 @@ Die folgende Liste ist nicht vollständig und der Versuch, jedes Programm mit ei
 
 - [Grass](https://grass.osgeo.org/): Ein seit den Anfängen von GIS etabliertes und sich entwickelndes System, in dem vermutlich alles möglich ist.
 
-- [gvSIG](http://www.gvsig.org): Ursprünglich aus Spanien stammend (Sistema Informativo Geográphico) mit Derivaten (*fork*): [gvSIG CC](http://gvsigce.sourceforge.net), [gvSIG OAdigital](http://oadigital.net)  
+- [gvSIG](http://www.gvsig.org): Ursprünglich aus Spanien stammend (Sistema Informativo Geográphico) zu dem es noch ein Derivat gibt [gvSIG OAdigital](http://oadigital.net)  
 
-- [SAGA](www.saga-gis.or): Dieses System ist aus den Anforderungen der Geowissenschaften entstanden und bietet vor allem in diesem Bereich sehr viele Analysemöglichkeiten.
+- [SAGA](www.saga-gis.org): Dieses System ist aus den Anforderungen der Geowissenschaften entstanden und bietet vor allem in diesem Bereich sehr viele Analysemöglichkeiten.
 
-- [ArcGIS](https://www.esri.de/produkte/arcgis) von Esri: der Marktführer im Bereich der proprietären Software, nicht freie Programme sind auch von anderen Anbietern erhältlich.
+- [ArcGIS](https://www.esri.de/produkte/arcgis) von Esri: der Marktführer im Bereich der proprietären Software. Nicht freie Programme sind auch von anderen Anbietern erhältlich.
 
 \newpage
 
@@ -83,12 +84,12 @@ Die folgende Liste ist nicht vollständig und der Versuch, jedes Programm mit ei
 
 Quelle: https://qgis.org
 
-Ich wähle den Download, nicht die Netzwerkinstallation, und hier die langfristige Version, die meist stabiler läuft.
+Ich wähle den Download, nicht die Netzwerkinstallation, und hier die langfristige Version (LTR), die meist stabiler läuft.
 
 Die Installation ist einfach: Bestätigen Sie die üblichen Vorgaben und bei *Komponenten auswählen* die Vorgabe ohne Daten. 
 
 QGIS bietet eine Grundkonfiguration, dazu können viele Optionen aktiviert oder als zusätzliche Werkzeuge (Plugins) installiert werden. Wenn **Ihr Menü anders aussieht** als in meinem Beispiel, sind diese modularen Konfigurationsmöglichkeiten mit Sicherheit die Ursache. Die Einstellungen zu Optionen und Plugins werden im Nutzerprofil eingetragen und bei Updates der Software übertragen, es wird also leicht vergessen, ob etwas Standard ist oder nur schon Gewohnheit. <br>
-Es wird viel installiert, u.a. auch Teile von Grass und SAGA. Der Grund ist einfach, es wird auf die jeweils gebotenen Werkzeuge zugegriffen, denn "das Rad zweimal zu erfinden" macht keinen Sinn. Dennoch ist vieles doppelt vorhanden und mit leichten Variationen. Wenn Sie nachvollziehbar handeln wollen, notieren Sie bei Bedarf bitte Paket, Version und natürlich die verwendeten Parameter und Werte.
+Es wird viel installiert, u.a. auch Teile von Grass und SAGA. Der Grund ist einfach, es wird auf die jeweils gebotenen Werkzeuge zugegriffen, denn "das Rad zweimal zu erfinden" macht keinen Sinn. Dennoch ist Vieles doppelt vorhanden und mit leichten Variationen. Wenn Sie nachvollziehbar handeln wollen, notieren Sie bei Bedarf bitte Paket, Version und natürlich die verwendeten Parameter und Werte.
 
 ## QGIS Grundlegendes
 
@@ -135,11 +136,11 @@ Zwei wichtige Eigenschaften von Karten sind:
 - Winkeltreu: Dies bedeutet, die Himmelsrichtungen und Winkel werden exakt wiedergegeben. Vom Nordpol 1 km nach Süden laufen, 1 km nach Osten (90°) laufen und 1 km nach Norden laufen (90°) führt (auf der Karte) nicht wieder zum Ausgangspunkt.
 - Abstandstreu: Ist der Gegenentwurf, die winkel werden nicht getreu dargestellt, dafür aber die Abstände.
 
-Die meisten unserer Karten sind eher abstandstreu wodurch es zu geneigten Längengraden kommt (z.B. [Diercke Deutschlandkarte](https://diercke.westermann.de/content/deutschland-verwaltungsgliederung-978-3-14-100850-0-24-1-1)). Seekarten sind wegen der Navigation stets  winkeltreu. An den Kartenschnitten hierdurch zu Sprüngen, versuchen Sie also nicht, mehrere Karten aneinanderzukleben. Analog kommt es an den Übergängen zwischen Projektionen zu Veränderungen die es zu bedenken gilt. Vor allem gilt eine Projektionsanweisung auch nur im definierten Bereich, außerhalb werden die Verzerrungen immer größer.
+Die meisten unserer Karten sind eher abstandstreu wodurch es zu geneigten Längengraden kommt (z.B. [Diercke Deutschlandkarte](https://diercke.westermann.de/content/deutschland-verwaltungsgliederung-978-3-14-100850-0-24-1-1)). Seekarten sind wegen der Navigation stets  winkeltreu. An den Kartenschnitten kommt es hierdurch hierdurch zu Sprüngen und Sie müssen mit einem Zirkel abgegriffene Distanzen am jeweiligen Kartenrand bestimmen. Analog kommt es an den Übergängen zwischen Projektionen zu Veränderungen, die es zu bedenken gilt. Vor allem gilt eine Projektionsanweisung auch nur im definierten Bereich, außerhalb werden die Verzerrungen immer größer.
 
 Ihr Arbeitsgebiet entscheidet also über das zu wählende KBS. Mit Grad, z.B. WGS84, sind Sie weltweit gut aufgestellt. Bei der Kartendarstellung für Schleswig-Holstein in Grad ergibt sich aber für viele Betrachter eine ungewohnte Perspektive. Die Datenerhebung und die Darstellung sind aber zweierlei und natürlich können Sie mit Gradangaben arbeiten und diese für die Darstellung in ein karthesisches System projizieren. Was bei Punkten gut und schnell möglich ist, kann bei der Arbeit mit Flächen, vor allem bei Rasterdaten aber schnell zu Problemen führen. Konstantes Umprojizieren bei einem heterogenen Datenbestand ist eher hinderlich. Insofern empfiehlt sich bei räumlich kleineren Projekten ein angemessenes,  projiziertes und möglichst einheitlich angewendetes KBS. 
 
 Wer die Wahl hat hat die Qual. <br> 
-Mit Blick auf die späteren Beispieldaten folgende Info: In Spanien wurde früh auf das Elipsoid ED50 (European Datum 1950) umgestellt und die Abweichung zu dem aktuell üblichen ETRS89 sind immerhin gut 190 m, obwohl in beiden Fällen "UTM" als projizierte Darstellung gewählt wurde. Die deutsche Teilung hat ähnliche Problem mit dem Elipsoid als Modell der Erdoberfläche produziert, die bis heute nachwirken (Bessel/Rauenberg im Westen vs Krassowsky/Pulkovo im Osten). Sie merken KBS sind eine recht komplexe Angelegenheit. Mit den **EPSG-Codes** ist inzwischen wenigstens eine einheitliche Nomenklatur gegeben, die auch im Internet mit Informationen hinterlegt ist. Zu dem eigentlichen Datenbestand von [EPSG](https://epsg.org) gibt es diverse Online-Websiten, traditionell ist [SpatialReference.org](https://www.spatialreference.org) etwas neuer mit anderen Optionen [EPSG.io](https://epsg.io/). 
+Mit Blick auf die späteren Beispieldaten folgende Info: In Spanien wurde früh auf das Elipsoid ED50 (European Datum 1950) umgestellt und die Abweichung zu dem aktuell üblichen ETRS89 sind immerhin gut 190 m, obwohl in beiden Fällen "UTM" als projizierte Darstellung gewählt wurde. Die deutsche Teilung hat ähnliche Problem mit dem Elipsoid als Modell der Erdoberfläche produziert, die bis heute nachwirken (Bessel/Rauenberg im Westen vs Krassowsky/Pulkovo im Osten). Sie merken KBS sind eine recht komplexe Angelegenheit. Mit den **EPSG-Codes** ist inzwischen wenigstens eine einheitliche Nomenklatur gegeben, die auch im Internet mit Informationen hinterlegt ist. Zu dem eigentlichen Datenbestand von [EPSG](https://epsg.org) gibt es diverse Online-Websiten, traditionell ist [SpatialReference.org](https://www.spatialreference.org) etwas neuer mit anderen Optionen ist [EPSG.io](https://epsg.io/). 
 
-![Karte von Menorca im Museum von Mahon mit zwei Koordinatensystemen: Längengrad bezogen auf Paris und Cadiz.](./images/00_MenorcaMeridian.JPG)
+![Karte von Menorca im Museum von Maó mit vier Koordinatensystemen: Längengrad bezogen auf Paris, Teneriffa, Cadiz und Karthago](./images/00_MenorcaMeridian.JPG)

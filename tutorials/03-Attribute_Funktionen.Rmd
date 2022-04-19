@@ -10,6 +10,7 @@ header-includes:
   \renewcommand{\tablename}{Tab.}
 bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
+papersize: a4
 output:
   pdf_document:
     fig_caption: yes
@@ -40,7 +41,7 @@ Wir können einzelne oder mehrere Objekte durch Mausklick auswählen und auf die
 
 - "Gelbes Viereck mit 'E'"
 
-Dieses Icon öffnet die filterbasierte Auswahl. Das folgende Fenster, der **Ausdrucksgenerator**, wird noch oft auftauchen und ist äußerst hilfreich. Wir bleiben vorerst auf dem Reiter "Ausdruck". In der linken Spalte können wir Ausdrücke erstellen, wichtige Bausteine wie [=] etc. sehen Sie zur Auswahl direkt darüber. In der mittleren Spalte finden Sie eine Liste diverser optionaler Bestandteile eines Ausdrucks: viele Funktionen, Attribute und Objekteigenschaften. Die Rechte Spalte bietet eine kontextbezogene Hilfe. Ist ihr Ausdruck verständlich (nicht zwingen richtig nach ihrem Verständnis) sehen Sie links unten eine Voransicht.
+Dieses Icon öffnet die filterbasierte Auswahl. Das folgende Fenster, der **Ausdrucksgenerator**, wird noch oft auftauchen und ist äußerst hilfreich. Wir bleiben vorerst auf dem Reiter "Ausdruck". In der linken Spalte können wir Ausdrücke erstellen, wichtige Bausteine wie [=] etc. sehen Sie zur Auswahl direkt darunter. In der mittleren Spalte finden Sie eine Liste diverser optionaler Bestandteile eines Ausdrucks: viele Funktionen, Attribute und Objekteigenschaften. Die Rechte Spalte bietet eine kontextbezogene Hilfe. Ist ihr Ausdruck verständlich (nicht zwingen richtig nach ihrem Verständnis) sehen Sie links unten eine Voransicht.
 
 Klappen Sie in der mittleren Spalte "Felder und Werte" auf, um alle Attribute (Spalten) zu sehen, wählen Sie Tipo_yacim[iento] (Fundplatztyp) 1. mit Doppelklick in den Audruck übernehmen, 2. [Alle eindeutigen]anklicken und 3. in der Liste bis zu "Talaiot" scrollen. Sie sehen zahlreiche Variationen bei denen "Talaiot" stets gleich geschrieben ist. Ergänzen Sie den Ausdruck zu `"Tipo_yacim" like '%Talaiot%'`. Beachten Sie die differenzierte Verwendung von " und ', ebenso das % als sog. *wildcard*. Klicken Sie auf [Objekte wählen], beachten Sie zuvor die optionalen Variationen der *drop-down* Liste des Schalters. Dann [Schließen] Sie das Fenster. 
 
@@ -52,7 +53,7 @@ Formular Filter. Der formularbasierte Filter erzeugt zugleich eine Darstellung d
 
 - Gelbe horizontale Balken: Alle Objekte auswählen
 - Gelbes und transparentes Dreieck: Auswahl umkehren
-- Gelbes und rotes Viereck: Auswahl löschen (tun Sie dies jetzt bitte).
+- Gelbes und rotes Viereck: Auswahl löschen (tun Sie dies jetzt bitte) und wählen sie links unten in der Attributtabelle "Alle Objekte anzeigen".
 
 | Annmerkung |
 |----|
