@@ -79,14 +79,14 @@ values (0,34040707001,"Alaró",4112,4588,4879,5317,5877,5838,5982,6044,6061,4323
 ```
 
 
-````{sql 'Intro', connection=t1db, tab.cap = 'Einfache Abfrage für ausgewählte Felder einer Tabelle, die ersten  Einträge.'}
+```{sql 'Intro', connection=t1db, tab.cap = 'Einfache Abfrage für ausgewählte Felder einer Tabelle, die ersten  Einträge.'}
 select codigo, municipio, zensus_1842, zensus_1900, zensus_1950,  zensus_2011 
 from 'pop_balears' limit 6;
 ```
 
 ## Vorbemerkung
 
-In dieser Übung zu GIS mit QGIS sind (mir) zwei besonders störend Probleme aufgefallen:
+In dieser Übung zu GIS mit QGIS sind (mir) zwei besonders störende Probleme aufgefallen:
 
 - Aus Abfragen generierte Sichten oder Darstellungen von Daten müssen als neue Datei mit redundanten Daten gespeichert werden, sonst gehen diese Layer verloren und
 - die Datentabellen können nur als Ganzes kopiert, nicht aber mit ausgewählten Attributen kopiert und somit schnell anderweitig verwendet werden.
