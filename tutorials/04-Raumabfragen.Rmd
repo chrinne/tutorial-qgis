@@ -106,13 +106,9 @@ Menorca |39178|4,1|2,7|5,7|2,9|0,3|-0,6|16,1|10,9|15,0|15,9|35,7
 
 Tabelle zur Bevölkerungsentwicklung. Einwohner für 1900 und nachfolgende Steigerung (%) zum jeweils vorangehenden Zensus. Quelle der Rohdaten: [INE](https://www.ine.es).
 
-<<<<<<< HEAD
 Anmerkung: Im Datenbestand der Übung finden Sie zwei Dateien, pop_balears.csv und pop_balears.txt. Letztere beinhaltet angaben zu Quelle und die ursprünglichen Spaltennamen. Diese Namen sind nur das Jahr des Zensus und führen bei der späteren Arbeit zu irritierenden Fehlern. Das war ein Fallstrick, den ich Ihnen hier erspare.
 
 Stellen Sie eine Verknüpfung (Join) zwischen den Gemeinden und der importierten Tabelle der Bevölkerungszahlen (pop_balears.csv) her. Öffnen Sie die Eigenschaften für den **Layer "Gemeinden** mit angehängten Bevölkerungszahlen. Ziel ist die Darstellung des jüngsten Zensus (2011) als abgestufter Farbverlauf je Polygon mit 4 Klassen. Für die **Symbologie** starte ich wie im vorigen Beispiel  mit den Quantilen, kontrolliere das Histogramm und bilde dann folgende Klassen: bis 7500, bis 20000, bis 54000, bis 403000. Ich kontrolliere erneut das Histogramm und erhöhe Anzahl der Balken (Histogrammkästchen) auf 100. Um die niedrigste Klasse gegen die Gemeinden ohne Werte abzugrenzen, erhalten diese einen schwachen Farbwert (10%).
-=======
-Öffnen Sie die Eigenschaften für den **Layer "Gemeinden** mit angehängten Bevölkerungszahlen. Ziel ist die Darstellung des jüngsten Zensus (2011) als abgestufter Farbverlauf je Polygon mit 4 Klassen. Für die **Symbologie** starte ich wie im vorigen Beispiel  mit den Quantilen, kontrolliere das Histogramm und bilde dann folgende Klassen: bis 7500, bis 25000, bis 54000, bis 403000. Ich kontrolliere erneut das Histogramm und erhöhe Anzahl der Balken (Histogrammkästchen) auf 100. Um die niedrigste Klasse gegen die Gemeinden ohne Werte abzugrenzen, erhalten diese einen schwachen Farbwert (10%).
->>>>>>> 2b8709835ba0afaa74f2a95f5c76903eea46089b
 
 Die **Beschriftung** aller Gemeinden in der Karte kann die Darstellung überfluten, deshalb will ich nur die größere Hälfte beschriften. Wählen Sie bei Beschriftung statt "keine Beschriftung" "Einzelne Beschriftung" und öffnen bei Wert mit [E] den Ausdruckseditor. Dort ergänzen Sie folgenden Ausdruck:
 
