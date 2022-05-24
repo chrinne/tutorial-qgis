@@ -184,8 +184,8 @@ Um erfolgreich weiterzuarbeiten löschen Sie bitte "pop-balears" über das Konte
 
 ```{sql 'SQL Abfrage mit where', connection=t1db, message=FALSE, tab.cap = 'Abfrage für einzelne Attribute der Tabelle, Bedingung: Gemeindename beginnt mit A.'}
 select codigo, municipio, zensus_1842, zensus_1900, zensus_1950,  zensus_2011 
-from 'pop_balears' 
-where municipio like "A%";
+from pop_balears 
+where municipio like 'A%';
 ```
 
 Und zum Abschluss:  
@@ -238,7 +238,7 @@ Importieren Sie nacheinander die shp-Dateien der Verwaltungsgrenzen (autonomias,
 mallorca-sites: Table name: sites, GeomColumn name: geom, SRID: 25831, Charset Encoding: UTF-8.
 
 Der Import von Text-Tabellen ist leider nicht so komfortabel wie in QGIS, z.B. bei zu überspringende Zeilen am Dateianfang. Nutzen Sie deshalb die neue Datei "pop_balears.csv" für den Import: Table Name: pop_balears, First line ....: Haken setzen, Text separator quotes: None, Column separator: Comma, Charset encoding: UTF-8 und [OK]. 
-Falls Sie möchten, können Sie die Abfragen von oben wiederholen, achten Sie aber auf die veränderten Namen: ```select municipio, zensus_1842, zensus_1930 from pop_balears```. 
+Falls Sie möchten, können Sie die Abfragen von oben wiederholen, achten Sie aber auf die veränderten Namen: ```select municipio, zensus_1842, zensus_1930 from pop_balears```.
 
 Sollten die Zahlen von "zensus_1842" linksbündig stehen, ist diese Spalte wegen der <Leerzeichen> bei fehlenden Daten als Text importiert worden. Die schnellste Variante: ändern Sie die CSV-Datei und importieren Sie die Daten nach dem löschen der alten Tabelle (Kontextmenü Maintenance) erneut.
 
