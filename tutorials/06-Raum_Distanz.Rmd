@@ -34,7 +34,7 @@ t1db<-dbConnect(RSQLite::SQLite(), dbname = ":memory:")
 
 ## Einleitung
 
-Analysen zu archäologischen Fundplätzen und ihrem Umfeld hat es auch vor der *Computer-Revolution* in der Archäologie in den 1980ern und den modernen GIS, ab den 1990ern, gegeben. Ein schönes Beispiel für klassische Techniken der Umfeldanalyse ist die Arbeit von Linke  [@linkeFruhesBauerntumUnd1976a]. Die Ursprünge in unserem Fach liegen in der **Siedlungsarchäologie**, in der Fundstellen, das Umfeld und Informationen zur Vegetation oder das Klima verknüpft und möglichst quantitativ in ihrer Bedingtheit analysiert werden. Hier gibt es eine umfangreiche Literatur, von der ich nur eines nennen will [@jankuhnEinfuhrungSiedlungsarchaologie1977a]. Die uns heute geläufigen theoretischen Grundlagen (zum Beispiel zur Zentralität), die Methoden und auch die Technik kommen aber aus der Geographie, insbesondere der Kultur- und Sozialgeographie [@christallerZentralenOrteSuddeutschland1933a; @haggettEinfuhrungKulturUnd1973a]. Mit Blick auf Raum und Distanz möchte ich aus der "Findungsphase" im Fach mit Bezug auf das Thema "Raum um die Fundplätze" auf Arbeiten von Zimmermann verweisen [@zimmermannWieVieleBandkeramiker2003a; @zimmermannLandschaftsarchaologieIIUberlegungen2004a] und für Analysen auf der Basis der Distanz auf etwas ältere Arbeiten [@siegmundTriangulationAlsMethode1992a; @zimmermannTesselierungUndTriangulation1992a]. Die Verfügbarkeit von Hard- und Software hat zu einem großen Spektrum diverser Interpolationsverfahren geführt, die Punktinformationen in die Fläche übertragen. Eine gute Zusammenfassungen zu diesem Themenkomplex  finden Sie bei  Herzog [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Daneben gibt es zahlreiche spezielle Entwicklungen und Phasen spezifischer Fragestellungen im Fach (z.B. **Aktivitätsareale** , **Archäoprognose**, **Least cost**), auf die ich hier nur hinweisen möchte [@kunowArchaoprognoseBrandenburgII2007; @czieslaSiedlungsdynamikAufSteinzeitlichen1990; @herzogBerechnungOptimalenWegen2013a]. Nach einer Etablierung der Technik  im Fach ist meiner Ansicht nach aktuell wieder eine Beschleunigung zu erkennen, die durch bessere technischen Möglichkeiten, neue Methoden der Informationsverarbeitung und mit der Programmiersprache R der Archäologie neue neue Perspektiven eröffnet [@nakoinzModellingHumanBehaviour2016].  Dieser extrem verkürzte Abriss zu GIS in der Archäologie blendet zahlreiche Fragestellungen und vor allem die internationale, oft englischsprachige Literatur aus. Letztere finden Sie aber mit etwas Routine und spezifischen Stichworten in den Repositorien der Fachliteratur.
+Analysen zu archäologischen Fundplätzen und ihrem Umfeld hat es auch vor der *Computer-Revolution* in der Archäologie in den 1980ern und den modernen GIS, ab den 1990ern, gegeben. Ein schönes Beispiel für klassische Techniken der Umfeldanalyse ist die Arbeit von Linke  [@linkeFruhesBauerntumUnd1976a]. Die Ursprünge in unserem Fach liegen in der **Siedlungsarchäologie**, in der Fundstellen, das Umfeld und Informationen zur Vegetation oder das Klima verknüpft und möglichst quantitativ in ihrer Bedingtheit analysiert werden. Hier gibt es eine umfangreiche Literatur, von der ich nur eines nennen will [@jankuhnEinfuhrungSiedlungsarchaologie1977a]. Die uns heute geläufigen theoretischen Grundlagen (zum Beispiel zur Zentralität), die Methoden und auch die Technik kommen aber aus der Geographie, insbesondere der Kultur- und Sozialgeographie [@christallerZentralenOrteSuddeutschland1933a; @haggettEinfuhrungKulturUnd1973a]. Mit Blick auf Raum und Distanz möchte ich aus der "Findungsphase" im Fach mit Bezug auf das Thema "Raum um die Fundplätze" auf Arbeiten von Zimmermann verweisen [@zimmermannWieVieleBandkeramiker2003a; @zimmermannLandschaftsarchaologieIIUberlegungen2004a] und für Analysen auf der Basis der Distanz auf etwas ältere Arbeiten [@siegmundTriangulationAlsMethode1992a; @zimmermannTesselierungUndTriangulation1992a]. Die Verfügbarkeit von Hard- und Software hat zu einem großen Spektrum diverser Interpolationsverfahren geführt, die Punktinformationen in die Fläche übertragen. Eine gute Zusammenfassungen zu diesem Themenkomplex  finden Sie bei  Herzog [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Daneben gibt es zahlreiche spezielle Entwicklungen und Phasen spezifischer Fragestellungen im Fach (z.B. **Aktivitätsareale** , **Archäoprognose**, **Least cost**), auf die ich hier nur hinweisen möchte [@kunowArchaoprognoseBrandenburgII2007; @czieslaSiedlungsdynamikAufSteinzeitlichen1990; @herzogBerechnungOptimalenWegen2013a]. Nach einer Etablierung der Technik  im Fach ist meiner Ansicht nach aktuell wieder eine Beschleunigung zu erkennen, die durch bessere technischen Möglichkeiten, neue Methoden der Informationsverarbeitung und mit der Programmiersprache R der Archäologie neue Perspektiven eröffnet [@nakoinzModellingHumanBehaviour2016].  Dieser extrem verkürzte Abriss zu GIS in der Archäologie blendet zahlreiche Fragestellungen und vor allem die internationale, oft englischsprachige Literatur aus. Letztere finden Sie aber mit etwas Routine und spezifischen Stichworten in den Repositorien der Fachliteratur.
 
 ## Umkreisanalyse
 
@@ -84,38 +84,38 @@ Es gibt hier zahlreiche Werte, die einen Hinweis auf die Reliefenergie geben, vo
   - Bereich: Die Differenz zwischen dem kleinsten und größten Wert, wobei ein einzelner Gipfel das Ergebnis deutlich  beeinflusst (z.B. der Kilimandscharo). In so einem Fall liegen der Mittelwert und der Median weiter auseinander.
 - Standardabweichung: Gibt es viele Hügel und Täler sind viele Werte über ein breites Mittelfeld verteilt, die Standardabweichung ist demnach groß bzw. breit.
 
-Wollten wir uns einen Überblick über ein Attribut, also eine der zuvor erläuterten Zahlen, von allen Umkreisen verschaffen, können wir aus dem Menü mit "Vektor -> Analyse-Werkzeuge -> Grundstatistik .." grundlegende statistische Angaben für das jeweils gewählte Attribut abfragen. Das Ergebnis wird HTML-Datein ausgegeben zu der Sie einen Link dem eigenen Fenster "Ergebnisanzeige" finden. Hier begegnen uns dieselbe Werte, dazu einige weitere Angaben: 
+Wollten wir uns einen Überblick über ein Attribut, also eine der zuvor erläuterten Zahlen, von allen Umkreisen verschaffen, können wir aus dem Menü mit "Vektor -> Analyse-Werkzeuge -> Grundstatistik .." grundlegende statistische Angaben für das jeweils gewählte Attribut abfragen. Das Ergebnis wird auf Englisch im aktiven Fenster unter dem Reiter "Protokoll" ausgegeben, dazu auf Deutsch in einer hier verlinkten HTML-Datei. Hier begegnen uns wie zuvor die "üblichen Verdächtigen", dazu einige weitere Angaben: 
   
-- Anzahl: Anzahl der betroffenen Datensätze
-- Eindeutige Werte: Anzahl der unterschiedlichen Werte
-- Fehlende Leerwerte (NULL): Anzahl von Zeilen ohne Information
-- Minimalwert: der kleinste Wert in einer Zeile
-- Maximalwert: der größte Wert in einer Zeile
-- Bereich: Differenz zwischen den beiden vorgenannten Min. und Max
-- Summe: Summe der Werte
-- Mittelwert: der Durchschnitt der gültigen Werte
-- Median: der Wert in der Mitte der aufsteigend sortierten Werte
-- Standardabweichung: der Durchschnitt der Differenz jedes Wertes zum  Mittelwert aller Werte
-- Variationskoeffizient: Standardabweichung dividiert durch den Mittelwert. Durch diese Normierung ist dieses Maß unabhängig von der Größe der Werte.  Ist der Wert größer als 1 ist die Streuung größer als der Mittelwert.
-- Minderheit: am seltensten vorkommender Wert 
-- Mehrheit: am häufigsten auftretender Wert 
-- Erstes Viertel: der 25%-Grenzwert der aufsteigend sortierten Werte. 
-- Drittes Viertel: der 75%-Grenzwert der aufsteigend sortierten Werte.
+- Anzahl (count): Anzahl der betroffenen Datensätze
+- Eindeutige Werte (unique): Anzahl der unterschiedlichen Werte
+- Fehlende Leerwerte (NULL) (empty): Anzahl von Zeilen ohne Information
+- Minimalwert (min): der kleinste Wert in einer Zeile
+- Maximalwert (max): der größte Wert in einer Zeile
+- Bereich (range): Differenz zwischen den beiden vorgenannten Min. und Max
+- Summe (sum): Summe der Werte
+- Mittelwert (mean): der Durchschnitt der gültigen Werte
+- Median (median): der Wert in der Mitte der aufsteigend sortierten Werte
+- Standardabweichung (std_dev): der Durchschnitt der Differenz jedes Wertes zum  Mittelwert aller Werte
+- Variationskoeffizient (cv): Standardabweichung dividiert durch den Mittelwert. Durch diese Normierung ist dieses Maß unabhängig von der Größe der Werte.  Ist der Wert größer als 1 ist die Streuung größer als der Mittelwert.
+- Minderheit (minority): am seltensten vorkommender Wert 
+- Mehrheit (majority): am häufigsten auftretender Wert 
+- Erstes Viertel (firstquartile): der 25%-Grenzwert der aufsteigend sortierten Werte. 
+- Drittes Viertel (thirdquartile): der 75%-Grenzwert der aufsteigend sortierten Werte.
 - Interquartilabstand (IQR): Abstand zwischen dem 2. und dem 3. Quartil (Streuungsmaß).
 
 #### Visualisierung & Überblick
 
-Kartieren Sie einige der vorgenannten Werte (Bereich, Standardabweichung, Variationskoeffizient und Interquartilabstand). Für die Werte von "Bereich" (range) wähle ich die Farbskala RdGy und fünf Klassen mit gleicher Anzahl (Quantile). Es verwundert nicht, dass die sehr hohen Werte in der Tramuntana zu finden sind und die niedrigen Werte in den zentralen Ebenen von Mallorca. 
+Kartieren Sie einige der vorgenannten Werte (Bereich, Standardabweichung, Variationskoeffizient und Interquartilabstand). Für die Werte von "Bereich" (range) wähle ich die Farbskala "Spectral" und fünf Klassen mit gleicher Anzahl (Quantile). Es verwundert nicht, dass die sehr hohen Werte in der Tramuntana zu finden sind und die niedrigen Werte in den zentralen Ebenen von Mallorca. 
 
-Der Wechsel auf die Standardabweichung bei Beibehaltung der grafischen Parameter verändert das Bild nur ein wenig, am ehesten noch im mittleren Höhenbereich. Das Problem sind die Klassengrenzen. Betrachten Sie die Histogramme für beide Attribute und verschieben Sie die Grenzwerte nach ihrer Interpretation der "Gipfel" und "Täler" in der Verteilung. Mit Blick auf die vorangehende Erläuterung scheint Folgendes sichtbar: einzelne Gipfel verzerren das Bild. Aus diesem Grund tendiere ich zur Standardabweichung als Indikator einer allgemeine Reliefenergie, die allgemein üblichen Maximaldifferenz scheint mir für unsere Frage weniger geeignet. 
+Der Wechsel auf die Werte der Standardabweichung (stdev) bei Beibehaltung der grafischen Parameter verändert das Bild nur ein wenig, am ehesten noch im mittleren Höhenbereich. Das Problem sind die Klassengrenzen. Betrachten Sie die Histogramme für beide Attribute und verschieben Sie die Grenzwerte nach ihrer Interpretation der "Gipfel" und "Täler" in der Verteilung. Mit Blick auf die vorangehende Erläuterung scheint Folgendes sichtbar: einzelne Gipfel verzerren das Bild. Aus diesem Grund tendiere ich zur Standardabweichung als Indikator einer allgemeine Reliefenergie, die allgemein üblichen Maximaldifferenz scheint mir für unsere Frage weniger geeignet. 
 
 ### Exponiert oder im Tal?
 
-Ich vergleiche als erstes den Höhenwert der Position des Taliot mit dem Median des Umfeldes (z_m - median). Auch für diesen Wert erstelle ich eine abgestufte Symbologie mit fünf Klassen, kontrolliere direkt das Histogramm und verschiebe die Grenzwerte entsprechend den erkennbaren Abschnitten der Verteilung. Die daraus resultierende Karte zeigt keine räumliche Differenzierung, lediglich die Talaiots im Mittelfeld (+/- 6 m zum Median) liegen sicher aufgrund der fehlenden Reliefenergie in den Ebenen.
+Ich vergleiche als erstes den Höhenwert der Position des Taliot mit dem Median des Umfeldes (z_m - s_median). Auch für diesen Wert erstelle ich eine abgestufte Symbologie mit fünf Klassen, kontrolliere direkt das Histogramm und verschiebe die Grenzwerte entsprechend den erkennbaren Abschnitten der Verteilung. Die daraus resultierende Karte zeigt keine räumliche Differenzierung, lediglich die Talaiots im Mittelfeld (+/- 6 m zum Median) liegen sicher aufgrund der fehlenden Reliefenergie in den Ebenen.
 
 ![Histogramm der Differenz von der Lage des Talaiot zum Median des Umfeld (r = 1 km)](.\images\06_z_m_minus_median.png)
 
-Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich behelfe mir, indem ich die Standardabweichung zum Mittelwert als zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen" Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir uns die weiteren Eigenschaften ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
+Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich behelfe mir, indem ich die Standardabweichung zum Mittelwert als zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen" Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir zuerst das statistische Ergebnis zur Lage im Gelände individuell prüfen (so viele sind es nicht) und uns dann die weiteren Eigenschaften dieser Talaiots ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
   
   ![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km)](.\images\06_z_m_minus_mean_stdev.png)
 
@@ -129,7 +129,7 @@ Leider ist es nicht möglich, dynamische Geometrien in einer *spatial view* zu v
 create table talaiots_1km as
 SELECT t.pk_uid, t.nr, t.nombre_yac, t.z_m, 
 ST_Buffer(t.geom, 1000) as geom
-FROM "talaiots" as t
+FROM "talaiots" as t;
 ```
 
 Im Ergebnis haben Sie eine Tabelle mit einer Geometriespalte, die aber noch nicht als Geometrie in der Datenbank registriert ist. Dies ist in der SpatialLite GUI aber sehr einfach möglich. Öffnen in der  Tabelle links im Hierarchiebaum das Kontextmenü zur Geometriespalte "r1km" und wählen Sie "recover geometry column". Im folgenden Fenster müssen Sie die Parameter der Geometrie angeben: SRID (EPSG-Code), Geometrietyp und Dimension. Für den soeben erstellten Puffer sind dies: 25831, POLYGON, XY. Danach stehen die Daten als Geometrietabelle zur Verfügung.
@@ -145,18 +145,28 @@ Führen Sie dazu die folgenden Abfragen einzeln aus.
 select st_astext(geom) from talaiots_1km limit 1;
 select geometrytype(geom) from talaiots_1km limit 1;
 select coorddimension(geom) from talaiots_1km limit 1;
-select srid(geom) from talaiots_1km limit 1
+select srid(geom) from talaiots_1km limit 1;
 ```
 
-Führen Sie nachfolgend die Zonenstatistik in QGIS erneut aus.
+Oder Sie wählen aus dem Kontextmenü zum Feld "geom" die Option "Check genoetries", wodurch folgende etwas komplexere Abfrage ausgeführt wird:
+
+```{sql 'get geometry info in SpatiaLite', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+SELECT Count(*), GeometryType("geom"), Srid("geom"), CoordDimension("geom")
+FROM "talaiots_1km"
+GROUP BY 2, 3, 4
+```
+
+Das ist soweit nachvollziehbar, interessant ist die Abkürzung bei der Gruppierung durch den Zähler für die entsprechenden Spalten der Abfrage. 
+
+Schauen Sie sich die Rundung der Puffer bei einem sehr kleinen Maßstab an und vergleichen Sie diese mit den bereits erstellten. Führen Sie nachfolgend die Zonenstatistik in QGIS erneut aus.
 
 ## Thiessen-Polygon, Voronoi-Diagram und Interpolation
 
-Thiessen-Polygone (alternativ Delaunay-Triangulation) sind eine Dreiecksvermaschung, bei der innerhalb des Umkreises zum gebildeten Dreieck kein weiterer Punkt liegt. Die Fundplätze bilden die Knoten (Punkte) der Kanten (Linien). Um die Fundplätze in das Zentrum einer Fläche zu bringen und so die Informationen des Punktes in die umliegende Fläche zu übertragen, wird auf jede Kante die Mittelsenkrechte gebildet und bis zum Schnittpunkt mit einer anderen Mitttelsenkrechten verlängert. Es entsteht ein dualer Graph, der durch erneutes Bilden der Mittelsenkrechten wieder zum Ausgangsmodell führt.
+Thiessen-Polygone (alternativ Delaunay-Triangulation) sind eine Dreiecksvermaschung, bei der innerhalb des Umkreises zum gebildeten Dreieck kein weiterer Punkt liegt. Die Fundplätze bilden die Knoten (Punkte) der Kanten (Linien). Um die Fundplätze in das Zentrum einer Fläche zu bringen und so die Informationen des Punktes in die umliegende Fläche zu übertragen, wird auf jeder Kante die Mittelsenkrechte gebildet und bis zum Schnittpunkt mit einer anderen Mitttelsenkrechten verlängert. Es entsteht ein dualer Graph, der durch erneutes Bilden der Mittelsenkrechten wieder zum Ausgangsmodell führt.
 
 Bei diesem Verfahren gibt es methodische Probleme, zu denen noch spezifische der Archäologie zu ergänzen sind. Das grundlegende archäologische Problem gleich vorweg: Im Unterschied zu strategisch  verteilten (Zufall, Raster etc) und erhobenen Messwerten in der Geographie sind archäologische Nachweis-Daten durch viele Faktoren beeinflusst: Aktivität von Ehrenamtlichen, Erhaltung, Vegetation, Landschaftsnutzung etc. Wir müssen also mit dem Fehlen relevanter Informationen rechnen.
 
-Ein methodisches Problem der Triangulation ist der Randeffekt des Netzes. Da hier die jeweiligen Nachbarn fehlen, werden besonders lange Strecken gebildet. Auch ignoriert die geradlinige Verbindung zwischen den Punkten weitere beeinflussende Faktoren der unterstellten räumlichen Nähe: Gebirgszüge, Steilhänge, Flüsse etc. Wird in dem abgeleitete Voronoi-Diagram mit dem Punkt im Zentrum  die Information unverändert auf die Fläche übertragen, entstehen an den Grenzen zum benachbarten Feld Sprünge in den Information statt fließende Übergänge. Aufgrund dieser Nachteile sind zahlreiche weitere Interpolationsverfahren entwickelt worden. Ein weit verbreitetes ist das *inverse distance weighting* (**IDW**). Die hierbei gewählte Gewichtung muss angemessen sein und kann durch eine Potenz variiert werden. Das in der Geographie ebenfalls gerne genutzte *kriging*  bietet noch mehr Justierungsmöglichkeiten, wodurch sich z.B. bei Höhenmodellen sehr gute Approximationen an die Wirklichkeit erzielen lassen. Diese letztgenannten Berechnungen werden nicht nur rechnerisch komplexer, sondern vor allem im Rahmen einer auf archäologischen Argumenten beruhenden Modellbildung schwieriger begründbar. Für die Anwendung in der Archäologie lesen Sie hierzu zum Einstieg bitte [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Jüngere Darstellung mit komplexen, interdisziplinär ausgearbeiteten und begründeten Modellierungen von Informationen in die Fläche finden Sie u.a. bei Daniel Knitter [@nakoinzRegressionInterpolation2016; @knitterLandUsePatterns2019].
+Ein methodisches Problem der Triangulation ist der Randeffekt des Netzes. Da hier die jeweiligen Nachbarn fehlen, werden besonders lange Strecken gebildet. Auch ignoriert die geradlinige Verbindung zwischen den Punkten weitere beeinflussende Faktoren der unterstellten räumlichen Nähe: Gebirgszüge, Steilhänge, Flüsse etc. Wird in dem abgeleitete Voronoi-Diagram mit dem Punkt im Zentrum  die Information unverändert vom Punkt auf die Fläche übertragen, entstehen an den Grenzen zu den benachbarten Feldern Sprünge in den Information statt fließender Übergänge. Aufgrund dieser Nachteile sind zahlreiche weitere Interpolationsverfahren entwickelt worden. Ein weit verbreitetes ist das *inverse distance weighting* (**IDW**). Die hierbei gewählte Gewichtung muss angemessen sein und kann durch eine Potenz variiert werden. Das in der Geographie ebenfalls gerne genutzte *kriging*  bietet noch mehr Justierungsmöglichkeiten, wodurch sich z.B. bei Höhenmodellen sehr gute Approximationen an die Wirklichkeit erzielen lassen. Diese letztgenannten Berechnungen werden nicht nur rechnerisch komplexer, sondern vor allem im Rahmen einer auf archäologischen Argumenten beruhenden Modellbildung schwieriger begründbar. Für die Anwendung in der Archäologie lesen Sie hierzu zum Einstieg bitte [@herzogSimulationsexperimenteZurSiedlungsdichte2007a]. Jüngere Darstellung mit komplexen, interdisziplinär ausgearbeiteten und begründeten Modellierungen von Informationen in die Fläche finden Sie u.a. bei Daniel Knitter [@nakoinzRegressionInterpolation2016; @knitterLandUsePatterns2019].
 
 ## Thiessen-Polygone und triangulierte Distanzen
 
@@ -173,15 +183,15 @@ Der Weg ist mehrstufig. Wenn Sie ausschließlich in QGIS arbeiten wollen, müsse
 5. Ergänzen Sie mit dem Feldrechner eine Spalte für die Linienlänge ($length).
 6. Exportieren Sie alle Längenmaße für eine statistische Analyse, z.B. in R. 
 
-Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. Einige Längen des Randbereiches sind sehr groß und beeinträchtigen die Darstellung. Wenn Sie nur den unteren Bereich der Längen darstellen wollen wählen sie bei "Wert" das [E] und fügen dort folgende Syntax ein: ```if ("l"<20000, "l", '')``` (Wenn die Länge < 20 km ist dann gib die Länge zurück, sonst Nichts).
+Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. Einige Längen des Randbereiches sind sehr groß und beeinträchtigen die Darstellung. Wenn Sie nur den unteren Bereich der Längen darstellen wollen wählen sie bei "Wert" das [E] und fügen dort folgende Syntax ein: ```if ("l"<20000, "l", '')``` (Wenn die Länge < 20 km ist dann gib die Länge zurück, sonst Nichts). Wiederhoen Sie [Klassifizieren] und betrachten erneut das Histogram nach [Werte laden].
 
-Wir sehen einen ersten Gipfel der Verteilung um 1,5 km, einen zweiten um 3 km und dann noch Bereich von 4 km bis 8 km und um 10 km. Danach löst sich die Verteilung langsam auf. Wirklich Plakativ ist das Ergebnis nicht, doch die Dopplung von 1,5 km zu 3 km ist auffällig und alles jenseits von 11 km scheint eine "besonders" große Distanz zu sein. An diesem Punkt könnten diverse Hypothese formuliert und geprüft werden.  
+Wir sehen einen ersten Gipfel der Verteilung um 1,5 km, einen zweiten um 3 km und dann noch Bereiche von 4 km bis 8 km und um 10 km. Danach löst sich die Verteilung langsam auf. Wirklich Plakativ ist das Ergebnis nicht, doch die Dopplung von 1,5 km zu 3 km ist auffällig und alles jenseits von 11 km scheint eine "besonders" große Distanz zu sein. Sehen Sie sich die Distanze in der Karte an scheinen die beiden kurzen Distanzbereiche um 1,5 km und um 3 km eine Gruppe zu beschreiben. Die Distanzen von 4 bis 8 km trennen die Talaiots dieser Gruppen von den Talaiots in den anderen Gruppen. An diesem Punkt könnten diverse Hypothese formuliert und geprüft werden. Als erstes natürlich ob es neben der räumlichen Nähe innerhalb der Distanzgruppen auch einen weiteren Zusammenhang gibt: Datierung, Funde, Konstruktion etc.
 
 ### Vorgehen in SpatiaLite
 
 Mit SQL wird der Weg wegen der komplexen Syntax in zwei Schritten durchgeführt. Nutzen Sie die SpatiaLite GUI und führen Sie folgende SQL-Anweisung aus:
   
-  ```{sql 'Delaunay-Triangulation in SpatiaLite', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+```{sql 'Delaunay-Triangulation in SpatiaLite', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
 create table talaiot_dist as
 select st_DelaunayTriangulation(st_collect(geom),1) as geom
 from talaiots;
@@ -210,9 +220,11 @@ cnt(x) AS (
 SELECT st_length(GeometryN(geom, x)) as l FROM cnt, talaiot_dist;
 ```
 
-Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit '1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.).   
+Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit 'Select 1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x stets +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.).   
 
 Das zweite Element ist eine Schlichte Abfrage über zwei Tabellen, den erzeugten Zähler cnt mit dem Element x und die Tabelle mit der einen Geometrie vom Typ *Multilinestring*. Abgefragt wird nun die Länge (*st_length()*) für jedes x-te Element des *Multilinestring* (*GeometryN()*). Nach der Aktualisierung der Datenbank (*refresh*) steht die Sicht zur Verfügung, kann über das Kontextmenü z.B. in eine CSV-Datei exportiert und für eine statistische Analyse verwendet werden. 
+
+Wenn Ihnen das zu kompliziert ist und Sie schnell zum Ziel kommen wollen können Sie natürlich die Geometrie für QGis mit "recover geometry column" (s.o.) lesbar machen, dort einfügen und mit der Funktion "Linien sprengen" einzelne Linien erzeugen. 
 
 ### Deutung des Ergebnnisses
 
@@ -227,3 +239,5 @@ hist((l/1000)[l<25000], breaks=seq(0,25,0.5),
 
 Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 25000 m gefiltert ([l<25000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 25 km mit Intervallen von 0,5 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt. Vergrößern wir das Intervall auf 1 km entfällt die visuelle Trennung zwischen 1,5 km und 3 km und es bleibt eine leichter Absatzt im Verlauf mit geringer Häufung von Distanzen bei 5 km. Es folgend unscharfe Häufungen bei den Vielfachen von 5 km. 
 Das Histogramm weist auf Agglomerationen von Talaiots in einem Abstand von bis zu 3 km hin, diese könnten sich dann in Abständen von ca. 5 km wiederholen. Dazwischen klaffen aber auch Lücken, die wegen des Vielfachen von 5 km möglicherweise durch fehlende Gruppen verursacht worden sein könnten. Letzteres ist lediglich aus der Wiederholung der Distanz abgeleitet und kann auch andere Gründe haben.  
+
+# Literatur
