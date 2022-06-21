@@ -87,7 +87,9 @@ Unter dem Menüpunkt "Element hinzufügen (a)" können Sie eine "Karte hinzufüg
 
 Setzen Sie unter **Haupteigenschaften** den Maßstab auf 1000. Unter **Layer** folgt die Option, die dargestellten Layer und auch die Layerstile zu sperren. Wenn alle Layer wie gewünscht angezeigt werden, sperren Sie beide Optionen: Layer und Stile. In der Folge werden Änderungen im Projekt im Layout dieser Karte nicht wirksam. Die **Ausdehnung** der Karte mit Zahlen zu beschreiben, ist mühevoll, verwenden Sie dazu lieber "Bearbeiten -> Inhalt verschieben" (Icon: Papierrolle mit blauen Pfeilen).  Ist dieses Icon aktiv, kann der Karteninhalt verschoben werden. Wählen Sie das Icon mit dem Mauszeiger, um erneut andere Elemente auszuwählen.
 
-**Anmerkung**: Das Menü hat viele Unterebenen. Mit dem blauen Pfeil am oberen Rand unter dem Reiter "Elementeigenschaften" gelangen Sie wieder auf die jeweils obere Ebene. 
+| **Anmerkung** |
+|---------------|
+|Das Menü hat viele Unterebenen. Mit dem blauen Pfeil am oberen Rand unter dem Reiter "Elementeigenschaften" gelangen Sie wieder auf die jeweils obere Ebene. |
 
 Sie können für eine Karte mehrere **Gitter** definieren. Fügen Sie mit dem grünen Plus ein neues Gitter hinzu (Gitter 1). Mit einem Doppelklick auf den Namen können Sie diesen auch ändern. Wählen Sie [Gitter ändern]. Es folgen Unterbereiche zu: Erscheinungsbild, Rahmen und Koordinaten zeichnen. Für **Erscheinungsbild** setzen Sie als erstes das Intervall für x und y auf '50'. Probieren Sie nachfolgend die Optionen unter "Gittertyp" und treffen Sie eine Entscheidung. Ich selbst verwende bisweilen "Kreuz", reduziere aber die Kreuzgröße und Linienstärke in den folgenden Feldern.  Oft verwende ich aber nur den unsichtbaren Rahmen und die Beschriftung (mit Koordinaten). Der **Rahmen** ist ein wichtiges Element, beschriftet informiert er über Maßstab und absolute Lage der Karte. Breite schwarze Ränder erinnern an Trauerkarten und liefern sonst aber keine Information. Ich wähle "Äußere Markierungen", Rahmengröße: 1 mm und Rahmenlinienstärke: 0,12 mm. Ich aktiviere **Koordinaten zeichnen**, setze links und rechts auf "Vertikal aufsteigend" und die Koordinatengenauigkeit auf "0" Nachkommastellen, Schriftart (neue Ebene) auf 8 pt, mit dem blauen Pfeil oben zurück zum Gitter und Abstand zum Kartenrahmen auf 1 mm. Wechseln Sie mit dem Pfeilsymbol nach links am oberen Rand dieses Bereiches wieder in die übergeordnete Instanz der Elementeigenschaften. Anmerkung: Die Karte ragt nun über die Führungslinien hinaus und muss angepasst werden. Achten Sie dabei auf den Maßstab! 
 
@@ -125,12 +127,14 @@ Es fehlen noch wichtige Textinformationen, z.B. Titel, Untertitel/Erläuterung, 
 ```
 <b>Closos de Can Gaià </b> </br>
 Mallorca, Spanien </br>
-<small>Navetas der Bronzezeit nach Aufmaß von Frey/Rosselló Bordoy 1966.</br> Luftbilder IDEIB (https://ideib.caib.es)</br></br>
-Karte: C. Rinne 06.2020.</br>
+<small>Navetas der Bronzezeit nach Aufmaß von Frey/Rosselló Bordoy 1966.</br>
+Luftbilder IDEIB (https://ideib.caib.es)</br></br>
+Karte: C. Rinne 06.2022.</br>
 Koordinaten: EPSG 25831</small>
 ```
 
 Zur Erläuterung:
+
 - \<b> ...\</b> : bold / fett 
 - \</br> : break / Zeilenumbruch
 - \<small> ... \</small> : klein
@@ -138,3 +142,5 @@ Zur Erläuterung:
 ### Attributtabelle
 
 Ein interessanter Aspekt ist das Hinzufügen einer Attributtabelle im Layout. Hier können Sie sowohl die Spalten auswählen als auch bestimmen, ob alle oder nur die Daten zu den sichtbaren Objekten gelistet werden sollen.
+
+# Literatur
