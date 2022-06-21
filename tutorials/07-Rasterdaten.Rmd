@@ -136,6 +136,8 @@ Nach einer kurzen Überprüfung der Werte liegen Grün und Blau annähernd parit
 - 1956: 17500 m²
 - 2018: 57536 m²
 
+Erstellen Sie eine Layergruppe "Vegetation Orthofotos" und fügen Sie diese Layer ein.
+
 Anmerkung: Ich verwende das Resultat im nächsten Abschnitt zur Kartenerstellung und verzichte deshalb an dieser Stelle auf eine Abbildung. 
 
 ## Zitierte Literatur
