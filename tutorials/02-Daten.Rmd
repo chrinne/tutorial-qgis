@@ -12,15 +12,15 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
 urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
@@ -101,7 +101,7 @@ NODATA_VALUE -999
 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999
 ```
 
-Da die Endung \*.asc lautet (steht für [ASCII](https://de.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange), ist in Wirklichkeit aber UTF-8 und in diesem Fall ohne Bedeutung), könnten Sie sich die Daten ansehen, es lohnt sich aber nur für die ersten 6 Zeilen (s.o.). Beachten Sie bitte den Dateinamen, der wichtige Informationen vermittelt: "ETRS89" verweist auf das Geoid und "HU31" auf den [UTM-Streifen 31 Nord](UTM Streifen 31](https://upload.wikimedia.org/wikipedia/commons/e/ed/Utm-zones.jpg). Anders als bei einem GeoTIFF sind diese Angaben in der Rasterdatei nicht hinterlegt, dies könnte aber als Kommentar geschehen.
+Da die Endung \*.asc lautet (steht für [ASCII](https://de.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange), ist in Wirklichkeit aber UTF-8 und in diesem Fall ohne Bedeutung), könnten Sie sich die Daten ansehen, es lohnt sich aber nur für die ersten 6 Zeilen (s.o.). Beachten Sie bitte den Dateinamen, der wichtige Informationen vermittelt: "ETRS89" verweist auf das Geoid und "HU31" auf den [UTM-Streifen 31 Nord](https://upload.wikimedia.org/wikipedia/commons/e/ed/Utm-zones.jpg). Anders als bei einem GeoTIFF sind diese Angaben in der Rasterdatei nicht hinterlegt, dies könnte aber als Kommentar geschehen.
 
 ## Planen Sie ihr Projekt
 
