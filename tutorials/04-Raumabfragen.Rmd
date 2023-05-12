@@ -12,6 +12,10 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
@@ -21,7 +25,7 @@ urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
 number_sections: yes
-#lang: de-DE
+lang: de-DE
 description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
 ---
 

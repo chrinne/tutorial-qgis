@@ -2597,28 +2597,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-
-div.csl-bib-body { }
-div.csl-entry {
-clear: both;
-}
-.hanging div.csl-entry {
-margin-left:2em;
-text-indent:-2em;
-}
-div.csl-left-margin {
-min-width:2em;
-float:left;
-}
-div.csl-right-inline {
-margin-left:2em;
-padding-left:1em;
-}
-div.csl-indent {
-margin-left: 2em;
-}
-</style>
 
 
 
@@ -2779,256 +2757,666 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">28. April 2023</h4>
+<h4 class="date">12. Mai 2023</h4>
 
 </div>
 
 
-<div id="attribute-und-funktionen" class="section level1">
-<h1>Attribute und Funktionen</h1>
-<p>Ziel ist die Einführung in die Arbeit mit der Attributtabelle von
-Vektordaten (Punkt, Linie, Polygon) und den zahlreichen Funktionen.
-Nicht alle hier gezeigten Schritte liefern ein tolles oder gar
-wissenschaftlich relevantes Ergebnis. Auch will ich nicht jede Funktion
-des Menüs und schon gar nicht der Werkzeugkiste durchhecheln. Vielmehr
-möchte ich mit weitgehend typischen Fragestellungen und möglichen
-Lösungswegen auf die Arbeit in GIS eingehen.</p>
-<p>Daten: Es wird vorrangig mit dem Punktdatensatz der Fundplätze
-(mallorca-sites.shp) und dem Geländemodell (DGM 200) aus der Karte der
-vorangehenden Stunde gearbeitet. Beachten Sie, bei textbasierten
-Datenquellen sind die Editiermöglichkeiten eingeschränkt.</p>
-<div id="fundplatztypen---attributtabelle" class="section level2">
-<h2>Fundplatztypen - Attributtabelle</h2>
-<p>Öffnen Sie die Attributtabelle zu dem Layer der Fundplätze, z.B. über
-das Kontextmenü zu diesem Layer. Diese Tabelle kann bzw. wird mit jedem
-weiteren Aufruf erneut geöffnet (viele Fenster). Natürlich können wir
-die Spalten sortieren (Mausklick auf die Kopfzeile).</p>
-<div id="objekte-auswählen" class="section level3">
-<h3>Objekte Auswählen</h3>
-<p>Wir können einzelne oder mehrere Objekte durch Mausklick auswählen
-und auf diese in der Karte zoomen (&lt;strg&gt; + &lt;j&gt; oder das
-Icon mit der Lupe in der Symbolleiste). Die Reihe gelber Icons bietet
-weitere Auswahloptionen.</p>
-<ul>
-<li>“Gelbes Viereck mit ‘E’”</li>
-</ul>
-<p>Dieses Icon öffnet die filterbasierte Auswahl. Das folgende Fenster,
-der <strong>Ausdrucksgenerator</strong>, wird noch oft auftauchen und
-ist äußerst hilfreich. Wir bleiben vorerst auf dem Reiter “Ausdruck”. In
-der linken Spalte können wir Ausdrücke erstellen, wichtige Bausteine wie
-[=] etc. sehen Sie zur Auswahl direkt darunter. In der mittleren Spalte
-finden Sie eine Liste diverser optionaler Bestandteile eines Ausdrucks:
-viele Funktionen, Attribute und Objekteigenschaften. Die Rechte Spalte
-bietet eine kontextbezogene Hilfe. Ist ihr Ausdruck verständlich (nicht
-zwingen richtig nach ihrem Verständnis) sehen Sie links unten eine
-Voransicht.</p>
-<p>Klappen Sie in der mittleren Spalte “Felder und Werte” auf, um alle
-Attribute (Spalten) zu sehen, wählen Sie Tipo_yacim[iento]
-(Fundplatztyp) 1. mit Doppelklick in den Audruck übernehmen, 2. [Alle
-eindeutigen]anklicken und 3. in der Liste bis zu “Talaiot” scrollen. Sie
-sehen zahlreiche Variationen bei denen “Talaiot” stets gleich
-geschrieben ist. Ergänzen Sie den Ausdruck zu
-<code>&quot;Tipo_yacim&quot; like &#39;%Talaiot%&#39;</code>. Beachten Sie die
-differenzierte Verwendung von ” und ’, ebenso das % als sog.
-<em>wildcard</em>. Klicken Sie auf [Objekte wählen], beachten Sie zuvor
-die optionalen Variationen der <em>drop-down</em> Liste des Schalters.
-Dann [Schließen] Sie das Fenster.</p>
-<p>In der Karte sind zahlreiche Punkte nun gelb markiert, für die
-Tabelle wählen Sie unten bei [Alle Objekte anzeigen] bitte [<strong>Alle
-gewählten Objekte anzeigen</strong>]. Eine Alternative schnell die
-gewählten zu sehen ist das unscheinbare Icon rechts neben dem
-“Trichter”-Icon, es sortiert alle ausgewählten Datenreihen nach
-oben.</p>
-<ul>
-<li>“Trichter”-Icon:</li>
-</ul>
-<p>Formular Filter. Der formularbasierte Filter erzeugt zugleich eine
-Darstellung der Daten in einer Formularansicht. Sie wechseln zwischen
-Formular- und Tabellenansicht mit den Icons rechts unten in diesem
-Fenster. In dem formularbasierten Filter kann für jedes Feld ein Eintrag
-vorgenommen werden und mit einem Schalter am rechten Rand wird die
-Bedingung (gleich, größer als, enthält etc.) gesetzt.</p>
-<ul>
-<li>Gelbe horizontale Balken: Alle Objekte auswählen</li>
-<li>Gelbes und transparentes Dreieck: Auswahl umkehren</li>
-<li>Gelbes und rotes Viereck: Auswahl löschen (tun Sie dies jetzt bitte)
-und wählen sie links unten in der Attributtabelle “Alle Objekte
-anzeigen”.</li>
-</ul>
+<div id="datenbanken" class="section level1">
+<h1>Datenbanken</h1>
+<pre class="sql"><code>select codigo, municipio, zensus_1842, zensus_1900, zensus_1950,  zensus_2011 
+from &#39;pop_balears&#39; limit 6;</code></pre>
+<div class="knitsql-table">
 <table>
+<caption>Einfache Abfrage für ausgewählte Felder einer Tabelle, die
+ersten Einträge.</caption>
 <colgroup>
-<col width="100%" />
+<col width="17%" />
+<col width="14%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>Annmerkung</th>
+<th align="left">codigo</th>
+<th align="left">municipio</th>
+<th align="left">zensus_1842</th>
+<th align="left">zensus_1900</th>
+<th align="right">zensus_1950</th>
+<th align="right">zensus_2011</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://de.wikipedia.org/wiki/Talayot"><strong>Talaiot</strong></a>
-(Kat.) oder auch Talayot (ES) sind monumentale Steintürme in
-eisenzeitlichen Siedlungen und ein wichtiges Element der mallorcinischen
-Denkmaltopographie.</td>
+<td align="left">34040707001</td>
+<td align="left">Alaró</td>
+<td align="left">4112</td>
+<td align="left">5982</td>
+<td align="right">3807</td>
+<td align="right">5273</td>
 </tr>
 <tr class="even">
-<td>Einführende Literatur: <span class="citation">Guerrero Ayuso u. a.
-(<a href="#ref-guerreroayusoHistoriaIslasBaleares2006c" role="doc-biblioref">2006a</a>)</span>; <span class="citation">Guerrero
-Ayuso u. a. (<a href="#ref-guerreroayusoHistoriaIslasBaleares2006b" role="doc-biblioref">2006b</a>)</span>; <span class="citation">Lull
-u. a. (<a href="#ref-lullCeramicaTalayoticaProduccion2008a" role="doc-biblioref">2008</a>)</span>; <span class="citation">Lull u. a.
-(<a href="#ref-lullTurmbautenSonFornes2007a" role="doc-biblioref">2007</a>)</span>; <span class="citation">Micó Pérez
-(<a href="#ref-micoperezCronologiaAbsolutaPeriodizacion2005a" role="doc-biblioref">2005</a>)</span>; <span class="citation">Van
-Strydonck (<a href="#ref-vanstrydonckMyotragusMetellusaJourney2014" role="doc-biblioref">2014</a>)</span></td>
+<td align="left">34040707002</td>
+<td align="left">Alaior</td>
+<td align="left">4722</td>
+<td align="left">4909</td>
+<td align="right">5082</td>
+<td align="right">9450</td>
+</tr>
+<tr class="odd">
+<td align="left">34040707003</td>
+<td align="left">Alcúdia</td>
+<td align="left">1120</td>
+<td align="left">2711</td>
+<td align="right">3565</td>
+<td align="right">18914</td>
+</tr>
+<tr class="even">
+<td align="left">34040707004</td>
+<td align="left">Algaida</td>
+<td align="left">2806</td>
+<td align="left">4091</td>
+<td align="right">3905</td>
+<td align="right">5272</td>
+</tr>
+<tr class="odd">
+<td align="left">34040707005</td>
+<td align="left">Andratx</td>
+<td align="left">4609</td>
+<td align="left">7014</td>
+<td align="right">4036</td>
+<td align="right">11234</td>
+</tr>
+<tr class="even">
+<td align="left">34040707006</td>
+<td align="left">Artà</td>
+<td align="left">4001</td>
+<td align="left">5824</td>
+<td align="right">5496</td>
+<td align="right">7562</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="daten-verändern" class="section level3">
-<h3>Daten verändern</h3>
-<p>Das Abakus-Icon (Rechenschieber) öffnet den Feldrechner, der in
-vielen Aspekten dem Ausdrucksgenerator beim Filtern der Daten (s.o.)
-entspricht. Ziel des nächsten Schrittes ist es, den Höhenwert aus der
-Rasterzelle des DGM unter jedem Fundpunkt in eine neue Spalte “z_m” zu
-schreiben.</p>
-<p>Sind Daten ausgewählt, werden a priori nur diese verändert, es sei
-denn, Sie entfernen die Markierung oben links. Setzen oder belassen Sie
-bitte folgende Parameter: [x] Neues Feld anlegen, Ausgabefeldname: z_m,
-Ausgabefeldtyp: Ganzzahl (integer). Bei der Auflösung der Datengrundlage
-ist eine Dezimalzahl unnötig, damit entfällt auch die Genauigkeit bei
-den Nachkommastellen. Wählen Sie aus der mittleren Spalte folgende
-Funktion: Raster -&gt; raster_value. Ergänzen Sie den Namen des
-DGM-Layers, “1” für das erste (“Farb”-)Band dieses Layers und
-“$geometry” (die Punktgeometrie des Fundplatzes) als Referenz. Insgesamt
-also <code>raster_value(&#39;DGM 200&#39;, 1, $geometry)</code>, [OK]. Für
-unsere Änderung wurde der Layer in den Editiermodus versetzt
-(Stift-Icon), die Änderungen müssen noch gespeichert
-(Diskette-Stift-Icon) und das Editieren (Stift-Icon) beendet werden.
-Dies können Sie auch in der Icon-Leiste der Karte tun. Beachten Sie
-dabei bitte die Veränderungen in der Icon-Leiste.</p>
-<p>Um einige Möglichkeiten aufzuzeigen und weitere Standardaufgaben
-durchzuführen, möchte ich folgende Aufgabe zur Übung durchspielen: Wir
-haben den Verdacht, dass die Lage mindestens eines Punktes auf der Karte
-(<em>$geometry</em>) und der zugehörige Eintrag in der Tabelle (x_utm,
-y_utm) nicht übereinstimmen. Wir müssen also die x-Koordinaten aller
-Punkte aus der Geometrie abfragen, auf eine Ganzzahl runden und mit dem
-Eintrag der Tabelle vergleichen. Ich gehe aus didaktischen Gründen nicht
-zwingend den kürzesten Weg.</p>
+<div id="vorbemerkung" class="section level2">
+<h2>Vorbemerkung</h2>
+<p>In dieser Übung zu GIS mit QGIS sind (mir) zwei besonders störende
+Probleme aufgefallen:</p>
+<ul>
+<li>Aus Abfragen generierte Sichten oder Darstellungen von Daten müssen
+als neue Datei mit redundanten Daten gespeichert werden, sonst gehen
+diese Layer verloren und</li>
+<li>die Datentabellen können nur als Ganzes kopiert, nicht aber mit
+ausgewählten Attributen kopiert und somit schnell anderweitig verwendet
+werden.</li>
+</ul>
+<p>Dieses Kapitel beginnt mit Übungen zu GeoPackages, SpatiaLite und der
+DB-Verwaltung in QGIS, am Ende steht dann die Arbeit mit der
+SpatiaLite-GUI.</p>
+<div id="datenbanksysteme-im-data-source-manager" class="section level3">
+<h3>Datenbanksysteme im Data Source Manager</h3>
+<p>Insgesamt stellt sich mir die Arbeit mit den Daten in QGIS im
+Vergleich zu Datenbankmanagementsystemen (DBMS) als unbefriedigend dar.
+Natürlich gibt es nicht nur ein DBMS und QGIS bietet bei der
+Datenquellenverwaltung einige Schnittstellen an. Zur Ergänzung sei
+erwähnt, dass ESRI (ArcGIS) auf Geodatenbanken (<em>geodatabases</em>)
+für den Desktop setzt, die mit MS Access kompatibel sind.</p>
+<p>Es gibt zwei grundlegende Unterschiede bei DBMS: 1. Die für den
+Desktop und die Nutzung durch eine Person oder einen begrenzten
+Nutzerkreis in einem eher lokalen Netzwerk gedachten Systeme und davon
+deutlich unterschieden 2. die für Server als Dienst im Netzwerk für
+viele Nutzer konzipierten Systeme. Dies ist keine scharfe Grenze, denn
+Sie können einen SQL-Server auf ihrem PC für persönliche Zwecke
+betreiben oder eine Access-Datenbank erfolgreich in einem
+mittelständischen Betrieb einsetzen. Ein wesentlicher Aspekt neben dem
+System ist auch der Aufbau der Datenbank. Für GIS sind oft spezielle
+Ergänzungen notwendig, die nicht immer integriert sind, z.B. PostgreSQL
+mit PostGIS. SQL ist die Programmiersprache für das Strukturieren,
+Verwalten und Verändern von Daten. SQL ist textbasiert und in dieser
+Form auch von Menschen lesbar, gut archivierbar und trotz zahlreicher
+Varianten insgesamt gut interoperabel (vgl. <a href="https://www.go-fair.org/fair-principles/">FAIR</a>).</p>
+<ul>
+<li>Geopackage: Ein freies und offenes DBMS auf der Basis von <a href="https://sqlite.org">SQLite</a> für den Desktop. Gegenüber <a href="https://www.gaia-gis.it/fossil/libspatialite/index">SpatiaLite</a>,
+an das es angelehnt ist, kann es zudem auch Rasterdaten verwalten. Der
+Nutzer sieht nur eine Datei, die alle Daten beinhaltet.</li>
+<li><a href="http://www.gaia-gis.it/gaia-sins/">SpatiaLite</a>: Ist ein
+auf SQLite basierendes DBMS mit GIS-Integration speziell für den
+Desktop. <a href="https://sqlite.org">SQLite</a> ist frei nutzbar
+(<em>public domain</em>), die GIS-Funktionalität von SpatiaLite ist frei
+verwendbar und <em>open-source</em>. Zur Arbeit mit SpatiaLite bietet
+QGIS eine integrierte Anwendung, eine ergänzende <a href="http://www.gaia-gis.it/gaia-sins/">SpatiaLite GUI</a> ist aber
+empfehlenswert. Im Ergebnis sieht der Nutzer nur eine Datei für
+Vektordaten und nicht bis zu fünf Dateien je shp-Datei. Rasterdaten
+müssen aber getrennt verwaltet werden.</li>
+<li>PostgreSQL: Ein freies DBMS für Server und <em>open source</em>.
+Durch die Erweiterung PostGIS ist es im besonderen Maß für die Arbeit
+mit Geodaten geeignet. Es ist deshalb in größeren Forschungsprojekten
+und -verbünden beliebt. Die Wartung des Servers (Hardware), des
+Postgres-Servers (Dienst) und abgestimmt darauf der PostGIS-Version,
+sollten in ihrem Aufwand nicht unterschätzt werden. Eine Analyse des
+Bedarfs, der vorhandenen Kompetenz und Ressourcen ist angebracht.</li>
+<li>MSSQL: Microsoft SQL Server auch mit kostenfrei nutzbaren
+Versionen.</li>
+<li>Oracle: Ein traditionsreicher Anbieter von DBMS für Server, auch
+kostenfrei nutzbaren Versionen.</li>
+<li>DB2: Ist ein DBMS von IBM auch mit einer Community Edition (CE), die
+kostenfrei nutzbar ist.</li>
+</ul>
+</div>
+<div id="geopackage-vs-spatialite" class="section level3">
+<h3>Geopackage vs SpatiaLite</h3>
+<p>Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die
+eigene Entscheidung hängt sicher auch vom Nutzungskonzept und der
+eigenen Erfahrung bzw. den Vorlieben ab. Ich konzentriere mich auf die
+unmittelbaren Aspekte der Anwendung, technische Details werden nicht
+bewertet. Zudem ist mit einer Weiterentwicklung der Systeme zu
+rechnen.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">pro Geopackage</th>
+<th align="left">contra Geopackage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">- Etwas kompaktere Dateigröße, wobei GeoTIF oft
+<br /></td>
+<td align="left">- Eingeschränkte Funktionalität der SpatiaLite</td>
+</tr>
+<tr class="even">
+<td align="left">größer ist als textbasierte Raster (ASC, GRD).</td>
+<td align="left">GUI, da Vektordaten nur als <em>view</em> zur</td>
+</tr>
+<tr class="odd">
+<td align="left">- Rasterdaten: MBTiles sind weit verbreitet.</td>
+<td align="left">Verfügung stehen.</td>
+</tr>
+<tr class="even">
+<td align="left">- Import von dxf-Dateien möglich, leider keine
+Spezifikation hinterlegt.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Eine Datei für alles.</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">pro SpatiaLite</th>
+<th align="left">contra SpatiaLite</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">- Eine Datei für Vektordaten.</td>
+<td align="left">- Keine Rasterdaten möglich.</td>
+</tr>
+<tr class="even">
+<td align="left">- Gute GUI, u.a. mit
+<em>spatialview</em>-Generator.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Integration von GIS-Funktionen.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">- Integrierte Importfunktionen, auch ganzer Ordner mit
+Dateien (dxf, shp, asc, excel).</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Anhängen externer Daten (virtuelle Daten).</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">- Bibliotheken für Rasterdaten, Netzwerk, Routing
+etc.</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Für mich ist die Arbeit mit Abfragen, speziell <em>spatial view</em>
+wichtig. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder
+ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator
+effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue
+Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage
+bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor.
+Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der
+folgender Website: <a href="http://www.geopackage.org/guidance.html">www.geopackages.org</a>.</p>
+</div>
+</div>
+<div id="geopackages-in-qgis" class="section level2">
+<h2>GeoPackages in QGIS</h2>
+<div id="erstellen-der-gpkg-datei" class="section level3">
+<h3>Erstellen der GPKG-Datei</h3>
+<p>Die GPKG-Datei wird leicht durch den Export von Layern aus QGIS
+erstellt. Wir exportieren nachfolgend die gefilterten shp-Dateien
+(Balearen, “CODNUT2” = ‘ES53’) und die Tabellen mit Daten in eine GPKG.
+Achten Sie jeweils auf die Angaben zum Namen und die Projektion.
+Abschließend folgt das DGM200 (mdt200) mit einem typischen Problem.</p>
+<p>Aus dem Kontextmenü des Layer “Autonome Gebiete” (autonomias) wählen
+Sie “Exportieren -&gt; Objekt speichern als” und im neuen Fenster setzen
+Sie folgende Parameter:</p>
+<ul>
+<li>Format: GeoPackage,</li>
+<li>Dateiname […]: im Projektordner “mallorca.gpkg”,</li>
+<li>Layername: autonomias (<strong>bitte nicht die
+Vorgabe</strong>),</li>
+<li>KBS: EPSG 4258 (original der shp),</li>
+<li>FID: fid (feature id),</li>
+<li>Geometry_Name: geom.</li>
+</ul>
+<p>Die <strong>Nomenklatur für die <em>feature id</em> (fid) und vor
+allem die Geometrie (geom) sollte in der Datenbank einheitlich, kurz und
+aussagekräftig sein</strong>, das erleichtert die spätere Arbeit
+ungemein. Wiederholen Sie den Vorgang für die Provinzen (Layername:
+provincias), Gemeinden (Layername: municipios) und die selbst
+generierten Dateien comarcas der Landschaftszonen (Layername: comarcas)
+und mallorca-sites (Layername: sites). Exportieren Sie auch die
+Datentabelle pop-balears in die GPKG, bei Geometrie wählen Sie hier
+“keine Geometrie”.</p>
+<p>Exportieren Sie zuletzt die Rasterdatei des Höhenmodelles mdt200 bzw.
+DGM200 in das Geopackage mallorca. Sie sollten eine Fehlermeldung
+erhalten:</p>
+<pre><code>Konnte Raster nicht schreiben. Fehlercode: Datenquellenerstellung
+Cannot create new dataset  D:\CAU\Lehre\20SoSe\GIS\Daten\mallorca\mallorca.gpkg:
+Only Byte, Int16, UInt16 or Float32 supported</code></pre>
+<p>Öffnen Sie die Eigenschaften -&gt; Informationen zu diesem Layer,
+dort finden Sie u.a. “Daten Typ Float32 - 64 Bit Fließkommazahl”. Das
+scheint auf den ersten Blick korrekt, ist aber das Problem. Float32
+(Gleitkommazahl) kann als 64 Bit oder als 32 Bit vorliegen. Die
+aktuellen Daten sind 64 bit, der Import ist aber nur für 32 bit Daten
+möglich, in der Konsequenz müssen wir also erst konvertieren. Öffnen Sie
+die Werkzeugkiste (“Verarbeitung -&gt; Werkzeugkiste” oder
+&lt;strg&gt;+&lt;alt&gt;+&lt;t&gt;) und suchen Sie “konvertieren”.
+Wählen Sie aus den GDAL-Tools “Umwandeln (Format konvertieren)”:
+Eingabelayer: DGM200, Fortgeschrittene Parameter -&gt; Ausgabedatentyp:
+Float32, Umgewandelt: In temporäre Datei. Weisen Sie der temporären
+Rasterdatei noch die richtige Projektion zu (“Projektion zuweisen”,
+25831). Wiederholen Sie den Export in die GPKG mit dieser Datei und
+achten Sie auf den Layernamen: mdt200.</p>
+</div>
+<div id="arbeit-mit-gpkg-in-qgis" class="section level3">
+<h3>Arbeit mit GPKG in QGIS</h3>
+<p>Für die Nutzung einer Datenbank muss stets erst eine Verbindung zu
+dieser eingerichtet werden. In QGIS gibt es zwei Wege: 1. über die
+<strong>Datenquellenverwaltung</strong> und 2. über die
+<strong>DB-Verwaltung</strong> (“Datenbank -&gt; DB-Verwaltung”). Bei 1.
+können Sie mit [Neu] eine DPKG auswählen und anbinden, im
+<em>drop-down</em> vorhandene Verbindungen selektieren und mit
+[Verbinden] öffnen. Bei 2. wird über das Kontextmenü (rechter Mausklick)
+zum DBMS eine neue Verbindung eingerichtet. Alle vorhanden Verbindungen
+werden angezeigt und durch das Öffnen verbunden. Der gleichzeitige
+Zugriff über beide Wege ist möglich. In beiden Fällen können Daten aus
+der DPKG in das Projekt übernommen werden, bei 1. durch [Hinzufügen],
+bei 2. durch <em>drag ’n drop</em> oder mit Doppelklick. Damit enden die
+Gemeinsamkeiten.</p>
+<p><strong>DB-Verwaltung von QGIS</strong> (“Datenbank -&gt;
+DB-Verwaltung”) bietet schneller mehr Informationen zum jeweiligen
+Datenbestand und erlaubt zudem das Importieren neuer Daten sowie die
+Arbeit mit SQL-Anweisungen. Bei der Datentabelle “pop-balears” fallen
+zwei Punkte auf: 1. Nach den “Allgemeinen Informationen” sind die
+Spalten 1842 bis 1920 als Text und nicht als Zahl gespeichert. 2. Das
+“-” im Namen führt zu Missverständnissen, bedingt Anführungszeichen und
+führt somit zu mehr Tipparbeit. Dazu folgende Übungen.</p>
+</div>
+<div id="einfache-sql-anweisungen" class="section level3">
+<h3>Einfache SQL-Anweisungen</h3>
+<p>Mit &lt;F2&gt; oder “Datenbank -&gt; SQL-Fenster” öffnen Sie ein
+Fenster für SQL-Anweisungen. In der oberen Hälfte werden Anweisungen
+geschrieben und in der unteren Hälfte sehen Sie das Ergebnis. Das kleine
+Icon [SQL] oben links öffnet den SQL-Anweisungseditor, der die
+Konstruktion komplexerer Anweisungen erleichtern soll. Diesen Editor
+nutzen wird jetzt nicht. Schreiben Sie folgende SQL-Anweisungen
+nacheinander in die obere Hälfte des SQL-Fensters und betätigen Sie
+jeweils [Ausführen]:</p>
+<ul>
+<li><code>select * from sites;</code></li>
+<li><code>select * from &#39;pop-balears&#39;;</code></li>
+<li><code>select municipio, 1950, &#39;2011&#39; from &#39;pop-balears&#39;;</code></li>
+</ul>
+<p>Die letzte Abfrage liefert folgendes Ergebnis:</p>
+<table>
+<thead>
+<tr class="header">
+<th>municipio</th>
+<th>1950</th>
+<th>‘2011’</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alaró</td>
+<td>1950</td>
+<td>2011</td>
+</tr>
+<tr class="even">
+<td>Alaior</td>
+<td>1950</td>
+<td>2011</td>
+</tr>
+<tr class="odd">
+<td>Alcúdia</td>
+<td>1950</td>
+<td>2011</td>
+</tr>
+</tbody>
+</table>
+<p>Ohne Hochkomma um den Tabellennamen “pop-balears” führt die zweite
+Anweisung wegen des “-” zu einer Fehlermeldung. Wir können einzelne
+Felder wie “municipio” direkt abfragen, nur bei den Zensus die mit dem
+jeweiligen Jahr benannt sind bekommen wir als Ergebnis die Zahl selbst,
+egal ob mit oder ohne Hochkomma. Erst mit
+<code>select municipio, 1950, &#39;pop-balears&#39;.&#39;2011&#39; from &#39;pop-balears&#39;;</code>
+bekommen wir für 2011 die eigentlichen Zahlen.</p>
+<p>Um erfolgreich weiterzuarbeiten löschen Sie bitte “pop-balears” über
+das Kontextmenü in der Datenbank. Importieren Sie über “Tabelle -&gt;
+Layer/Datei importieren” die Datei “pop_balears.csv”, achten Sie auch
+auf den Namen in der Datenbank “pop_balears” und setzen Sie einen Haken
+für die Zeichencodierung “UTF-8”. Führen Sie danach folgende Abfrage
+aus:</p>
+<pre class="sql"><code>select codigo, municipio, zensus_1842, zensus_1900, zensus_1950,  zensus_2011 
+from pop_balears 
+where municipio like &#39;A%&#39;;</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>Abfrage für einzelne Attribute der Tabelle, Bedingung:
+Gemeindename beginnt mit A.</caption>
+<colgroup>
+<col width="17%" />
+<col width="14%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">codigo</th>
+<th align="left">municipio</th>
+<th align="left">zensus_1842</th>
+<th align="left">zensus_1900</th>
+<th align="right">zensus_1950</th>
+<th align="right">zensus_2011</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">34040707001</td>
+<td align="left">Alaró</td>
+<td align="left">4112</td>
+<td align="left">5982</td>
+<td align="right">3807</td>
+<td align="right">5273</td>
+</tr>
+<tr class="even">
+<td align="left">34040707002</td>
+<td align="left">Alaior</td>
+<td align="left">4722</td>
+<td align="left">4909</td>
+<td align="right">5082</td>
+<td align="right">9450</td>
+</tr>
+<tr class="odd">
+<td align="left">34040707003</td>
+<td align="left">Alcúdia</td>
+<td align="left">1120</td>
+<td align="left">2711</td>
+<td align="right">3565</td>
+<td align="right">18914</td>
+</tr>
+<tr class="even">
+<td align="left">34040707004</td>
+<td align="left">Algaida</td>
+<td align="left">2806</td>
+<td align="left">4091</td>
+<td align="right">3905</td>
+<td align="right">5272</td>
+</tr>
+<tr class="odd">
+<td align="left">34040707005</td>
+<td align="left">Andratx</td>
+<td align="left">4609</td>
+<td align="left">7014</td>
+<td align="right">4036</td>
+<td align="right">11234</td>
+</tr>
+<tr class="even">
+<td align="left">34040707006</td>
+<td align="left">Artà</td>
+<td align="left">4001</td>
+<td align="left">5824</td>
+<td align="right">5496</td>
+<td align="right">7562</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Und zum Abschluss:</p>
+<pre class="sql"><code>select m_comarca, st_area(st_transform(geom, 25831))/100000 as a_qkm 
+from comarcas;</code></pre>
+<p>Was haben Sie gelernt?</p>
 <ol style="list-style-type: decimal">
-<li>Wir legen ein neues, virtuelles Feld an, benennen es “Test” und
-definieren es als Text.</li>
-<li>In der mittleren Spalte unter “Geometry -&gt; $x” erhalten Sie die
-x-Koordinaten des Objektes. Ein Umweg wäre also, die Geometrie und
-hiervon die x-Koordinate abzufragen: <code>x($geometry)</code>. Ein
-weiterer Umweg wäre die Geometrie als Text abzufragen und die
-x-Koordinaten herauszuschneiden:
-<code>substr(geomToWKT($geometry),8,6)</code>. Diese Funktionen können
-in vielen Kontexten hilfreich sein, ergänzende Erläuterungen erhalten
-Sie nach der Suche (Lupe!) der jeweiligen Funktion.<br />
-</li>
-<li>Zahlen können gerundet werden <code>round($x)</code>, die
-Erläuterung zu dieser Funktion finden Sie unter “Mathematik”.</li>
-<li>Vergleichen können wir durch Subtraktion, alles was nicht 0 ergibt,
-ist falsch, oder wir vergleichen wirklich und erhalten “Wahr” oder
-“Falsch”. Die erste Option ist einfach, ergänzen Sie die Syntax einfach
-zu <code>round($x) - &quot;x_utm&quot;</code>. Die zweite Option ist länger, nutzt
-aber eine klassische <code>if()</code> Funktion, die Sie unter
-Bedingungen finden und die nicht wirklich über die Hilfe hinaus
-erläutert werden muss:
-<code>if(round($x) = &quot;x_utm&quot;, &#39;identisch&#39;, &#39;verändert&#39;)</code>.</li>
+<li>SQL-Anweisungen sind nicht grundsätzlich kompliziert, aber es gibt
+wichtige Syntaxregeln und Namenskonventionen, z.B. Ziffern am Anfang von
+oder “-” in Namen sind schlecht. Wenig beachtet, aber das “;” steht am
+Ende der Anweisung.</li>
+<li>Wir können Daten filtern, die Syntax entspricht auffallend den
+Anweisungen bei Layern in QGIS.</li>
+<li>Wir können gezielt Spalten (Attribute) auswählen.</li>
+<li>Es gibt Funktionen, die unsere Daten verändern.</li>
 </ol>
-<p>Dies waren einige oft benötigte Standardaufgaben, die Ihnen die
-Funktionsweise und Möglichkeiten des Feldrechners vor Augen geführt
-haben sollten. Sie können hier jederzeit auf vorhandene Feldwerte
-zugreifen, einfache Berechnungen durchführen, Texte verändern und vieles
-mehr. Sollten Sie die Änderung vorgenommen haben löschen Sie die Spalte
-“Test” mit 1. Icon “Rote Spalte mit X”, 2. Spalte(n) wählen und
-[OK].</p>
-</div>
-<div id="verknüpfte-daten-join" class="section level3">
-<h3>Verknüpfte Daten (Join)</h3>
-<p>Es kommt oft vor, dass wir eine Geometrie haben und wichtige Daten
-nur in einer weiteren Text-Tabelle stehen. Wenn es ein gemeinsames Feld
-gibt, können wir diese Daten verbinden. Die nachfolgend verwendeten
-Daten stammen aus der Arbeit von Micó (<span class="citation">Micó Pérez
-(<a href="#ref-micoperezCronologiaAbsolutaPeriodizacion2005a" role="doc-biblioref">2005</a>)</span>). Da eine unabhängige Datenquelle
-vorliegt, gibt es kein gemeinsames eindeutiges ID-Feld, ich muss
-stattdessen den Namen des Fundplatzes verwenden. Neben dieser typischen
-textbasierten Verknüpfung (join) beherrschen GIS auch räumliche
-Verknüpfungen: identisch, innerhalb, auf und außerhalb (s.u.).</p>
-<pre><code># Quelle: Micó Pérez, R., 2005. Cronología absoluta y periodización 
-de la prehistoria [...];c14ID;site;island;monument;context;county;
-labcode;bp;std;sample;resource
-1;Albufera d&#39;Alcúdia;Mallorca;Sondeo polínico;Z = -19,5m;
-Alcúdia/Muro;;32790;;Desconocido;Micó 2005, 24</code></pre>
-<p>Betrachten Sie das vorliegende Datenformat von “sites-c14dat.csv”.
-Die erste Zeile ist ein Kommentar, die zweite Zeile beinhaltet die
-Spaltennamen, Trennzeichen ist das “;”, Dezimaltrennzeichen scheint das
-“,” zu sein, auch wenn es in einem Textfeld steht (“Z = -19,5m”). Fügen
-Sie die Daten als <strong>getrennten Text</strong> ein (s.o.), achten
-Sie auf die zu überspringende erste Zeile und wählen Sie “Keine
-Geometrie”. Nur zur Ordnung lege ich im Layerfenster eine Gruppe an
-(Kontextmenü), benenne diese “Daten”, schiebe hier die Tabelle hinein
-und den gesamten Ordner nach unten.</p>
-<p>Öffnen Sie die Eigenschaften zum Layer “Fundplatztypen” und wechseln
-Sie am linken Fensterrand zu “Verknüpfungen”. Fügen Sie mit dem Icon
-“grünes Plus” eine neue Verknüpfung hinzu, die Parameter sind folgende:
-Layer verknüpfen: sites-c14dat, Verknüpfungsfeld: site, Zielfeld:
-Nombre_yac. Optional können Sie unter “Verknüpfte Felder” nicht alle,
-sondern nur ausgewählte Felder anhängen. Mit “Benutzerfeldnamenpräfix”
-können Sie statt des Tabellennamens ein kürzeres Präfix für die
-Spaltennamen angeben. [OK] für diese Verknüpfung und [OK] für das
-Layout.</p>
-<p>Öffnen Sie die Attributtabelle des Layers “Fundplatztypen”, filtern
-Sie (gelbes Viereck + E) auf <code>&quot;sites-c14dat_c14ID&quot; &gt; 0</code>
-und sortieren Sie diese Daten nach oben. Beachten Sie bitte folgendes:
-1. Es gibt nicht viele Gemeinsamkeiten, 2. Sie sehen noch alle Daten der
-Fundplatztabelle und nur die Daten der 14C-Tabelle, die einen
-identischen Fundplatznamen haben (<em>left join</em>). Für eine genaue
-Arbeit müssten wir leider noch Energie investieren. Überlegen Sie für
-sich, was Sie als Datenlieferant besser machen könnten. Löschen Sie
-diese Verknüpfung bitte wieder, Sie hilft uns nicht wirklich.</p>
+<p>Dies sind allgemein gültige Regeln, nicht nur für die
+Datenbankverwaltung in QGIS. Wechseln wir nun aber zu SpatiaLite und zur
+SpatiaLite-GUI.</p>
 </div>
 </div>
+<div id="spatialite-und-spatialite-gui" class="section level2">
+<h2>SpatiaLite und SpatiaLite-GUI</h2>
+<p>Wie eingangs erläutert, beruht SpatiaLite ebenfalls auf SQLite, es
+kann keine Rasterdaten speichern, hat eine deutlich längere Entwicklung
+hinter sich und bietet eine eigene GUI (graphical user interface).
+SpatiaLite-Datenbanken können wie GPKG durch den Export von Layern in
+QGIS erzeugt, gefüllt und nach der Verbindung mit QGIS-Bordmitteln
+genutzt werden. Bis zu diesem Punkt ergibt sich kein Mehrwert für die
+Nutzung. SpatiaLite erlaubt es, <strong><em>spatial views</em></strong>
+zu erstellen, das sind gespeicherte Abfragen mit Geometrie, die wie
+andere Objekte in QGIS genutzt werden können. <strong>Das redundante
+Erstellen neuer Daten und der Verlust von temporär erstellten Daten wird
+damit vermieden</strong>.</p>
+<div id="spatialite-installieren" class="section level3">
+<h3>SpatiaLite installieren</h3>
+<p>Laden Sie sich bitte von der <a href="http://www.gaia-gis.it/gaia-sins/">Website</a> die Dateien für
+SpatiaLite herunter. Unten links sehen Sie die “MS Windows
+binaries”.</p>
+<ol style="list-style-type: decimal">
+<li>Wählen Sie hier bei “<strong>previous stable version</strong>”, je
+nach System 32bit oder 64bit. Nur bei dieser Version ist die GUI
+dabei.</li>
+<li>Sie sehen drei gepackte Dateien. Laden Sie alle herunter, auch wenn
+wir aktuell nicht alle brauchen.</li>
+<li>Zum Entpacken dieser Dateien empfehle ich die freie Software <a href="https://www.7-zip.de/">7-zip</a>.</li>
+<li>Legen Sie im Ordner “Program Files” (64bit) oder “Program Files
+(x86)” einen neuen Ordner “spatialite” an und kopieren Sie alles dort
+hinein (Adminrechte). Da die Datei proj.db in jeder der gepackten
+Dateien vorliegt, belasse ich … modules… und …tools… in ihrem jeweiligen
+Unterordner. Das Programm wird nicht installiert, d.h. im Betriebssystem
+eingebunden, der Ordner “SpatiaLite” kann also überall liegen.</li>
+<li>Wenn Sie es zukünftig öfter nutzen wollen und mehr Komfort wünschen,
+können Sie die Datei “spatialite_gui.exe” mit dem Eintrag “An Start
+anheften” über das Kontextmenü in das Startmenü der Programme eintragen.
+Oder erstellen Sie einen Link in “c:\ProgramData\Microsoft\Windows\Start
+Menu\Programs\”</li>
+</ol>
+<p>Zu SpatiaLite gibt es zahlreiche ergänzende Infos:</p>
+<ul>
+<li>SpatiaLite: <a href="http://www.gaia-gis.it/gaia-sins/" class="uri">http://www.gaia-gis.it/gaia-sins/</a></li>
+<li>SpatiaLite-GUI: <a href="https://www.gaia-gis.it/fossil/spatialite_gui/index" class="uri">https://www.gaia-gis.it/fossil/spatialite_gui/index</a></li>
+<li>SpatiaLite Wiki: <a href="https://www.gaia-gis.it/gaia-sins/spatialite_topics.html" class="uri">https://www.gaia-gis.it/gaia-sins/spatialite_topics.html</a></li>
+<li>SpatiaLite Cookbook: <a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html" class="uri">http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html</a></li>
+</ul>
 </div>
-<div id="literatur" class="section level1 unnumbered">
-<h1 class="unnumbered">Literatur</h1>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-guerreroayusoHistoriaIslasBaleares2006c" class="csl-entry">
-Guerrero Ayuso, V.M., Calvo Trias, M., Gornés Hachero, S., 2006a.
-Historia de las <span>Islas</span> <span>Baleares</span> 1.
-<span>El</span> poblamiento prehistórico de las <span>Islas</span>
-<span>Baleares</span>. <span>Desde</span> los orígenes al fin de la
-<span>Edad</span> del <span>Bronce</span>. El Mundo, Palma de Mallorca.
+<div id="spatialite-gui" class="section level3">
+<h3>SpatiaLite GUI</h3>
+<p>Starten Sie die SpatiaLite-GUI und erstellen Sie mit “Menue -&gt;
+Creating a New …” eine neue SQLite Datenbank im Projektordner, Name:
+mallorca.sqlite. Diese Datenbank wird unmittelbar geöffnet und verändert
+die GUI (s. u.). In der Iconleiste sind einige Symbole ausgegraut, wenn
+Sie nicht alle Teilanwendungen (Dateien) heruntergeladen haben.</p>
+<div class="figure">
+<img src="data:image/jpeg;base64,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9VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLxy2q82g689hOW1Xm0HXnsKj99VJ0hL1TOynfVSdIS9UzsoLlI+eeoifLHHG1jXDwZC4m9v+EeJaypwl808kgmaA43tkvb71oO+qk6Ql6pnZTvqpOkJeqZ2UG77iv8AOG/Y/wDKyiwd7JWPM7SGuDrZPEfWtF31UnSEvVM7Kd9VJ0hL1TOygrfu3RGWrwrLK+OzJPenj71FF90Wsir2YZPvJZGESBrnNDQQC3hYDnuisWmGZrErZsiTLgmHTZCA6gYSd2CBcg2z8fqCv2B/IuH/AEeP8IVC2Xa3uXQHK3MKFtju3EgXH63AD0cSr7gfyLh/0eP8IUaTUREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERByuv8AiFB/irf9Zy6Auf1/xCg/xVv+s5dAQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHK/dn+N4Z8yT+lE92f43hnzJP6UQbzZG7cFwyOR4MgoGXBldcm4ucvA/OP+6v+B/IuH/R4/wAIVD2UeTg+H+E4B1C05d4ADqP1eJ9fBXzA/kXD/o8f4Qm9nhNREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHK6/wCIUH+Kt/1nLoC5/X/EKD/FW/6zl0BAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQcf93eSWOrwjdSNZdkt7lov7zxopXu0sa6rwvM0GzJOI+aimhYtlWEYPQENfkFE0XyttxGhdx+oaK94H8i4f9Hj/AAhc+2OdvsDwuYsZndhzCXCEki+X9fgB6OJXQcD+RcP+jx/hCvgTUREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERByuv8AiFB/irf9Zy6Auf1/xCg/xVv+s5dAQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHK/dn+N4Z8yT+lFj7tUjI6vC872tuyS1zb9lFdJtvdkXxuwbDDGWZTh7CwZnXtcagcPrOq6BgfyLh/0eP8IXP9jxucCwuAyXy4ewW3tr2sL5OJ9fMugYH8i4f9Hj/CFFTUREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERByuv+IUH+Kt/wBZy6Auf1/xCg/xVv8ArOXQEBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBx73eMOhxCrwjf5vAZLaxtxyf2Renu51sFHV4Tyh5bnZJbQnhl/uizMxvz/wAtxFtdQtWy+buPQ23mTkTb2Dct7jiffX9A0V6wP5Fw/wCjx/hCoey7W9y6F3g5xQtHwJJtcfr8APRzq+YH8i4f9Hj/AAhaYTUREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERByuv+IUH+Kt/1nLoC5/X/EKD/FW/6zl0BAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQcc93vDm4hV4PmkLMjJeAve+T+yKf7s/xvDPmSf0oszSszuW4vaI1Df7MOHcygaXC/IWkN3rr8Rrk4fWfVzq+YH8i4f9Hj/CFRNl3EYTQtzODTRN03gAOo/V4n18Fe8D+RcP8Ao8f4QtMJqIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg5XX/EKD/FW/6zl0Bc/r/iFB/irf8AWcugICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiDlfuz/ABvDPmSf0otb7v8ADXS1eDcgkyWZLn8K1/eW/wB0RdLnsuHdyKFwa/LyJoJDW24jQu4/UNFesD+RcP8Ao8f4QqHsu0HDKF2VpcKFozbokgXH6/AD0cSr5gfyLh/0eP8ACERNREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHK6/4hQf4q3/WcugLn9f8AEKD/ABVv+s5dAQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHKfdpe1lXhedzW3ZJxNv2UWp/9Q7Hvq8EyNc6zJr2F/2EXnvmmttadq44tG9rtswW9zKAXbm5C0gFzr8RzcPrOqvuB/IuH/R4/wAIVD2XdbCqBue16Jpy7219Rrk5/XzK+YH8i4f9Hj/CF6HFNREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHK6/4hQf4q3/WcugLn9f8QoP8Vb/rOXQEBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERByv3Z/jeGfMk/pRPdn+N4Z8yT+lEFh2Xzdx6G28ycibewblvccT76/oGivWB/IuH/R4/wAIVD2Xb/7XQvyaihaM26vbUaZ+b1c62eMYnVYTsdDV0NNyiZkEY1BLYxlF3uA1LRxIGqC7JceNVWeXf4DFLvo587Wu3sYs1/pAubBadB0K48aXHjXPUQdCuPGlx41z1EHQrjxpceNc9RB0K48aXHjXPUQdCuPGlx41z1EHQrjxpceNc9RB0K48aXHjXPUQdCuPGlx41z1EHQrjxpceNc9RB0K48aXXPVuMA4T/APL/ALoLUi1aINoi1aINoi1ar+yOMVWKiuFSyOWKCcxxVkLS2OdvoBN7jgTqPEUFfr/iFB/irf8AWcugLn9f8QoP8Vb/AKzl0BAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQcr92f43hnzJP6UXn7tm95XhW5MY8CS+YE/sogtGztNPHgtA7kUrpOSsaHhwtYgHQZv8AZbSjq8Up6SCE4OHGONrLiqAvYAX96sYpZ4tkqAUgG+fTRNaS4Nt4AJN/UCtNJXx4RjdA2nqXyslduqhrpWODbkAEgcNTz/3XK2fHSeNp7XjOtt3U1WIzxGOTByGk81WOyom5q+h5P843sKyS/q/OC0zMTrKjFa5lO2mZQYfIIpzIHGSQ5GvOWxs0AOHG99eC67RE3NX0PJ/nG9hNzV9Dyf5xvYXs/bDC2up2tNRI6cRlgZETo9jngnxDK1xPqUJ3uh4AxzWyTTRyGlNZu3R2eIw0uvl46taSNFTT33NX0PJ/nG9hNzV9Dyf5xvYWVDtdT12O0uG09HWZpmTOe+SPJuXR7vRwPjEgN/SPHpD75cRdiE9AIqWKukqdxTwTNe0xs8MiVx4Pa5rCRltr4JPEgflK3NX0PJ/nG9hNzV9Dyf5xvYX3C8fq5sebhFZDAJ2MmMssVw1xZuspaDwBEuoJNiOK10HuiYZHSVNRiDZIaeHctZUFuRk7pGZxlDjppfQnmU/JqWw3NX0PJ/nG9hNzV9Dyf5xvYWGO7Q1sMtM7B2Uk1O+gkxA7/MDIxuSzWkHwSQ7iQfUoOEbaT1mOz08tP/8AaBz2sbHBJvBYMINz4L/f6hurbXKsd9HrbY7mr6Hk/wA43sJuavoeT/ON7Cwx7H8Qw/GaqOnhpZKKjpoKiZr8wkeJJHsOUg2Fgy9iDfhopFVtIaaGulkpX/o2Nkp2PBjdIC7JZ1xpZ/PbgQVDTy3NX0PJ/nG9hNzV9Dyf5xvYXzHMcxDAcLjlrm0VRWSS+CyHNG3dtaXv4kkkNabeMkcF51u09Ruq84fFTzGOtgpadznHLIJY43hxt6X83MEIeu5q+h5P843sJuavoeT/ADjewpVBjwq8Rjh3bWQOoRVlzj4TTmLS0+qxWjZ7pOE1E1PLQ7ypw90U8k0sTC8xiPdnNZt/Bs8k310VNNluavoeT/ON7Cbmr6Hk/wA43sLCu27wWjeyOaZ8cktRJTRGRuVr3scGuIudQHEDTx6L1q8dq2YdhtVAymMkswhnpnZi8uzhrwyx0y2cSTfRv1qDHc1fQ8n+cb2E3NX0PJ/nG9has7W4mGMdJBSRRPEVQ6pLHvjghkDi3eAG97ssXe9F7kBbKv2sY6nqWYVTzT1UZIY4wudG8MeGSuZbV+S9yBYm2iDLc1fQ8n+cb2FIpJcQpc26wZ3hWverHZWtdtzQB0VFBVU1XihgbUObDfI5tszsoJzA5Q4ga2OhKlVu0cjcTLIH00VBDNDBJJLG95kfLYgNLdGCzm2LtCTbTiQ2HdDFOhv+6HZTuhinQ3/dDsqu0m12ITR088tPTQRyUkVUyJ7X5p2lrXyGN/vfBBcMp10vwU2p2irosXqyyKlkwumqaemeBmEp3rWWeDexsXjS3C+qvvRpte6GKdDf90OyndDFOhv+6HZWlj90HCpq9sNOyaSBrp2VE4sWwGJjXnNYm4s4L0pfdBwOqihlp31EschN3RxZ2xgOa27iCQBd7fb60jvweG27oYp0N/3Q7Kd0MU6G/wC6HZUHEdraGlxSgp4J4KuKoM0RNO8SPErMn6MAH33hEkcwC9J9r8LiZG4GokMnvGRxEucd5u7AfOUNIRwiqmo6RtRC9jo6vlLmxkOIs8uA1IHOFYuVy+ZVPsZ21qINqYahxmiifyHJKGyOFi6WPUtHraHEfNK18W0mKmOMSRUHKN9ADE3OTKyUNcAzXRzQXEnUWbewvo8iz8rl8yqfYztpyuXzKp9jO2tHiW1tPT43hNNSSUtVQ1RmZUVEUoduXMMbQDY299IAb8NFCw/b2lLpTirG0rJMRFFSWdcyBzWFjiDrc7waAGyeRaeVy+ZVPsZ205XL5lU+xnbVVwjblk8TnV1M8PLYzHHTMMjnXa5ztPEA262se12HTSujpmVc7942NgjhJ3jiwP8AB8dmkE+K6LMabXlcvmVT7GdtOVy+ZVPsZ21p2bWUc+NS4fSuDn0szIau5F48+YMOhPFzbWOuoXnLtxhUU80To660T5GOeKZ2S0b93I4Hna11rn0p5RvOVy+ZVPsZ205XL5lU+xnbVYxnbukp56mmw4Mnq6WYxTscdG/opXggg+OK1jqpbdtcNZTukqG1Dd3Fme9sLiwuDQ5zGnnIzcE/K6bzlcvmVT7GdtOVy+ZVPsZ21rJdqqCKkrKqSOpZTUgG+lewMa12l2XJAzC4uvYbSYe6LCpInSSMxNgkpy1vFtgbm/DQhETeVy+ZVPsZ205XL5lU+xnbVXxDbykZHC6kZKxrvDe+ogc0CIwzSNkaNMwO5OniWTfdCwqGLNibZaIuq5KSISWG9yEAvFzw1GnHXnTRPXlZuVy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEEPlcvmVT7GdtOVy+ZVPsZ21MRBD5XL5lU+xnbTlcvmVT7GdtTEQQ+Vy+ZVPsZ205XL5lU+xnbUxEHIfdpnqN/hL2Uc1nNlHhFg4ZP+L0ott7rzY5u5VyHZTMNDwPgIuVovvp0rNNdtnS7RYRJgOGwd0GxSxQsDs0Ejv1MpGg9K0VfFg9ZVte/HgKdz800XJJPDBNyAeIvqPrRFjJ8JiyX52jv+csWnlXhPhcO+zAmsYxlaA1tgBuZNAP+VQJsT2UmxI17qqVtS4APyOnYySwsM7BZrrD9oFEXoREonbE0Tg6B8mYG4L31EhFmOYAM17ANc4AcBdZSS7FvDgZpWsfTilexj6hjJIg0tDXNBAdYEgEgkeNEQSGYlslHibcQjncyra5zs7d8LlzWtdccCCI2aEW8EHivCWfY2aaeWWeZ80xB3jpKkujsSRuze8epPvMqIgj0Y2Qpalk7cRxB0kcj5I3GeoBbnLS8Fws54JaD4Zd7NFn/wDhAiEccksbWiMN3UlSwsMYs0tIIIcBpmGpGhJCIgk4hW7I4jJTSVlTNI6njMLfDqBmYbXa8D34OUXzXuvMTbGCsmqhNLvpXF7vDqMrXG1y1vBpOUXygXsiIPasxDZGtxRuIVNRI+pDGRnWcRuaxxc3NGPAdYuJBIKylxPZOWOOOSoL4mMkjLHslcHsfq5rrg3F7H0WRE/AjxzbFtMZme6rMYc1hrd/U5QbXtvM37I/+ErGnqdiaSqp6iGV7HwBgjbeoLAWjK0lnvSQDYEgkDn0REHxmIbGurRWtragStL7ZH1DG2c7M5pa2wc3Nc2cDxK+Qz7ExUxpxPM6HcyUwZJJUvDYpAA5jc18oIa3QWtbSyIhv29H12xjjA5tRLE+GSSVj4XVEbg6R2Z/hNsSCbEtOmg00Xyev2QmxHlz66qbUBxeDFLUxNBOXMLMsCDkbcG409KIg8zNsQaeSATztikdd7WS1LcwtbIbH3lifA976Fmyo2LY6d8NRNEZrkmKSpZku4Odu7Ebu5AJyWvz3REHph9XsdQVDJqKeWFzWCMta6oySAAi72+9edT4TgT6VgJtjc9O91RK50AYG6zta4MN2Z2izX5bC2YG1kRB6UtZsfTVFPLFPJeni3ULHunfHG3Ll0YbtBy6XtcjnXlSy7G01S2obUTPkbl0kdO5l2tytJYfAzBoADrX04oiDzpmbDU0bY4nPyNJ0e+ofcFgYWm5N25QBlOmg0XtHPsayAxGonlZu91+nlqZSGXDsoLiSBdo0REErFcV2TxWWCSun3kkAdunhszHR3tcgtAIPgjXiocL9iYat1SyR++Lw8FzqhwaQ/OMrTo0ZtbAAIiD1jrdkYmTNjqZbzVAqZHvM0jnPAtxcCbW0twsvCE7FwSwyQVNXFJDfK+OoqmuscuhIPhNsxoANwAABoiJ4E/FMX2TxQ/+4Stn/QyQeFHKPAflzDQc+VuvEW0UKofsTUVbamRxEzXiQFhnYCRu7XDbAj9FHodPBGiIgxd3kOiEYc9gbazo3VDHCwIAzCxtZxBF9b6r3fV7HOaGtlfERKJmuhM8TmvDQy4c2xAygCwNiiIMIajY2AV24nkYa0ESkmd36zn+CHXDfCc52ltSs31exz43sfJmD2zNdds2oleHyc3O4A+jmsiII7RsMJJX3cTK4vdmdUEAneXsDo0fpZNBYeEVmX7El8ri5xErcrmXnycACQ3gCQ0XIAJtqURBnVVOx1S+odLUTjlD2yyNjlqWNztIIeGtIDXXaPCFiedYtm2MbFTxCaUQ072SRx56jIHMa1rbt4GwaNDfXXiSiINfBSbGR1dQ51S+SjkhZEynfyh27s2Vps4m9i2YtDRoOb0bB02xplEraioikErpg+KWpjLXOADrFpFgbC7RoSLkXREJ7bzvvwPz7+DJ2U778D8+/gydlEQO+/A/Pv4MnZTvvwPz7+DJ2URA778D8+/gydlO+/A/Pv4MnZREDvvwPz7+DJ2U778D8+/gydlEQO+/A/Pv4MnZTvvwPz7+DJ2URA778D8+/gydlO+/A/Pv4MnZREDvvwPz7+DJ2U778D8+/gydlEQO+/A/Pv4MnZTvvwPz7+DJ2URA778D8+/gydlO+/A/Pv4MnZREDvvwPz7+DJ2U778D8+/gydlEQO+/A/Pv4MnZTvvwPz7+DJ2URA778D8+/gydlO+/A/Pv4MnZREDvvwPz7+DJ2U778D8+/gydlEQO+/A/Pv4MnZTvvwPz7+DJ2URA778D8+/gydlfDthgQ4138GTsoiD5344D59/Bk7K+R7Z4DILsr7jUfAydlEQZ99+B+ffwZOynffgfn38GTsoiB334H59/Bk7Kd9+B+ffwZOyiIPHv42dyl3dHQNzfAScL2/ZWbNs8Be5wbX3LTY/oZNOf9lESBi7bbZ9smR2IWdppuZOc2H6voWA272cLSRiOgLh8BJzGx/VREJejtttn2ucHYhYttf8AQyc/D9VYSbc7OxtLn4jZoJB/QScQLn9X0IiD0dtngLCwOr7ZjYfoZNTx/ZUabbjAZIXbjEW+Ikwyi17gW8HxoiCg+6btBS1Hc6OgqYp3sMrpM7ZBYHJbi3/hciIt1rExuXK95rOof//Z" alt />
+<p class="caption">SpatiaLite-GUI</p>
 </div>
-<div id="ref-guerreroayusoHistoriaIslasBaleares2006b" class="csl-entry">
-Guerrero Ayuso, V.M., Calvo Trias, M., Gornés Hachero, S., 2006b.
-Historia de las <span>Islas</span> <span>Baleares</span> 2.
-<span>Mallorca</span> y <span>Menorca</span> en la <span>Edad</span> del
-<span>Hierro</span>. <span>Cultura</span> <span>Talayótica</span> y
-<span>Posttalayótica</span>. El Mundo, Palma de Mallorca.
+<p>Importieren Sie nacheinander die shp-Dateien der Verwaltungsgrenzen
+(autonomias, municipios) und die des Projektes (sites, comarcas): “Files
+-&gt; Advanced -&gt; Load Shapfile” (nutzen Sie nachfolgend das
+entsprechende Icon in der Iconleiste). Nach der Auswahl der shp-Datei
+erscheint ein Fenster, in dem Sie jeweils angepasst folgende Parameter
+setzen:</p>
+<ul>
+<li>Autonimias: Table name: autonomias, GeomColumn name: geom, SRID:
+Vorgabe sollte stimmen, Charset Encoding: UTF-8 (wird leider nicht
+automatisch ausgelesen, steht am Ende des Liste für Charset Encoding,
+die Info finden Sie in der datei *.cpg), der Rest bleibt nach
+Vorgabe.</li>
+<li>Municipios (Gemeinden): Table name: municipios, GeomColumn name:
+geom, SRID: 4258, Charset Encoding: UTF-8</li>
+<li>Comarcas (Landschaftszonen): Table name: comarcas, GeomColumn name:
+geom, SRID: 25831, Charset Encoding: UTF-8. mallorca-sites: Table name:
+sites, GeomColumn name: geom, SRID: 25831, Charset Encoding: UTF-8.</li>
+</ul>
+<p>Der Import von Text-Tabellen ist leider nicht so komfortabel wie in
+QGIS, z.B. bei zu überspringende Zeilen am Dateianfang. Nutzen Sie
+deshalb die neue Datei “pop_balears.csv” für den Import: Table Name:
+pop_balears, First line ….: Haken setzen, Text separator quotes: None,
+Column separator: Comma, Charset encoding: UTF-8 und [OK]. Falls Sie
+möchten, können Sie die Abfragen von oben wiederholen, achten Sie aber
+auf die veränderten Namen:
+<code>select municipio, zensus_1842, zensus_1930 from pop_balears</code>.</p>
+<p>Sollten die Zahlen von “zensus_1842” linksbündig stehen, ist diese
+Spalte wegen der <Leerzeichen> bei fehlenden Daten als Text importiert
+worden. Die schnellste Variante: ändern Sie die CSV-Datei und
+importieren Sie die Daten nach dem löschen der alten Tabelle
+(Kontextmenü Maintenance) erneut.</p>
 </div>
-<div id="ref-lullCeramicaTalayoticaProduccion2008a" class="csl-entry">
-Lull, V., Micó Pérez, R., Palomar Puebla, B., Rihuete Herrada, C.,
-Risch, R., 2008. Cerámica talayótica: la producción alfarera mallorquina
-entre ca. 900 y 550 antes de nuestra era, Col•lecció d’arqueoecologia
-social mediterrània. Bellaterra, Barcelona.
-</div>
-<div id="ref-lullTurmbautenSonFornes2007a" class="csl-entry">
-Lull, V., Micó Pérez, R., Rihuete Herrada, C., Risch, R., 2007.
-Turmbauten zu <span>Son</span> <span>Fornés</span>. Archäologie in
-Deutschland 2007, 56–61.
-</div>
-<div id="ref-micoperezCronologiaAbsolutaPeriodizacion2005a" class="csl-entry">
-Micó Pérez, R., 2005. Cronología absoluta y periodización de la
-prehistoria des las <span>Islas</span> <span>Baleares</span>, British
-<span>Archaeological</span> <span>Reports</span>.
-<span>International</span> <span>Series</span>. Archaeopress, Oxford.
-</div>
-<div id="ref-vanstrydonckMyotragusMetellusaJourney2014" class="csl-entry">
-Van Strydonck, M., 2014. From <span>Myotragus</span> to
-<span>Metellus</span> - a journey through the pre- and early-history of
-<span>Majorca</span> and <span>Minorca</span>. LIBRUM Publishers &amp;
-Editors LLC, [s.l.].
+<div id="view-spatial-view" class="section level3">
+<h3><em>view</em> &amp; <em>spatial view</em></h3>
+<p>Kommen wir zum zweiten wichtigen Aspekt für die Verwendung von
+SpataLite: gespeicherten Abfragen (<em>view</em>) mit Geometrie. Ich
+greife auf die frühere Abfrage zurück, wobei ich die Geometrie zur
+Darstellung weglasse: Wieviele Talaiots befinden sich in jeder
+Gemeinde?</p>
+<p>Ich beginne mit der <strong>Auswahl der Gemeinden von
+Mallorca</strong> (codnut3=‘ES532’). Dazu nutze ich dieses Mal den
+“Qerry/View Composer” (Menue -&gt; Advanced -&gt; Querry/V…“) oder das
+Icon mit dem Stift. Register Main: Main Table: municipios, darunter
+bitte alle Felder markieren, Register Filter: Filter #1, Enable, Column
+to be filtered: codnut3, Comparison operator: =, Value: ES532, Reiter
+View: Create Spatial View, View name: municipios_532, Geometry Column:
+geom und [OK]. Im Ergebnis sollten Sie einen neuen Eintrag in Ihrer DB
+haben, wenn nicht, führen Sie über das Kontextmenü zu”User data” ein
+“refresh” durch.</p>
+<p>Erstellen Sie in QGIS im Data Source Manager für Datenquelle
+“SpatiaLite” eine neue Verbindung zu dieser Datenbank “mallorca.sqlite”
+oder verbinden Sie diese ggf. erneut. Wählen Sie “municipios_532” und
+[Hinzufügen]. Die zuvor erstellte SQL-Anweisung erzeugt nicht nur die
+gefilterte Sicht auf den Datenbestand, sondern trägt zugleich die
+notwendigen Informationen in den Tabellen zur Verwaltung der Geometrien
+ein (unter Internal Data). Erst dadurch wird die <em>view</em> zur
+<em>spatial view</em> und in QGIS nutzbar.</p>
+<p>Ich wiederhole den Vorgang in der SpatiaLite GUI für meine Fundplätze
+und <strong>Filter auf ‘Talaiot…’</strong>. Main table: sites und
+darunter alle Spalten markieren, Filter # 1 enable, Column to be
+filtered: Tipo_yacim, Comparison operator: like, Value: Talaiot%, View
+type: Create Spatial View, View_name: talaiots, Geometry column: geom
+und [OK].</p>
+<p>Nun müssen wir beiden Datenbestände räumlich verbinden, die Funktion
+dafür lautet: st_within(). Leider geht dies nicht mit dem
+<em>composer</em>.</p>
+<pre class="sql"><code>create view talaiots_in_municipios as
+select m.pk_uid, m.nameunit, count(t.nr) as talaiots 
+from municipios_532 as m
+join talaiots as t on st_within(t.geom, st_transform(m.geom, 25831))
+group by m.pk_uid;</code></pre>
+<ol style="list-style-type: decimal">
+<li>Zeile: Erstellen der <em>view</em> talaiots_in_municipium als</li>
+<li>Zeile: Es wird eine Auswahl an Feldern getroffen, dabei steht “m.”
+für Felder aus <em>municipios</em> und “t.” steht für Felder aus
+<em>talaiots</em>. Die Funktion count() zählt die Menge der
+eingetragenen Datensätze und erhält die Spaltenüberschrift
+“talaiots”.</li>
+<li>Zeile: Als primäre Datenquelle wird <em>municipios_532</em>
+angegeben, die als “m” abgekürzt bezeichnet wird.</li>
+<li>Zeile: Beschreibt die Verknüpfung der primären Datenquelle (m) zu
+<em>talaiots</em>, etikettiert als “t”, mit der Funktion
+“st_within(t.geom, m.geom)”. Dies verbindet alle Fundplatzeinträge
+(sites) mit der Gemeinde (municipios) in der diese liegen. Da
+unterschiedliche KBS vorliegen, muss vorab eine Transformation für
+m(unicipios) durchgeführt werden: “st_transform(m.geom, 25831)”.</li>
+<li>Zeile: Dieser Ausdruck gruppiert das Ergebnis nach der ID (pk_uid)
+der Gemeinden und bewirkt das Zählen der Funktion count() über 1 hinaus
+bis zur entsprechenden Menge an Talaiots je Gemeinde.</li>
+</ol>
+<p>Die Abfrage wird erst ausgeführt, wenn sie diese neue view abfragen.
+Aktualisieren Sie “User data” (Kontextmenü refresh) und führen Sie
+folgende Abfrage aus: ``select * from talaiots_in_municipios```. Diese
+Abfrage braucht etwas Zeit (bei mir 6 Sek.), bitte warten Sie. Bis
+hierher hätte das auch in einem Rutsch ohne die ersten beiden
+<em>views</em> ausgeführt werden können. Die beiden <em>views</em> sind
+aber durchaus auch sinnvoll anderweitig einsetzbar. Da das Ergebnis nur
+eine Tabelle ist, müssen wir diese erneut mit unseren
+<em>municipios</em> und deren Geometrie verbinden und als <em>spatial
+view</em> speichern. Starten Sie den <em>composer</em>. Main table:
+talaiots_in_municipios und darunter alle Felder auswählen, Table #2
+enable: municipios, Felder: PK_UID und geom (&lt;Strg&gt; + Maus),
+[Inner] Join, Join match #1: PK_UID zu PK_UID, View: Creat Spatial View,
+View name: talaiots_municipios, Geometry Column Table #2 geometries:
+geom.</p>
+<p>Verbinden Sie die DB in QGIS erneut, fügen Sie die Daten zum Projekt
+hinzu und warten Sie bis der Vorgang abgeschlossen ist (ca. 20 Sek. bei
+mir). Das ist natürlich ärgerlich, zumal dies auch bei der Zuweisung der
+Symbologie (kategorisiert) erneut auftritt. Die Daten sind aber 1. nicht
+redundant hinterlegt, 2. wirken sich Änderungen an den Fundplätzen
+direkt auf das Ergebnis aus, die Darstellung ist also stets aktuell und
+3. ist die Anweisung in der DB dauerhaft gespeichert und damit
+dokumentiert.</p>
+<p>Natürlich können Sie statt der Anweisung
+<code>create view &lt;name&gt; as</code> auch
+<code>create table &lt;name&gt; as</code> verwenden. Damit haben Sie
+zwar ebenfalls redundante Date geschaffen, da die Abfrage aber als
+Anweisung gespeichert werden kann ist dies Vorgang 1. dokumentiert und
+2. jederzeit bei aktualisierten Datenbestand erneut durchführbar. Es ist
+also durchaus ein Verbesserung gegenüber dem Erstellen einer neuen
+shp-Datei.</p>
+<p>Um die <em>spatial view</em> “talaiots_municipios” als feste Tabelle
+zu erzeugen gehen Sie wie folgt vor: 1. Wählen Sie aus dem Kontextmenü
+zur view “talaiots_municipios” show CREAT statement und kopieren Sie die
+angezeigte SQL-Anweisung. 2. Fügen Sie diese Anweisung oberhalb im
+Abfragefeld ein, ändern Sie die erste Zeile zu: “CREATE
+TABLE”talaiots_municipios_tbl” AS” und führen Sie diese aus. 3. Die
+resultierende Tabelle “talaiots_municipios_tbl” hat keine Weltkugel im
+Icon, wird also nicht als Geometrietabelle erkannt. Die vorhandene
+Spalte “geom” muss als Geometrie erst neu registriert werden. Wählen Sie
+dazu aus dem Kontextmenü zur Spalte “geom” “Recover Geometry Column”. In
+dem folgenden Fenster tragen Sie ein: SRID: 4258, Dims: XY, Geometry
+Type: MULTIPOLYGON und [OK]. Diese Informationen erhalten Sie, wenn Sie
+für die Geometrie der ursprünglichen Datenquelle (municipios.geom) im
+Kontextmenü “Check geometries” aufrufen.</p>
 </div>
 </div>
 </div>

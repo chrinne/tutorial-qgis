@@ -12,6 +12,10 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
