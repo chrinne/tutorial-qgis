@@ -12,15 +12,15 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
 urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
@@ -119,22 +119,17 @@ Die **Beschriftung** aller Gemeinden in der Karte kann die Darstellung überflut
 ```
 if(
   $area>
-    (array_get(
-        array_sort(array_agg($area)),
-        round((count("NAMEUNIT")/2),0))),
+    array_mean(array($area)),
   "NAMEUNIT", "") 
 ```
 
-"Die größere Hälfte", was hätten Sie von Hand gemacht? 1. Die Daten nach der Fläche aufsteigend sortiert und 2. ab der Mitte alle Werte beschriftet. Genau das passiert im Code. Ich erläutere den  Inhalt der Klammern gemäß den Regeln von von links nach rechts und innen nach außen.
+"Die größere Hälfte", was hätten Sie von Hand gemacht? 1. Wir erfassen alle Werte, bilden den Mittelwert und vergleichen dann jeden Wert mit letzterem. Genau das passiert im folgenden Code. Vor allem diese *array*-Funktionen sind äußerst praktisch bei der Auswertung von Daten.  
 
-- array_agg($area) : schreibt alle Flächengrößen in eine Liste (*array*) 
-- array_sort () : sortiert unsere Liste ohne weitere Anweisung aufsteigend.
-- array_get () : liefert uns aus einem *array* den Wert des n-ten Elementes
-  - Der erste Teil ist die eben erklärte Liste.
-  - Der zweite Teil ist: round((count("NAMEUNIT")/2),0)). Dies zählt die Anzahl der Namen (Gemeinden), teilt diese durch 2 und rundet das Ergebnis auf 0 Stellen nach dem Komma (Ganzzahl). Ein 1/2 Element kann es bei ungerader Zählung ja nicht geben.
-- "NAMEUNIT", "" : ist die Rückgabe der *if*-Bedingung, die das ganze klammert. Die Bedingung ist: die aktuelle Fläche ($area) sei größer als der ausgezählte Grenzwert in der Mitte der Reihe. Wenn das wahr ist, folgt der erste Wert (NAMEUNIT), wenn nicht eine leere Zeichenkette.
+- array(*$area*) : schreibt alle Flächengrößen in eine Liste (*array*) 
+- array_mean (*array*) : liefert den Mittelwert des *array*.
+- if(*Bedingung*,*WAHR*, *FALSCH*) : Prüft die jeweiloge Flächengröße und liefert entweder den Namen ("NAMEUNIT") oder eine leere Zeichenfolge ("").
 
-Bestätigen Sie den Ausdruckseditor mit [OK]. Wechseln Sie noch zur Platzierung und wählen hier "Horizontal (langsam)". Die vorangehnde Regel hätten wir auch unter "Regelbasierte Beschriftung definieren können, Rückgabewerte der *if*-Bedingung sollten dann 1 (wahr), 0 (falsch) sein. Hier habe ich aber nicht die Platzierungsoptionen.
+Bestätigen Sie den Ausdruckseditor mit [OK]. Wechseln Sie noch zur Platzierung und wählen hier "Horizontal (langsam)". Die vorangehnde Regel hätten wir auch unter "Regelbasierte Beschriftung definieren können, Rückgabewerte der *if*-Bedingung sollten dann 1 (wahr), 0 (falsch) sein. Hier habe ich aber nicht die Platzierungsoptionen. Sollten die Beschriftungen nicht wie erwartet angezeigt werden wählen Sie auch mal unter Beschriftung > Darstellung > **Alle Beschriftungen auf diesem Layer anzeigen (einschließlich kollidierender).** 
 
 Im Register **Diagramme** wähle ich Histogramm und bei den Attributen ergänze ich die Felder pop_1900 bis pop_2011 mit dem [grünen Plus] bei "Zugewiesene Attribute". Die Farbe und der Legendeneintrag sind jetzt leidige Handarbeit. Die Farbe wird automatisch zufällig zugewiesen und stört, ich setze alles auf ein mittleres Grau (40%) und übertrage es mit der Pipette auf die anderen Felder. Die Legendenbeschriftung kürze ich auf das Jahr des Zensus. Unter Darstellung setze ich die Balkenbreite auf 1,5 und die Balkenzwischenräume auf 0,2. Der erste Wert frei wählbar und ergibt sich aus dem verfügbaren Platz. Der zweite Wert wird vom Skalenniveau der Zensus bestimmt. Diese sind geordnet, weisen aber keine gleichmäßigen Abstände auf, sind also ordinalskalliert. Deshalb sollte ein kleiner Abstand zwischen den Balken bestehen.  Wichtig wird jetzt der Bereich **Größe**. Anders als bei Kreisdiagrammen (Durchmesser) kann das Histogramm keine feste Größe bekommen sondern wird anhand des größten Wertes eines Attributes skaliert. Wählen Sie das Attribut pop_2011 und wichtig(!) klicken Sie auf [Finden], weisen Sie der Balkenlänge "100" zu. Wegen der großen Unterschiede im Datenbestand ist diese Skalierung insgesamt schwierig. Wir könnten eine logarithmische Skalierung erwägen, das ginge bei der Zuweisung der Attribute zu Beginn mit dem [E] über dem grünen Plus. Den Ausdrucksgenerator haben Sie schon kennengelernt, der Ausdruck ```log10("pop_2011")``` bereitet Ihnen also keine Probleme. Das muss aber für alle Attribute wiederholt werden. Zudem ist unsere Sehweise für logarithmische Skalierung nicht gut ausgeprägt und zerstört obendrein die Dramatik der Zahlen, deshalb nehme ich davon Abstand. Beim Ergebnis stört mich die eigentlich wichtige Achsendarstellung. Da diese unbeschriftet ist und die Balkenhöhe eher emotional als mit den konkreten Werten wirkt, schalte ich diese unter Diagramme > Darstellung > Achse anzeigen aus.
 

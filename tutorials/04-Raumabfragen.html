@@ -2779,7 +2779,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">28. April 2023</h4>
+<h4 class="date">15. Mai 2023</h4>
 
 </div>
 
@@ -3110,40 +3110,31 @@ beschriften. Wählen Sie bei Beschriftung statt “keine Beschriftung”
 Dort ergänzen Sie folgenden Ausdruck:</p>
 <pre><code>if(
   $area&gt;
-    (array_get(
-        array_sort(array_agg($area)),
-        round((count(&quot;NAMEUNIT&quot;)/2),0))),
+    array_mean(array($area)),
   &quot;NAMEUNIT&quot;, &quot;&quot;) </code></pre>
-<p>“Die größere Hälfte”, was hätten Sie von Hand gemacht? 1. Die Daten
-nach der Fläche aufsteigend sortiert und 2. ab der Mitte alle Werte
-beschriftet. Genau das passiert im Code. Ich erläutere den Inhalt der
-Klammern gemäß den Regeln von von links nach rechts und innen nach
-außen.</p>
+<p>“Die größere Hälfte”, was hätten Sie von Hand gemacht? 1. Wir
+erfassen alle Werte, bilden den Mittelwert und vergleichen dann jeden
+Wert mit letzterem. Genau das passiert im folgenden Code. Vor allem
+diese <em>array</em>-Funktionen sind äußerst praktisch bei der
+Auswertung von Daten.</p>
 <ul>
-<li>array_agg($area) : schreibt alle Flächengrößen in eine Liste
+<li>array(<em>$area</em>) : schreibt alle Flächengrößen in eine Liste
 (<em>array</em>)</li>
-<li>array_sort () : sortiert unsere Liste ohne weitere Anweisung
-aufsteigend.</li>
-<li>array_get () : liefert uns aus einem <em>array</em> den Wert des
-n-ten Elementes
-<ul>
-<li>Der erste Teil ist die eben erklärte Liste.</li>
-<li>Der zweite Teil ist: round((count(“NAMEUNIT”)/2),0)). Dies zählt die
-Anzahl der Namen (Gemeinden), teilt diese durch 2 und rundet das
-Ergebnis auf 0 Stellen nach dem Komma (Ganzzahl). Ein 1/2 Element kann
-es bei ungerader Zählung ja nicht geben.</li>
-</ul></li>
-<li>“NAMEUNIT”, “” : ist die Rückgabe der <em>if</em>-Bedingung, die das
-ganze klammert. Die Bedingung ist: die aktuelle Fläche ($area) sei
-größer als der ausgezählte Grenzwert in der Mitte der Reihe. Wenn das
-wahr ist, folgt der erste Wert (NAMEUNIT), wenn nicht eine leere
-Zeichenkette.</li>
+<li>array_mean (<em>array</em>) : liefert den Mittelwert des
+<em>array</em>.</li>
+<li>if(<em>Bedingung</em>,<em>WAHR</em>, <em>FALSCH</em>) : Prüft die
+jeweiloge Flächengröße und liefert entweder den Namen (“NAMEUNIT”) oder
+eine leere Zeichenfolge (““).</li>
 </ul>
 <p>Bestätigen Sie den Ausdruckseditor mit [OK]. Wechseln Sie noch zur
 Platzierung und wählen hier “Horizontal (langsam)”. Die vorangehnde
 Regel hätten wir auch unter “Regelbasierte Beschriftung definieren
 können, Rückgabewerte der <em>if</em>-Bedingung sollten dann 1 (wahr), 0
-(falsch) sein. Hier habe ich aber nicht die Platzierungsoptionen.</p>
+(falsch) sein. Hier habe ich aber nicht die Platzierungsoptionen.
+Sollten die Beschriftungen nicht wie erwartet angezeigt werden wählen
+Sie auch mal unter Beschriftung &gt; Darstellung &gt; <strong>Alle
+Beschriftungen auf diesem Layer anzeigen (einschließlich
+kollidierender).</strong></p>
 <p>Im Register <strong>Diagramme</strong> wähle ich Histogramm und bei
 den Attributen ergänze ich die Felder pop_1900 bis pop_2011 mit dem
 [grünen Plus] bei “Zugewiesene Attribute”. Die Farbe und der
