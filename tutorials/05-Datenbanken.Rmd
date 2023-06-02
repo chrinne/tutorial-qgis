@@ -12,15 +12,15 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
 urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
@@ -101,10 +101,10 @@ Dieses Kapitel beginnt mit Übungen zu GeoPackages, SpatiaLite und der DB-Verwal
 
 Insgesamt stellt sich mir die Arbeit mit den Daten in QGIS im Vergleich zu Datenbankmanagementsystemen (DBMS) als unbefriedigend dar. Natürlich gibt es nicht nur ein DBMS und QGIS bietet bei der Datenquellenverwaltung einige Schnittstellen an. Zur Ergänzung sei erwähnt, dass ESRI (ArcGIS) auf Geodatenbanken (*geodatabases*) für den Desktop setzt, die mit MS Access kompatibel sind. 
 
-Es gibt zwei grundlegende Unterschiede bei DBMS: 1. Die für den Desktop und die Nutzung durch eine Person oder einen begrenzten Nutzerkreis in einem eher lokalen Netzwerk gedachten Systeme und davon deutlich unterschieden 2. die für Server als Dienst im Netzwerk für viele Nutzer konzipierten Systeme. Dies ist keine scharfe Grenze, denn Sie können einen SQL-Server auf ihrem PC für persönliche Zwecke betreiben oder eine Access-Datenbank erfolgreich in einem mittelständischen Betrieb einsetzen. Ein wesentlicher Aspekt neben dem System ist auch der Aufbau der Datenbank. Für GIS sind oft spezielle Ergänzungen notwendig, die nicht immer integriert sind, z.B. PostgreSQL mit PostGIS. SQL ist die Programmiersprache für das Strukturieren, Verwalten und Verändern von Daten. SQL ist textbasiert und in dieser Form auch von Menschen lesbar, gut archivierbar und trotz zahlreicher Varianten insgesamt gut interoperabel (vgl. [FAIR](https://www.go-fair.org/fair-principles/)).
+Es gibt zwei grundlegende Unterschiede bei DBMS: 1. Die für den Desktop und die Nutzung durch eine Person oder einen begrenzten Nutzerkreis in einem eher lokalen Netzwerk gedachten Systeme und davon deutlich unterschieden 2. die für Server als Dienst im Netzwerk für viele Nutzer konzipierten Systeme. Dies ist keine scharfe Grenze, denn Sie können einen SQL-Server auf ihrem PC für persönliche Zwecke betreiben oder eine Access-Datenbank erfolgreich in einem mittelständischen Betrieb einsetzen. Ein wesentlicher Aspekt neben dem System ist auch der Aufbau der Datenbank. Für GIS sind oft spezielle Ergänzungen notwendig, die nicht immer integriert sind, z.B. PostgreSQL mit PostGIS. SQL ist die Programmiersprache für das Strukturieren, Verwalten und Verändern von Daten. SQL ist textbasiert und in dieser Form auch von Menschen lesbar, gut archivierbar und trotz zahlreicher Varianten insgesamt gut interoperabel (vgl. [FAIR](https://www.go-fair.org/fair-principles/){target="_blank"}).
 
-- Geopackage: Ein freies und offenes DBMS auf der Basis von [SQLite](https://sqlite.org) für den Desktop. Gegenüber [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index), an das es angelehnt ist, kann es zudem auch Rasterdaten verwalten. Der Nutzer sieht nur eine Datei, die alle Daten beinhaltet.
-- [SpatiaLite](http://www.gaia-gis.it/gaia-sins/): Ist ein auf SQLite basierendes DBMS mit GIS-Integration speziell für den Desktop. [SQLite](https://sqlite.org) ist frei nutzbar (*public domain*), die GIS-Funktionalität von SpatiaLite ist frei verwendbar und *open-source*. Zur Arbeit mit SpatiaLite bietet QGIS eine integrierte Anwendung, eine ergänzende [SpatiaLite GUI](http://www.gaia-gis.it/gaia-sins/) ist aber empfehlenswert. Im Ergebnis sieht der Nutzer nur eine Datei für Vektordaten und nicht bis zu fünf Dateien je shp-Datei. Rasterdaten müssen aber getrennt verwaltet werden. 
+- Geopackage: Ein freies und offenes DBMS auf der Basis von [SQLite](https://sqlite.org){target="_blank"} für den Desktop. Gegenüber [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index){target="_blank"}, an das es angelehnt ist, kann es zudem auch Rasterdaten verwalten. Der Nutzer sieht nur eine Datei, die alle Daten beinhaltet.
+- [SpatiaLite](http://www.gaia-gis.it/gaia-sins/){target="_blank"}: Ist ein auf SQLite basierendes DBMS mit GIS-Integration speziell für den Desktop. [SQLite](https://sqlite.org){target="_blank"} ist frei nutzbar (*public domain*), die GIS-Funktionalität von SpatiaLite ist frei verwendbar und *open-source*. Zur Arbeit mit SpatiaLite bietet QGIS eine integrierte Anwendung, eine ergänzende [SpatiaLite GUI](http://www.gaia-gis.it/gaia-sins/){target="_blank"} ist aber empfehlenswert. Im Ergebnis sieht der Nutzer nur eine Datei für Vektordaten und nicht bis zu fünf Dateien je shp-Datei. Rasterdaten müssen aber getrennt verwaltet werden. 
 - PostgreSQL: Ein freies DBMS für Server und *open source*. Durch die Erweiterung PostGIS ist es im besonderen Maß für die Arbeit mit Geodaten geeignet. Es ist deshalb in größeren Forschungsprojekten und -verbünden beliebt. Die Wartung des Servers (Hardware), des Postgres-Servers (Dienst) und abgestimmt darauf der PostGIS-Version, sollten in ihrem Aufwand nicht unterschätzt werden. Eine Analyse des Bedarfs, der vorhandenen Kompetenz und Ressourcen ist angebracht.
 - MSSQL: Microsoft SQL Server auch mit kostenfrei nutzbaren Versionen.
 - Oracle: Ein traditionsreicher Anbieter von DBMS für Server, auch kostenfrei nutzbaren Versionen. 
@@ -131,7 +131,7 @@ Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entsc
 |- Anhängen externer Daten (virtuelle Daten).||
 |- Bibliotheken für Rasterdaten, Netzwerk, Routing etc.||
 
-Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html). 
+Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html){target="_blank"}. 
 
 ## GeoPackages in QGIS
 
@@ -213,20 +213,20 @@ Dies sind allgemein gültige Regeln, nicht nur für die Datenbankverwaltung in Q
 Wie eingangs erläutert, beruht SpatiaLite ebenfalls auf SQLite, es kann keine Rasterdaten speichern, hat eine deutlich längere Entwicklung hinter sich und bietet eine eigene GUI (graphical user interface). SpatiaLite-Datenbanken können wie GPKG durch den Export von Layern in QGIS erzeugt, gefüllt und nach der Verbindung mit QGIS-Bordmitteln genutzt werden. Bis zu diesem Punkt ergibt sich kein Mehrwert für die Nutzung. SpatiaLite erlaubt es, ***spatial views*** zu erstellen, das sind gespeicherte Abfragen mit Geometrie, die wie andere Objekte in QGIS genutzt werden können. **Das redundante Erstellen neuer Daten und der Verlust von temporär erstellten Daten wird damit vermieden**.
 
 ### SpatiaLite installieren
-Laden Sie sich bitte von der [Website](http://www.gaia-gis.it/gaia-sins/) die Dateien für SpatiaLite herunter. Unten links sehen Sie die "MS Windows binaries".
+Laden Sie sich bitte von der [Website](http://www.gaia-gis.it/gaia-sins/){target="_blank"} die Dateien für SpatiaLite herunter. Unten links sehen Sie die "MS Windows binaries".
 
 1. Wählen Sie hier bei "**previous stable version**", je nach System 32bit oder 64bit. Nur bei dieser Version ist die GUI dabei.
 2. Sie sehen  drei gepackte Dateien. Laden Sie alle herunter, auch wenn wir aktuell nicht alle brauchen.
-3. Zum Entpacken dieser Dateien empfehle ich die freie Software [7-zip](https://www.7-zip.de/). 
+3. Zum Entpacken dieser Dateien empfehle ich die freie Software [7-zip](https://www.7-zip.de/){target="_blank"}. 
 4. Legen Sie im Ordner "Program Files" (64bit) oder "Program Files (x86)" einen neuen Ordner "spatialite" an und kopieren Sie alles dort hinein (Adminrechte). Da die Datei proj.db in jeder der gepackten Dateien vorliegt, belasse ich ... modules... und ...tools... in ihrem jeweiligen Unterordner. Das Programm wird nicht installiert, d.h. im Betriebssystem eingebunden, der Ordner "SpatiaLite" kann also überall liegen.
 5. Wenn Sie es zukünftig öfter nutzen wollen und mehr Komfort wünschen, können Sie die Datei "spatialite_gui.exe" mit dem Eintrag "An Start anheften" über das Kontextmenü in das Startmenü der Programme eintragen. Oder erstellen Sie einen Link in "c:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\"
 
 Zu SpatiaLite gibt es zahlreiche ergänzende Infos:
 
-- SpatiaLite: http://www.gaia-gis.it/gaia-sins/
-- SpatiaLite-GUI: https://www.gaia-gis.it/fossil/spatialite_gui/index
-- SpatiaLite Wiki: https://www.gaia-gis.it/gaia-sins/spatialite_topics.html
-- SpatiaLite Cookbook: http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html
+- SpatiaLite: [http://www.gaia-gis.it/gaia-sins/](http://www.gaia-gis.it/gaia-sins/){target="_blank"}
+- SpatiaLite-GUI: [https://www.gaia-gis.it/fossil/spatialite_gui/index](https://www.gaia-gis.it/fossil/spatialite_gui/index){target="_blank"}
+- SpatiaLite Wiki: [https://www.gaia-gis.it/gaia-sins/spatialite_topics.html](https://www.gaia-gis.it/gaia-sins/spatialite_topics.html){target="_blank"}
+- SpatiaLite Cookbook: [http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html](http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html){target="_blank"}
  
 ### SpatiaLite GUI
 
@@ -272,13 +272,13 @@ group by m.pk_uid;
 4. Zeile: Beschreibt die Verknüpfung der primären Datenquelle (m) zu *talaiots*, etikettiert als "t", mit der Funktion "st_within(t.geom, m.geom)". Dies verbindet alle Fundplatzeinträge (sites) mit der Gemeinde (municipios) in der diese liegen. Da unterschiedliche KBS vorliegen, muss vorab eine Transformation für m(unicipios) durchgeführt werden: "st_transform(m.geom, 25831)".
 5. Zeile: Dieser Ausdruck gruppiert das Ergebnis nach der ID (pk_uid) der Gemeinden und bewirkt das Zählen der Funktion count() über 1 hinaus bis zur entsprechenden Menge an Talaiots je Gemeinde.
 
-Die Abfrage wird erst ausgeführt, wenn sie diese neue view abfragen. Aktualisieren Sie "User data" (Kontextmenü refresh) und führen Sie folgende Abfrage aus: ``select * from talaiots_in_municipios```. Diese Abfrage braucht etwas Zeit (bei mir 6 Sek.), bitte warten Sie. Bis hierher hätte das auch in einem Rutsch ohne die ersten beiden *views* ausgeführt werden können. Die beiden *views* sind aber durchaus auch sinnvoll anderweitig einsetzbar. Da das Ergebnis nur eine Tabelle ist, müssen wir diese erneut mit unseren *municipios* und deren Geometrie verbinden und als *spatial view* speichern. Starten Sie den *composer*. Main table: talaiots_in_municipios und darunter alle Felder auswählen, Table #2 enable: municipios, Felder: PK_UID und geom (\<Strg> + Maus), [Inner] Join, Join match #1: PK_UID zu PK_UID, View: Creat Spatial View, View name: talaiots_municipios, Geometry Column Table #2 geometries: geom.
+Die Abfrage wird erst ausgeführt, wenn sie diese neue view abfragen. Aktualisieren Sie "User data" (Kontextmenü refresh) und führen Sie folgende Abfrage aus: ``select * from talaiots_in_municipios```. Diese Abfrage braucht etwas Zeit (bei mir 6 Sek.), bitte warten Sie. Bis hierher hätte das auch in einem Rutsch ohne die ersten beiden *views* ausgeführt werden können. Die beiden *views* sind aber durchaus auch sinnvoll anderweitig einsetzbar. Da das Ergebnis nur eine Tabelle ist, müssen wir diese erneut mit unseren *municipios* und deren Geometrie verbinden und als *spatial view* speichern. Starten Sie den *composer*. Main table: talaiots_in_municipios und darunter alle Felder auswählen, Table #2 enable: municipios, Felder: PK_UID und geom (\<Strg> + Maus), [Inner] Join, Join match #1: PK_UID zu PK_UID, View: Create Spatial View, View name: talaiots_municipios, Geometry Column Table #2 geometries: geom.
  
 Verbinden Sie die DB in QGIS erneut, fügen Sie die Daten zum Projekt hinzu und warten Sie bis der Vorgang abgeschlossen ist (ca. 20 Sek. bei mir). Das ist natürlich ärgerlich, zumal dies auch bei der Zuweisung der Symbologie (kategorisiert) erneut auftritt. Die Daten sind aber 1. nicht redundant hinterlegt, 2. wirken sich Änderungen an den Fundplätzen direkt auf das Ergebnis aus, die Darstellung ist also stets aktuell und 3. ist die Anweisung in der DB dauerhaft gespeichert und damit dokumentiert. 
 
-Natürlich können Sie statt der Anweisung ```create view <name> as``` auch ```create table <name> as``` verwenden. Damit haben Sie zwar ebenfalls redundante Date geschaffen, da die Abfrage aber als Anweisung gespeichert werden kann ist dies Vorgang 1. dokumentiert und 2. jederzeit bei aktualisierten Datenbestand erneut durchführbar. Es ist also durchaus ein Verbesserung gegenüber dem Erstellen einer neuen shp-Datei. 
+Natürlich können Sie statt der Anweisung ```create view <name> as``` auch ```create table <name> as``` verwenden. Damit haben Sie zwar ebenfalls redundante Daten geschaffen, da die Abfrage aber als Anweisung gespeichert werden kann ist dieser Vorgang 1. dokumentiert und 2. jederzeit bei einem aktualisierten Datenbestand erneut durchführbar. Es ist also durchaus eine Verbesserung gegenüber dem Erstellen einer neuen shp-Datei. 
 
 Um die *spatial view* "talaiots_municipios" als feste Tabelle zu erzeugen gehen Sie wie folgt vor:
 1. Wählen Sie aus dem Kontextmenü zur view "talaiots_municipios" show CREAT statement und kopieren Sie die angezeigte SQL-Anweisung.
 2. Fügen Sie diese Anweisung oberhalb im Abfragefeld ein, ändern Sie die erste Zeile zu: "CREATE TABLE "talaiots_municipios_tbl" AS" und führen Sie diese aus.
-3. Die resultierende Tabelle "talaiots_municipios_tbl" hat keine Weltkugel im Icon, wird also nicht als Geometrietabelle erkannt. Die vorhandene Spalte "geom" muss als Geometrie erst neu registriert werden. Wählen Sie dazu aus dem Kontextmenü zur Spalte "geom"  "Recover Geometry Column". In dem folgenden Fenster tragen Sie ein: SRID: 4258, Dims: XY, Geometry Type: MULTIPOLYGON und [OK]. Diese Informationen erhalten Sie, wenn Sie für die Geometrie der ursprünglichen Datenquelle (municipios.geom) im Kontextmenü "Check geometries" aufrufen.
+3. Die resultierende Tabelle "talaiots_municipios_tbl" hat keine Weltkugel im Icon, wird also nicht als Geometrietabelle erkannt. Die vorhandene Spalte "geom" muss als Geometrie erst neu registriert werden. Wählen Sie dazu aus dem Kontextmenü zur Spalte "geom"  "Recover Geometry Column". In dem folgenden Fenster tragen Sie ein: SRID: 4258, Dim: XY, Geometry Type: MULTIPOLYGON und [OK]. Diese Informationen erhalten Sie, wenn Sie für die Geometrie der ursprünglichen Datenquelle (municipios.geom) im Kontextmenü "Check geometries" aufrufen.

@@ -2757,7 +2757,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">12. Mai 2023</h4>
+<h4 class="date">02. Juni 2023</h4>
 
 </div>
 
@@ -2876,20 +2876,20 @@ Ergänzungen notwendig, die nicht immer integriert sind, z.B. PostgreSQL
 mit PostGIS. SQL ist die Programmiersprache für das Strukturieren,
 Verwalten und Verändern von Daten. SQL ist textbasiert und in dieser
 Form auch von Menschen lesbar, gut archivierbar und trotz zahlreicher
-Varianten insgesamt gut interoperabel (vgl. <a href="https://www.go-fair.org/fair-principles/">FAIR</a>).</p>
+Varianten insgesamt gut interoperabel (vgl. <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR</a>).</p>
 <ul>
-<li>Geopackage: Ein freies und offenes DBMS auf der Basis von <a href="https://sqlite.org">SQLite</a> für den Desktop. Gegenüber <a href="https://www.gaia-gis.it/fossil/libspatialite/index">SpatiaLite</a>,
-an das es angelehnt ist, kann es zudem auch Rasterdaten verwalten. Der
-Nutzer sieht nur eine Datei, die alle Daten beinhaltet.</li>
-<li><a href="http://www.gaia-gis.it/gaia-sins/">SpatiaLite</a>: Ist ein
-auf SQLite basierendes DBMS mit GIS-Integration speziell für den
-Desktop. <a href="https://sqlite.org">SQLite</a> ist frei nutzbar
-(<em>public domain</em>), die GIS-Funktionalität von SpatiaLite ist frei
-verwendbar und <em>open-source</em>. Zur Arbeit mit SpatiaLite bietet
-QGIS eine integrierte Anwendung, eine ergänzende <a href="http://www.gaia-gis.it/gaia-sins/">SpatiaLite GUI</a> ist aber
-empfehlenswert. Im Ergebnis sieht der Nutzer nur eine Datei für
-Vektordaten und nicht bis zu fünf Dateien je shp-Datei. Rasterdaten
-müssen aber getrennt verwaltet werden.</li>
+<li>Geopackage: Ein freies und offenes DBMS auf der Basis von <a href="https://sqlite.org" target="_blank">SQLite</a> für den Desktop.
+Gegenüber <a href="https://www.gaia-gis.it/fossil/libspatialite/index" target="_blank">SpatiaLite</a>, an das es angelehnt ist, kann es zudem
+auch Rasterdaten verwalten. Der Nutzer sieht nur eine Datei, die alle
+Daten beinhaltet.</li>
+<li><a href="http://www.gaia-gis.it/gaia-sins/" target="_blank">SpatiaLite</a>: Ist ein auf SQLite basierendes DBMS mit
+GIS-Integration speziell für den Desktop. <a href="https://sqlite.org" target="_blank">SQLite</a> ist frei nutzbar (<em>public domain</em>),
+die GIS-Funktionalität von SpatiaLite ist frei verwendbar und
+<em>open-source</em>. Zur Arbeit mit SpatiaLite bietet QGIS eine
+integrierte Anwendung, eine ergänzende <a href="http://www.gaia-gis.it/gaia-sins/" target="_blank">SpatiaLite
+GUI</a> ist aber empfehlenswert. Im Ergebnis sieht der Nutzer nur eine
+Datei für Vektordaten und nicht bis zu fünf Dateien je shp-Datei.
+Rasterdaten müssen aber getrennt verwaltet werden.</li>
 <li>PostgreSQL: Ein freies DBMS für Server und <em>open source</em>.
 Durch die Erweiterung PostGIS ist es im besonderen Maß für die Arbeit
 mit Geodaten geeignet. Es ist deshalb in größeren Forschungsprojekten
@@ -2997,7 +2997,7 @@ effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue
 Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage
 bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor.
 Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der
-folgender Website: <a href="http://www.geopackage.org/guidance.html">www.geopackages.org</a>.</p>
+folgender Website: <a href="http://www.geopackage.org/guidance.html" target="_blank">www.geopackages.org</a>.</p>
 </div>
 </div>
 <div id="geopackages-in-qgis" class="section level2">
@@ -3241,8 +3241,8 @@ Erstellen neuer Daten und der Verlust von temporär erstellten Daten wird
 damit vermieden</strong>.</p>
 <div id="spatialite-installieren" class="section level3">
 <h3>SpatiaLite installieren</h3>
-<p>Laden Sie sich bitte von der <a href="http://www.gaia-gis.it/gaia-sins/">Website</a> die Dateien für
-SpatiaLite herunter. Unten links sehen Sie die “MS Windows
+<p>Laden Sie sich bitte von der <a href="http://www.gaia-gis.it/gaia-sins/" target="_blank">Website</a> die
+Dateien für SpatiaLite herunter. Unten links sehen Sie die “MS Windows
 binaries”.</p>
 <ol style="list-style-type: decimal">
 <li>Wählen Sie hier bei “<strong>previous stable version</strong>”, je
@@ -3250,7 +3250,7 @@ nach System 32bit oder 64bit. Nur bei dieser Version ist die GUI
 dabei.</li>
 <li>Sie sehen drei gepackte Dateien. Laden Sie alle herunter, auch wenn
 wir aktuell nicht alle brauchen.</li>
-<li>Zum Entpacken dieser Dateien empfehle ich die freie Software <a href="https://www.7-zip.de/">7-zip</a>.</li>
+<li>Zum Entpacken dieser Dateien empfehle ich die freie Software <a href="https://www.7-zip.de/" target="_blank">7-zip</a>.</li>
 <li>Legen Sie im Ordner “Program Files” (64bit) oder “Program Files
 (x86)” einen neuen Ordner “spatialite” an und kopieren Sie alles dort
 hinein (Adminrechte). Da die Datei proj.db in jeder der gepackten
@@ -3265,10 +3265,10 @@ Menu\Programs\”</li>
 </ol>
 <p>Zu SpatiaLite gibt es zahlreiche ergänzende Infos:</p>
 <ul>
-<li>SpatiaLite: <a href="http://www.gaia-gis.it/gaia-sins/" class="uri">http://www.gaia-gis.it/gaia-sins/</a></li>
-<li>SpatiaLite-GUI: <a href="https://www.gaia-gis.it/fossil/spatialite_gui/index" class="uri">https://www.gaia-gis.it/fossil/spatialite_gui/index</a></li>
-<li>SpatiaLite Wiki: <a href="https://www.gaia-gis.it/gaia-sins/spatialite_topics.html" class="uri">https://www.gaia-gis.it/gaia-sins/spatialite_topics.html</a></li>
-<li>SpatiaLite Cookbook: <a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html" class="uri">http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html</a></li>
+<li>SpatiaLite: <a href="http://www.gaia-gis.it/gaia-sins/" target="_blank">http://www.gaia-gis.it/gaia-sins/</a></li>
+<li>SpatiaLite-GUI: <a href="https://www.gaia-gis.it/fossil/spatialite_gui/index" target="_blank">https://www.gaia-gis.it/fossil/spatialite_gui/index</a></li>
+<li>SpatiaLite Wiki: <a href="https://www.gaia-gis.it/gaia-sins/spatialite_topics.html" target="_blank">https://www.gaia-gis.it/gaia-sins/spatialite_topics.html</a></li>
+<li>SpatiaLite Cookbook: <a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html" target="_blank">http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html</a></li>
 </ul>
 </div>
 <div id="spatialite-gui" class="section level3">
@@ -3384,9 +3384,9 @@ eine Tabelle ist, müssen wir diese erneut mit unseren
 view</em> speichern. Starten Sie den <em>composer</em>. Main table:
 talaiots_in_municipios und darunter alle Felder auswählen, Table #2
 enable: municipios, Felder: PK_UID und geom (&lt;Strg&gt; + Maus),
-[Inner] Join, Join match #1: PK_UID zu PK_UID, View: Creat Spatial View,
-View name: talaiots_municipios, Geometry Column Table #2 geometries:
-geom.</p>
+[Inner] Join, Join match #1: PK_UID zu PK_UID, View: Create Spatial
+View, View name: talaiots_municipios, Geometry Column Table #2
+geometries: geom.</p>
 <p>Verbinden Sie die DB in QGIS erneut, fügen Sie die Daten zum Projekt
 hinzu und warten Sie bis der Vorgang abgeschlossen ist (ca. 20 Sek. bei
 mir). Das ist natürlich ärgerlich, zumal dies auch bei der Zuweisung der
@@ -3398,11 +3398,11 @@ dokumentiert.</p>
 <p>Natürlich können Sie statt der Anweisung
 <code>create view &lt;name&gt; as</code> auch
 <code>create table &lt;name&gt; as</code> verwenden. Damit haben Sie
-zwar ebenfalls redundante Date geschaffen, da die Abfrage aber als
-Anweisung gespeichert werden kann ist dies Vorgang 1. dokumentiert und
-2. jederzeit bei aktualisierten Datenbestand erneut durchführbar. Es ist
-also durchaus ein Verbesserung gegenüber dem Erstellen einer neuen
-shp-Datei.</p>
+zwar ebenfalls redundante Daten geschaffen, da die Abfrage aber als
+Anweisung gespeichert werden kann ist dieser Vorgang 1. dokumentiert und
+2. jederzeit bei einem aktualisierten Datenbestand erneut durchführbar.
+Es ist also durchaus eine Verbesserung gegenüber dem Erstellen einer
+neuen shp-Datei.</p>
 <p>Um die <em>spatial view</em> “talaiots_municipios” als feste Tabelle
 zu erzeugen gehen Sie wie folgt vor: 1. Wählen Sie aus dem Kontextmenü
 zur view “talaiots_municipios” show CREAT statement und kopieren Sie die
@@ -3413,7 +3413,7 @@ resultierende Tabelle “talaiots_municipios_tbl” hat keine Weltkugel im
 Icon, wird also nicht als Geometrietabelle erkannt. Die vorhandene
 Spalte “geom” muss als Geometrie erst neu registriert werden. Wählen Sie
 dazu aus dem Kontextmenü zur Spalte “geom” “Recover Geometry Column”. In
-dem folgenden Fenster tragen Sie ein: SRID: 4258, Dims: XY, Geometry
+dem folgenden Fenster tragen Sie ein: SRID: 4258, Dim: XY, Geometry
 Type: MULTIPOLYGON und [OK]. Diese Informationen erhalten Sie, wenn Sie
 für die Geometrie der ursprünglichen Datenquelle (municipios.geom) im
 Kontextmenü “Check geometries” aufrufen.</p>
