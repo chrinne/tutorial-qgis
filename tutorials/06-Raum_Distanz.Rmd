@@ -12,6 +12,10 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
@@ -83,6 +87,7 @@ Es gibt hier zahlreiche Werte, die einen Hinweis auf die Reliefenergie geben, vo
   
   - Bereich: Die Differenz zwischen dem kleinsten und größten Wert, wobei ein einzelner Gipfel das Ergebnis deutlich  beeinflusst (z.B. der Kilimandscharo). In so einem Fall liegen der Mittelwert und der Median weiter auseinander.
 - Standardabweichung: Gibt es viele Hügel und Täler sind viele Werte über ein breites Mittelfeld verteilt, die Standardabweichung ist demnach groß bzw. breit.
+- Eindeutige Werte (variety), Vorausgesetzt wir haben Meterangaben oder sogar klassifizierte Werte in Einheiten von 5 Metern ist eine eine Ebene eher "langweilig", eine leicht schräge Steilwand aber hoch dramatisch. Eine hügeliges Bergvorland, mit vielen Tälern und einem konstanten Anstieg bietet auch viele Unterschiede.
 
 Wollten wir uns einen Überblick über ein Attribut, also eine der zuvor erläuterten Zahlen, von allen Umkreisen verschaffen, können wir aus dem Menü mit "Vektor -> Analyse-Werkzeuge -> Grundstatistik .." grundlegende statistische Angaben für das jeweils gewählte Attribut abfragen. Das Ergebnis wird auf Englisch im aktiven Fenster unter dem Reiter "Protokoll" ausgegeben, dazu auf Deutsch in einer hier verlinkten HTML-Datei. Hier begegnen uns wie zuvor die "üblichen Verdächtigen", dazu einige weitere Angaben: 
   
@@ -115,7 +120,7 @@ Ich vergleiche als erstes den Höhenwert der Position des Taliot mit dem Median 
 
 ![Histogramm der Differenz von der Lage des Talaiot zum Median des Umfeld (r = 1 km)](.\images\06_z_m_minus_median.png)
 
-Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich behelfe mir, indem ich die Standardabweichung zum Mittelwert als zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen" Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir zuerst das statistische Ergebnis zur Lage im Gelände individuell prüfen (so viele sind es nicht) und uns dann die weiteren Eigenschaften dieser Talaiots ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
+Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich helfe mir, indem ich die Standardabweichung zum Mittelwert als dem zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen" Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir zuerst das statistische Ergebnis zur Lage im Gelände individuell prüfen (so viele sind es nicht) und uns dann die weiteren Eigenschaften dieser Talaiots ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
   
   ![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km)](.\images\06_z_m_minus_mean_stdev.png)
 
@@ -183,7 +188,7 @@ Der Weg ist mehrstufig. Wenn Sie ausschließlich in QGIS arbeiten wollen, müsse
 5. Ergänzen Sie mit dem Feldrechner eine Spalte für die Linienlänge ($length).
 6. Exportieren Sie alle Längenmaße für eine statistische Analyse, z.B. in R. 
 
-Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. Einige Längen des Randbereiches sind sehr groß und beeinträchtigen die Darstellung. Wenn Sie nur den unteren Bereich der Längen darstellen wollen wählen sie bei "Wert" das [E] und fügen dort folgende Syntax ein: ```if ("l"<20000, "l", '')``` (Wenn die Länge < 20 km ist dann gib die Länge zurück, sonst Nichts). Wiederhoen Sie [Klassifizieren] und betrachten erneut das Histogram nach [Werte laden].
+Für eine erste Übersicht zu den eben ermittelten Streckenlängen öffnen Sie die Symbologie, wählen die abgestufte Darstellung, bestätigen [Klassifizieren] für eine Farbzuweisung der Bereiche, wechseln zum Reiter "Histogramm" und wählen abschließend [Werte laden]. Mit der Zahl hinter "Histogrammkästchen" können Sie die Anzahl der Balken für eine feinere Auflösung erhöhen. Einige Längen des Randbereiches sind sehr groß und beeinträchtigen die Darstellung. Wenn Sie nur den unteren Bereich der Längen darstellen wollen wählen sie bei "Wert" das [E] und fügen dort folgende Syntax ein: ```if ("l"<20000, "l", '')``` (Wenn die Länge < 20 km ist dann gib die Länge zurück, sonst Nichts). Wiederholen Sie [Klassifizieren] und betrachten erneut das Histogramm nach [Werte laden].
 
 Wir sehen einen ersten Gipfel der Verteilung um 1,5 km, einen zweiten um 3 km und dann noch Bereiche von 4 km bis 8 km und um 10 km. Danach löst sich die Verteilung langsam auf. Wirklich Plakativ ist das Ergebnis nicht, doch die Dopplung von 1,5 km zu 3 km ist auffällig und alles jenseits von 11 km scheint eine "besonders" große Distanz zu sein. Sehen Sie sich die Distanze in der Karte an scheinen die beiden kurzen Distanzbereiche um 1,5 km und um 3 km eine Gruppe zu beschreiben. Die Distanzen von 4 bis 8 km trennen die Talaiots dieser Gruppen von den Talaiots in den anderen Gruppen. An diesem Punkt könnten diverse Hypothese formuliert und geprüft werden. Als erstes natürlich ob es neben der räumlichen Nähe innerhalb der Distanzgruppen auch einen weiteren Zusammenhang gibt: Datierung, Funde, Konstruktion etc.
 
