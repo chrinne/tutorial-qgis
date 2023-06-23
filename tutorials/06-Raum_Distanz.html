@@ -2779,7 +2779,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">09. Juni 2023</h4>
+<h4 class="date">23. Juni 2023</h4>
 
 </div>
 
@@ -2970,6 +2970,11 @@ weiter auseinander.</li>
 <li>Standardabweichung: Gibt es viele Hügel und Täler sind viele Werte
 über ein breites Mittelfeld verteilt, die Standardabweichung ist demnach
 groß bzw. breit.</li>
+<li>Eindeutige Werte (variety), Vorausgesetzt wir haben Meterangaben
+oder sogar klassifizierte Werte in Einheiten von 5 Metern ist eine eine
+Ebene eher “langweilig”, eine leicht schräge Steilwand aber hoch
+dramatisch. Eine hügeliges Bergvorland, mit vielen Tälern und einem
+konstanten Anstieg bietet auch viele Unterschiede.</li>
 </ul>
 <p>Wollten wir uns einen Überblick über ein Attribut, also eine der
 zuvor erläuterten Zahlen, von allen Umkreisen verschaffen, können wir
@@ -3048,7 +3053,7 @@ Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich
 gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von
 der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg
 finden, ohne das <em>tool</em> Zonenstatistik rechnen zu können. Ich
-behelfe mir, indem ich die Standardabweichung zum Mittelwert als
+helfe mir, indem ich die Standardabweichung zum Mittelwert als dem
 zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom
 Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle
 ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf
@@ -3213,8 +3218,8 @@ groß und beeinträchtigen die Darstellung. Wenn Sie nur den unteren
 Bereich der Längen darstellen wollen wählen sie bei “Wert” das [E] und
 fügen dort folgende Syntax ein: <code>if (&quot;l&quot;&lt;20000, &quot;l&quot;, &#39;&#39;)</code>
 (Wenn die Länge &lt; 20 km ist dann gib die Länge zurück, sonst Nichts).
-Wiederhoen Sie [Klassifizieren] und betrachten erneut das Histogram nach
-[Werte laden].</p>
+Wiederholen Sie [Klassifizieren] und betrachten erneut das Histogramm
+nach [Werte laden].</p>
 <p>Wir sehen einen ersten Gipfel der Verteilung um 1,5 km, einen zweiten
 um 3 km und dann noch Bereiche von 4 km bis 8 km und um 10 km. Danach
 löst sich die Verteilung langsam auf. Wirklich Plakativ ist das Ergebnis
@@ -3247,6 +3252,15 @@ ausschließlich durch 0 (falsch) oder 1 (wahr).</p>
 <p>Die neue Tabelle ‘talaiot_dist’ enthält genau eine Geometrie (geom)
 vom Typ <em>Multilinestring</em>, also eine Geometriekollektion, für das
 wir die Anzahl der enthaltenen Elemente abfragen.</p>
+<p>Die einfache Variante nutzt die implementierte virtuelle Tabelle
+ElementaryGeometries (<a href="https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary">s.
+SpatiaLite</a>).</p>
+<pre class="sql"><code>select st_length(geometry) from ElementaryGeometries 
+where f_table_name = &#39;talaiot_dist&#39; and origin_rowid=1;</code></pre>
+<p>Die umständlichere Alternative arbeitet mit Rekursion in SQLite. Das
+ist auf den ersten Blick irritierend aber nicht wirklich kompliziert.
+Zuerts eine Abfrage für die Anzahl der Strecken in der
+Multi-Geometrie.</p>
 <pre class="sql"><code>select NumGeometries(geom)
 from talaiot_dist;</code></pre>
 <p>Die nachfolgende Abfrage wird als Sicht gespeichert und hat zwei

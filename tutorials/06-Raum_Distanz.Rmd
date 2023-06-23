@@ -12,15 +12,15 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
 urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
@@ -205,6 +205,15 @@ from talaiots;
 Die Rückgabe der Abfrage ist eine Tabelle mit einem Objekt vom Typ *Multilinestring*. Die verwendete Funktion st_DelaunayTriangulation erwartet **ein** Geometrieobjekt, dieses wird mit der Funktion *st_collect()* aus allen Geometrien in der Spalte 'geom' von 'talaiots' erstellt. Die Funktion st_DelaunayTriangulation gibt mit der Option *edges_only* die Kanten statt der Polygone aus. Die Übergabe dieses Parameters erfolgt ausschließlich durch 0 (falsch) oder 1 (wahr).
 
 Die neue Tabelle 'talaiot_dist' enthält genau eine Geometrie (geom) vom Typ *Multilinestring*, also eine Geometriekollektion, für das wir die Anzahl der enthaltenen Elemente abfragen.
+
+Die einfache Variante nutzt die implementierte virtuelle Tabelle ElementaryGeometries ([s. SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary)).
+
+```{sql 'Kantenlängen mit ElementaryGeometries', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+select st_length(geometry) from ElementaryGeometries 
+where f_table_name = 'talaiot_dist' and origin_rowid=1;
+```
+
+Die umständlichere Alternative arbeitet mit Rekursion in SQLite. Das ist auf den ersten Blick irritierend aber nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der Strecken in der Multi-Geometrie.
 
 ```{sql 'Anzahl der Elemente in der *GeomCollection* abfragen.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
 select NumGeometries(geom)

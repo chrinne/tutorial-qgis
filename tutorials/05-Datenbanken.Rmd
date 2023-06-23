@@ -116,11 +116,11 @@ Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entsc
 
 |pro Geopackage | contra Geopackage|
 |:--------|:--------|
-|- Etwas kompaktere Dateigröße, wobei GeoTIF oft <br/> | - Eingeschränkte Funktionalität der SpatiaLite |
-|größer ist als textbasierte Raster (ASC, GRD).| GUI, da Vektordaten nur als *view* zur |
-|- Rasterdaten: MBTiles sind weit verbreitet.| Verfügung stehen. |
+|- Etwas kompaktere Dateigröße, wobei GeoTIF oft größer ist als textbasierte Raster (ASC, GRD). | - Eingeschränkte Funktionalität der SpatiaLite GUI, da Vektordaten nur als *view* zur Verfügung stehen.|
+|- Rasterdaten: MBTiles sind weit verbreitet.| - *type affinity* von SQLite wird in QGIS beim Export nicht unterstützt. |
 |- Import von dxf-Dateien möglich, leider keine Spezifikation hinterlegt.||
 |- Eine Datei für alles.||
+|- Nutzt *Write Ahead Logging* (WAL) von SQLite für simultanen Nutzerzugriff auf die integrierte SQLite-DB. WAL- und SHM-Dateien werden nach dem sauberen Beenden von QGIS vom System wieder gelöscht. ||
 
 |pro SpatiaLite|contra SpatiaLite|
 |:--------|:--------|
@@ -131,7 +131,7 @@ Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entsc
 |- Anhängen externer Daten (virtuelle Daten).||
 |- Bibliotheken für Rasterdaten, Netzwerk, Routing etc.||
 
-Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html){target="_blank"}. 
+Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig und die *type affinity* ist eine feine Sache bei spontan auftretenden Buchstaben an einer Befundnummer. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html){target="_blank"}. 
 
 ## GeoPackages in QGIS
 

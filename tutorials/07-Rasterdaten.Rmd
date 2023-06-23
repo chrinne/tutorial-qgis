@@ -9,9 +9,13 @@ header-includes:
   \renewcommand{\figurename}{Abb.}
   \renewcommand{\tablename}{Tab.}
 bibliography: QGIS-cours-references.bib
-csl: apa.csl
+csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
@@ -39,7 +43,7 @@ Die Werte der Rasterzellen können mit benachbarten Zellen des selben Rasters od
 
 Das Fallbeispiel für Rasterdaten ist eine kleine geomagnetische Prospektion auf dem Fundplatz von Closos de Can Gaià bei Portocolom auf Mallorca (39.4191°N, 3.2443°E). Der Fundplatz ist einer der wenigen auf Mallorca mit mehreren schiffsförmigen Wohnbauten der Bronzezeit (Navetas), die hier in einfacher, doppelter und sogar dreifacher Ausführung vorkommen. Die Prospektion erfolgte 2010 im Rahmen eines ERASMUS-Austausches. Über die Jahre haben auf diesem Fundplatz zahlreiche Untersuchungen stattgefunden @freyNavetasEsClosos1966a; @serveraDatacionsRadiocarboniquesAls2005a; @belenguerariasIndustriaOssiaDels2005; @fornesMasQueCasa2009a; @rinneProspeccionesGeofisicasEls2012a; @rinnePlanimetriaElsClosos2013a; @picornell-gelabertLandscapePracticesEveryday2017. Der Fundplatz ist heute mit Informationstafeln touristisch erschlossen und kann frei begangen werden. 
 
-Die geophysikalische Prospketion erfolgte mit einem 1-Sonden-Gradiometer (Bartington) in Feldern von *a priori* 10 m Kantenlänge und einer Messdichte von 0,25 m auf 0,125 m entlang ausgelegter Maßbänder. Die Felder sind aufgrund der dichten Vegetation, überwiegend Macchie, stark gegliedert. Damit ist auch die gesamte Beurteilung beeinträchtigt. Die abschließende Einmessung der Felder konnte nur mit einem einfachen GPS erfolgen, hierfür wurden alle Feldkanten und ein Teil der benachbarten Straße mit einer hohen Messdichte (1 Hz) langsam abgeschritten. In Kombination mit den Luftbildern [IDEIB](http://www.caib.es/sites/sitibsa/ca/ideib-81258/) kann die abschließende Lagegenauigkeit der Prospektionsfelder auf unter 1 m geschätzt werden.
+Die geophysikalische Prospketion erfolgte mit einem 1-Sonden-Gradiometer (Bartington) in Feldern von *a priori* 10 m Kantenlänge und einer Messdichte von 0,25 m auf 0,125 m entlang ausgelegter Maßbänder. Die Felder sind aufgrund der dichten Vegetation, überwiegend Macchie, stark gegliedert. Damit ist auch die gesamte Beurteilung beeinträchtigt. Die abschließende Einmessung der Felder konnte nur mit einem einfachen GPS erfolgen, hierfür wurden alle Feldkanten und ein Teil der benachbarten Straße mit einer hohen Messdichte (1 Hz) langsam abgeschritten. In Kombination mit den Luftbildern [IDEIB](https://ideib.caib.es/visor/) kann die abschließende Lagegenauigkeit der Prospektionsfelder auf unter 1 m geschätzt werden.
 
 Die Daten für diese Übung liegen vor:
 
