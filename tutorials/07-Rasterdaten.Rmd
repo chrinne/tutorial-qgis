@@ -12,15 +12,15 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
 urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
@@ -52,8 +52,8 @@ Die Daten für diese Übung liegen vor:
 
 Zudem werden folgende WMS (*web map services*) Luftbilder des IDEIB genutzt (diese Serveradressen können sich ändern):
 
-- 2021: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer?request=getCapabilities&service=wms 
-- 1956: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer?request=GetCapabilities&service=WMS
+- 2021: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer 
+- 1956: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer
 
 Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt. Öffnen Sie dazu den Data Source Manager (\<strg> + \<l>), wählen Sie "Getrennte Text" und setzen Sie nachfolgend die notwendigen Parameter. Danach zoomen Sie bitte auf diese Punkte, z.B. über das Kontextmenü.  Wählen Sie für die spätere Unterscheidung der Felder eine kategorisierte Symbologie auf Basis der Spalte "FeldNr".
 
@@ -111,13 +111,15 @@ Vor allem im Feld 1 sind einige rundliche Anomalien eher positiver (dunkler) Mes
 
 Fügen Sie mit einem Doppelklick das Band 1 des Messfeldes 1 zum Ausdruck hinzu (closos_1_modifiziert\@1). Tragen Sie oben rechts den Namen für die Ausgabedatei ein, z.B. closos_1_7-16nT. Für die Ausdehnung dieser Datei klicken Sie auf [Gewählte Layerausdehnung] und das entsprechende KBS der Ursprungsdatei oder des Projektes. 
 
-Der Rasterrechner kennt keine *if-than-else*-Syntax. Sie sehen aber folgende Operatoren: ">", "<", "/" (Division) und "und (logisch)", mehr brauchen wir nicht. Ist eine Bedingung wahr, ist der Rückgabewert 1 sonst 0. Ergänzen Sie den Ausdruck zu ```("closos_1_modifiziert@1">6)```, am unteren Rand steht dann "Ausdruck gültig" (leider nicht das Ergebnis). Schreiben Sie nun folgendes:
+Der Rasterrechner vor Version 3.22 kannte keine *if-than-else*-Syntax. Die Rückgabe der zu prüfenden Bedingung war "1" für WAHR und "0" für FALSCH. Mit einer geschickten Kombination von Multiplikation oder Division konnten entsprechende Wenn-Dann-Berechnungen gebaut werden. Im folgenden Fall z.B. die Division durch 0 = ungültig: 
 
 ```
 (("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17)) /
 (("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17))
 ```
-Was steht da? Es ist ein Bruch mit identischem Zähler und Nenner, jeweils zwei Bedingungen mit einem "und" verknüpft. Sind beide Bedingungen wahr ist der Rückgabewert 1 ansonsten 0. Sind beide Bedingungen wahr steht da also 1/1 (= 1) ansonsten 0/0 (nicht definiert). Das ist alles. Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Länge und Umfang ins Verhältnis setzen, um die Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für jede Anomalie berechnen lassen und abschließend  auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
+Für die neue Version von QGIS gibt es es die [IF]-Bedingung mit folgender Syntax: if (Bedingung, wenn WAHR, wenn FALSCH)
+
+Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Länge und Umfang ins Verhältnis setzen, um die Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für jede Anomalie berechnen lassen und abschließend  auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
 
 | Anmerkung |
 |----|

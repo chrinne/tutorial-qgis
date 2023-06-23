@@ -2833,8 +2833,8 @@ Beurteilung beeinträchtigt. Die abschließende Einmessung der Felder
 konnte nur mit einem einfachen GPS erfolgen, hierfür wurden alle
 Feldkanten und ein Teil der benachbarten Straße mit einer hohen
 Messdichte (1 Hz) langsam abgeschritten. In Kombination mit den
-Luftbildern <a href="http://www.caib.es/sites/sitibsa/ca/ideib-81258/">IDEIB</a> kann
-die abschließende Lagegenauigkeit der Prospektionsfelder auf unter 1 m
+Luftbildern <a href="https://ideib.caib.es/visor/">IDEIB</a> kann die
+abschließende Lagegenauigkeit der Prospektionsfelder auf unter 1 m
 geschätzt werden.</p>
 <p>Die Daten für diese Übung liegen vor:</p>
 <ul>
@@ -2846,8 +2846,8 @@ einer Interpolation der ursprünglichen Messwerte auf 0,10 x 0,10 m.</li>
 <p>Zudem werden folgende WMS (<em>web map services</em>) Luftbilder des
 IDEIB genutzt (diese Serveradressen können sich ändern):</p>
 <ul>
-<li>2021: <a href="https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer?request=getCapabilities&amp;service=wms" class="uri">https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer?request=getCapabilities&amp;service=wms</a></li>
-<li>1956: <a href="https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS" class="uri">https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS</a></li>
+<li>2021: <a href="https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer" class="uri">https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer</a></li>
+<li>1956: <a href="https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer" class="uri">https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer</a></li>
 </ul>
 <p>Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt.
 Öffnen Sie dazu den Data Source Manager (&lt;strg&gt; + &lt;l&gt;),
@@ -3034,29 +3034,26 @@ Ausdruck hinzu (closos_1_modifiziert@1). Tragen Sie oben rechts den
 Namen für die Ausgabedatei ein, z.B. closos_1_7-16nT. Für die Ausdehnung
 dieser Datei klicken Sie auf [Gewählte Layerausdehnung] und das
 entsprechende KBS der Ursprungsdatei oder des Projektes.</p>
-<p>Der Rasterrechner kennt keine <em>if-than-else</em>-Syntax. Sie sehen
-aber folgende Operatoren: “&gt;”, “&lt;”, “/” (Division) und “und
-(logisch)”, mehr brauchen wir nicht. Ist eine Bedingung wahr, ist der
-Rückgabewert 1 sonst 0. Ergänzen Sie den Ausdruck zu
-<code>(&quot;closos_1_modifiziert@1&quot;&gt;6)</code>, am unteren Rand steht dann
-“Ausdruck gültig” (leider nicht das Ergebnis). Schreiben Sie nun
-folgendes:</p>
+<p>Der Rasterrechner vor Version 3.22 kannte keine
+<em>if-than-else</em>-Syntax. Die Rückgabe der zu prüfenden Bedingung
+war “1” für WAHR und “0” für FALSCH. Mit einer geschickten Kombination
+von Multiplikation oder Division konnten entsprechende
+Wenn-Dann-Berechnungen gebaut werden. Im folgenden Fall z.B. die
+Division durch 0 = ungültig:</p>
 <pre><code>((&quot;closos_1_modifiziert@1&quot;&gt;6) and (&quot;closos_1_modifiziert@1&quot;&lt;17)) /
 ((&quot;closos_1_modifiziert@1&quot;&gt;6) and (&quot;closos_1_modifiziert@1&quot;&lt;17))</code></pre>
-<p>Was steht da? Es ist ein Bruch mit identischem Zähler und Nenner,
-jeweils zwei Bedingungen mit einem “und” verknüpft. Sind beide
-Bedingungen wahr ist der Rückgabewert 1 ansonsten 0. Sind beide
-Bedingungen wahr steht da also 1/1 (= 1) ansonsten 0/0 (nicht
-definiert). Das ist alles. Wählen Sie für den neuen Layer bei der
-Symbologie bitte “Paletten-/Eindeutige Werte”, [Klassifizieren] und
-[OK]. Führen Sie das gleiche auch für Fläche 3 durch. <em>Markieren Sie
-links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung]
-auswählen!</em> Das Bild ist deutlich heterogener und zeigt, dass dieses
-pauschale Verfahren Grenzen hat. Mein weiterer <em>workflow</em> ist
-dann Vektorisieren, Länge und Umfang ins Verhältnis setzen, um die
-Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für
-jede Anomalie berechnen lassen und abschließend auf Grundlage dieser
-Werte entscheiden, ob ein Befund vorliegt oder nicht.</p>
+<p>Für die neue Version von QGIS gibt es es die [IF]-Bedingung mit
+folgender Syntax: if (Bedingung, wenn WAHR, wenn FALSCH)</p>
+<p>Wählen Sie für den neuen Layer bei der Symbologie bitte
+“Paletten-/Eindeutige Werte”, [Klassifizieren] und [OK]. Führen Sie das
+gleiche auch für Fläche 3 durch. <em>Markieren Sie links den richtigen
+Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!</em> Das
+Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren
+Grenzen hat. Mein weiterer <em>workflow</em> ist dann Vektorisieren,
+Länge und Umfang ins Verhältnis setzen, um die Regelhaftigkeit der
+Anomalie bewerten zu können, Flächenstatistik für jede Anomalie
+berechnen lassen und abschließend auf Grundlage dieser Werte
+entscheiden, ob ein Befund vorliegt oder nicht.</p>
 <table>
 <colgroup>
 <col width="100%" />
