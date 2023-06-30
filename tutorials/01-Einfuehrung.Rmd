@@ -46,7 +46,7 @@ Die Kapitel sind einzelnen Aufgabenbereichen gewidmet und behandeln:
 
 Dieses Tutorial ist keine Einführung in die Methoden und theoretischen Grundlagen räumlicher Analysen in der Archäologie. Es ist auch kein Ersatz für das umfangreiche Handbuch zu QGIS.
 
-Die verwendete **QGIS-Version 3.22 LTR** und kann bei [https://qgis.org](https://qgis.org) heruntergeladen werden.
+Die verwendete **QGIS-Version ist 3.22.4 Białowieża** und kann bei [https://qgis.org](https://qgis.org) heruntergeladen werden.
 
 | Anmerkung zum Layout in diesem Text|
 |----|

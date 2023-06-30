@@ -111,33 +111,30 @@ Vor allem im Feld 1 sind einige rundliche Anomalien eher positiver (dunkler) Mes
 
 Fügen Sie mit einem Doppelklick das Band 1 des Messfeldes 1 zum Ausdruck hinzu (closos_1_modifiziert\@1). Tragen Sie oben rechts den Namen für die Ausgabedatei ein, z.B. closos_1_7-16nT. Für die Ausdehnung dieser Datei klicken Sie auf [Gewählte Layerausdehnung] und das entsprechende KBS der Ursprungsdatei oder des Projektes. 
 
-Der Rasterrechner vor Version 3.22 kannte keine *if-than-else*-Syntax. Die Rückgabe der zu prüfenden Bedingung war "1" für WAHR und "0" für FALSCH. Mit einer geschickten Kombination von Multiplikation oder Division konnten entsprechende Wenn-Dann-Berechnungen gebaut werden. Im folgenden Fall z.B. die Division durch 0 = ungültig: 
+Für die Version ab 3.22 gibt es die [IF]-Bedingung mit folgender Syntax: if (Bedingung, wenn WAHR, wenn FALSCH). Für die Messwerte der potentiellen archäologischen Befunde ergibt sich somit folgende Anweisung: ```if (("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17), 1, 1/0)```. Der Wert für FALSCH ist die ungültige Division durch 0, die aber leider nicht NULL sondern mit -3,40282e+38 als Standartwert für ein Leerfeld (*no data value*) zurückgegeben wird. Das ist Konsequent, denn Löcher darf es in einem Raster nicht geben. Bei der nachfolgenden Konvertierung des Rasters in eine Vektordatei wird daraus also stets ein gültiges Polygon.
 
+Der Rasterrechner vor Version 3.22 kannte keine *if-than-else*-Syntax. Die Rückgabe der zu prüfenden Bedingung ist "1" für WAHR und "0" für FALSCH. Mit einer geschickten Kombination von Multiplikation oder Division kann  die entsprechende Wenn-Dann-Berechnungen gebaut werden. Im folgenden Fall z.B. die Division durch 0 = ungültig (Zeilenumbruch bitte entfernen):
 ```
-(("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17)) /
+(("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17)) / 
 (("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17))
 ```
-Für die neue Version von QGIS gibt es es die [IF]-Bedingung mit folgender Syntax: if (Bedingung, wenn WAHR, wenn FALSCH)
 
-Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Länge und Umfang ins Verhältnis setzen, um die Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für jede Anomalie berechnen lassen und abschließend  auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
+Schreiben Sie das Ergebnis nicht(!) in einen temporären Layer, die nachfolgend genutzte Funktion Raster-zu-Polygon kann temporäre Layer nicht verarbeiten.
+
+Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Umfang und Wurzel der Fläche ins Verhältnis setzen (sqrt(a)/U), um die Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für jede Anomalie zu den Rasterwerten des Magnetikbildes berechnen lassen und abschließend auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
 
 | Anmerkung |
 |----|
 |Wenn **Fehler** auftreten prüfen Sie bitte als erstes die Layernamen, *copy & paste* kann die Ursache sein. |
+|Prüfen Sie dann die Ausdehnung des neu zu berechnenden Rasters, auch dies wird gerne vergessen.|
 
 ### Luftbilder und Vegetation
 
-Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegeherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau!). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. Falls Sie mein erster schneller Ansatz interessiert:
-
+Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegenherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau!). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. Falls Sie mein erster schneller Ansatz interessiert:
 ```
-(("orthoaktuell@2">50) and ("orthoaktuell@2" < 110) and 
-("orthoaktuell@3">50) and ("orthoaktuell@3" < 110) and 
-("orthoaktuell@1" < ("orthoaktuell@2"*0.8))) /
-(("orthoaktuell@2">50) and ("orthoaktuell@2" < 110) and 
-("orthoaktuell@3">50) and ("orthoaktuell@3" < 110) and 
-("orthoaktuell@1" < ("orthoaktuell@2"*0.8)))
+("orthoaktuell@2" > "orthoaktuell@1") and ("orthoaktuell@2" > "orthoaktuell@3")
 ```
-Nach einer kurzen Überprüfung der Werte liegen Grün und Blau annähernd paritätisch zwischen 50 und 110 während Rot stets etwas niedriger liegt bis maximal 80% des Blau- oder Grünwertes. Im Ergebnis stehen also über und unter dem Bruch identische Ausdrücke mit jeweils drei verknüpften Bedingungen. Im Projekt können Sie mit "Rasterlayerstatistik" die Summe der Pixel abfragen und erhalten damit die Anzahl der Pixel da in jeder Zelle ja "1" steht. In der Information zum Layer finden Sie die Pixelgröße: 0.2000203817314166743 * 0.2000264054513337941. Aus dem Produkt aller Werte ergibt sich die jeweils ermittelte Fläche an Vegetation:
+Da die Division mit 0 nicht NULL liefert, sondern den sehr hohen Standardwert für *no data value* spare ich mir das if(), denn der Rückgabewert einer Bedingung ist ja schon 1 und 0. Die Bedingung ist recht schlicht, der Grüne Kanal (\@2) soll stets größer als die anderen sein. Im Projekt können Sie mit "Rasterlayerstatistik" (Suche in der Werkzeugkiste) die Summe der Pixel abfragen und erhalten damit die Anzahl der Pixel da in jeder Zelle der Wert "1" steht. In der Information zum Layer finden Sie die Pixelgröße: 0.200 * 0.200. Aus dem Produkt aller Werte ergibt sich die jeweils ermittelte Fläche an Vegetation:
 
 - 1956: 17500 m²
 - 2018: 57536 m²

@@ -12,6 +12,10 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
@@ -45,7 +49,7 @@ Als Fallbeispiel wähle ich nachfolgend den Fundplatz von Closos de Can Gaiá be
 Die Daten für diese Übung liegen vor:
 
 - @freyNavetasEsClosos1966a, Abb. 7 (georeferenziert anhand der Luftbilder und in Umrissen digitalisiert),
-- das Orthofoto von 2018: https://ideib.caib.es/geoserveis/rest/services/imatges/GOIB_Ortofoto_2018_IB/MapServer/WMTS,
+- das Orthofoto von 2021: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer,
 - die im vorangehenden Kapitel erstellten Vegationskarten und
 - die Comarcas der früheren Übung als Umrisskarte für eine  kleine Übersichtskarte.
 
@@ -55,9 +59,9 @@ Meine Karte soll den Funplatz und seine Denkmalgeschichte einführen. Ich möcht
 
 ## Karte erstellen
 
-Für ein Projekt können viele Layouts in unterschiedlichen Formaten entworfen und  mit den jeweils sichtbaren Layern "eingefroren" werden. Es ist also möglich, diverse Arbeitsstände in einem Projekt als Abbildung vorzuhalten. Die Verwaltung und Erstellung erfolgt über "Projekt -> Layout Verwaltung". Hier können Sie mit  "Leere Vorlage" ein neues Layout erzeugen. Ich nenne meine Vorlage 'Vegetation-DinA4R'  
+Für ein Projekt können viele Layouts in unterschiedlichen Formaten entworfen und  mit den jeweils sichtbaren Layern "eingefroren" werden. Es ist also möglich, diverse Arbeitsstände in einem Projekt als Abbildung vorzuhalten. Die Verwaltung und Erstellung erfolgt über "Projekt -> Layout Verwaltung". Hier können Sie mit  "Leeres Layout" [Erzeugen] ein neues Layout erzeugen. Ich nenne meine Vorlage 'Vegetation-DinA4R'  
 
-### Vorbereitung
+### Vorbereitung im Projektfenster
 
 Für die Darstellung der Navetas wähle ich eine kategorisierte Farbgebung nach dem Feld tipo, um nach den sicheren (dunkelgrau) und nur vermuteten (hellgrau) Navetas zu differenzieren. Die **Beschriftung  der Navetas** richtet sich nach der Namengebung von 1966. Da in diesem Plan nicht alle Strukturen beschriftet sind, wähle ich für den **Wert** nicht ein einzelnes Feld aus, z.B. "Name", sondern eine *if*-Bedingungen:
 
@@ -139,13 +143,11 @@ Zur Erläuterung:
 - \</br> : break / Zeilenumbruch
 - \<small> ... \</small> : klein
 
-**[Ausdruck einfügen/bearbeiten...]** oder **[Dynamischer Text]** bieten die Möglichkeit, auf Eigenschaften von Objekten und Variablen zuzugreifen, z.B. den Maßstab eines Kartenfensters. Dieser Text wird dann automatisch angepasst. Fügen Sie am unteren Rand ein neues Textfeld ein ("Beschriftung hinzufügen") und wählen sie im Bereich der Elementeigenschaften [Dynamischer Text] > Karteneigenschaften > Karte 1 > Maßstab. Im Editierfenster steht nun ```[%item_variables('Karte 1')['map_scale']%]``` und im Textfeld der Maßstab, allerdings mit vielen Nachkommastellen. Nehem Sie die Syntax aber als Vorlage und verändern Sie nachfolgend den bereits eingefügten Text (s.o.).
+Gehen Sie in den eingefügten Text, fügen Sie vor "Karte: ..." eine Leerzeile ein und wählen Sie nun [Dynamischer Text] Karteneigenschaften > Karte 1 > Maßytab. Verändern Sie den automatisch eingetragenen Text wie folgt:
 
-Gehen Sie in den eingefügten Text, fügen Sie vor "Karte: ..." eine Leerzeile ein und wählen Sie nun [Ausdruck einfügen...]. In dem sich öffnenden Ausdruckseditor wählen Sie im mittleren Bereich **Maps > map_get** und lesen in der zugehörigen Hilfe das Beispiel "map_get( item_variables('Map 0'), 'map_scale') → Maßstab des Kartenelements 'Map 0' (wenn es vorhanden ist) im aktuellen Drucklayout". Das ist genau das, was wir wollen. Fügen Sie entsprechend links folgenden Ausdruck ein: 
+```[%concat('M 1: ', round(item_variables('Karte 1')['map_scale'],0))%]	```
 
-```concat('M 1:',round(map_get( item_variables('Karte 1'), 'map_scale')),0)```
-
-Die Vorschau sollte nun "M 1:1000" oder ggf. einen anderen Maßstab anzeigen. Von Innen nach Außen sind es folgende Schritte: 1. Die Abfrage des Maßstabes nach der Hilfe, allerdings angepasst auf 'Karte 1'. 2. Die Rückgabe wird gerundet auf 0 Stellen: round(\<Wert>,\<Stellen>). 3. Mit 'M 1:' zusammengesetzt: concat(\<Text1>, \<Text2>, ...). Mit [OK] wird der Ausdruck übernommen und die "[%...%]" ergänzt, hierduch ist der Ausdruck als dynamischer Text für das System kenntlich. Der Maßstab wird nicht sofort angepasst aber bei weiteren Aktivitäten wie z.B. beim Drucken. 
+Die Vorschau sollte nun "M 1:1000" oder ggf. einen anderen Maßstab anzeigen. Von Innen nach Außen sind es folgende Schritte: 1. Die Abfrage des Maßstabes der 'Karte 1'. 2. Die Rückgabe wird gerundet auf 0 Stellen: round(\<Wert>,\<Stellen>). 3. Mit 'M 1:' zusammengesetzt: concat(\<Text1>, \<Text2>, ...) und die "[%...%]" Wandeln die Funktion in ein Textelement um, bzw. andersrum, in dem Text mird damit eine Funktionsbereich definiert. Der Maßstab wird nicht sofort angepasst aber bei weiteren Aktivitäten wie z.B. beim Drucken. 
 
 ### Attributtabelle
 
