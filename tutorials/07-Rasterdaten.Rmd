@@ -50,10 +50,10 @@ Die Daten für diese Übung liegen vor:
 - pp_magnetik_2010.txt: Feldecken als Liste mit Feldnummer, Rechts- und Hochwert (EPSG: 25831) als TAB-getrennte Spalten.
 - closos_1.grd, ... : Felder 1 bis 4 als Surfer Grid (Textformat) mit einer Interpolation der ursprünglichen Messwerte auf 0,10 x 0,10 m.
 
-Zudem werden folgende WMS (*web map services*) Luftbilder des IDEIB genutzt (diese Serveradressen können sich ändern):
+Zudem werden folgende WMS (*web map services*) des IDEIB für Luftbilder von 1956 und heute genutzt. Diese Serveradressen können sich ändern, einen Katalog mit Rechercheoption finden sie [hier](http://ideib.caib.es/cataleg/srv/cat/catalog.search#/home): 
 
-- 2021: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer 
-- 1956: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer
+- 2021: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer?request=getCapabilities&service=wms 
+- 1956: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_1956_IB/MapServer/WMSServer?request=GetCapabilities&service=WMS
 
 Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt. Öffnen Sie dazu den Data Source Manager (\<strg> + \<l>), wählen Sie "Getrennte Text" und setzen Sie nachfolgend die notwendigen Parameter. Danach zoomen Sie bitte auf diese Punkte, z.B. über das Kontextmenü.  Wählen Sie für die spätere Unterscheidung der Felder eine kategorisierte Symbologie auf Basis der Spalte "FeldNr".
 

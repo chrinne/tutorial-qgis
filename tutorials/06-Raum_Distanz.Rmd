@@ -64,11 +64,10 @@ Im Menü von QGIS wählen Sie "Vektor -> Geometrieverarbeitung -> **Puffer**" od
 |----|
 | Trotz identischen Namens bieten und liefern die Tools der diversen Pakete Unterschiede. Und die angewendeten Parameter sind alle wichtig wenn das Ergebnis nachvollziehbar bleiben soll. |
 | Das Feld **"Gemometriespaltenname" wird pauschal ausgefüllt** und muss eigenständig korrekt ausgefüllt werden. |
-| In QGIS Version 3.18 erkennt dieses Tool aktuell die Geometrie in der SQLite und GPKG nicht und kann nicht ausgeführt werden. |
 
 #### Rasterstatistik je Vektor (Kreis)
 
-Im Ergebnis haben wir viele Kreise. Suchen Sie in der *toolbox* nach '**Zonenstatistik**' (zonal stat) und starten Sie diese. Wählen Sie folgende Parameter: "Eingabelayer (ehem. Zonenvektorlayer)": der Puffer, "Rasterlayer": das Geländemodell (DGM 200 alias mdt 200), "Rasterkanal": Kanal 1, "Ausgabespaltenpräfix": s_ (die Vergabe ist frei wählbar, sollte kurz sein und nicht mit einer Zahl starten) und bei "Zu berechnende Statistken": Wählen Sie bitte alle aus, bis auf 'Summe'. Im Ergebnis haben Sie bei der Attributtabelle des Verktolayers für jede gewählte Statistik eine neue Spalte. Hier werden in der QGIS-Version (3.16 und 3.18) die englischen Begriffe verwendet, wodurch auch der Unterschied der zuvor doppelt angegebenen "Varianz" ersichtlich wird. Die **Reliefenergie** ist per Definition die Höhendifferenz in einer Flächeneinheit, Sie ist damit unabhängig von der absoluten Höhe über dem Meer. Zu den ermittelten Werten nachfolgend eine sehr knappe Erläuterung:
+Im Ergebnis haben wir viele Kreise. Suchen Sie in der *toolbox* nach '**Zonenstatistik**' (zonal stat) und starten Sie diese. Wählen Sie folgende Parameter: "Eingabelayer (ehem. Zonenvektorlayer)": der Puffer, "Rasterlayer": das Geländemodell (DGM 200 alias mdt 200), "Rasterkanal": Kanal 1, "Ausgabespaltenpräfix": s_ (die Vergabe ist frei wählbar, sollte kurz sein und nicht mit einer Zahl starten) und bei "Zu berechnende Statistken": Wählen Sie bitte alle aus, bis auf 'Summe'. Im Ergebnis haben Sie bei der Attributtabelle des Verktolayers für jede gewählte Statistik eine neue Spalte. Hier werden in der QGIS-Version (3.22) die englischen Begriffe verwendet, wodurch auch der Unterschied der zuvor doppelt angegebenen "Varianz" ersichtlich wird. Die **Reliefenergie** ist per Definition die Höhendifferenz in einer Flächeneinheit, Sie ist damit unabhängig von der absoluten Höhe über dem Meer. Zu den ermittelten Werten nachfolgend eine sehr knappe Erläuterung:
   
 - Anzahl / count: Anzahl der betroffenen Zellen
 - Summe (abgewählt): Summe der Zellwerte
@@ -87,7 +86,7 @@ Es gibt hier zahlreiche Werte, die einen Hinweis auf die Reliefenergie geben, vo
   
   - Bereich: Die Differenz zwischen dem kleinsten und größten Wert, wobei ein einzelner Gipfel das Ergebnis deutlich  beeinflusst (z.B. der Kilimandscharo). In so einem Fall liegen der Mittelwert und der Median weiter auseinander.
 - Standardabweichung: Gibt es viele Hügel und Täler sind viele Werte über ein breites Mittelfeld verteilt, die Standardabweichung ist demnach groß bzw. breit.
-- Eindeutige Werte (variety), Vorausgesetzt wir haben Meterangaben oder sogar klassifizierte Werte in Einheiten von 5 Metern ist eine eine Ebene eher "langweilig", eine leicht schräge Steilwand aber hoch dramatisch. Eine hügeliges Bergvorland, mit vielen Tälern und einem konstanten Anstieg bietet auch viele Unterschiede.
+- Eindeutige Werte (variety), Vorausgesetzt wir haben Meterangaben oder sogar klassifizierte Werte in Einheiten von 5 Metern ist eine Ebene eher "langweilig", eine leicht schräge Steilwand aber hoch dramatisch. Eine hügeliges Bergvorland, mit vielen Tälern und einem konstanten Anstieg bietet auch viele Unterschiede.
 
 Wollten wir uns einen Überblick über ein Attribut, also eine der zuvor erläuterten Zahlen, von allen Umkreisen verschaffen, können wir aus dem Menü mit "Vektor -> Analyse-Werkzeuge -> Grundstatistik .." grundlegende statistische Angaben für das jeweils gewählte Attribut abfragen. Das Ergebnis wird auf Englisch im aktiven Fenster unter dem Reiter "Protokoll" ausgegeben, dazu auf Deutsch in einer hier verlinkten HTML-Datei. Hier begegnen uns wie zuvor die "üblichen Verdächtigen", dazu einige weitere Angaben: 
   
@@ -112,7 +111,7 @@ Wollten wir uns einen Überblick über ein Attribut, also eine der zuvor erläut
 
 Kartieren Sie einige der vorgenannten Werte (Bereich, Standardabweichung, Variationskoeffizient und Interquartilabstand). Für die Werte von "Bereich" (range) wähle ich die Farbskala "Spectral" und fünf Klassen mit gleicher Anzahl (Quantile). Es verwundert nicht, dass die sehr hohen Werte in der Tramuntana zu finden sind und die niedrigen Werte in den zentralen Ebenen von Mallorca. 
 
-Der Wechsel auf die Werte der Standardabweichung (stdev) bei Beibehaltung der grafischen Parameter verändert das Bild nur ein wenig, am ehesten noch im mittleren Höhenbereich. Das Problem sind die Klassengrenzen. Betrachten Sie die Histogramme für beide Attribute und verschieben Sie die Grenzwerte nach ihrer Interpretation der "Gipfel" und "Täler" in der Verteilung. Mit Blick auf die vorangehende Erläuterung scheint Folgendes sichtbar: einzelne Gipfel verzerren das Bild. Aus diesem Grund tendiere ich zur Standardabweichung als Indikator einer allgemeine Reliefenergie, die allgemein üblichen Maximaldifferenz scheint mir für unsere Frage weniger geeignet. 
+Der Wechsel auf die Werte der Standardabweichung (stdev) bei Beibehaltung der grafischen Parameter verändert das Bild nur ein wenig, am ehesten noch im mittleren Höhenbereich. Das Problem sind die Klassengrenzen. Betrachten Sie die Histogramme für beide Attribute und verschieben Sie die Grenzwerte nach ihrer Interpretation der "Gipfel" und "Täler" in der Verteilung. Mit Blick auf die vorangehende Erläuterung scheint Folgendes sichtbar: einzelne Gipfel verzerren das Bild. Aus diesem Grund tendiere ich zur Standardabweichung als Indikator einer allgemeine Reliefenergie, die allgemein übliche Maximaldifferenz scheint mir für unsere Frage weniger geeignet. 
 
 ### Exponiert oder im Tal?
 
@@ -251,7 +250,7 @@ hist((l/1000)[l<25000], breaks=seq(0,25,0.5),
      main='Triangulierte Distanzen', xlab = 'Distanz (km)', ylab = 'Häufigkeit') 
 ```
 
-Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 25000 m gefiltert ([l<25000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 25 km mit Intervallen von 0,5 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt. Vergrößern wir das Intervall auf 1 km entfällt die visuelle Trennung zwischen 1,5 km und 3 km und es bleibt eine leichter Absatzt im Verlauf mit geringer Häufung von Distanzen bei 5 km. Es folgend unscharfe Häufungen bei den Vielfachen von 5 km. 
+Der vorangehende Code rechnet die Meter-Distanzen in Kilometer um (l/1000), zuvor wird auf Distanzen unter 25000 m gefiltert ([l<25000]). Die Schrittweite (*breaks*) wird als Sequenz (seq()) von 0 bis 25 km mit Intervallen von 0,5 km festgelegt.  Abschließend werden noch der Titel und die Beschriftungen der x- und y-Achse hinzugefügt. Vergrößern wir das Intervall auf 1 km entfällt die visuelle Trennung zwischen 1,5 km und 3 km und es bleibt eine leichter Absatzt im Verlauf mit geringer Häufung von Distanzen bei 5 km. Es folgen unscharfe Häufungen bei den Vielfachen von 5 km. 
 Das Histogramm weist auf Agglomerationen von Talaiots in einem Abstand von bis zu 3 km hin, diese könnten sich dann in Abständen von ca. 5 km wiederholen. Dazwischen klaffen aber auch Lücken, die wegen des Vielfachen von 5 km möglicherweise durch fehlende Gruppen verursacht worden sein könnten. Letzteres ist lediglich aus der Wiederholung der Distanz abgeleitet und kann auch andere Gründe haben.  
 
 # Literatur

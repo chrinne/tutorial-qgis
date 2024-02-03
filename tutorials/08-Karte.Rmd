@@ -12,15 +12,15 @@ bibliography: QGIS-cours-references.bib
 csl: journal-of-archaeological-science.csl
 papersize: a4
 output:
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
 urlcolor: blue
 link-citations: yes # make citations hyperlinks
 linkcolor: blue
@@ -49,7 +49,7 @@ Als Fallbeispiel wähle ich nachfolgend den Fundplatz von Closos de Can Gaiá be
 Die Daten für diese Übung liegen vor:
 
 - @freyNavetasEsClosos1966a, Abb. 7 (georeferenziert anhand der Luftbilder und in Umrissen digitalisiert),
-- das Orthofoto von 2021: https://ideib.caib.es/geoserveis/services/imatges/GOIB_Ortofoto_2021_IB/MapServer/WMSServer,
+- das Orthofoto von 2021 (s. Kapitel Raterdaten),
 - die im vorangehenden Kapitel erstellten Vegationskarten und
 - die Comarcas der früheren Übung als Umrisskarte für eine  kleine Übersichtskarte.
 
@@ -69,7 +69,7 @@ Für die Darstellung der Navetas wähle ich eine kategorisierte Farbgebung nach 
 if ("Name" is  not null, "Name", "tipo")
 ```
 
-Damit wird der Name angezeigt, sofern einer vorliegt, ansonsten der Typ. Der schwarze Text ist auf dem bunten Hintergrund kaum lesbar. Ich wähle deshalb als **Hintergrund** ein weißes Rechteck. Alternativ kann auch ein Puffer gewählt werden. Da dieser in früheren Versionen in einem resultierenden PDF in einer rechenintensive Konturlinie resultierte, verwende ich diese Option ungern.
+Damit wird der Name angezeigt, sofern einer vorliegt, ansonsten der Typ. Der schwarze Text ist auf dem bunten Hintergrund kaum lesbar. Ich wähle deshalb als **Hintergrund** ein weißes Rechteck. Alternativ kann auch ein Puffer gewählt werden. Da dieser in früheren Versionen in einem PDF in einer rechenintensive Konturlinie resultierte, verwende ich diese Option ungern.
 
 Die Position der Schrift in der Mitte der Naveta stört mit sehr, dies können wir im Unterpunkt *Platzierung* ändern. Ich wechsele von "Um Zentrum" zu "Abstand vom Zentrum". Die Zuweisung der Position nach Quadranten um das Zentrum reicht nicht, deshalb wähle ich den "X, Y Versatz". Eine feste Größe von 12 m  für y wird den sehr unterschiedlichen Größen der Navetas nicht gerecht. Aus diesem Grund wähle ich auch hier mit dem **E** am rechten Rand eine Bedingung, die ich "Bearbeite" und komme so zum **Ausdruckseditor**.
 
@@ -147,7 +147,7 @@ Gehen Sie in den eingefügten Text, fügen Sie vor "Karte: ..." eine Leerzeile e
 
 ```[%concat('M 1: ', round(item_variables('Karte 1')['map_scale'],0))%]	```
 
-Die Vorschau sollte nun "M 1:1000" oder ggf. einen anderen Maßstab anzeigen. Von Innen nach Außen sind es folgende Schritte: 1. Die Abfrage des Maßstabes der 'Karte 1'. 2. Die Rückgabe wird gerundet auf 0 Stellen: round(\<Wert>,\<Stellen>). 3. Mit 'M 1:' zusammengesetzt: concat(\<Text1>, \<Text2>, ...) und die "[%...%]" Wandeln die Funktion in ein Textelement um, bzw. andersrum, in dem Text mird damit eine Funktionsbereich definiert. Der Maßstab wird nicht sofort angepasst aber bei weiteren Aktivitäten wie z.B. beim Drucken. 
+Die Vorschau sollte nun "M 1:1000" oder ggf. einen anderen Maßstab anzeigen. Von Innen nach Außen sind es folgende Schritte: 1. Die Abfrage des Maßstabes der 'Karte 1'. 2. Die Rückgabe wird gerundet auf 0 Stellen: round(\<Wert>,\<Stellen>). 3. Mit 'M 1:' zusammengesetzt: concat(\<Text1>, \<Text2>, ...) und die "[%...%]" Wandeln die Funktion in ein Textelement um, bzw. andersrum, in dem Text wird damit ein Funktionsbereich definiert. Der Maßstab wird nicht sofort angepasst aber bei weiteren Aktivitäten wie z.B. beim Drucken. 
 
 ### Attributtabelle
 

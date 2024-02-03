@@ -44,9 +44,9 @@ Die Kapitel sind einzelnen Aufgabenbereichen gewidmet und behandeln:
 7. Raster oder Bilder sind ein ganz anderer und bisher nicht behandelter Datentyp. Die Werkzeuge zur Bearbeitung werden hier vorgestellt.     
 8. Im letzten Kapitel wird das Erstellen von Karten behandelt.     
 
-Dieses Tutorial ist keine Einführung in die Methoden und theoretischen Grundlagen räumlicher Analysen in der Archäologie. Es ist auch kein Ersatz für das umfangreiche Handbuch zu QGIS.
+Dieses Tutorial soll in wenigen Kapiteln zum einen in traditionelle Analysemethoden der Archäologie, insbesondere der Siedlungsarchäologie einführen und zum anderen wesentliche Funktionalitäten eines GIS am Beispiel von QGIS vermitteln. Dieses Tutorial ist keine umfassende Einführung in die Methoden und theoretischen Grundlagen räumlicher Analysen in der Archäologie. Es ist auch kein Ersatz für das umfangreiche Handbuch zu QGIS. Dieses Ziel kann auch mit einer leicht veralteten Version erreicht werden.  
 
-Die verwendete **QGIS-Version ist 3.22.4 Białowieża** und kann bei [https://qgis.org](https://qgis.org) heruntergeladen werden.
+Die verwendete **QGIS-Version ist 3.22.4 Białowieża** und kann bei [https://qgis.org](https://qgis.org) heruntergeladen werden. Die aktuelle (01.2024) Version mit Langzeitunterstützung ist allerdings 3.28.15 LTR. Informationen zu den Änderungen einzelner Versionen erhalten Sie bei [QGIS](https://qgis.org/de/site/forusers/visualchangelog328/index.html). 
 
 | Anmerkung zum Layout in diesem Text|
 |----|
@@ -122,7 +122,7 @@ Unter "Projekt -> Eigenschaften" legen Sie die Parameter des Projektes fest. Her
 - Metadaten sind immer interessant und wichtig bei einer späteren Nachnutzung. Bei einem privaten Projekt mag das kurzfristig uninteressant erscheinen.
 - **KBS / Koordiatenbezugssystem**: Ein sehr wichtiger Parameter. <br>
 Das KBS muss dem Projektmaßstab und der Lage angemessen sein. WGS84 (EPSG 4326) passt weltweit, ist aber für ein kleinräumiges Projekt eher ungeeignet. Da ich mit Gradangaben bei Distanzen nicht wirklich etwas anfangen kann, wohl aber mit Metern, verwende ich meist ein  projiziertes KBS der jeweiligen Region, z.B. DHDN 3° Streifen Gauß-Krüger (GK) Zone 3 (EPSG 31467). Für ein Projekt in Norddeutschland, hier sind 2 bis 3 Zonen bei GK betroffen, wäre ein UTM sinnvoll. Der rosafarbene Rahmen zeigt die jeweilige Gültigkeit des gewählten Systems an und erleichtert die Entscheidung.<br>
-Bei UTM müssen Sie noch zwischen ETRS89 und WGS84 als Ellipsoid wählen. Aktuell ist der Unterschied marginal. 
+Bei UTM müssen Sie noch zwischen ETRS89 und WGS84 als Ellipsoid wählen. Aktuell ist der Unterschied marginal aber nicht egal. 
 
 ## KBS: Vom Geoid zur Karte
 
