@@ -9,24 +9,26 @@ header-includes:
   \renewcommand{\figurename}{Abb.}
   \renewcommand{\tablename}{Tab.}
 bibliography: QGIS-cours-references.bib
-csl: journal-of-archaeological-science.csl
+csl: "../styles/journal-of-archaeological-science.csl"
 papersize: a4
 output:
+  html_document:
+    toc: yes
+    toc_float: true
+    df_print: paged
+    css: "../styles/tutorials.css"
+    theme: readable
   pdf_document:
     fig_caption: yes
     number_sections: yes
     toc: yes
     df_print: kable
-  html_document:
-    toc: yes
-    toc_float: true
-    df_print: paged
 urlcolor: blue
-link-citations: yes # make citations hyperlinks
+link-citations: yes 
 linkcolor: blue
 number_sections: yes
 lang: de-DE
-description: 'Gis-Kurs mit QGIS : Tutorial in Kapiteln'
+description: "Gis-Kurs mit QGIS : Tutorial in Kapiteln"
 ---
 
 # Datenbanken
