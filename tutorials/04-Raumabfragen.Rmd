@@ -15,6 +15,7 @@ output:
   html_document:
     toc: yes
     toc_float: true
+    number_sections: yes
     df_print: paged
     css: "../styles/tutorials.css"
     theme: readable
