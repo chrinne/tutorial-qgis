@@ -67,9 +67,6 @@ PK_UID INTEGER PRIMARY KEY AUTOINCREMENT,
 "zensus_1991" INTEGER,
 "zensus_2001" INTEGER,
 "zensus_2011" INTEGER);
-CREATE TABLE 'comarcas' (
-"PK_UID" INTEGER PRIMARY KEY AUTOINCREMENT,
-"c_comarca" TEXT, "geom" MULTIPOLYGONE);
 ```
 
 ```{sql basic-table-insert, connection=t1db, include=FALSE}
@@ -93,9 +90,9 @@ from 'pop_balears' limit 6;
 
 ## Vorbemerkung
 
-In dieser Übung zu GIS mit QGIS sind (mir) zwei besonders störende Probleme aufgefallen:
+In dieser Übung zu GIS mit QGIS sind (mir) bisher zwei besonders störende Probleme aufgefallen:
 
-- Aus Abfragen generierte Sichten oder Darstellungen von Daten müssen als neue Datei mit redundanten Daten gespeichert werden, sonst gehen diese Layer verloren und
+- Aus Abfragen generierte Sichten oder Darstellungen von Daten müssen als neue Datei mit redundanten Daten gespeichert werden, sonst gehen diese temporären Layer verloren und
 - die Datentabellen können nur als Ganzes kopiert, nicht aber mit ausgewählten Attributen kopiert und somit schnell anderweitig verwendet werden.
 
 Dieses Kapitel beginnt mit Übungen zu GeoPackages, SpatiaLite und der DB-Verwaltung in QGIS, am Ende steht dann die Arbeit mit der SpatiaLite-GUI.
@@ -113,17 +110,9 @@ Es gibt zwei grundlegende Unterschiede bei DBMS: 1. Die für den Desktop und die
 - Oracle: Ein traditionsreicher Anbieter von DBMS für Server, auch kostenfrei nutzbaren Versionen. 
 - DB2: Ist ein DBMS von IBM auch mit einer Community Edition (CE), die  kostenfrei nutzbar ist.  
 
-### Geopackage vs SpatiaLite
+### Geopackage oder SpatiaLite
 
-Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entscheidung hängt sicher auch vom Nutzungskonzept und der eigenen Erfahrung bzw. den Vorlieben ab. Ich konzentriere mich auf die unmittelbaren Aspekte der Anwendung, technische Details werden nicht bewertet. Zudem ist mit einer Weiterentwicklung der Systeme zu rechnen.
-
-|pro Geopackage | contra Geopackage|
-|:--------|:--------|
-|- Etwas kompaktere Dateigröße, wobei GeoTIF oft größer ist als textbasierte Raster (ASC, GRD). | - Eingeschränkte Funktionalität der SpatiaLite GUI, da Vektordaten nur als *view* zur Verfügung stehen.|
-|- Rasterdaten: MBTiles sind weit verbreitet.| - *type affinity* von SQLite wird in QGIS beim Export nicht unterstützt. |
-|- Import von dxf-Dateien möglich, leider keine Spezifikation hinterlegt.||
-|- Eine Datei für alles.||
-|- Nutzt *Write Ahead Logging* (WAL) von SQLite für simultanen Nutzerzugriff auf die integrierte SQLite-DB. WAL- und SHM-Dateien werden nach dem sauberen Beenden von QGIS vom System wieder gelöscht. ||
+Den tabellarischen Vergleich früherer Versionen habe ich entfernt, meine Kenntnis zu GeoPackages ist unzureichend. Die eigene Entscheidung für ein System hängt sicher auch vom Nutzungskonzept und der eigenen Erfahrung bzw. den Vorlieben ab. Nachfolgend meine Sicht auf SpatiaLite. 
 
 |pro SpatiaLite|contra SpatiaLite|
 |:--------|:--------|
@@ -133,8 +122,9 @@ Nachfolgend ein knapper Vergleich der beiden genannten Systeme, die eigene Entsc
 |- Integrierte Importfunktionen, auch ganzer Ordner mit Dateien (dxf, shp, asc, excel).|
 |- Anhängen externer Daten (virtuelle Daten).||
 |- Bibliotheken für Rasterdaten, Netzwerk, Routing etc.||
+</br>
 
-Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig und die *type affinity* ist eine feine Sache bei spontan auftretenden Buchstaben an einer Befundnummer. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf der folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html){target="_blank"}. 
+Für mich ist die Arbeit mit Abfragen, speziell *spatial view* wichtig und die [*type affinity*](https://sqlite.org/datatype3.html#type_affinity) ist eine feine Sache bei spontan auftretenden Buchstaben an einer Befundnummer. Rasterdaten liegen oft als eine Datei vor, sind als GeoTIF oder ASC/GRD-Datei leicht austauschbar und werden mit dem Raster-Calculator in QGIS effizient bearbeitet, wobei das Ergebnis jeweils leider in eine neue Datei geschrieben wird. Das Einbinden der Rasterdaten in ein GeoPackage bringt mir hier keinen Vorteil. Damit ziehe ich SpatiaLite zur Zeit vor. Einen deutlich eingehendere Darstellung zu Gepackages finden Sie auf folgender Website: [www.geopackages.org](http://www.geopackage.org/guidance.html){target="_blank"}. 
 
 ## GeoPackages in QGIS
 
@@ -147,13 +137,13 @@ Aus dem Kontextmenü des Layer "Autonome Gebiete" (autonomias) wählen Sie "Expo
 - Format: GeoPackage, 
 - Dateiname [...]: im Projektordner "mallorca.gpkg", 
 - Layername: autonomias (**bitte nicht die Vorgabe**), 
-- KBS: EPSG 4258 (original der shp), 
+- KBS: EPSG 25831 (bei der Gelegenheit ändern wir die Projektion auf die Vorgabe unseres Projektes), 
 - FID: fid (feature id), 
 - Geometry_Name: geom. 
 
-Die **Nomenklatur für die *feature id* (fid) und vor allem die Geometrie (geom) sollte in der Datenbank einheitlich, kurz und aussagekräftig sein**, das erleichtert die spätere Arbeit ungemein. Wiederholen Sie den Vorgang für die Provinzen (Layername: provincias), Gemeinden (Layername: municipios) und die selbst generierten Dateien comarcas der Landschaftszonen (Layername: comarcas) und mallorca-sites (Layername: sites). Exportieren Sie auch die Datentabelle pop-balears in die GPKG, bei Geometrie wählen Sie hier "keine Geometrie".
+Die **Nomenklatur für die *feature id* (fid) und vor allem die Geometrie (geom) sollte in der Datenbank einheitlich, kurz und aussagekräftig sein**, das erleichtert die spätere Arbeit ungemein. Wiederholen Sie den Vorgang für die Provinzen (Layername: provincias), Gemeinden (Layername: municipios) und die selbst generierten Dateien comarcas der Landschaftszonen (Layername: comarcas), ändern Sie in der Tabelle der Felder den Namen der Spalte für die  Comarcas auf "comarca" und abschließend exportieren sie noch mallorca-sites (Layername: sites). Exportieren Sie auch die Datentabelle pop-balears in die GPKG, das "-" im Namen wird automatisch entfernt, fügen Sie dieses aus didaktischen Gründen bitte wieder ein und wählen Sie "Ohne Geometrie".
 
-Exportieren Sie zuletzt die Rasterdatei des Höhenmodelles mdt200 bzw. DGM200 in das Geopackage mallorca. Sie sollten eine Fehlermeldung erhalten:
+Exportieren Sie zuletzt die Rasterdatei des Höhenmodelles mdt200 bzw. DGM200 in das Geopackage.  Mit dem GeoTIFF klappt dies problemlos, mit der früheren asc-Datei folgte eine Fehlermeldung:
 
 ```
 Konnte Raster nicht schreiben. Fehlercode: Datenquellenerstellung
@@ -161,13 +151,13 @@ Cannot create new dataset  D:\CAU\Lehre\20SoSe\GIS\Daten\mallorca\mallorca.gpkg:
 Only Byte, Int16, UInt16 or Float32 supported
 ```
 
-Öffnen Sie die Eigenschaften -> Informationen zu diesem Layer, dort finden Sie u.a. "Daten Typ	Float32 - 64 Bit Fließkommazahl". Das scheint auf den ersten Blick korrekt, ist aber das Problem. Float32 (Gleitkommazahl) kann als 64 Bit oder als 32 Bit vorliegen. Die aktuellen Daten sind 64 bit, der Import ist aber nur für 32 bit Daten möglich, in der Konsequenz müssen wir also erst konvertieren. Öffnen Sie die Werkzeugkiste ("Verarbeitung -> Werkzeugkiste" oder \<strg>+\<alt>+\<t>) und suchen Sie "konvertieren". Wählen Sie aus den GDAL-Tools "Umwandeln (Format konvertieren)": Eingabelayer: DGM200, Fortgeschrittene Parameter -> Ausgabedatentyp: Float32, Umgewandelt: In temporäre Datei. Weisen Sie der temporären Rasterdatei noch die richtige Projektion zu ("Projektion zuweisen", 25831). Wiederholen Sie den Export in die GPKG mit dieser Datei und achten Sie auf den Layernamen: mdt200.
+Das Problem war das Zahlenformat. Ich belasse diesen Absatz aus didaktischen Gründen. Unter "Eigenschaften -> Informationen" finden Sie u.a. "Daten Typ	Float32 - 64 Bit Fließkommazahl". Das scheint auf den ersten Blick korrekt, ist aber das Problem. Float32 (Gleitkommazahl) kann als 64 Bit oder als 32 Bit vorliegen. Die aktuellen Daten sind 64 bit, der Import ist aber nur für 32 bit Daten möglich, in der Konsequenz müssen wir also erst konvertieren. Öffnen Sie die Werkzeugkiste ("Verarbeitung -> Werkzeugkiste" oder \<strg>+\<alt>+\<t>) und suchen Sie "konvertieren". Wählen Sie aus den GDAL-Tools "Umwandeln (Format konvertieren)": Eingabelayer: DGM200, Fortgeschrittene Parameter -> Ausgabedatentyp: Float32, Umgewandelt: In temporäre Datei. Weisen Sie der temporären Rasterdatei noch die richtige Projektion zu ("Projektion zuweisen", 25831). Wiederholen Sie den Export in die GPKG mit dieser Datei und achten Sie auf den Layernamen: mdt200.
 
 ### Arbeit mit GPKG in QGIS
 
-Für die Nutzung einer Datenbank muss stets erst eine Verbindung zu dieser eingerichtet werden. In QGIS gibt es zwei Wege: 1. über die **Datenquellenverwaltung** und 2. über die **DB-Verwaltung** ("Datenbank -> DB-Verwaltung"). Bei 1. können Sie mit [Neu] eine DPKG auswählen und anbinden, im *drop-down* vorhandene Verbindungen selektieren und mit [Verbinden] öffnen. Bei 2. wird über das Kontextmenü (rechter Mausklick) zum DBMS eine neue Verbindung eingerichtet. Alle vorhanden Verbindungen werden angezeigt und durch das Öffnen verbunden. Der gleichzeitige Zugriff über beide Wege ist möglich. In beiden Fällen können Daten aus der DPKG in das Projekt übernommen werden, bei 1. durch [Hinzufügen], bei 2. durch *drag 'n drop* oder mit Doppelklick. Damit enden die Gemeinsamkeiten. 
+Für die Nutzung einer Datenbank muss stets erst eine Verbindung zu dieser eingerichtet werden. In QGIS gibt es zwei Wege: 1. über die **Datenquellenverwaltung** und 2. über die **DB-Verwaltung** ("Datenbank -> DB-Verwaltung"). Bei 1. können Sie mit [Neu] eine DPKG auswählen und anbinden, im *dropdown* vorhandene Verbindungen selektieren und mit [Verbinden] öffnen. Bei 2. wird über das Kontextmenü (rechter Mausklick) zum DBMS eine neue Verbindung eingerichtet. Alle vorhandenen Verbindungen werden angezeigt und durch das Öffnen verbunden. Der gleichzeitige Zugriff über beide Wege ist möglich. In beiden Fällen können Daten aus der DPKG in das Projekt übernommen werden, bei 1. durch [Hinzufügen], bei 2. durch *drag 'n drop* oder mit Doppelklick. Damit enden die Gemeinsamkeiten. 
 
-**DB-Verwaltung von QGIS** ("Datenbank -> DB-Verwaltung") bietet schneller mehr Informationen zum jeweiligen Datenbestand und erlaubt zudem das Importieren neuer Daten sowie die Arbeit mit SQL-Anweisungen. Bei der Datentabelle "pop-balears" fallen zwei Punkte auf: 1. Nach den "Allgemeinen Informationen" sind die Spalten 1842 bis 1920 als Text und nicht als Zahl gespeichert. 2. Das "-" im Namen führt zu Missverständnissen, bedingt Anführungszeichen und führt somit zu mehr Tipparbeit. Dazu folgende Übungen.
+**DB-Verwaltung von QGIS** ("Datenbank -> DB-Verwaltung") bietet schneller mehr Informationen zum jeweiligen Datenbestand und erlaubt zudem das Importieren neuer Daten sowie die Arbeit mit SQL-Anweisungen. Bei der Datentabelle "pop-balears" fallen zwei Punkte auf: 1. Nach den "Allgemeinen Informationen" sind die Spalten 1842 bis 1920 als Text und nicht als Zahl gespeichert. 2. Das "-" im Namen führt zu Missverständnissen, bedingt Anführungszeichen und führt somit zu mehr Tipparbeit (s. Fehlersuche in der txt-Datei Kap. Raumabfragen u. Quellenkritik). Dazu folgende Übungen.
 
 ### Einfache SQL-Anweisungen
 
@@ -175,7 +165,7 @@ Mit \<F2> oder "Datenbank -> SQL-Fenster" öffnen Sie ein Fenster für SQL-Anwei
 
 - ```select * from sites;``` 
 - ```select * from 'pop-balears';```
-- ```select municipio, 1950, '2011' from 'pop-balears';```
+- ```select municipio, 1950, '2011' from 'pop-balears' limit 3;```
 
 Die letzte Abfrage liefert folgendes Ergebnis:
 
@@ -184,21 +174,19 @@ Die letzte Abfrage liefert folgendes Ergebnis:
 | Alaró | 1950 | 2011 |
 | Alaior | 1950 | 2011 | 
 | Alcúdia | 1950 | 2011 | 
+</br>
 
 Ohne Hochkomma um den Tabellennamen "pop-balears" führt die zweite Anweisung wegen des "-" zu einer Fehlermeldung. Wir können einzelne Felder wie "municipio" direkt abfragen, nur bei den Zensus die mit dem jeweiligen Jahr benannt sind bekommen wir als Ergebnis die Zahl selbst, egal ob mit oder ohne Hochkomma. Erst mit ```select municipio, 1950, 'pop-balears'.'2011' from 'pop-balears';``` bekommen wir für 2011 die eigentlichen Zahlen.
 
-Um erfolgreich weiterzuarbeiten löschen Sie bitte "pop-balears" über das Kontextmenü in der Datenbank. Importieren Sie über "Tabelle -> Layer/Datei importieren" die Datei "pop_balears.csv", achten Sie auch auf den Namen in der Datenbank "pop_balears" und setzen Sie einen Haken für die Zeichencodierung "UTF-8". Führen Sie danach folgende Abfrage aus:
+| Achtung |
+|:----|
+| Das Entfernen des "-" im Layernamen durch das System, eigentlich der Tabellenname, war sehr weise, es macht die '' um den Namen überflüssig. Spaltennamen mit einer Ziffer am Anfang sind fast immer ein Problem und müssen vermieden werden. |
+</br>
 
-```{sql 'SQL Abfrage mit where', connection=t1db, message=FALSE, tab.cap = 'Abfrage für einzelne Attribute der Tabelle, Bedingung: Gemeindename beginnt mit A.'}
-select codigo, municipio, zensus_1842, zensus_1900, zensus_1950,  zensus_2011 
-from pop_balears 
-where municipio like 'A%';
-```
-
-Und zum Abschluss:  
+Mit der folgenden Abfrage erhalten wir den Namen und die Fläche der naturräumlichen Gliederung (*comarcas*). Die Syntax muss nicht wirklich erklärt werden. Mit wenigen Schritten bzw. Anweisungen könnten wir hier auch gleich die Talaiots zählen und diese Anweisung als *view* speichern.
 
 ```{sql 'Geometriefunktion',  connection=t1db,  eval=FALSE, message=TRUE, warning=FALSE, include=TRUE, tab.cap = 'Beispiel für eine Abfrage mit GIS-Funktionen.'}
-select m_comarca, st_area(st_transform(geom, 25831))/100000 as a_qkm 
+select comarca as "Naturraum", round(st_area(geom)/100000,0) as "Fläche km²" 
 from comarcas;
 ```
 
@@ -206,20 +194,21 @@ Was haben Sie gelernt?
 
 1. SQL-Anweisungen sind nicht grundsätzlich kompliziert, aber es gibt wichtige Syntaxregeln und Namenskonventionen, z.B. Ziffern am Anfang von oder "-" in Namen sind schlecht. Wenig beachtet, aber das ";" steht am Ende der Anweisung.
 2. Wir können Daten filtern, die Syntax entspricht auffallend den Anweisungen bei Layern in QGIS.
-3. Wir können gezielt Spalten (Attribute) auswählen.
+3. Wir können gezielt Spalten (Attribute) auswählen und "schöne" Spaltennamen vergeben.
 4. Es gibt Funktionen, die unsere Daten verändern.
 
-Dies sind allgemein gültige Regeln, nicht nur für die Datenbankverwaltung in QGIS. Wechseln wir nun aber zu SpatiaLite und zur SpatiaLite-GUI.
+Dies sind allgemein gültige Regeln, nicht nur für die GPKG in QGIS. Wechseln wir nun aber zu SpatiaLite und zur SpatiaLite-GUI.
 
 ## SpatiaLite und SpatiaLite-GUI
 
-Wie eingangs erläutert, beruht SpatiaLite ebenfalls auf SQLite, es kann keine Rasterdaten speichern, hat eine deutlich längere Entwicklung hinter sich und bietet eine eigene GUI (graphical user interface). SpatiaLite-Datenbanken können wie GPKG durch den Export von Layern in QGIS erzeugt, gefüllt und nach der Verbindung mit QGIS-Bordmitteln genutzt werden. Bis zu diesem Punkt ergibt sich kein Mehrwert für die Nutzung. SpatiaLite erlaubt es, ***spatial views*** zu erstellen, das sind gespeicherte Abfragen mit Geometrie, die wie andere Objekte in QGIS genutzt werden können. **Das redundante Erstellen neuer Daten und der Verlust von temporär erstellten Daten wird damit vermieden**.
+Wie eingangs erläutert beruht SpatiaLite ebenfalls auf SQLite, es kann keine Rasterdaten speichern, hat eine deutlich längere Entwicklung hinter sich und bietet eine eigene GUI (graphical user interface). SpatiaLite-Datenbanken können wie GPKG durch den Export von Layern in QGIS erzeugt, gefüllt und nach der Verbindung mit QGIS-Bordmitteln genutzt werden. Bis zu diesem Punkt ergibt sich kein Mehrwert bei der Nutzung. SpatiaLite erlaubt es, ***spatial views*** zu erstellen, das sind gespeicherte Abfragen mit einem Verweis auf die genuine Geometrie, die wie andere Objekte in QGIS genutzt werden können. **Das redundante Erstellen neuer Daten und der Verlust von temporär erstellten Daten wird damit vermieden**.
 
 ### SpatiaLite installieren
+
 Laden Sie sich bitte von der [Website](http://www.gaia-gis.it/gaia-sins/){target="_blank"} die Dateien für SpatiaLite herunter. Unten links sehen Sie die "MS Windows binaries".
 
-1. Wählen Sie hier bei "**previous stable version**", je nach System 32bit oder 64bit. Nur bei dieser Version ist die GUI dabei.
-2. Sie sehen  drei gepackte Dateien. Laden Sie alle herunter, auch wenn wir aktuell nicht alle brauchen.
+1. Wählen Sie hier bei "**latest version supporting spatialite GUI**", je nach System 32bit oder 64bit. Nur bei dieser Version ist die GUI dabei.
+2. Sie sehen  drei gepackte Dateien (.7z), die Sie herunterladen.
 3. Zum Entpacken dieser Dateien empfehle ich die freie Software [7-zip](https://www.7-zip.de/){target="_blank"}. 
 4. Legen Sie im Ordner "Program Files" (64bit) oder "Program Files (x86)" einen neuen Ordner "spatialite" an und kopieren Sie alles dort hinein (Adminrechte). Da die Datei proj.db in jeder der gepackten Dateien vorliegt, belasse ich ... modules... und ...tools... in ihrem jeweiligen Unterordner. Das Programm wird nicht installiert, d.h. im Betriebssystem eingebunden, der Ordner "SpatiaLite" kann also überall liegen.
 5. Wenn Sie es zukünftig öfter nutzen wollen und mehr Komfort wünschen, können Sie die Datei "spatialite_gui.exe" mit dem Eintrag "An Start anheften" über das Kontextmenü in das Startmenü der Programme eintragen. Oder erstellen Sie einen Link in "c:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\"
@@ -230,6 +219,7 @@ Zu SpatiaLite gibt es zahlreiche ergänzende Infos:
 - SpatiaLite-GUI: [https://www.gaia-gis.it/fossil/spatialite_gui/index](https://www.gaia-gis.it/fossil/spatialite_gui/index){target="_blank"}
 - SpatiaLite Wiki: [https://www.gaia-gis.it/gaia-sins/spatialite_topics.html](https://www.gaia-gis.it/gaia-sins/spatialite_topics.html){target="_blank"}
 - SpatiaLite Cookbook: [http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html](http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html){target="_blank"}
+- SpatiaLite Funktionsliste: [https://www.gaia-gis.it/gaia-sins/spatialite-sql-5.1.0.html](https://www.gaia-gis.it/gaia-sins/spatialite-sql-5.1.0.html){target="_blank"}
  
 ### SpatiaLite GUI
 
@@ -239,7 +229,7 @@ Starten Sie die SpatiaLite-GUI und erstellen Sie mit "Menue -> Creating a New ..
 
 Importieren Sie nacheinander die shp-Dateien der Verwaltungsgrenzen (autonomias, municipios) und die des Projektes (sites, comarcas): "Files -> Advanced -> Load Shapfile" (nutzen Sie nachfolgend das entsprechende Icon in der Iconleiste). Nach der Auswahl der shp-Datei erscheint ein Fenster, in dem Sie jeweils angepasst folgende Parameter setzen:
 
-- Autonimias: Table name: autonomias, GeomColumn name: geom, SRID: Vorgabe sollte stimmen, Charset Encoding: UTF-8 (wird leider nicht automatisch ausgelesen, steht am Ende des Liste für Charset Encoding, die Info finden Sie in der datei \*.cpg), der Rest bleibt nach Vorgabe.
+- Autonimias: Table name: autonomias, GeomColumn name: geom, SRID: Vorgabe sollte stimmen, Charset Encoding: UTF-8 (wird leider nicht automatisch ausgelesen, steht am Ende des Liste für Charset Encoding, die Info finden Sie in der Datei \*.cpg), der Rest bleibt nach Vorgabe.
 - Municipios (Gemeinden): Table name: municipios, GeomColumn name: geom, SRID: 4258, Charset Encoding: UTF-8
 - Comarcas (Landschaftszonen): Table name: comarcas, GeomColumn name: geom, SRID: 25831, Charset Encoding: UTF-8.
 mallorca-sites: Table name: sites, GeomColumn name: geom, SRID: 25831, Charset Encoding: UTF-8.
@@ -247,7 +237,7 @@ mallorca-sites: Table name: sites, GeomColumn name: geom, SRID: 25831, Charset E
 Der Import von Text-Tabellen ist leider nicht so komfortabel wie in QGIS, z.B. bei zu überspringende Zeilen am Dateianfang. Nutzen Sie deshalb die neue Datei "pop_balears.csv" für den Import: Table Name: pop_balears, First line ....: Haken setzen, Text separator quotes: None, Column separator: Comma, Charset encoding: UTF-8 und [OK]. 
 Falls Sie möchten, können Sie die Abfragen von oben wiederholen, achten Sie aber auf die veränderten Namen: ```select municipio, zensus_1842, zensus_1930 from pop_balears```.
 
-Sollten die Zahlen von "zensus_1842" linksbündig stehen, ist diese Spalte wegen der <Leerzeichen> bei fehlenden Daten als Text importiert worden. Die schnellste Variante: ändern Sie die CSV-Datei und importieren Sie die Daten nach dem löschen der alten Tabelle (Kontextmenü Maintenance) erneut.
+Sollten die Zahlen von "zensus_1842" linksbündig stehen, ist diese Spalte wegen der \<Leerzeichen> bei fehlenden Daten als Text importiert worden. Die schnellste Variante: ändern Sie die CSV-Datei und importieren Sie die Daten nach dem löschen der alten Tabelle (Kontextmenü: Maintenance) erneut.
 
 ### *view* & *spatial view* 
 
@@ -275,13 +265,30 @@ group by m.pk_uid;
 4. Zeile: Beschreibt die Verknüpfung der primären Datenquelle (m) zu *talaiots*, etikettiert als "t", mit der Funktion "st_within(t.geom, m.geom)". Dies verbindet alle Fundplatzeinträge (sites) mit der Gemeinde (municipios) in der diese liegen. Da unterschiedliche KBS vorliegen, muss vorab eine Transformation für m(unicipios) durchgeführt werden: "st_transform(m.geom, 25831)".
 5. Zeile: Dieser Ausdruck gruppiert das Ergebnis nach der ID (pk_uid) der Gemeinden und bewirkt das Zählen der Funktion count() über 1 hinaus bis zur entsprechenden Menge an Talaiots je Gemeinde.
 
-Die Abfrage wird erst ausgeführt, wenn sie diese neue view abfragen. Aktualisieren Sie "User data" (Kontextmenü refresh) und führen Sie folgende Abfrage aus: ``select * from talaiots_in_municipios```. Diese Abfrage braucht etwas Zeit (bei mir 6 Sek.), bitte warten Sie. Bis hierher hätte das auch in einem Rutsch ohne die ersten beiden *views* ausgeführt werden können. Die beiden *views* sind aber durchaus auch sinnvoll anderweitig einsetzbar. Da das Ergebnis nur eine Tabelle ist, müssen wir diese erneut mit unseren *municipios* und deren Geometrie verbinden und als *spatial view* speichern. Starten Sie den *composer*. Main table: talaiots_in_municipios und darunter alle Felder auswählen, Table #2 enable: municipios, Felder: PK_UID und geom (\<Strg> + Maus), [Inner] Join, Join match #1: PK_UID zu PK_UID, View: Create Spatial View, View name: talaiots_municipios, Geometry Column Table #2 geometries: geom.
+Die Abfrage wird erst ausgeführt, wenn sie diese neue view abfragen. Aktualisieren Sie "User data" (Kontextmenü refresh) und führen Sie folgende Abfrage aus: ```select * from talaiots_in_municipios```. Diese Abfrage braucht etwas Zeit (bei mir 6 Sek.), bitte warten Sie. Bis hierher hätte das auch in einem Rutsch ohne die ersten beiden *views* ausgeführt werden können. Die beiden *views* sind aber durchaus auch sinnvoll anderweitig einsetzbar. Da das Ergebnis nur eine Tabelle ist, müssen wir diese erneut mit unseren *municipios* und deren Geometrie verbinden und als *spatial view* speichern. Starten Sie den *composer*. Main table: talaiots_in_municipios und darunter alle Felder auswählen, Table #2 enable: municipios, Felder: PK_UID und geom (\<Strg> + Maus), [Inner] Join, Join match #1: PK_UID zu PK_UID, View: Create Spatial View, View name: talaiots_municipios, Geometry Column Table #2 geometries: geom.
  
 Verbinden Sie die DB in QGIS erneut, fügen Sie die Daten zum Projekt hinzu und warten Sie bis der Vorgang abgeschlossen ist (ca. 20 Sek. bei mir). Das ist natürlich ärgerlich, zumal dies auch bei der Zuweisung der Symbologie (kategorisiert) erneut auftritt. Die Daten sind aber 1. nicht redundant hinterlegt, 2. wirken sich Änderungen an den Fundplätzen direkt auf das Ergebnis aus, die Darstellung ist also stets aktuell und 3. ist die Anweisung in der DB dauerhaft gespeichert und damit dokumentiert. 
 
-Natürlich können Sie statt der Anweisung ```create view <name> as``` auch ```create table <name> as``` verwenden. Damit haben Sie zwar ebenfalls redundante Daten geschaffen, da die Abfrage aber als Anweisung gespeichert werden kann ist dieser Vorgang 1. dokumentiert und 2. jederzeit bei einem aktualisierten Datenbestand erneut durchführbar. Es ist also durchaus eine Verbesserung gegenüber dem Erstellen einer neuen shp-Datei. 
+Natürlich können Sie statt der Anweisung ```create view <name> as``` auch ```create table <name> as``` verwenden. Damit haben Sie zwar ebenfalls redundante Daten geschaffen, da die Abfrage aber als Anweisung gespeichert werden kann ist dieser Vorgang 1. dokumentiert und 2. jederzeit bei einem aktualisierten Datenbestand erneut durchführbar. Es ist also durchaus eine Verbesserung gegenüber dem Erstellen einer neuen shp-Datei.
 
 Um die *spatial view* "talaiots_municipios" als feste Tabelle zu erzeugen gehen Sie wie folgt vor:
+
 1. Wählen Sie aus dem Kontextmenü zur view "talaiots_municipios" show CREAT statement und kopieren Sie die angezeigte SQL-Anweisung.
-2. Fügen Sie diese Anweisung oberhalb im Abfragefeld ein, ändern Sie die erste Zeile zu: "CREATE TABLE "talaiots_municipios_tbl" AS" und führen Sie diese aus.
+2. Fügen Sie diese Anweisung oberhalb im Abfragefeld ein, ändern Sie die erste Zeile zu: ```CREATE TABLE 'talaiots_municipios_tbl' AS``` und führen Sie alles aus.
 3. Die resultierende Tabelle "talaiots_municipios_tbl" hat keine Weltkugel im Icon, wird also nicht als Geometrietabelle erkannt. Die vorhandene Spalte "geom" muss als Geometrie erst neu registriert werden. Wählen Sie dazu aus dem Kontextmenü zur Spalte "geom"  "Recover Geometry Column". In dem folgenden Fenster tragen Sie ein: SRID: 4258, Dim: XY, Geometry Type: MULTIPOLYGON und [OK]. Diese Informationen erhalten Sie, wenn Sie für die Geometrie der ursprünglichen Datenquelle (municipios.geom) im Kontextmenü "Check geometries" aufrufen.
+
+| Rückblick Chi²-Test und eleganterer Weg ohne *join* |
+|:----|
+| Sie entsinnen sich des Tests zur Verteilung der Talaiots in den *comarcas* und der Tabelle mit zugehörigen Flächen? Wie das Vorangegangene erstellt die folgende Syntax  diese Tabelle in einem Rutsch und gleich mit schönen Spaltennamen.|
+| Nehmen Sie sich etwas Zeit es in ruhe zu lesen, Sie sollten es eigentlich verstehen. Neu ist nur *group by* 1, womit verkürzt auf die erste Spalte der Abfrage verwiesen wird (m_comarca). |
+</br>
+
+```{sql 'Spatial View comarcas Fläche', eval=FALSE, message=FALSE, connection=t1db, include=TRUE, tab.cap = 'Abfrage zu den Comarcas mit Anzahl der Talaiots und der Fläche.'}
+select c.m_comarca as "Naturraum", 
+       st_area(c.geom) / 100000 as "Fläche (km²)", 
+       count(t.pk_uid) as "Anzahl Talaiots"
+from (select * from sites where tipo_yacim like 'Talaiot%') as t,
+   comarcas as c
+where st_within(t.geom, c.geom) 
+group by 1;
+```

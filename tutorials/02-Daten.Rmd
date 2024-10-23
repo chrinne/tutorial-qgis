@@ -96,7 +96,7 @@ Hier unter: Información geográfica de referencia. **Linien** getrennt nach nat
 
 Quelle: http://centrodedescargas.cnig.es/CentroDescargas
 
-Hier: Modelos Digitales de Elevaciones > MDT200 > Suche "Todos" > "Balears, Illes". Wählen Sie die kleinere Datei (PNOA_MDT200_ETRS89_HU31_Baleares). Inzwischen wird ein GeoTIFF angeboten. Früher war es eine Textdatei mit normierter Struktur (s.u.). Der sogenannte *header* liefert die  Anzahl der Zeilen und Spalten sowie die Zellgröße und die Lage der linken unteren Ecke. Es folgen die Zellwerte, meist als Matrix, was wegen der Angabe zur Anzahl der Zeilen und Spalten im *header* aber nicht notwendig ist. Die Daten beginnen stets oben links im Raster (wie wir lesen). Es gibt hierzu Alternativen, z.B. werden bei [Surfer-Dateien](https://www.goldensoftware.com/products/surfer), die Koordinaten der gegenüberliegenden Ecken und die Anzahl von Spalten und Zeilen definiert, woraus sich die nicht zwingend quadratische Auflösung je Zelle ergibt. QGIS kann diese Formate direkt lesen.
+Hier: Modelos Digitales de Elevaciones > MDT200 > Suche "Todos" > "Balears, Illes". Wählen Sie die kleinere Datei (PNOA_MDT200_ETRS89_HU31_Baleares). Inzwischen wird ein GeoTIFF angeboten. Früher war es eine Textdatei mit normierter Struktur (s.u.). Der sogenannte *header* liefert die  Anzahl der Zeilen und Spalten sowie die Zellgröße und die Lage der linken unteren Ecke. Es folgen die Zellwerte, meist als Matrix, was wegen der Angabe zur Anzahl der Zeilen und Spalten im *header* aber nicht notwendig ist. Die Daten beginnen stets oben links im Raster (wie wir lesen). Es gibt hierzu Alternativen, z.B. werden bei [Surfer-Dateien](https://www.goldensoftware.com/products/surfer), die Koordinaten der gegenüberliegenden Ecken und die Anzahl von Spalten und Zeilen definiert, woraus sich die nicht zwingend quadratische Auflösung je Zelle ergibt. QGIS kann diese Formate direkt lesen. Weitere Infos zu Rasterdaten, speziel GeoTIFF finden Sie bei [gaia-gis.it](https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=useful_tools).
 
 ```
 NCOLS 1544
@@ -108,7 +108,7 @@ NODATA_VALUE -999
 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 -999
 ```
 
-**GeoTIFF** (\*.tif) unterscheiden sich von "normalen" Rasterbilddateien durch 1. den Wertebreich der Zellen (keine Farbwerteskala, z.B. 0 bis 255) und 2. die Informationen zum Raumbezug (Lage, EPSG, Auflösung) im *header* der Datei. TIF-Dateien können verlustfrei komprimiert werden und GeoTIFF sind heute quasi ein Standard für Rasterdaten.
+**GeoTIFF** (\*.tif) unterscheiden sich von "normalen" Rasterbilddateien durch 1. den Wertebreich der Zellen (keine Farbwerteskala, z.B. 0 bis 255) und 2. die Informationen zum Raumbezug (Lage, EPSG, Auflösung) im *header* der Datei. TIF-Dateien können verlustfrei komprimiert werden und GeoTIFF sind heute quasi ein Standard für Rasterdaten. Editieren Sie GeoTIFF nicht mit einem Grafikprogramm.
 
 ## Planen Sie ihr Projekt
 
