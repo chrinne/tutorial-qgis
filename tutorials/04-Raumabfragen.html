@@ -2787,7 +2787,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">23. Oktober 2024</h4>
+<h4 class="date">24. Oktober 2024</h4>
 
 </div>
 
@@ -3061,7 +3061,7 @@ ist das neue Feld “municipio-comarca_comarca” (hätten Sie beim
 (pop-balears.txt). Betrachten Sie erst die Rohdaten und importieren Sie
 die Daten. Fallen Ihnen Unstimmigkeiten auf? Suchen Sie in der txt-Datei
 nach den Ursachen und beheben Sie diese.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Finden Sie selbständig
-die Felder für den <em>join</em>. Verwenden Sie diesesmal die Option
+die Felder für den <em>join</em>. Verwenden Sie diesmal die Option
 “Benutzerfeldnamenpräfix” (“pop_”).</p>
 </div>
 <div id="karte-mit-diagramm---die-bevölkerungsentwicklung" class="section level2" number="1.5">
@@ -3290,26 +3290,28 @@ Karte fehlt, generiere ich diese aus den Gemeinden durch das Auflösen
 nach Attribut. Diese Attribute haben Sie als Übung im vorangehende
 Kapitel selbständig verknüpft (s.o., Tabelle municipio-comarca).</p>
 <p>Wählen Sie “Vektor -&gt; Geoverarbeitungswerkzeuge -&gt; Auflösen”,
-Eingabelayer: Gemeinden, Feld(er) auflösen: “com_comarcas” (das Präfix
-“com_” hatte ich gesetzt), temporär erzeugen und mit [Starte] ausführen.
-Das Ergebnis ist erneut nur temporär vorhanden, zeigt überflüssige
-Spalten mit falschen Werten (jeweils den Wert des 1. Datensatzes),
-müsste bereinigt und bei Bedarf als eigener, eigentlich redundanter
-Datensatz (shp) gespeichert werden. Nennen Sie den Layer “comarcas”, das
-dt. Wort ist mir zu lang, wählen Sie eine klassifizierte Symbologie und
-eine Beschriftung aller Polygone mit dem Feld “com_comarcas”. Die neue
-(technische) GIS-Aufgabe ist damit erledigt.</p>
+Eingabelayer: Gemeinden, Feld(er) auflösen: […] &gt;
+“municipio-comarca_comarcas” &gt; [OK], temporär erzeugen (Vorgabe) und
+mit [Starte] ausführen. Das Ergebnis ist erneut nur temporär vorhanden,
+zeigt überflüssige Spalten mit falschen Werten (jeweils den Wert des 1.
+Datensatzes), müsste bereinigt und bei Bedarf als eigener, eigentlich
+redundanter Datensatz (shp) gespeichert werden. Nennen Sie den Layer
+“comarcas”, das dt. Wort ist mir zu lang, wählen Sie eine klassifizierte
+Symbologie und eine Beschriftung aller Polygone mit dem Feld
+“municipio-comarca_comarcas”. Die neue (technische) GIS-Aufgabe ist
+damit erledigt.</p>
 <p>Die zweite (aktuelle) <strong>Frage</strong> bezog sich auf einen
 allgemeinen Zusammenhang zwischen der Geomorphologie und der Verteilung
-der Talaiots. Das will ich eben noch prüfen und zwar mit einem
-Chi²-Test. Also erneut “Punkte in Polygon zählen” (Zählfeldname:
-Talaiots) und die Fläche (km²) ergänzen (Feldrechner, neues Feld: a_qkm,
-$area/1000000). Wir brauchen nachfolgend nur drei Spalten: com_comarca,
-Talaiots, a_qkm. Das geht über viele Wege. Ich lösche alle überflüssigen
-Spalten, kopiere die Attributtabelle in die Zwischenablage
-(&lt;strg&gt;+&lt;c&gt;), füge diese in einer Office-Tabelle (Excel) ein
-und lösche die erste Spalte und kopiere das Ergebnis erneut. Mit einer
-Datenbank (SQLite) geht das viel einfacher (s.u.).</p>
+der Talaiots. Das will ich eben noch prüfen und zwar mit einem Chi²-Test
+zur Anzahl der Talaiots in den <em>comarcas</em>. Also erneut “Punkte in
+Polygon zählen” (Zählfeldname: Talaiots) und die Fläche (km²) ergänzen
+(Feldrechner, neues Feld: a_qkm, $area/1000000). Wir brauchen
+nachfolgend nur drei Spalten: municipio-comarca_comarca, Talaiots,
+a_qkm. Das geht über viele Wege. Ich lösche alle überflüssigen Spalten,
+markiere und kopiere die Attributtabelle in die Zwischenablage
+(&lt;strg&gt;+&lt;c&gt;), füge diese in einer Office-Tabelle (Excel)
+ein, lösche die erste Spalte (Geometrie in WKT) und kopiere das Ergebnis
+erneut. Mit einer Datenbank (SQLite) geht das viel einfacher (s.u.).</p>
 <table>
 <thead>
 <tr>
