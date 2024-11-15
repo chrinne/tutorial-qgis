@@ -3300,8 +3300,8 @@ cnt(x) AS (
   LIMIT (select NumGeometries(st_DelaunayTriangulation(st_collect(geometry),1))
                                    from sites where Tipo_yacim like &#39;Talaiot%&#39;)
 )
-SELECT st_length(GeometryN(t.geometry, x)) as dist, 
-       GeometryN(t.geometry, x) as geom 
+SELECT x as id, st_length(GeometryN(t.geometry, x)) as dist, 
+       GeometryN(t.geometry, x) as geometry 
   FROM cnt,
       (select st_DelaunayTriangulation(st_collect(geometry),1) as geometry 
                         from sites where Tipo_yacim like &#39;Talaiot%&#39;) as t;</code></pre>
