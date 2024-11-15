@@ -144,7 +144,7 @@ from sites as t where t.Tipo_yacim like 'Talaiot%';
 | Anmerkungen |
 |----|
 | Bei mir blieb bisher einmalig das [Laden] von "Als neuen Layer laden" ohne Reaktion. Der Neustart der DB-Verwaltung hat dieses Problem behoben. |
-| Die von Linke [@linkeFruhesBauerntumUnd1976a] behandelte Frage nach den Standortfaktoren könnte mit dem Werkzeug "Zonenhistogramm" beantwortet werden. Dieses zählt die Häufigkeit der in einem Polygon Vorhandenen, eindeutigen Werte eines Rasters. Beachten Sie, dass nur ein Band verarbeitet wird. Eine sichtbare Zelle mit drei Kanälen RGB: 10,255,40 (ein leuchtendes Grün), kann also nicht gezählt werden, wohl aber eine alternative, nominale Zahlenkodierung (1 = Wiese). Beachten Sie hierzu die komplexen Optionen des GDAL Rasterrechners für eine neue Kodierung in ein Band. |
+| Die von Linke [@linkeFruhesBauerntumUnd1976] behandelte Frage nach den Standortfaktoren könnte mit dem Werkzeug "Zonenhistogramm" beantwortet werden. Dieses zählt die Häufigkeit der in einem Polygon Vorhandenen, eindeutigen Werte eines Rasters. Beachten Sie, dass nur ein Band verarbeitet wird. Eine sichtbare Zelle mit drei Kanälen RGB: 10,255,40 (ein leuchtendes Grün), kann also nicht gezählt werden, wohl aber eine alternative, nominale Zahlenkodierung (1 = Wiese). Beachten Sie hierzu die komplexen Optionen des GDAL Rasterrechners für eine neue Kodierung in ein Band. |
 
 ## Thiessen-Polygon, Voronoi-Diagram und Interpolation
 
