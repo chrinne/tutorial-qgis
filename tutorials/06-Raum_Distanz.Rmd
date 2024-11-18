@@ -1,34 +1,34 @@
 --- 
 title: "GIS Einführung mit QGIS"
 author: "Christoph Rinne"
-email: crinne@ufg.uni-kiel.de
 date: "`r format(Sys.time(), '%d. %B %Y')`"
-license: "CC-BY 4.0"
-header-includes: 
-  \renewcommand{\contentsname}{Inhalt} 
-  \renewcommand{\figurename}{Abb.}
-  \renewcommand{\tablename}{Tab.}
-bibliography: QGIS-cours-references.bib
-csl: "../styles/journal-of-archaeological-science.csl"
-papersize: a4
 output:
   html_document:
-    toc: yes
+    toc: true
     toc_float: true
-    number_sections: yes
+    number_sections: true
+    fig_caption: true
     df_print: paged
-    css: "../styles/tutorials.css"
+    css: ../styles/tutorials.css
     theme: readable
   pdf_document:
-    fig_caption: yes
-    number_sections: yes
-    toc: yes
+    fig_caption: true
+    number_sections: true
+    toc: true
     df_print: kable
+  bookdown: null
+license: "CC-BY 4.0"
+header-includes: \renewcommand{\contentsname}{Inhalt} \renewcommand{\figurename}{Abb.}
+  \renewcommand{\tablename}{Tab.}
+bibliography: "QGIS-cours-references.bib"
+csl: "../styles/journal-of-archaeological-science.csl"
+papersize: a4
+email: "crinne@ufg.uni-kiel.de"
 urlcolor: blue
-link-citations: yes 
+link-citations: true
 linkcolor: blue
-number_sections: yes
-lang: de-DE
+number_sections: true
+lang: "de-DE"
 description: "Gis-Kurs mit QGIS : Tutorial in Kapiteln"
 ---
 
@@ -49,9 +49,9 @@ Analysen zu archäologischen Fundplätzen und ihrem Umfeld hat es auch vor der *
 
 Der Gedanke, das Umfeld einer Siedlung als Aktivitäts- und Nutzungsareal für soziale und ökonomische Bedürfnisse zu betrachten, liegt auf der Hand. Damit ergibt sich als erstes die Frage nach dem Radius um die Siedlung. Weitere Fragen ergeben sich aus dem verfügbaren Raum und den möglichen Nachbarn: Wie viel Platz habe ich eigentlich? Welche Siedlung ist gleichzeitig? Diese und weitere, eher archäologische Fragen werden bereits von Linke diskutiert [@linkeFruhesBauerntumUnd1976, 24]. Weitere Fragen ergeben sich aus der Geographie, z.B. durch Berge und Flüsse, die unsere Mobilität beeinflussen, diese beschleunigen und begrenzen können. Diese Fragen sind nicht neu und inzwischen oft behandelt worden [u.a. @herzogBerechnungOptimalenWegen2013]. Die jeweilige Antwort beeinflusst als grundlegende Entscheidung das Ergebnis der Analyse. Diese Voraussetzungen (Parameter) sollten anhand der jeweils vorliegenden Daten und der eigenen Fragestellung angemessen als auch nachvollziehbar dargelegt werden.
 
-![Umkreisanalyse von Linke mit quantitativer Auswertung (1976)](./images/06_Linke.png)
-</br>
+![Umkreisanalyse von Linke (1976) mit quantitativer Auswertung.](./images/06_Linke.png)
 
+</br>
 Um die Technik der Umkreisanalyse von Linke auf unsere Daten anzuwenden, will ich die Frage zur Lage der Talaiots im Geländerelief betrachten: ist diese exponiert, im mittleren Hangbereich oder eher in Tallage? Mein Ansatz ist der Vergleich der Höhenlage des Talaiot zum Umfeld. Dabei sind folgende Angaben zu ermitteln: 1. Die Reliefenergie im Umfeld und 2. die Lage des Talaiot zum Umfeld. Für die Frage der Kreisgröße berücksichtige ich als erstes die Auflösung unseres DGM von 200 m je Rasterzelle und entscheide mich, mangels einfach zu begründender Maße für einen Start mit r = 1 km.
 
 ### Umsetzen in QGIS
@@ -120,14 +120,16 @@ Der Wechsel auf die Werte der Standardabweichung (stdev) bei Beibehaltung der gr
 
 Ich vergleiche als erstes den Höhenwert der Position des Taliot mit dem Median des Umfeldes (z_m - s_median) und erstelle hierfür mit dem Feldrechner eine neue Spalte (Abakus-Icon). Auch für diesen Wert erstelle ich eine abgestufte Symbologie mit fünf Klassen, kontrolliere direkt das Histogramm und verschiebe die Grenzwerte entsprechend den erkennbaren Abschnitten der Verteilung. Die daraus resultierende Karte zeigt keine räumliche Differenzierung, lediglich die Talaiots im Mittelfeld (+/- 6 m zum Median) liegen sicher aufgrund der fehlenden Reliefenergie in den Ebenen.
 
-![Histogramm der Differenz von der Lage des Talaiot zum Median des Umfeld (r = 1 km)](.\images\06_z_m_minus_median.png)
+  ![Histogramm der Differenz von der Lage des Talaiot zum Median des Umfeld (r = 1 km).](.\images\06_z_m_minus_median.png)
 
+</br>
 Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich helfe mir, indem ich die Standardabweichung zum Mittelwert als dem zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen, die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen", versteckten Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir zuerst das statistische Ergebnis zur Lage im Gelände individuell prüfen (so viele sind es nicht) und uns dann die weiteren Eigenschaften dieser Talaiots ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
   
-  ![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km)](.\images\06_z_m_minus_mean_stdev.png)
+  ![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km).](.\images\06_z_m_minus_mean_stdev.png)
 
-![Karte der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km)](.\images\06_z_m_minus_mean_stdev_karte.png)
+  ![Karte der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km).](.\images\06_z_m_minus_mean_stdev_karte.png)
 
+</br>
 Die Puffer und unsere Berechnungen sind temporäre Layer, sie werden nicht für uns gespeichert und müssen als weitgehend redundante  Daten getrennt gesichert werden.
 
 ### Puffer in DB-Verwaltung
@@ -185,26 +187,34 @@ from sites where Tipo_yacim like 'Talaiot%';
 
 Die Rückgabe der Abfrage ist eine Tabelle mit einem Objekt vom Typ *Multilinestring*. Die verwendete Funktion *ST_DelaunayTriangulation()* erwartet **ein** Geometrieobjekt, dieses wird mit der Funktion *ST_Collect()* aus allen Geometrien in der Spalte 'geometrie' aus der gefilterten Tabelle der Fundplätze ('sites') erstellt. Die Funktion ST_DelaunayTriangulation gibt mit der Option *edges_only* die Kanten statt der Polygone aus. Die Übergabe dieses Parameters erfolgt durch 0 (falsch) oder 1 (wahr). Sie können diesen Layer wie gehabt im Projekt darstellen, aber es ist nur ein Objekt mit nur einer Gesamtlänge. 
 
-Wir könnten in QGIS mit der Funktion "Mehr- zu einteilig" diese Multi-Objekt zerlegen und nachfolgend die Länger ('$length') der einzelnen Kanten bestimmen. 
+Wir könnten in QGIS mit der Funktion "Mehr- zu einteilig" dieses Multi-Objekt zerlegen und nachfolgend die Länger ('$length') der einzelnen Kanten bestimmen. 
 
-Die zweite Möglichkeit ist, die Abfrage in eine neue Tabelle zu schreiben, enfernen Sie dazu in der vorangehenden SQL-Anweisung die "--" und dann die Elementaren Geometrien dieser Tabelle abzufragen (vgl. [www.gaia-gis.it](https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary)). Allerdings müssten dazu die Geometriespalte im System als Geometrie registriert werden. Das ist nicht schwierig, aber der Prozess führt dann insgesamt wieder zu redundanten Daten in der Datenbank.
+Die zweite Möglichkeit ist, die Abfrage in eine neue Tabelle zu schreiben, enfernen Sie dazu in der vorangehenden SQL-Anweisung die "--" und dann die elementaren Geometrien dieser Tabelle abzufragen (vgl. [www.gaia-gis.it](https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary)). Allerdings müsste dazu die Geometriespalte im System als Geometrie registriert werden. Das ist nicht schwierig, aber der Prozess führt dann insgesamt wieder zu redundanten Daten in der Datenbank.
 
-Die dritte Option ist etwas komplexer, kommt aber vollständig ohne redundante Daten aus. Mit Rekursion werden die eizelnen Elemente nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der Strecken in der Multi-Geometrie.
+Die dritte Option ist etwas komplexer, kommt aber vollständig ohne redundante Daten aus. Mit Rekursion werden die einzelnen Elemente nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der Strecken in der Multi-Geometrie.
 
 ```{sql 'Anzahl der Elemente in der *GeomCollection* abfragen.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
 select NumGeometries(st_DelaunayTriangulation(st_collect(geometry),1))
   from sites where Tipo_yacim like 'Talaiot%'
 ```
 
-Die nachfolgende Abfrage kann als Sicht gespeichert und hat zwei Abschnitte, die mit *WITH RECURSIVE* zusammengefasst werden. Im ersten Abschnitt gibt es zudem noch die vorangehende SQL-Anweisung als Unterabfrage für die Obergrenze des Zählers.
+Jetzt eine weitere Abfrage zur Erläuterung des Zählers mit Rekursion in SQL. Diese Abfrage besteht aus zwei Teilen, die mit dem einleitenden *with recursive* zusammengefasst werden. Die erste Zeile definiert eine Funktion cnt() auf ein Element x. Diese Funktion wählt '1' als Startwert und wiederholt mit *UNION ALL* so lange die Addition von 1 zum aktuellen x, bis das gesetzte Limit erreicht wird. Die zweite Zeile ruft mit der Auswahl von x dann diese Funktion auf und liefert nacheinander die Zahlen.   
+
+```{sql 'Einfache Rekursion für das Erstellen eines Zählers.', tab.cap = 'Rekursion mit Zähler.', connection = t1db, include=TRUE}
+with recursive 
+cnt(x) as (select 1 union all select x + 1 from cnt limit 3)
+select x as id, cast ((x - 1) as text) || ' + 1' as 'rekursive Addition' from cnt;
+```
+
+Die nachfolgende Abfrage verwendet beide vorangehenden Elemente und ergänzt nur noch die Abfrage der elementaren Geometrien und deren Länge aus dem Multiobjekt der berechneten Triangulationen. Die detailierte Erläuterung folgt.
 
 ```{sql 'ReKursion für einen Zähler und Abfrage der Länge des jeweiligen Elementes.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
 -- create view talaiot_distances as
 WITH RECURSIVE
 cnt(x) AS (
-  SELECT 1
-  UNION ALL
-  SELECT x+1 FROM cnt
+  SELECT 1 -- erster Eintrag für x ('1') und Startwert des Zählers
+  UNION ALL -- verbinde alles nachfolgende
+  SELECT x+1 FROM cnt -- nimm das aktuelle x (= 1) und addiere 1
   LIMIT (select NumGeometries(st_DelaunayTriangulation(st_collect(geometry),1))
 								   from sites where Tipo_yacim like 'Talaiot%')
 )
@@ -215,9 +225,7 @@ SELECT x as id, st_length(GeometryN(t.geometry, x)) as dist,
 	                    from sites where Tipo_yacim like 'Talaiot%') as t;
 ```
 
-Der erste Teil erzeugt einen Zähler 'cnt' (count) für ein Element 'x', diesem wird mit *as* eine Schleife in der Form einer *UNION ALL*-Abfrage zugewiesen. Das erste Element dieser *UNION-ALL* wird mit 'Select 1' gesetzt, eine weitere *select*-Abfrage  addiert für jedes weitere x stets +1. Mit *LIMIT* wird ein Grenzwert gesetzt der diesen Vorgang beendet. Dieses *LIMIT* wird durch eine Unterabfrage ermittelt, die mit der Funktion *NumGeometries()* die Anzahl der Elemente in dem Multistring der Triangulation abfragt (s.o.).   
-
-Das zweite Element ist eine Schlichte Abfrage über zwei Tabellen, den erzeugten Zähler cnt mit dem Element x und die Tabelle mit der einen Geometrie vom Typ *Multilinestring*. Abgefragt wird nun die Länge (*st_length()*) für jedes x-te Element des *Multilinestring* (*GeometryN()*).  
+Das Limit wird im Vorangehnden nicht dezidiert benannt, sondern mit einer Unterabfrage und der Funktion *NumGeometriess()* aus der Triangulation abgefragt. Das zweite Element ist eine Schlichte Abfrage über das Element x der Zählreihe und die Länge (*st_length()*) für jede ebenfalls ausgewählte elementare Geometrie an Position x  (*GeometryN()*) des *Multilinestring*.  Nach dem *from* folgt wie üblich die Quelle für die abgefragten Werte, also der Zähler cnt und die Abfrage zur Erstellung der Triangulation etikettiert mit 't'.
 
 ### Deutung des Ergebnnisses
 
