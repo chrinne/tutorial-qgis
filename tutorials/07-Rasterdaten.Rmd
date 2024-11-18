@@ -38,20 +38,20 @@ description: "Gis-Kurs mit QGIS : Tutorial in Kapiteln"
 
 Rasterdaten stellen eine deutlich anders gestaltete Datenform als Vektordaten dar. Grundlage ist eine Rasterzelle mit definierter Dimension, die jeweils einen Wert repräsentiert. Jede Zelle liegt orthogonal im Koordiatensystem und ist quadratisch, lediglich Surfer nutzt auch rechteckige Zellen. Die Definition eines flächigen Datenbestandes ist damit recht einfach möglich, impliziert aber zugleich ein größeres Datenvolumen gegenüber Vektordaten. Stark heterogene Werte wie Höhenangaben werden effizienter und deshalb öfter als Raster dargestellt. Im Unterschied werden lineare Strukturen oder Flächen, z.B. Flüsse oder Bebauung, als Vektoren effizienter abgebildet. Hinzu kommen eingescannte Pläne, die Linien zeigen aber nur als Raster vorliegen. 
 
-Rasterdaten liegen oft als GeoTIF vor. Wesentlicher Unterschied zum "normalen" TIF ist 1. der veränderte Wertebereich der Zellen, so sind auch negative Zahlen möglich, und 2. die implizite Information zur geographischen Lage. Ein alternatives Format ist das GRD-Format, dieses kann als Text, wie das aktuelle Höhenmodell, oder auch binär kodiert vorliegen. 
+Rasterdaten liegen oft als GeoTIF vor. Wesentlicher Unterschied zum "normalen" TIF ist 1. der veränderte Wertebereich der Zellen, so sind auch negative Zahlen möglich, und 2. die implizite Information zur geographischen Lage. Ein alternatives Format ist das GRD-Format, dieses kann als Text oder auch binär kodiert vorliegen. 
 
 Die Werte der Rasterzellen können mit benachbarten Zellen des selben Rasters oder mit überlagernden Zellen anderer Raster verrechnet werden.  Damit lassen sich viele neue Modelle und abgeleitete Daten erstellen, so z.B. Hangneigung, Exposition oder Abflussmodelle.
 
 ## Fallbeispiel
 
-Das Fallbeispiel für Rasterdaten ist eine kleine geomagnetische Prospektion auf dem Fundplatz von Closos de Can Gaià bei Portocolom auf Mallorca (39.4191°N, 3.2443°E). Der Fundplatz ist einer der wenigen auf Mallorca mit mehreren schiffsförmigen Wohnbauten der Bronzezeit (Navetas), die hier in einfacher, doppelter und sogar dreifacher Ausführung vorkommen. Die Prospektion erfolgte 2010 im Rahmen eines ERASMUS-Austausches. Über die Jahre haben auf diesem Fundplatz zahlreiche Untersuchungen stattgefunden @freyNavetasEsClosos1966a; @serveraDatacionsRadiocarboniquesAls2005a; @belenguerariasIndustriaOssiaDels2005; @fornesMasQueCasa2009a; @rinneProspeccionesGeofisicasEls2012a; @rinnePlanimetriaElsClosos2013a; @picornell-gelabertLandscapePracticesEveryday2017. Der Fundplatz ist heute mit Informationstafeln touristisch erschlossen und kann frei begangen werden. 
+Das Fallbeispiel für Rasterdaten ist eine kleine geomagnetische Prospektion auf dem Fundplatz von Closos de Can Gaià bei Portocolom auf Mallorca (39.4191°N, 3.2443°E). Der Fundplatz ist einer der wenigen auf Mallorca mit mehreren schiffsförmigen Wohnbauten der Bronzezeit (Navetas), die hier in einfacher, doppelter und sogar dreifacher Ausführung vorkommen. Die Prospektion erfolgte 2010 im Rahmen eines ERASMUS-Austausches. Über die Jahre haben auf diesem Fundplatz zahlreiche Untersuchungen stattgefunden @freyNavetasEsClosos1966; @serveraDatacionsRadiocarboniquesAls2005; @belenguerariasIndustriaOssiaDels2005; @fornesMasQueCasa2009; @rinneProspeccionesGeofisicasEls2012; @rinnePlanimetriaElsClosos2013; @picornell-gelabertLandscapePracticesEveryday2017. Der Fundplatz ist heute mit Informationstafeln touristisch erschlossen und kann frei begangen werden. 
 
 Die geophysikalische Prospketion erfolgte mit einem 1-Sonden-Gradiometer (Bartington) in Feldern von *a priori* 10 m Kantenlänge und einer Messdichte von 0,25 m auf 0,125 m entlang ausgelegter Maßbänder. Die Felder sind aufgrund der dichten Vegetation, überwiegend Macchie, stark gegliedert. Damit ist auch die gesamte Beurteilung beeinträchtigt. Die abschließende Einmessung der Felder konnte nur mit einem einfachen GPS erfolgen, hierfür wurden alle Feldkanten und ein Teil der benachbarten Straße mit einer hohen Messdichte (1 Hz) langsam abgeschritten. In Kombination mit den Luftbildern [IDEIB](https://ideib.caib.es/visor/) kann die abschließende Lagegenauigkeit der Prospektionsfelder auf unter 1 m geschätzt werden.
 
 Die Daten für diese Übung liegen vor:
 
 - pp_magnetik_2010.txt: Feldecken als Liste mit Feldnummer, Rechts- und Hochwert (EPSG: 25831) als TAB-getrennte Spalten.
-- closos_1.grd, ... : Felder 1 bis 4 als Surfer Grid (Textformat) mit einer Interpolation der ursprünglichen Messwerte auf 0,10 x 0,10 m.
+- closos_1.grd, ... : Felder 1 bis 4 als Surfer Grid (Textformat) mit lokalen Koordinaten und einer Interpolation der ursprünglichen Messwerte auf 0,10 x 0,10 m.
 
 Zudem werden folgende WMS (*web map services*) des IDEIB für Luftbilder von 1956 und heute genutzt. Diese Serveradressen können sich ändern, einen Katalog mit Rechercheoption finden sie [hier](http://ideib.caib.es/cataleg/srv/cat/catalog.search#/home): 
 
@@ -62,18 +62,25 @@ Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt. Öffnen Sie dazu
 
 ![Closos Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Ergebnisse der geophysikalischen Prospektion 2010 (Kartengrundlage: IDEIB, EPSG: 25831).](./images/07_Closos-overview.jpg)
 
+</br>
+
+| Anmerkung |
+|----|
+| Um aus zahlreichen Punkten diverser Felder jeweils ein zugehöriges Polygon zu erstellen könne Sie die Funktion *ST_ConvexHull()* nutzen. |
+| Im vorliegenden Fall werden die unregelmäßigen Felder 2 und 3 nicht schön dargestellt. : ```select FeldNr, ST_ConvexHull(ST_Collect(geometry)) as geom from pp_magnetik_2010 group by 1``` |
+
 ## WMS - Web Map Services
 
 Sie finden Daten wie das verwendete Höhenmodell nicht nur zum *download* im Internet sondern auch als interaktive Webdienste. Besonders weit verbreitet sind WMS für Rasterdaten, z.B. Karten oder Orthofotos, und WFS (*web feature services*) für Objektdaten. Für die Nutzung müssen Sie die Serveradresse des Dienstes bei QGIS eintragen, ggf. ergänzt um eine Anmeldeinformation für den Server. Nach dem Einbinden des Dienstes in das Projekt wird bei jeder Aktualisierung des Bildschirmes, z.B. zoomen, eine Anfrage an der Server gestartet und der benötigte Ausschnitt heruntergeladen. Dies impliziert eine gute Netzwerkanbindung und ggf. Wartezeit.
 
-WMS-Dienste tragen Sie über den *Data Source Manager* (\<strg> + \<l>) ein. Wählen Sie im zugehörigen Fenster [Neu], übertragen Sie die URL aus der Datenliste (s.o.) in das entsprechende Feld, vergeben Sie einen strukturierten Namen, z.B. SP-IB-OrthoFoto2018 oder SP-IB-OrthoFoto1956 und bestätigen Sie mit [OK]. Nachdem Sie den Dienst eingetragen haben wählen Sie [Verbinden], im Reiter "Teilsets" können Sie je nach Dienst einzelne Elemente markieren und gezielt hinzufügen. Für die Luftbilder gibt es jeweils nur ein Element, welches Sie bitte hinzufügen.
+WMS-Dienste tragen Sie über den *Data Source Manager* (\<strg> + \<l>) ein. Wählen Sie im zugehörigen Fenster [Neu], übertragen Sie die URL aus der Datenliste (s.o.) in das entsprechende Feld, vergeben Sie einen strukturierten Namen, z.B. SP-IB-OrthoFoto20218 oder SP-IB-OrthoFoto1956 und bestätigen Sie mit [OK]. Nachdem Sie den Dienst eingetragen haben wählen Sie [Verbinden], im Reiter "Teilsets" können Sie je nach Dienst einzelne Elemente markieren und gezielt hinzufügen. Für die Luftbilder gibt es jeweils nur ein Element, welches Sie bitte hinzufügen.
 
 **WMS-Karten können in QGIS lokal gespeichert werden**.  Wählen Sie hierfür aus dem Kontextmenü des jeweiligen Layers "Exportieren -> Speichern als" und neuen Fenster "Rasterlayer speichern unter..." tragen Sie folgende Parameter ein: Ausgabemodus: Rasterrohdaten, Format: GeoTIFF, deaktivieren Sie für diesen Fall "VRT erzeugen", wählen Sie einen Speicherort und Dateinamen, KBS: 25831, Ausdehnung: [Kartenausschnittausdehnung], Auflösung: jeweils 0.2 (beachte Sie die Anzahl der abhängigen Spalten und Zeilen) und bestätigen Sie abschließend mit [OK]. Anschließend steht der gewählte Kartenauschnitt lokal zur Verfügung, die weitere Arbeit wird damit 1. etwas schneller und 2. können die Daten im Rasterrechner genutzt werden. 
 
-Anmerkungen: 
-
-- Server begrenzen üblicherweise die Anzahl und den Umfang der Zugriffe. 
-- VRT steht für *Virtual Raster Tile* und ist eine XML-Datei zur Kombination zahlreicher Rasterkacheln (s. [GDAL](https://gdal.org/drivers/raster/vrt.html)).  
+| Anmerkungen |
+|----|
+| Server begrenzen üblicherweise die Anzahl und den Umfang der Zugriffe. |
+| VRT steht für *Virtual Raster Tile* und ist eine XML-Datei zur Kombination zahlreicher Rasterkacheln (s. [GDAL](https://gdal.org/drivers/raster/vrt.html)).  |
 
 ## Georeferenzieren
 
@@ -81,9 +88,9 @@ Neben digitalen Primärdaten (Höhenmodell, Luftbild, geophysikalische Messdaten
 
 ### Georeferenzierung in QGIS
 
-QGIS nutzt hier die **Erweiterung GDAL-Georeferenzierung**, diese ist installiert, muss aber unter den Erweiterungen noch aktiviert werden. Danach steht das Werkzeug unter "Raster -> Georeferenzierung" zur Verfügung. Aktivieren Sie vor der Georeferenzierung den **Fang** zum präzisen Markieren der Referenzpunkte über "Ansicht -> Werkzeugkästen -> Einrastwerkzeugleiste". Damit erscheint ein Magnet-Icon in der Symbolleiste, über das Sie die notwendigen Einstellungen vornehmen können.
+QGIS bietet die Georeferenzierung von Rasterdaten mit vielfältigen Optionen und den vorgenannten Projektionen. Die Georeferenzierung befindet sich aktuell im Menü unter "**Layer -> Georeferenzierung**". Aktivieren Sie vor der Georeferenzierung den **Fang** zum präzisen Markieren der Referenzpunkte über "Ansicht -> Werkzeugleisten -> Einrastwerkzeugleiste". Damit erscheint ein Magnet-Icon in der Symbolleiste, über das Sie die notwendigen Einstellungen vornehmen können.
 
-Im Fenster der Georeferenzierung öffnen Sie als erstes ein neues Raster (\<strg> + \<o>) und starten Sie mit **closos_1.grd**. Über "Einstellungen -> Rastereigenschaften" können Sie die Darstellung des Raster verändern, gerade bei Magnetikdaten kann dies für das erkennen von Feldgrenzen und bei vorliegenden Leerwerten in den Feldecken hilfreich sein. Deaktivieren Sie für das vorliegende Raster unter Transparenz den "Leerwert".
+Im Fenster der Georeferenzierung öffnen Sie als erstes ein neues Raster (\<strg> + \<o>) und starten Sie mit **closos_1.grd**. Über "Einstellungen -> Quelleigenschaften" können Sie die Darstellung des Raster verändern, gerade bei Magnetikdaten kann dies für das Erkennen von Feldgrenzen und bei vorliegenden Leerwerten in den Feldecken hilfreich sein. Deaktivieren Sie für das vorliegende Raster unter Transparenz den "Leerwert".
 
 Unter "Einstellungen -> Transformationsparameter" werden die Transformationsparameter eingestellt. Diese sind für das geladene Raster: 
 
@@ -96,7 +103,7 @@ Unter "Einstellungen -> Transformationsparameter" werden die Transformationspara
 - Zielauflösung setzen: Wird keine Änderung eingetragen, wird die Auflösung des Eingangsrasters gewählt. 
 - Wenn fertig in QGIS laden: Meist die gewünschte Aktion.
 
-Wählen Sie nun "Bearbeiten -> Punkt hinzufügen" (\<strg> + \<a>) und markieren Sie nacheinander einen Punkt im Raster und dann den korrespondierenden Referenzpunkt in der Karte. Die Referenzpunkte in der Karte können in einem neuen Fenster wahlweise von Hand eingetragen oder mit [Aus Kartenansicht] in der Karte markiert werden. Wiederholen Sie den Vorgang für die vier Ecken, nutzen Sie beim Raster das Scrollrad der Maus zum Zoomen. Rote Linien zeigen die projektive Verschiebung der Punkte, dies kann ein Hinweis auf mögliche Fehler sein, irritiert bisweilen aber auch nur. Die additiv geführte Punktliste gibt berechnete Fehlerwerte aus und erlaubt das aktivieren oder deaktivieren einzelner Punkt. "Datei -> Georeferenzierunh starten" führt den Vorgang dann aus.
+Wählen Sie nun "Bearbeiten -> Punkt hinzufügen" (\<strg> + \<a>) und markieren Sie nacheinander einen Punkt im Raster und dann den korrespondierenden Referenzpunkt in der Karte. Die Referenzpunkte in der Karte können in einem neuen Fenster wahlweise von Hand eingetragen oder mit [Aus Kartenansicht] in der Karte markiert und mit [OK] bestätigt werden. Wiederholen Sie den Vorgang für die vier Ecken, nutzen Sie beim Raster das Scrollrad der Maus zum Zoomen. Rote Linien zeigen die projektive Verschiebung der Punkte, dies kann ein Hinweis auf mögliche Fehler sein, irritiert bisweilen aber auch nur. Die additiv geführte Punktliste gibt berechnete Fehlerwerte aus und erlaubt das aktivieren oder deaktivieren einzelner Punkt. "Datei -> Georeferenzierunh starten" führt den Vorgang dann aus.
 
 Mit dem Öffnen eines neuen Rasters (\<strg> + \<o>) oder dem Schließen des Fensters können die Messpunkte gespeichert werden. Wiederholen Sie den Vorgang für die verbleibenden Raster. Wählen Sie jeweils mindestens 3 Punkte. Beachten Sie, dass Feld 3 um 90° gedreht ist. 
 
@@ -133,14 +140,12 @@ Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige 
 
 ### Luftbilder und Vegetation
 
-Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegenherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau!). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. Falls Sie mein erster schneller Ansatz interessiert:
+Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich zugenommen. Das ist ein "alter Hut" und hängt mit den fehlenden Schaf- und Ziegenherden zusammen. Ich möchte diese Erkenntnis  nachvollziehbar quantifizieren. Wir müssen also bei dem Orthofoto von 1956 die sehr dunklen bis schwarzen Pixel zählen (Schwellwert sei <50) und hieraus die Fläche ableiten. Bei dem Farbfoto die eher grünen Flächen (RGB = Rot, Grün, Blau). Der erste Fall ist nach der vorangehenden Übung trivial, lösen Sie den bitte eigenständig. Der zweite Fall braucht etwas Denksport und einfache Farbenlehre. Falls Sie mein erster schneller Ansatz interessiert:
 ```
 ("orthoaktuell@2" > "orthoaktuell@1") and ("orthoaktuell@2" > "orthoaktuell@3")
 ```
-Da die Division mit 0 nicht NULL liefert, sondern den sehr hohen Standardwert für *no data value* spare ich mir das if(), denn der Rückgabewert einer Bedingung ist ja schon 1 und 0. Die Bedingung ist recht schlicht, der Grüne Kanal (\@2) soll stets größer als die anderen sein. Im Projekt können Sie mit "Rasterlayerstatistik" (Suche in der Werkzeugkiste) die Summe der Pixel abfragen und erhalten damit die Anzahl der Pixel da in jeder Zelle der Wert "1" steht. In der Information zum Layer finden Sie die Pixelgröße: 0.200 * 0.200. Aus dem Produkt aller Werte ergibt sich die jeweils ermittelte Fläche an Vegetation:
-
-- 1956: 17500 m²
-- 2018: 57536 m²
+Da die Division mit 0 nicht NULL liefert, sondern den sehr hohen Standardwert für *no data value* spare ich mir das if(), denn der Rückgabewert einer Bedingung ist ja schon 1 und 0. Die Bedingung ist recht schlicht, der Grüne Kanal (\@2) soll stets größer als die anderen sein. Suchen Sie nun in der Werkzeugkiste nach "Bericht eindeutiger Rasterwerte" und führen dies aus. Der Bericht wird als temporäre HTML-Datei für den Browser abgelegt, der Pfad dazu wird  sowohl im Protokoll
+als auch als Hypelink angezeigt. Dort finden Sie die Liste der Zellwerte, deren Anzahl und die aus der Pixelgröße resultierende Fläche.
 
 Erstellen Sie eine Layergruppe "Vegetation Orthofotos" und fügen Sie diese Layer ein.
 
