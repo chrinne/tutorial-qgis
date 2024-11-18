@@ -125,9 +125,9 @@ Ich vergleiche als erstes den Höhenwert der Position des Taliot mit dem Median 
 </br>
 Als nächstes möchte ich die Höhenlage des Talaiot mit dem oberen Bereich der umliegenden Höhenwerte vergleichen. Eigentlich würde ich gerne das 3. Quartil (75%) als Schwellwert nehmen, aber der wird mir von der Zonenstatistik leider nicht geboten. Wir sollten also einen Weg finden, ohne das *tool* Zonenstatistik rechnen zu können. Ich helfe mir, indem ich die Standardabweichung zum Mittelwert als dem zugehörigen Zentralwert addiere (mean + stdev) und diese Summe dann vom Höhenwert des Talaiot abziehe (z_m - (mean + stdev)). Auch hier wähle ich zur Darstellung in der Karte eine abgestufte Symbologie mit fünf Klassen, die ich mir im Histogramm direkt ansehe und die Grenzen entsprechend der sichtbaren Verteilung anpasse. Im Ergebnis sehe ich in der Karte ein breit gestreutes Mittelfeld und die "niedrigen", versteckten Lagen finden sich aufgrund der Topographie natürlich in der Tramuntana. Eher unerwartet ist die recht gleichmäßige Verteilung der exponierten Talaiots, die oberhalb der oberen Standardabweichung liegen. Hier sollten wir zuerst das statistische Ergebnis zur Lage im Gelände individuell prüfen (so viele sind es nicht) und uns dann die weiteren Eigenschaften dieser Talaiots ansehen. Liegen hier besonders monumentale Konstruktionen vor, die eine Deutung als Standorte von zentraler Bedeutung bestärken?
   
-  ![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km).](.\images\06_z_m_minus_mean_stdev.png)
+![Histogramm der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km).](.\images\06_z_m_minus_mean_stdev.png)
 
-  ![Karte der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km).](.\images\06_z_m_minus_mean_stdev_karte.png)
+![Karte der Differenz von Siedlungslage zur oberen Standardabweichung des Umfeld (r=1km).](.\images\06_z_m_minus_mean_stdev_karte.png)
 
 </br>
 Die Puffer und unsere Berechnungen sind temporäre Layer, sie werden nicht für uns gespeichert und müssen als weitgehend redundante  Daten getrennt gesichert werden.

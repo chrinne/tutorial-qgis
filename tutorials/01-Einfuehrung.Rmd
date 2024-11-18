@@ -102,7 +102,6 @@ Starten Sie "QGIS Desktop".
 ![QGIS Startbildschirm](./images/01-startscreen.png)
 
 </br>
-
 So oder so ähnlich sieht es aus. Ich persönlich sehe gerne viel Karte und wenig Werkzeug und blende entsprechend selten verwendete Fenster aus oder minimiere diese. 
 Legen Sie als erstes ein neues Projekt an (z.B. \<strg> + \<n>). Es bleibt die Menüleiste, eine umfangreiche Sammlung an Werkzeugleisten, ein Layer-Fenster und der Daten-Browser auf der linken sowie die Werkzeugkiste auf der rechten Seite. Dazu unscheinbar die Fußleiste mit der sehr wichtigen Info zum Koordinatensystem (EPSG). Unmittelbar rechts daneben öffnet die Sprechblase ein Fenster mit Systemmeldungen. Die bisweilen schnell aufleuchtenden Meldungen von QGIS können hier in Ruhe nachgelesen werden.  Mindestens die Werkzeugkiste blende ich aus, gerne auch den Browser zugunsten der Sichtbarkeit der vielen Layer in meinen Projekten.
 

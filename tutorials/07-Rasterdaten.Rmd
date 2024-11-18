@@ -60,7 +60,7 @@ Zudem werden folgende WMS (*web map services*) des IDEIB für Luftbilder von 195
 
 Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt. Öffnen Sie dazu den Data Source Manager (\<strg> + \<l>), wählen Sie "Getrennte Text" und setzen Sie nachfolgend die notwendigen Parameter. Danach zoomen Sie bitte auf diese Punkte, z.B. über das Kontextmenü.  Wählen Sie für die spätere Unterscheidung der Felder eine kategorisierte Symbologie auf Basis der Spalte "FeldNr".
 
-![Closos Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Ergebnisse der geophysikalischen Prospektion 2010 (Kartengrundlage: IDEIB, EPSG: 25831)](./images/07_Closos-overview.jpg)
+![Closos Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Ergebnisse der geophysikalischen Prospektion 2010 (Kartengrundlage: IDEIB, EPSG: 25831).](./images/07_Closos-overview.jpg)
 
 ## WMS - Web Map Services
 

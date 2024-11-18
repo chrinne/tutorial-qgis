@@ -104,7 +104,7 @@ Abschließend aktivieren Sie die Option **Rahmen**, reduzieren aber die Dicke au
 
 Sperren Sie nun Layer und Stile dieser Karte.
 
-![Closos de Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Vegetationsdichte nach Luftbildern (Kartengrundlage: IDEIB, EPSG: 25831)](./images/08_ClososVegetation.jpg)
+![Closos de Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Vegetationsdichte nach Luftbildern (Kartengrundlage: IDEIB, EPSG: 25831).](./images/08_ClososVegetation.jpg)
 
 ### Übersichtskarte hinzufügen
 
