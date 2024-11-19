@@ -2787,7 +2787,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">18. November 2024</h4>
+<h4 class="date">19. November 2024</h4>
 
 </div>
 
@@ -2799,12 +2799,12 @@ border-radius: 0px;
 <p>Analysen zu archäologischen Fundplätzen und ihrem Umfeld hat es auch
 vor der <em>Computer-Revolution</em> in der Archäologie in den 1980ern
 und den modernen GIS, ab den 1990ern, gegeben. Ein schönes Beispiel für
-klassische Techniken der Umfeldanalyse ist die Arbeit von Linke <span class="citation">(<a href="#ref-linkeFruhesBauerntumUnd1976">Linke,
-1976</a>)</span>. Die Ursprünge in unserem Fach liegen in der
-<strong>Siedlungsarchäologie</strong>, in der Fundstellen, das Umfeld
-und Informationen zur Vegetation oder dem Klima verknüpft und möglichst
-quantitativ in ihrer Bedingtheit analysiert werden. Hier gibt es eine
-umfangreiche Literatur, von der ich nur eines nennen will <span class="citation">(<a href="#ref-jankuhnEinfuhrungSiedlungsarchaologie1977">Jankuhn,
+klassische Techniken der Umfeldanalyse ist die Arbeit von <span class="citation">Linke (<a href="#ref-linkeFruhesBauerntumUnd1976">1976</a>)</span>. Die Ursprünge
+in unserem Fach liegen in der <strong>Siedlungsarchäologie</strong>, in
+der Fundstellen, das Umfeld und Informationen zur Vegetation oder dem
+Klima verknüpft und möglichst quantitativ in ihrer Bedingtheit
+analysiert werden. Hier gibt es eine umfangreiche Literatur, von der ich
+nur eines nennen will <span class="citation">(<a href="#ref-jankuhnEinfuhrungSiedlungsarchaologie1977">Jankuhn,
 1977</a>)</span>. Die uns heute geläufigen theoretischen Grundlagen (zum
 Beispiel zur Zentralität), die Methoden und auch die Technik kommen aber
 aus der Geographie, insbesondere der Kultur- und Sozialgeographie <span class="citation">(<a href="#ref-christallerZentralenOrteSuddeutschland1933">Christaller,
@@ -2818,9 +2818,9 @@ u. a., 2004</a>; <a href="#ref-zimmermannWieVieleBandkeramiker2003">Zimmermann 
 1992</a>)</span>. Die Verfügbarkeit von Hard- und Software hat zu einem
 großen Spektrum diverser Interpolationsverfahren geführt, die
 Punktinformationen in die Fläche übertragen. Eine gute Zusammenfassungen
-zu diesem Themenkomplex finden Sie bei Herzog <span class="citation">(<a href="#ref-herzogSimulationsexperimenteZurSiedlungsdichte2007">Herzog,
-2007</a>)</span>. Daneben gibt es zahlreiche spezielle Entwicklungen und
-Phasen spezifischer Fragestellungen im Fach (z.B.
+zu diesem Themenkomplex finden Sie bei <span class="citation">Herzog (<a href="#ref-herzogSimulationsexperimenteZurSiedlungsdichte2007">2007</a>)</span>.
+Daneben gibt es zahlreiche spezielle Entwicklungen und Phasen
+spezifischer Fragestellungen im Fach (z.B.
 <strong>Aktivitätsareale</strong> , <strong>Archäoprognose</strong>,
 <strong>Least cost</strong>), auf die ich hier nur hinweisen möchte
 <span class="citation">(<a href="#ref-czieslaSiedlungsdynamikAufSteinzeitlichen1990">Cziesla,
@@ -3129,8 +3129,8 @@ laden” ohne Reaktion. Der Neustart der DB-Verwaltung hat dieses Problem
 behoben.</td>
 </tr>
 <tr>
-<td>Die von Linke <span class="citation">(<a href="#ref-linkeFruhesBauerntumUnd1976">Linke, 1976</a>)</span>
-behandelte Frage nach den Standortfaktoren könnte mit dem Werkzeug
+<td>Die von <span class="citation">Linke (<a href="#ref-linkeFruhesBauerntumUnd1976">1976</a>)</span> behandelte
+Frage nach den Standortfaktoren könnte mit dem Werkzeug
 “Zonenhistogramm” beantwortet werden. Dieses zählt die Häufigkeit der in
 einem Polygon Vorhandenen, eindeutigen Werte eines Rasters. Beachten
 Sie, dass nur ein Band verarbeitet wird. Eine sichtbare Zelle mit drei
@@ -3274,25 +3274,25 @@ gibt mit der Option <em>edges_only</em> die Kanten statt der Polygone
 aus. Die Übergabe dieses Parameters erfolgt durch 0 (falsch) oder 1
 (wahr). Sie können diesen Layer wie gehabt im Projekt darstellen, aber
 es ist nur ein Objekt mit nur einer Gesamtlänge.</p>
-<p>Wir könnten in QGIS mit der Funktion “Mehr- zu einteilig” diese
+<p>Wir könnten in QGIS mit der Funktion “Mehr- zu einteilig” dieses
 Multi-Objekt zerlegen und nachfolgend die Länger (‘$length’) der
 einzelnen Kanten bestimmen.</p>
 <p>Die zweite Möglichkeit ist, die Abfrage in eine neue Tabelle zu
 schreiben, enfernen Sie dazu in der vorangehenden SQL-Anweisung die “–”
-und dann die Elementaren Geometrien dieser Tabelle abzufragen (vgl. <a href="https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary">www.gaia-gis.it</a>).
-Allerdings müssten dazu die Geometriespalte im System als Geometrie
+und dann die elementaren Geometrien dieser Tabelle abzufragen (vgl. <a href="https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary">www.gaia-gis.it</a>).
+Allerdings müsste dazu die Geometriespalte im System als Geometrie
 registriert werden. Das ist nicht schwierig, aber der Prozess führt dann
 insgesamt wieder zu redundanten Daten in der Datenbank.</p>
 <p>Die dritte Option ist etwas komplexer, kommt aber vollständig ohne
-redundante Daten aus. Mit Rekursion werden die eizelnen Elemente
+redundante Daten aus. Mit Rekursion werden die einzelnen Elemente
 nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber
 nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der
 Strecken in der Multi-Geometrie.</p>
 <pre class="sql"><code>select NumGeometries(st_DelaunayTriangulation(st_collect(geometry),1))
   from sites where Tipo_yacim like &#39;Talaiot%&#39;</code></pre>
-<p>Jetzt zu der Technik des Zählers mit Rekursion in SQL eine weitere
-Abfrage. Diese besteht aus zwei Zeilen und Teilen, die mit dem
-einleitenden with recursive zusammengefasst werden. Die erste Zeile
+<p>Jetzt eine weitere Abfrage zur Erläuterung des Zählers mit Rekursion
+in SQL. Diese Abfrage besteht aus zwei Teilen, die mit dem einleitenden
+<em>with recursive</em> zusammengefasst werden. Die erste Zeile
 definiert eine Funktion cnt() auf ein Element x. Diese Funktion wählt
 ‘1’ als Startwert und wiederholt mit <em>UNION ALL</em> so lange die
 Addition von 1 zum aktuellen x, bis das gesetzte Limit erreicht wird.
@@ -3345,14 +3345,14 @@ SELECT x as id, st_length(GeometryN(t.geometry, x)) as dist,
       (select st_DelaunayTriangulation(st_collect(geometry),1) as geometry 
                         from sites where Tipo_yacim like &#39;Talaiot%&#39;) as t;</code></pre>
 <p>Das Limit wird im Vorangehnden nicht dezidiert benannt, sondern mit
-einer Unterabfrage und der Funktion <em>NumGeometriess()</em> aus der
-Triangulation abgefragt. Das zweite Element ist eine Schlichte Abfrage
+einer Unterabfrage und der Funktion <em>NumGeometries()</em> aus der
+Triangulation abgefragt. Das zweite Element ist eine schlichte Abfrage
 über das Element x der Zählreihe und die Länge (<em>st_length()</em>)
 für jede ebenfalls ausgewählte elementare Geometrie an Position x
 (<em>GeometryN()</em>) des <em>Multilinestring</em>. Nach dem
-<em>from</em> folgt wie üblich die Quelle für die abgefragten werte,
-also der Zähler cnt und mit Komma getrennt die Abfrage zur Erstellung
-der Triangulation.</p>
+<em>from</em> folgt wie üblich die Quelle für die abgefragten Werte,
+also der Zähler cnt und die Abfrage zur Erstellung der Triangulation
+etikettiert mit ‘t’.</p>
 </div>
 <div id="deutung-des-ergebnnisses" class="section level3" number="1.4.3">
 <h3><span class="header-section-number">1.4.3</span> Deutung des
@@ -3366,7 +3366,7 @@ Ergebnnisses</h3>
 (seq()) von 0 bis 25 km mit Intervallen von 0,5 km festgelegt.
 Abschließend werden noch der Titel und die Beschriftungen der x- und
 y-Achse hinzugefügt. Vergrößern wir das Intervall auf 1 km entfällt die
-visuelle Trennung zwischen 1,5 km und 3 km und es bleibt eine leichter
+visuelle Trennung zwischen 1,5 km und 3 km und es bleibt ein leichter
 Absatzt im Verlauf mit geringer Häufung von Distanzen bei 5 km. Es
 folgen unscharfe Häufungen bei den Vielfachen von 5 km. Das Histogramm
 weist auf Agglomerationen von Talaiots in einem Abstand von bis zu 3 km

@@ -39,49 +39,12 @@ library(RSQLite)
 t1db<-dbConnect(RSQLite::SQLite(), dbname = ":memory:")
 ```
 
-```{sql basic-table-drop, connection=t1db, include=FALSE}
-DROP TABLE IF EXISTS 'pop_balears';
-DROP TABLE IF EXISTS comarcas;
+```{r 'Set up the tables and data', message=FALSE, warning=FALSE, include=FALSE}
+dbExecute (t1db, "DROP TABLE IF EXISTS 'pop_balears';")
+dbExecute (t1db, "DROP TABLE IF EXISTS 'comarcas';")
+dbExecute (t1db, "CREATE TABLE 'pop_balears' (PK_UID INTEGER PRIMARY KEY AUTOINCREMENT, 'codigo' INTEGER, 'municipio' TEXT, 'zensus_1842' TEXT, 'zensus_1857' TEXT, 'zensus_1860' TEXT, 'zensus_1877' TEXT, 'zensus_1887' TEXT, 'zensus_1897' TEXT, 'zensus_1900' TEXT, 'zensus_1910' TEXT, 'zensus_1920' TEXT, 'zensus_1930' INTEGER, 'zensus_1940' INTEGER, 'zensus_1950' INTEGER, 'zensus_1960' INTEGER, 'zensus_1970' INTEGER, 'zensus_1981' INTEGER, 'zensus_1991' INTEGER, 'zensus_2001' INTEGER, 'zensus_2011' INTEGER);")
+dbExecute (t1db, "insert into 'pop_balears' values (0,34040707001,'Alaró',4112,4588,4879,5317,5877,5838,5982,6044,6061,4323,3900,3807,3718,3659,3253,5023,4050,5273), (1,34040707002,'Alaior',4722,4605,4282,4982,5163,5070,4909,4992,5073,5013,4891,5082,4978,5217,5656,5027,7108,9450), (2,34040707003,'Alcúdia',1120,1563,1500,2294,2645,2726,2711,3050,3405,3592,3977,3565,3465,3969,5395,8016,12500,18914), (3,34040707004,'Algaida',2806,3666,3675,3962,4234,4043,4091,4153,4047,4142,3930,3905,3698,3218,2830,3167,3749,5272), (4,34040707005,'Andratx',4609,5092,5663,6676,6483,6924,7014,6838,6600,6333,5323,4036,4259,5967,6319,6883,7753,11234), (5,34040707006,'Artà',4001,6225,4634,5133,5865,5813,5824,5729,5955,5810,6061,5496,5406,5461,5625,5694,6176,7562), (6,34040707007,'Banyalbufar',488,533,550,571,639,720,708,758,881,913,732,667,580,507,492,448,517,559), (7,34040707008,'Binissalem',3027,3182,3273,3620,3891,3836,3934,4180,4234,4294,4316,4132,4156,4268,5040,4679,5166,7640), (8,34040707009,'Búger',1145,1187,1228,1221,1230,1116,1160,1181,1142,1198,1085,1010,1027,1019,1022,907,950,1014);")
 ```
-
-```{sql basic-table-create, connection=t1db, include=FALSE}
-CREATE TABLE 'pop_balears' (
-PK_UID INTEGER PRIMARY KEY AUTOINCREMENT,
-"codigo" INTEGER,
-"municipio" TEXT,
-"zensus_1842" TEXT,
-"zensus_1857" TEXT,
-"zensus_1860" TEXT,
-"zensus_1877" TEXT,
-"zensus_1887" TEXT,
-"zensus_1897" TEXT,
-"zensus_1900" TEXT,
-"zensus_1910" TEXT,
-"zensus_1920" TEXT,
-"zensus_1930" INTEGER,
-"zensus_1940" INTEGER,
-"zensus_1950" INTEGER,
-"zensus_1960" INTEGER,
-"zensus_1970" INTEGER,
-"zensus_1981" INTEGER,
-"zensus_1991" INTEGER,
-"zensus_2001" INTEGER,
-"zensus_2011" INTEGER);
-```
-
-```{sql basic-table-insert, connection=t1db, include=FALSE}
-insert into 'pop_balears'
-values (0,34040707001,"Alaró",4112,4588,4879,5317,5877,5838,5982,6044,6061,4323,3900,3807,3718,3659,3253,5023,4050,5273),
-(1,34040707002,"Alaior",4722,4605,4282,4982,5163,5070,4909,4992,5073,5013,4891,5082,4978,5217,5656,5027,7108,9450),
-(2,34040707003,"Alcúdia",1120,1563,1500,2294,2645,2726,2711,3050,3405,3592,3977,3565,3465,3969,5395,8016,12500,18914),
-(3,34040707004,"Algaida",2806,3666,3675,3962,4234,4043,4091,4153,4047,4142,3930,3905,3698,3218,2830,3167,3749,5272),
-(4,34040707005,"Andratx",4609,5092,5663,6676,6483,6924,7014,6838,6600,6333,5323,4036,4259,5967,6319,6883,7753,11234),
-(5,34040707006,"Artà",4001,6225,4634,5133,5865,5813,5824,5729,5955,5810,6061,5496,5406,5461,5625,5694,6176,7562),
-(6,34040707007,"Banyalbufar",488,533,550,571,639,720,708,758,881,913,732,667,580,507,492,448,517,559),
-(7,34040707008,"Binissalem",3027,3182,3273,3620,3891,3836,3934,4180,4234,4294,4316,4132,4156,4268,5040,4679,5166,7640),
-(8,34040707009,"Búger",1145,1187,1228,1221,1230,1116,1160,1181,1142,1198,1085,1010,1027,1019,1022,907,950,1014);
-```
-
 
 ```{sql 'Intro', connection=t1db, tab.cap = 'Einfache Abfrage für ausgewählte Felder einer Tabelle, die ersten  Einträge.'}
 select codigo, municipio, zensus_1842, zensus_1900, zensus_1950,  zensus_2011 
@@ -370,4 +333,4 @@ Der wesentliche Unterschied für uns als Nutzer, ist die jeweils gebotene Funkti
 
 Verfügbare **Funktionen** wie *st_collect* können bei der SpatiaLite GUI in der Iconleiste ganz rechts, das linke von den beiden (?) als neues Fenster angezeigt werden. Die Performanz und Funktionalität ist hier aber eingeschränkt, weshalb ich immer auf die Version im Netz zugreife: [https://www.gaia-gis.it/gaia-sins/spatialite-sql-5.1.0.html](https://www.gaia-gis.it/gaia-sins/spatialite-sql-5.1.0.html). In der DB-Verwaltung finden Sie im SQL-Abfrageeditor ([SQL]-Icon) *dropdown* für diverse Bereiche, so auch die Funktionen. Allerdings fehlt hier z.B. *st_collect* und es wird auch keine Erläuterung zu den Parametern und der Rückgabe geboten.
 
-Der sichtbare Unterschied besteht in den angezeigten Tabellen und Sichten. Neben der tabelle KNN2 und unseren "persönlichen" Tabellen tauchen noch diverse Tabellen mit einem "idx_..." am Anfang des Namens auf. Diese dienen der Verwaltung der Geometrien. Dafür wird hier die Tabelle *data_licenses* ausgeblendet, ist aber vorhanden: ```select * from data_licenses;```
+Der sichtbare Unterschied besteht in den angezeigten Tabellen und Sichten. Neben der Tabelle KNN2 und unseren "persönlichen" Tabellen tauchen noch diverse Tabellen mit einem "idx_..." am Anfang des Namens auf. Diese dienen der Verwaltung der Geometrien. Dafür wird hier die Tabelle *data_licenses* ausgeblendet, ist aber vorhanden: ```select * from data_licenses;```
