@@ -47,18 +47,18 @@ Gute Karten sind eine zeitintensive Herausforderung.
 
 ### Fallbeispiel
 
-Als Fallbeispiel wähle ich nachfolgend den Fundplatz von Closos de Can Gaiá bei Portocolom auf Mallorca (39.4191°N, 3.2443°E). Ein erstes Aufmaß erfolgte durch ein Grabungsteam der Uni Marburg neben deren eigentlichen Arbeiten in der Siedlung von S'Illot (@freyNavetasEsClosos1966a). Die damalige Vermessung wurde durch den Neubau der Straße und den weiteren Landesausbau notwendig, dem bereits ein Teil des Fundplatzes zum Opfer gefallen war. Neben den damals erkannten Baustrukturen ist nach dem Luftbild von 1956 mindestens eine weitere Naveta auf der Straßenkreuzung wahrscheinlich (Hinweis B. Salvà). Der Fundplatz ist heute mit Informationstafeln touristisch erschlossen und kann frei begangen werden. 
+Als Fallbeispiel wähle ich nachfolgend den Fundplatz von Closos de Can Gaiá bei Portocolom auf Mallorca (39.4191°N, 3.2443°E). Ein erstes Aufmaß erfolgte durch ein Grabungsteam der Uni Marburg neben deren eigentlichen Arbeiten in der Siedlung von S'Illot (@freyNavetasEsClosos1966). Die damalige Vermessung wurde durch den Neubau der Straße und den weiteren Landesausbau notwendig, dem bereits ein Teil des Fundplatzes zum Opfer gefallen war. Neben den damals erkannten Baustrukturen ist nach dem Luftbild von 1956 mindestens eine weitere Naveta auf der Straßenkreuzung wahrscheinlich (Hinweis B. Salvà). Der Fundplatz ist heute mit Informationstafeln touristisch erschlossen und kann frei begangen werden. 
 
 Die Daten für diese Übung liegen vor:
 
-- @freyNavetasEsClosos1966a, Abb. 7 (georeferenziert anhand der Luftbilder und in Umrissen digitalisiert),
+- @freyNavetasEsClosos1966, Abb. 7 (georeferenziert anhand der Luftbilder und in Umrissen digitalisiert),
 - das Orthofoto von 2021 (s. Kapitel Raterdaten),
-- die im vorangehenden Kapitel erstellten Vegationskarten und
+- die im vorangehenden Kapitel erstellten Vegetationskarten und
 - die Comarcas der früheren Übung als Umrisskarte für eine  kleine Übersichtskarte.
 
 ### Ziel der Darstellung
 
-Meine Karte soll den Funplatz und seine Denkmalgeschichte einführen. Ich möchte dafür sowohl die 1966 publizierten Navetas als auch die natürlichen Veränderungen in der Vegetation seit dieser Zeit darstellen. Als Kartengrundlage wähle ich das aktuelle Luftbild, überlager es mit den nachgezeichneten und beschrifteten Navetas und ergänze die Vegetationsraster des vorangehenden Kapitels.
+Meine Karte soll den Funplatz und seine Denkmalgeschichte darstellen. Ich möchte dafür sowohl die 1966 publizierten Navetas als auch die natürlichen Veränderungen in der Vegetation seit dieser Zeit darstellen. Als Kartengrundlage wähle ich das aktuelle Luftbild, überlager es mit den nachgezeichneten und beschrifteten Navetas und ergänze die Vegetationsraster des vorangehenden Kapitels.
 
 ## Karte erstellen
 
@@ -72,15 +72,12 @@ Für die Darstellung der Navetas wähle ich eine kategorisierte Farbgebung nach 
 if ("Name" is  not null, "Name", "tipo")
 ```
 
-Damit wird der Name angezeigt, sofern einer vorliegt, ansonsten der Typ. Der schwarze Text ist auf dem bunten Hintergrund kaum lesbar. Ich wähle deshalb als **Hintergrund** ein weißes Rechteck. Alternativ kann auch ein Puffer gewählt werden. Da dieser in früheren Versionen in einem PDF in einer rechenintensive Konturlinie resultierte, verwende ich diese Option ungern.
+Damit wird der Name angezeigt, sofern einer vorliegt, ansonsten der Typ. Der schwarze Text ist auf dem bunten Hintergrund kaum lesbar. Ich wähle deshalb als **Hintergrund** ein weißes Rechteck. Alternativ kann auch ein Puffer gewählt werden.
 
-Die Position der Schrift in der Mitte der Naveta stört mit sehr, dies können wir im Unterpunkt *Platzierung* ändern. Ich wechsele von "Um Zentrum" zu "Abstand vom Zentrum". Die Zuweisung der Position nach Quadranten um das Zentrum reicht nicht, deshalb wähle ich den "X, Y Versatz". Eine feste Größe von 12 m  für y wird den sehr unterschiedlichen Größen der Navetas nicht gerecht. Aus diesem Grund wähle ich auch hier mit dem **E** am rechten Rand eine Bedingung, die ich "Bearbeite" und komme so zum **Ausdruckseditor**.
+Die Position der Schrift in der Mitte der Naveta stört mich sehr, dies können wir im Unterpunkt *Platzierung* ändern. Ich wechsel von "Um Zentroid" zu "Abstand vom Zentrum". Die Zuweisung der Position nach Quadranten um das Zentrum reicht nicht, deshalb wähle ich den "X, Y Versatz". Eine feste Größe von 12 m  für y wird den sehr unterschiedlichen Größen der Navetas nicht gerecht. Aus diesem Grund wähle ich aus dem *dropdown* am rechten Rand mit "Bearbeiten" zum **Ausdruckseditor** und ergänze:
+``` concat('0,',bounds_height($geometry)*0.8) ```.
 
-```
-concat('0,',bounds_height($geometry)*0.8)
-```
-
-Das erwartete Format ist eine Zeichnekette mit zwei durch ein Komma getrennten Distanzwerte für x und y (x.x, y.y). Ich starte mit dem zweiten, dem y-Wert: Dieser soll abhängig von der Geometriehöhe sein (*bounds_height(\$geometry)*), die halbe Höhe (y-Achse) reicht aber nicht, deshalb  wähle ich 80% der Höhe. Eine Verschiebung auf x ist nicht nötig, also '0, ' und beide Ausdrücke werden mit *concat()* zu einer Zeichenkette verbunden.
+Das erwartete Format ist eine Zeichnekette mit zwei, durch ein Komma getrennten Distanzwerte für x und y (x.x, y.y). Ich starte mit dem zweiten, dem y-Wert: Dieser soll abhängig von der Geometriehöhe sein (*bounds_height(\$geometry)*), die halbe Höhe (y-Achse) reicht aber nicht, deshalb  wähle ich 80% der Höhe. Eine Verschiebung auf x ist nicht nötig, also '0, ' und beide Ausdrücke werden mit *concat()* zu einer Zeichenkette verbunden.
 
 ### Elemente der Karte
 
@@ -94,17 +91,18 @@ Unter dem Menüpunkt "Element hinzufügen (a)" können Sie eine "Karte hinzufüg
 
 Setzen Sie unter **Haupteigenschaften** den Maßstab auf 1000. Unter **Layer** folgt die Option, die dargestellten Layer und auch die Layerstile zu sperren. Wenn alle Layer wie gewünscht angezeigt werden, sperren Sie beide Optionen: Layer und Stile. In der Folge werden Änderungen im Projekt im Layout dieser Karte nicht wirksam. Die **Ausdehnung** der Karte mit Zahlen zu beschreiben, ist mühevoll, verwenden Sie dazu lieber "Bearbeiten -> Inhalt verschieben" (Icon: Papierrolle mit blauen Pfeilen).  Ist dieses Icon aktiv, kann der Karteninhalt verschoben werden. Wählen Sie das Icon mit dem Mauszeiger, um erneut andere Elemente auszuwählen.
 
-| **Anmerkung** |
-|---------------|
-|Das Menü hat viele Unterebenen. Mit dem blauen Pfeil am oberen Rand unter dem Reiter "Elementeigenschaften" gelangen Sie wieder auf die jeweils obere Ebene. |
+| Anmerkung |
+|----|
+|Die Elemente im Eigenschaftenfenster haben viele Unterebenen. Mit dem blauen Pfeil am oberen Rand unter dem Reiter "Elementeigenschaften" gelangen Sie wieder auf die jeweils obere Ebene. |
 
-Sie können für eine Karte mehrere **Gitter** definieren. Fügen Sie mit dem grünen Plus ein neues Gitter hinzu (Gitter 1). Mit einem Doppelklick auf den Namen können Sie diesen auch ändern. Wählen Sie [Gitter ändern]. Es folgen Unterbereiche zu: Erscheinungsbild, Rahmen und Koordinaten zeichnen. Für **Erscheinungsbild** setzen Sie als erstes das Intervall für x und y auf '50'. Probieren Sie nachfolgend die Optionen unter "Gittertyp" und treffen Sie eine Entscheidung. Ich selbst verwende bisweilen "Kreuz", reduziere aber die Kreuzgröße und Linienstärke in den folgenden Feldern.  Oft verwende ich aber nur den unsichtbaren Rahmen und die Beschriftung (mit Koordinaten). Der **Rahmen** ist ein wichtiges Element, beschriftet informiert er über Maßstab und absolute Lage der Karte. Breite schwarze Ränder erinnern an Trauerkarten und liefern sonst aber keine Information. Ich wähle "Äußere Markierungen", Rahmengröße: 1 mm und Rahmenlinienstärke: 0,12 mm. Ich aktiviere **Koordinaten zeichnen**, setze links und rechts auf "Vertikal aufsteigend" und die Koordinatengenauigkeit auf "0" Nachkommastellen, Schriftart (neue Ebene) auf 8 pt, mit dem blauen Pfeil oben zurück zum Gitter und Abstand zum Kartenrahmen auf 1 mm. Wechseln Sie mit dem Pfeilsymbol nach links am oberen Rand dieses Bereiches wieder in die übergeordnete Instanz der Elementeigenschaften. Anmerkung: Die Karte ragt nun über die Führungslinien hinaus und muss angepasst werden. Achten Sie dabei auf den Maßstab! 
+</br>
+Sie können für eine Karte mehrere **Gitter** definieren. Fügen Sie mit dem grünen Plus ein neues Gitter hinzu (Gitter 1). Mit einem Doppelklick auf den Namen können Sie diesen auch ändern. Wählen Sie [Gitter ändern]. Es folgen Unterbereiche zu: Erscheinungsbild, Rahmen und Koordinaten zeichnen. Für **Erscheinungsbild** setzen Sie als erstes das Intervall für x und y auf '50'. Probieren Sie nachfolgend die Optionen unter "Gittertyp" und treffen Sie eine Entscheidung. Ich selbst verwende bisweilen "Kreuz", reduziere aber die Kreuzgröße und Linienstärke in den folgenden Feldern.  Ich verwende oft "Nur Rahmen und Beschriftung". Der **Rahmen** ist ein wichtiges Element, beschriftet informiert er über den Maßstab und die absolute Lage der Karte. Breite schwarze Ränder erinnern an Trauerkarten und liefern sonst aber keine Information. Ich wähle "Äußere Markierungen", Rahmengröße: 1 mm und Rahmenlinienstärke: 0,12 mm. Ich aktiviere **Koordinaten zeichnen**, setze links und rechts auf "Vertikal aufsteigend" und die Koordinatengenauigkeit auf "0" Nachkommastellen, Schriftart (neue Ebene) auf 8 pt, mit dem blauen Pfeil oben zurück zum Gitter und Abstand zum Kartenrahmen auf 1 mm. Wechseln Sie mit dem Pfeilsymbol nach links am oberen Rand dieses Bereiches wieder in die übergeordnete Instanz der Elementeigenschaften. Anmerkung: Die Karte ragt nun über die Führungslinien hinaus und muss angepasst werden. Achten Sie dabei auf den Maßstab! 
 
 Abschließend aktivieren Sie die Option **Rahmen**, reduzieren aber die Dicke auf 0,15 mm. Wählen Sie Ihren Kartenausschnitt nach dem Inhalt aber auch nach den Koordinaten, diese sollten nicht über den Rand hinauslaufen, sondern sich harmonisch um die Karte verteilen. Arbeiten Sie ggf. mit einem Versatz der Gitterintervalle.
 
 Sperren Sie nun Layer und Stile dieser Karte.
 
-![Closos de Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Vegetationsdichte nach Luftbildern (Kartengrundlage: IDEIB, EPSG: 25831).](./images/08_ClososVegetation.jpg)
+![Closos de Can Gaià. Stukturen nach Frey und Rosselló Bordoy (1966, Abb. 7) und Vegetationsdichte nach Luftbildern (Kartengrundlage: IDEIB, EPSG: 25831).](./images/08_Closos_Vegetation.jpg)
 
 ### Übersichtskarte hinzufügen
 
@@ -132,25 +130,25 @@ Ergänzen Sie noch einen Nordpfeil, dies ist ein Unterpunkt des Menüs "Element 
 Es fehlen noch wichtige Textinformationen, z.B. Titel, Untertitel/Erläuterung, Autor, Jahr, Koordinatensystem und ggf. Quellenangaben. Diese Informationen sind natürlich auch abhängig von Inhalt und Darstellungskontext. Text wird als Beschriftung eingefügt und hat jeweils einen Textstil. Alternativ können Sie den Text als HTML darstellen und mit entsprechenden Auszeichnungen (*tags*) arbeiten. Nachfolgend dazu ein Beispiel:
 
 ```
-<b>Closos de Can Gaià </b> </br>
-Mallorca, Spanien </br>
-<small>Navetas der Bronzezeit nach Aufmaß von Frey/Rosselló Bordoy 1966.</br>
-Luftbilder IDEIB (https://ideib.caib.es)</br></br>
-Karte: C. Rinne 06.2022.</br>
+<b>Closos de Can Gaià </b> <br>
+Mallorca, Spanien <br>
+<small>Navetas der Bronzezeit nach Aufmaß von Frey/Rosselló Bordoy 1966.<br>
+Luftbilder IDEIB (https://ideib.caib.es)<br>
+Karte: C. Rinne 06.2022.<br>
 Koordinaten: EPSG 25831</small>
 ```
 
 Zur Erläuterung:
 
 - \<b> ...\</b> : bold / fett 
-- \</br> : break / Zeilenumbruch
+- \<br> : break / Zeilenumbruch
 - \<small> ... \</small> : klein
 
-Gehen Sie in den eingefügten Text, fügen Sie vor "Karte: ..." eine Leerzeile ein und wählen Sie nun [Dynamischer Text] Karteneigenschaften > Karte 1 > Maßytab. Verändern Sie den automatisch eingetragenen Text wie folgt:
+Gehen Sie in den eingefügten Text, fügen Sie vor "Karte: ..." eine Leerzeile ein und wählen Sie nun [Dynamischer Text] Karteneigenschaften > Karte 1 > Maßßstab. Verändern Sie den automatisch eingetragenen Text wie folgt:
 
-```[%concat('M 1: ', round(item_variables('Karte 1')['map_scale'],0))%]	```
+```[%concat('M 1 : ', round(item_variables('Karte 1')['map_scale'],0))%]	```
 
-Die Vorschau sollte nun "M 1:1000" oder ggf. einen anderen Maßstab anzeigen. Von Innen nach Außen sind es folgende Schritte: 1. Die Abfrage des Maßstabes der 'Karte 1'. 2. Die Rückgabe wird gerundet auf 0 Stellen: round(\<Wert>,\<Stellen>). 3. Mit 'M 1:' zusammengesetzt: concat(\<Text1>, \<Text2>, ...) und die "[%...%]" Wandeln die Funktion in ein Textelement um, bzw. andersrum, in dem Text wird damit ein Funktionsbereich definiert. Der Maßstab wird nicht sofort angepasst aber bei weiteren Aktivitäten wie z.B. beim Drucken. 
+Die Vorschau sollte nun "M 1 : 1000" oder ggf. einen anderen Maßstab anzeigen. Von Innen nach Außen sind es folgende Schritte: 1. Die Abfrage des Maßstabes der 'Karte 1'. 2. Die Rückgabe wird gerundet auf 0 Stellen: round(\<Wert>,\<Stellen>). 3. Mit 'M 1:' zusammengesetzt: concat(\<Text1>, \<Text2>, ...) und die "[%...%]" Wandeln die Funktion in ein Textelement um, bzw. andersrum, in dem Text wird damit ein Funktionsbereich definiert. Der Maßstab wird nicht sofort angepasst aber bei weiteren Aktivitäten wie z.B. beim Drucken. 
 
 ### Attributtabelle
 
