@@ -2787,7 +2787,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">18. November 2024</h4>
+<h4 class="date">19. November 2024</h4>
 
 </div>
 
@@ -2871,31 +2871,37 @@ kategorisierte Symbologie auf Basis der Spalte “FeldNr”.</p>
 (Kartengrundlage: IDEIB, EPSG: 25831).</div>
 </div>
 <p></br></p>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr>
-<th>Anmerkung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Um aus zahlreichen Punkten diverser Felder jeweils ein zugehöriges
-Polygon zu erstellen könne Sie die Funktion <em>ST_ConvexHull()</em>
-nutzen.</td>
-</tr>
-<tr>
-<td>Im vorliegenden Fall werden die unregelmäßigen Felder 2 und 3 nicht
-schön dargestellt. :
-<code>select FeldNr, ST_ConvexHull(ST_Collect(geometry)) as geom from pp_magnetik_2010 group by 1</code></td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="wms---web-map-services" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> WMS - Web Map
+<div id="exkurs-punkte-zu-linie-und-polygon" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Exkurs Punkte zu
+Linie und Polygon</h2>
+<p>Um aus zahlreichen Punkten diverser Felder jeweils ein zugehöriges
+Polygon zu erstellen könne Sie die Funktion <em>ST_ConvexHull()</em>
+nutzen. Im vorliegenden Fall werden die unregelmäßigen Felder 2 und 3
+aber nicht schön dargestellt.</p>
+<pre class="sql"><code>select FeldNr, ST_ConvexHull(ST_Collect(geometry)) as geom 
+from pp_magnetik_2010 group by 1;</code></pre>
+<p>Sind die Punkte sinvoll sortiert, kann eine Linie erstellt werden,
+allerdings ohne den Anschluss zum Startpunkt.</p>
+<pre class="sql"><code>select feldnr, MakeLine(geometry) as geom 
+from pp_magnetik_2010 
+group by 1;</code></pre>
+<p>Soll aus den Punkten ein Polygon erstellt werden, muss der erste
+Punkt (<em>ST_PointN()</em>) als letzter Punkt (Option ‘-1’ bei
+<em>ST_AddPoint()</em>) zum Schließen der Linie ergänzt werden, um dann
+ein Polygon zu erstellen. Messpunkte von Befunden aus einem Tachymeter
+können analog verarbeitet werden.</p>
+<pre class="sql"><code>select feldnr, 
+       ST_MakePolygon(
+         ST_AddPoint(MakeLine(geometry),
+                     ST_PointN(MakeLine(geometry), 1), 
+                     -1)
+       ) as geom 
+from pp_magnetik_2010
+group by 1;</code></pre>
+</div>
+<div id="wms---web-map-services" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> WMS - Web Map
 Services</h2>
 <p>Sie finden Daten wie das verwendete Höhenmodell nicht nur zum
 <em>download</em> im Internet sondern auch als interaktive Webdienste.
@@ -2949,8 +2955,8 @@ zur Kombination zahlreicher Rasterkacheln (s. <a href="https://gdal.org/drivers/
 </tbody>
 </table>
 </div>
-<div id="georeferenzieren" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Georeferenzieren</h2>
+<div id="georeferenzieren" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Georeferenzieren</h2>
 <p>Neben digitalen Primärdaten (Höhenmodell, Luftbild, geophysikalische
 Messdaten) liegen oft Altdaten in Form eingescannter Pläne vor. Diese
 digitale Daten ohne geographischen Bezug müssen erst georeferenziert
@@ -2975,8 +2981,8 @@ Transformation wird oft eingesetzt. Die weiteren Transformationen bieten
 komplexere Veränderungen der Daten bei geringerer Abweichung an den
 Referenzpunkten. Eine höhere Genauigkeiten der dazwischen oder am
 Bildrand liegenden Daten ist nicht zwingend gegeben.</p>
-<div id="georeferenzierung-in-qgis" class="section level3" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Georeferenzierung
+<div id="georeferenzierung-in-qgis" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Georeferenzierung
 in QGIS</h3>
 <p>QGIS bietet die Georeferenzierung von Rasterdaten mit vielfältigen
 Optionen und den vorgenannten Projektionen. Die Georeferenzierung
@@ -3041,11 +3047,11 @@ jeweils mindestens 3 Punkte. Beachten Sie, dass Feld 3 um 90° gedreht
 ist.</p>
 </div>
 </div>
-<div id="rasterdaten-rasterrechner" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Rasterdaten &amp;
+<div id="rasterdaten-rasterrechner" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Rasterdaten &amp;
 Rasterrechner</h2>
-<div id="magnetikdaten" class="section level3" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Magnetikdaten</h3>
+<div id="magnetikdaten" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Magnetikdaten</h3>
 <p>Setzen Sie für alle vier Prospektionsflächen die Symbologie im
 Farbverlauf auf “Weiß nach Schwarz”, Min: -15, Max: +15 und
 Kontrastverbesserung: “Strecken auf MinMax”. Damit werden die
@@ -3135,8 +3141,8 @@ dies wird gerne vergessen.</td>
 </tbody>
 </table>
 </div>
-<div id="luftbilder-und-vegetation" class="section level3" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Luftbilder und
+<div id="luftbilder-und-vegetation" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Luftbilder und
 Vegetation</h3>
 <p>Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit
 1956 deutlich zugenommen. Das ist ein “alter Hut” und hängt mit den

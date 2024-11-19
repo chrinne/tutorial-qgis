@@ -32,6 +32,11 @@ lang: de-DE
 description: "Gis-Kurs mit QGIS : Tutorial in Kapiteln"
 ---
 
+```{r R-script-load-library-setup-connection, include=FALSE}
+library(RSQLite)
+t1db<-dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+```
+
 # Rasterdaten
 
 ## Einleitung
@@ -60,14 +65,37 @@ Zudem werden folgende WMS (*web map services*) des IDEIB für Luftbilder von 195
 
 Laden Sie Bitte als erstes die Punktliste pp_magnetik_2010.txt. Öffnen Sie dazu den Data Source Manager (\<strg> + \<l>), wählen Sie "Getrennte Text" und setzen Sie nachfolgend die notwendigen Parameter. Danach zoomen Sie bitte auf diese Punkte, z.B. über das Kontextmenü.  Wählen Sie für die spätere Unterscheidung der Felder eine kategorisierte Symbologie auf Basis der Spalte "FeldNr".
 
-![Closos Can Gaià. Stukturen nach Frey y Reslló (1966, Abb. 7) und Ergebnisse der geophysikalischen Prospektion 2010 (Kartengrundlage: IDEIB, EPSG: 25831).](./images/07_Closos-overview.jpg)
+![Closos Can Gaià. Stukturen nach Frey und Rosselló Bordoy (1966, Abb. 7) und Ergebnisse der geophysikalischen Prospektion von 2010 (Kartengrundlage: IDEIB, EPSG: 25831).](./images/07_Closos-overview.jpg)
 
-</br>
+## Exkurs Punkte zu Linie und Polygon
 
-| Anmerkung |
-|----|
-| Um aus zahlreichen Punkten diverser Felder jeweils ein zugehöriges Polygon zu erstellen könne Sie die Funktion *ST_ConvexHull()* nutzen. |
-| Im vorliegenden Fall werden die unregelmäßigen Felder 2 und 3 nicht schön dargestellt. : ```select FeldNr, ST_ConvexHull(ST_Collect(geometry)) as geom from pp_magnetik_2010 group by 1``` |
+Um aus zahlreichen Punkten diverser Felder jeweils ein zugehöriges Polygon zu erstellen könne Sie die Funktion *ST_ConvexHull()* nutzen. Im vorliegenden Fall werden die unregelmäßigen Felder 2 und 3 aber nicht schön dargestellt. 
+
+```{sql 'create convex hull from points', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+select FeldNr, ST_ConvexHull(ST_Collect(geometry)) as geom 
+from pp_magnetik_2010 group by 1;
+```
+
+Sind die Punkte sinvoll sortiert, kann eine Linie erstellt werden, allerdings ohne den Anschluss zum Startpunkt.
+
+```{sql 'create line from points', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+select feldnr, MakeLine(geometry) as geom 
+from pp_magnetik_2010 
+group by 1;
+```
+
+Soll aus den Punkten ein Polygon erstellt werden, muss der erste Punkt (*ST_PointN()*) als letzter Punkt (Option '-1' bei *ST_AddPoint()*) zum Schließen der Linie ergänzt werden, um dann ein Polygon zu erstellen. Messpunkte von Befunden  aus einem Tachymeter können analog verarbeitet werden.
+
+```{sql 'create polygone from points', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
+select feldnr, 
+       ST_MakePolygon(
+         ST_AddPoint(MakeLine(geometry),
+		             ST_PointN(MakeLine(geometry), 1), 
+					 -1)
+	   ) as geom 
+from pp_magnetik_2010
+group by 1;
+```
 
 ## WMS - Web Map Services
 
