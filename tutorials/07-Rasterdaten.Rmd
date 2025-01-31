@@ -157,9 +157,9 @@ Der Rasterrechner vor Version 3.22 kannte keine *if-than-else*-Syntax. Die Rück
 (("closos_1_modifiziert@1">6) and ("closos_1_modifiziert@1"<17))
 ```
 
-Schreiben Sie das Ergebnis nicht(!) in einen temporären Layer, die nachfolgend genutzte Funktion Raster-zu-Polygon kann temporäre Layer nicht verarbeiten.
+Schreiben Sie das Ergebnis nicht(!) in einen temporären Layer, die nachfolgend genutzte Funktion Raster-zu-Polygon kann in meiner Version (3.22.12) temporäre Layer nicht verarbeiten.
 
-Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Umfang und Wurzel der Fläche ins Verhältnis setzen (sqrt(a)/U), um die Regelhaftigkeit der Anomalie bewerten zu können, Flächenstatistik für jede Anomalie zu den Rasterwerten des Magnetikbildes berechnen lassen und abschließend auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
+Wählen Sie für den neuen Layer bei der Symbologie bitte "Paletten-/Eindeutige Werte", [Klassifizieren] und [OK]. Führen Sie das gleiche auch für Fläche 3 durch. *Markieren Sie links den richtigen Layer bevor Sie rechts [Gewählte Layerausdehnung] auswählen!* Das Bild ist deutlich heterogener und zeigt, dass dieses pauschale Verfahren Grenzen hat. Mein weiterer *workflow* ist dann Vektorisieren, Umfang und Wurzel der Fläche ins Verhältnis setzen (sqrt(a)/U), um die Regelhaftigkeit der Anomalie bewerten zu können, Zonenstatistik (s. Werkzeugkiste) für jede Anomalie zu den Rasterwerten des Magnetikbildes berechnen lassen und abschließend auf Grundlage dieser Werte entscheiden, ob ein Befund vorliegt oder nicht.
 
 | Anmerkung |
 |----|
@@ -172,10 +172,9 @@ Augenscheinlich hat die Vegetation im Bereich der Fundstelle seit 1956 deutlich 
 ```
 ("orthoaktuell@2" > "orthoaktuell@1") and ("orthoaktuell@2" > "orthoaktuell@3")
 ```
-Da die Division mit 0 nicht NULL liefert, sondern den sehr hohen Standardwert für *no data value* spare ich mir das if(), denn der Rückgabewert einer Bedingung ist ja schon 1 und 0. Die Bedingung ist recht schlicht, der Grüne Kanal (\@2) soll stets größer als die anderen sein. Suchen Sie nun in der Werkzeugkiste nach "Bericht eindeutiger Rasterwerte" und führen dies aus. Der Bericht wird als temporäre HTML-Datei für den Browser abgelegt, der Pfad dazu wird  sowohl im Protokoll
-als auch als Hypelink angezeigt. Dort finden Sie die Liste der Zellwerte, deren Anzahl und die aus der Pixelgröße resultierende Fläche.
+Da die Division mit 0 nicht NULL liefert, sondern den sehr hohen Standardwert für *no data value* spare ich mir das if(), denn der Rückgabewert einer Bedingung ist ja schon 1 und 0. Die Bedingung ist recht schlicht, der Grüne Kanal (\@2) soll stets größer als die anderen sein. Suchen Sie in der Werkzeugkiste nach "**Bericht eindeutiger Rasterwerte**" und führen diesen auf das neue Raster aus. Der Bericht wird als temporäre HTML-Datei für den Browser abgelegt, der Pfad dazu wird  sowohl im Protokoll als auch als Hypelink angezeigt. Dort finden Sie die Liste der Zellwerte, deren Anzahl und die aus der Pixelgröße resultierende Fläche.
 
-Erstellen Sie eine Layergruppe "Vegetation Orthofotos" und fügen Sie diese Layer ein.
+Erstellen Sie eine Layergruppe "Vegetation Orthofotos" und fügen Sie diese Layer ein.  
 
 Anmerkung: Ich verwende das Resultat im nächsten Abschnitt zur Kartenerstellung und verzichte deshalb an dieser Stelle auf eine Abbildung. 
 
