@@ -2764,7 +2764,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">19. November 2024</h4>
+<h4 class="date">05. Januar 2026</h4>
 
 </div>
 
@@ -2786,7 +2786,7 @@ ersten Einträge.</caption>
 <col width="17%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">codigo</th>
 <th align="left">municipio</th>
 <th align="left">zensus_1842</th>
@@ -2796,7 +2796,7 @@ ersten Einträge.</caption>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">34040707001</td>
 <td align="left">Alaró</td>
 <td align="left">4112</td>
@@ -2804,7 +2804,7 @@ ersten Einträge.</caption>
 <td align="right">3807</td>
 <td align="right">5273</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">34040707002</td>
 <td align="left">Alaior</td>
 <td align="left">4722</td>
@@ -2812,7 +2812,7 @@ ersten Einträge.</caption>
 <td align="right">5082</td>
 <td align="right">9450</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">34040707003</td>
 <td align="left">Alcúdia</td>
 <td align="left">1120</td>
@@ -2820,7 +2820,7 @@ ersten Einträge.</caption>
 <td align="right">3565</td>
 <td align="right">18914</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">34040707004</td>
 <td align="left">Algaida</td>
 <td align="left">2806</td>
@@ -2828,7 +2828,7 @@ ersten Einträge.</caption>
 <td align="right">3905</td>
 <td align="right">5272</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">34040707005</td>
 <td align="left">Andratx</td>
 <td align="left">4609</td>
@@ -2836,7 +2836,7 @@ ersten Einträge.</caption>
 <td align="right">4036</td>
 <td align="right">11234</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">34040707006</td>
 <td align="left">Artà</td>
 <td align="left">4001</td>
@@ -2917,35 +2917,35 @@ SpatiaLite.</p>
 <col width="50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">pro SpatiaLite</th>
 <th align="left">contra SpatiaLite</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">- Eine Datei für Vektordaten.</td>
 <td align="left">- Keine Rasterdaten möglich.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">- Gute GUI, u.a. mit
 <em>spatialview</em>-Generator.</td>
 <td align="left"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">- Integration von GIS-Funktionen.</td>
 <td align="left"></td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">- Integrierte Importfunktionen, auch ganzer Ordner mit
 Dateien (dxf, shp, asc, excel).</td>
 <td align="left"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">- Anhängen externer Daten (virtuelle Daten).</td>
 <td align="left"></td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">- Bibliotheken für Rasterdaten, Netzwerk, Routing
 etc.</td>
 <td align="left"></td>
@@ -2974,13 +2974,16 @@ Das Vorgehen ist für GPKG und SQLITE in der DB-Verwaltung identisch.</p>
 <div id="erstellen-der-datenbank" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Erstellen der
 Datenbank</h3>
-<p>Eine GPKG oder eine SQLITE können über “Layer &gt; Layer erstellen”
+<p>Eine <strong>neue Datenbank anlegen</strong> (GeoPackage (GPKG) oder
+Spatialite) erfolgt im QGIS-Browser im Kontextmenü zu dem jeweiligen
+Eintrag mit “Datenbank erzeugen”. Alernativ können eine GPKG oder eine
+SQLITE durch den Export eines Layers über “Layer &gt; Layer erstellen”
 zusammen mit einem ersten Layer erstellt werden. Ist der Dateiname nicht
 vorhanden, wird die Datenbank zugleich angelegt, ansonsten wird der neue
 Layer in dieser Datei als neue Tabelle erstellt. Alternativ ist auch der
 Export eines Layers in die ggf. dann zugleich erstellte DB über das
-Kontextmenü des Layers möglich “Exportieren &gt; Objekt speichern
-als”).</p>
+Kontextmenü des Layers möglich “Exportieren &gt; Objekt speichern als”)
+möglich.</p>
 <p>Bitte exportieren Sie: - <em>provincias</em> (gefiltert auf
 <code>codnut2 = &#39;ES53&#39;</code>), Format: SpatiaLite, Dateiname […]: im
 Projektordner “mallorca.sqlite”, Layername: provincias, KBS: EPSG 25831
@@ -3066,12 +3069,12 @@ select region, &#39;1900&#39;, 1920 from &quot;t-est&quot;;</code></pre>
 <col width="100%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Achtung</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">Ein “-” im Namen wirkt wie ein Leerzeichen und bedingt
 ““. Namen als Zahl sind immer und mit einer Ziffer am Anfang oft ein
 Problem. Vermeiden Sie bei Namen auch Funktionsnamen, in SQL z.B. count
@@ -3172,33 +3175,33 @@ als <em>view</em> (DB Kontextmenü &gt; “Neu verbinden”).</p>
 <col width="100%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Anmerkung</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">Oberhalb der SQL-Anweisung können Sie Abfragen
 speichern und dann auch wieder auswählen. Diese Abfragen werden in der
 Projektdate (*.qgz) gespeichert.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Sichten (<em>views</em>) werden als SQL-Anweisung in
 der Datenbank gespeichert. Der Befehl “<em>create view test as …</em>”
 vor einer Abfrage speichert diese als <em>view</em> mit dem Namen
 “test”.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">Gespeicherte <em>views</em> haben eine gültigen
 Geometrie, (<em>st_area(geometry</em>) ist gültig, sie können aber nicht
 kartiert werden.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Der nach der Abfrage erstellte Layer (“Als neuen Layer
 laden”) wird im Projekt gespeichert und ist nach dem Neustart wieder
 vorhanden.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">Bei Bedarf führen Sie eine Abfrage auf die
 <em>view</em> aus (<em>select * from comarcas_multi</em>) und fügen das
 aktuelle (!) Ergebnis erneut als Layer hinzu.</td>
@@ -3218,39 +3221,39 @@ group by 1;</code></pre>
 <p></br></p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Naturraum</th>
 <th align="right">Fläche (km²)</th>
 <th align="right">Anzahl Talaiots</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Llevant</td>
 <td align="right">579.3</td>
 <td align="right">41</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Migjorn</td>
 <td align="right">809.9</td>
 <td align="right">13</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Palma</td>
 <td align="right">208.6</td>
 <td align="right">6</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Pla de Mallorca</td>
 <td align="right">737.2</td>
 <td align="right">47</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Raiguer</td>
 <td align="right">471.4</td>
 <td align="right">29</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Serra de Tramuntana</td>
 <td align="right">831.0</td>
 <td align="right">42</td>
@@ -3277,17 +3280,17 @@ temporär erstellten Daten wird damit vermieden</strong>.</p>
 <col width="100%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Anmerkung</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">Die ersten, nachfolgend erstellten Abfragen sind nicht
 zwingend elegant oder kompakt. Es geht um die Komponenten der GUI und
 eine schrittweise Einführung in die SQL-Syntax.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Unterschiede zwischen QGIS DB-Verwaltung und SpatiaLite
 GUI bei der Darstellung des Dateiinhaltes werden am Ende kurz
 erläutert.</td>
@@ -3530,7 +3533,7 @@ In der DB-Verwaltung finden Sie im SQL-Abfrageeditor ([SQL]-Icon)
 Allerdings fehlt hier z.B. <em>st_collect</em> und es wird auch keine
 Erläuterung zu den Parametern und der Rückgabe geboten.</p>
 <p>Der sichtbare Unterschied besteht in den angezeigten Tabellen und
-Sichten. Neben der tabelle KNN2 und unseren “persönlichen” Tabellen
+Sichten. Neben der Tabelle KNN2 und unseren “persönlichen” Tabellen
 tauchen noch diverse Tabellen mit einem “idx_…” am Anfang des Namens
 auf. Diese dienen der Verwaltung der Geometrien. Dafür wird hier die
 Tabelle <em>data_licenses</em> ausgeblendet, ist aber vorhanden:

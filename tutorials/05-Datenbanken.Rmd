@@ -97,7 +97,7 @@ Nachfolgend erstellen und nutzen wir eine SpatiaLite Datenbank (DB). Das Vorgehe
 
 ### Erstellen der Datenbank
 
-Eine GPKG oder eine SQLITE können über "Layer > Layer erstellen" zusammen mit einem ersten Layer erstellt werden. Ist der Dateiname nicht vorhanden, wird die Datenbank zugleich angelegt, ansonsten wird der neue Layer in dieser Datei als neue Tabelle erstellt. Alternativ ist auch der Export eines Layers in die ggf. dann zugleich erstellte DB über das Kontextmenü des Layers möglich "Exportieren > Objekt speichern als").  
+Eine **neue Datenbank anlegen** (GeoPackage (GPKG) oder Spatialite) erfolgt im QGIS-Browser im Kontextmenü zu dem jeweiligen Eintrag mit "Datenbank erzeugen". Alernativ können eine GPKG oder eine SQLITE durch den Export eines Layers über "Layer > Layer erstellen" zusammen mit einem ersten Layer erstellt werden. Ist der Dateiname nicht vorhanden, wird die Datenbank zugleich angelegt, ansonsten wird der neue Layer in dieser Datei als neue Tabelle erstellt. Alternativ ist auch der Export eines Layers in die ggf. dann zugleich erstellte DB über das Kontextmenü des Layers möglich "Exportieren > Objekt speichern als") möglich.  
 
 Bitte exportieren Sie:
 - *provincias* (gefiltert auf ```codnut2 = 'ES53'```), Format: SpatiaLite, Dateiname [...]: im Projektordner "mallorca.sqlite", Layername: provincias, KBS: EPSG 25831 (da auf die Balearen gefiltert ist dürfen wir in das metrische KBS des Projektes umprojizieren), Felder und auch den Rest unverändert übernehmen und [OK].
