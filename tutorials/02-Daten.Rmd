@@ -42,7 +42,7 @@ description: "Gis-Kurs mit QGIS : Tutorial in Kapiteln"
 
 ### Datenquelle Internet
 
-Die Übung beruht auf Daten aus dem Internet und bis auf die Fundplatzdaten stammen die Daten vom Spanischen [Instituto Geográfico Nacional](http://www.ign.es) und hier aus dem [*Centro de descargas*](http://centrodedescargas.cnig.es/CentroDescargas/#) unter "Productos" - "Información geográfica de referencia" und "Modelos Digitales de Elevaciones". Weitere Details sind über die Metadaten bei den Daten selbst zu finden. Die Verfügbarkeit von diesen Daten ist in [INSPIRE](https://inspire.ec.europa.eu/) begründet. Eine kurze Einführung zu diesem Thema finden Sie auf der Seite der deutschen Geodateninfrastuktur [GDI-DE](https://www.gdi-de.org/DE/GDI-DE/INSPIRE/inspire.html?lang=de).
+Die Übung beruht auf Daten aus dem Internet und bis auf die Fundplatzdaten stammen die Daten vom Spanischen [Instituto Geográfico Nacional](http://www.ign.es) und hier aus dem [*Centro de descargas*](http://centrodedescargas.cnig.es/CentroDescargas/#). Die Form und Daten haben sich zwischenzeitlich gewandelt. Weitere Details sind über die Metadaten bei den Daten selbst zu finden (s.u.). Die Verfügbarkeit von diesen Daten ist in [INSPIRE](https://inspire.ec.europa.eu/) begründet. Eine kurze Einführung zu diesem Thema finden Sie auf der Seite der deutschen Geodateninfrastuktur [GDI-DE](https://www.gdi-de.org/DE/GDI-DE/INSPIRE/inspire.html?lang=de).
 Beachten Sie bitte, dass freie Zugänglichkeit (CC-BY) nicht gleichbedeutend ist mit rechtsfreiem Raum. Das Mindeste ist zitieren, Genaueres entnehmen Sie bitte den jeweiligen &copy;-Hinweisen. 
 
 Zwei unterschiedliche Nutzungsformen für Daten aus dem Internet stehen zur Verfügung:
@@ -52,7 +52,7 @@ Zwei unterschiedliche Nutzungsformen für Daten aus dem Internet stehen zur Verf
 | *Download* der Daten mit anschließender lokaler Verwendung | stets verfügbar, erweitert nutzbar | statisch, veralten |
 | Webdienst (*wms*, *wcs*, *wfs*), die Daten werden bei Bedarf dynamisch von einem Server abgerufen | stets aktuell | Serveradressen und Angebote können sich ändern oder entfallen | 
 
-In QGIS können Webdiensten unterschiedlich eingebunden und genutzt werden: Sie haben eine Serveradresse von einem Anbieter aus dem Internet und tragen diese z.B. bei den "WMS/WMTS" in der Datenquellenverwaltung ein. Sie nutzen ein entsprechendes Plugin, z.B. [QuickMapServices](https://nextgis.com/blog/quickmapservices/),  um dynamisch auf öffentliche Daten zuzugreifen (hier auf die Karten von *O*pen *S*treet *M*ap). Oder Sie nutzen ein Plugin wie [QuickOSM](https://docs.3liz.org/QuickOSM/), um die Daten zu recherchieren und herunterzuladen. 
+In QGIS können Webdiensten unterschiedlich eingebunden und genutzt werden: Sie haben eine Serveradresse von einem Anbieter aus dem Internet und tragen diese z.B. bei den "WMS/WMTS" in der Datenquellenverwaltung ein. Sie nutzen ein entsprechendes Plugin, z.B. [QuickMapServices](https://nextgis.com/blog/quickmapservices/),  um dynamisch auf öffentliche Daten zuzugreifen (hier auf die Karten von *O*pen *S*treet *M*ap). Oder Sie nutzen ein Plugin wie [QuickOSM](https://plugins.qgis.org/plugins/QuickOSM/), um die Daten zu recherchieren und herunterzuladen. 
 
 Im Kapitel der Rasterverarbeitung werden wir Orthofotos als *wms* einbinden, einen Ausschnitt herunterladen und auswerten. Beim *Servei Informació Territorial Illes Balears* finden Sie einen [Umfangreichen Katalog zu Diensten](http://ideib.caib.es/cataleg/srv/cat/catalog.search#/home), u.a. eine [Basiskarte für die Balearen](http://ideib.caib.es/cataleg/srv/spa/catalog.search#/metadata/AABE16F1-D7CC-40C3-8A74-D910CD8DE03F). Die dort genannte WMS-Adresse: "https://ideib.caib.es/geoserveis/services/public/GOIB_MapaBase_IB/MapServer/WMSServer?request=GetCapabilities&service=WMS" tragen  Sie in der Datenquellenverwaltung (\<strg> + \<l>)  -> WMS/WMTS, [Neu] unter URL ein und geben Sie dem neuen Eintrag einen sinnvollen Namen, z.B. SP-Balearen Basiskarte.
 
@@ -68,9 +68,9 @@ Tal;Rom;Islam;perioden
 485780;4401350;0;0;0;1;0;rom,
 ```
 
-Beachten Sie bitte Folgendes: Die erste Zeile enthält einen Verweis auf die Quelle, die zweite Zeile enthält Spaltennamen, die Spalten selbst sind mit einem ";" getrennt und wir dürfen erwarten, dass in "x_utm" und "y_utm" entsprechende Koordinaten des jeweiligen Fundplatzes als **Punkt** stehen. Versierte Nutzer kontrollieren eben auch noch die Zeichenkodierung: UTF-8.
+Beachten Sie bitte Folgendes: Die erste Zeile enthält einen Verweis auf die nicht mehr vorhandene Quelle, die zweite Zeile enthält Spaltennamen, die Spalten selbst sind mit einem ";" getrennt und wir dürfen erwarten, dass in "x_utm" und "y_utm" entsprechende Koordinaten des jeweiligen Fundplatzes als **Punkt** stehen. Versierte Nutzer kontrollieren eben auch noch die Zeichenkodierung: UTF-8.
 
-Die Webseite existiert nicht mehr (die Webadresse schon!). Die Daten wurden fast ausnahmslos von J. Aramburu zusammengestellt, die Begriffe sind sowohl auf Spanisch und Katalanisch und die utm-Koordinaten haben in zahlreichen Fällen einen Fehler von bis zu 200 m überwiegend N-S wegen eines nicht dokumentierten Wechsels zwischen ED50 und ETR89. Zudem ist die Liste nicht vollständig, wichtige Fundorte, insbesondere der jüngeren Forschung, fehlen. Für unsere Übung ignorieren wir diese Probleme und nehmen die Daten wie sie sind. Wir arbeiten später ausschließlich mit den Talaiots
+Die Webseite existiert nicht mehr. Die Daten wurden fast ausnahmslos von J. Aramburu zusammengestellt, die Begriffe sind sowohl auf Spanisch und Katalanisch und die utm-Koordinaten haben in zahlreichen Fällen einen Fehler von bis zu 200 m überwiegend N-S wegen eines nicht dokumentierten Wechsels zwischen ED50 und ETR89. Zudem ist die Liste nicht vollständig, wichtige Fundorte fehlen, insbesondere der jüngeren Forschung. Für unsere Übung ignorieren wir diese Probleme und nehmen die Daten wie sie sind. Wir arbeiten später ausschließlich mit den Talaiots.
 
 ### municipio-comarca.txt
 Die einzelnen Munizipien (Gemeinden) werden größeren Regionen zugewiesen, die weitgehend naturräumlichen Einheiten entsprechen. 
@@ -80,7 +80,7 @@ Die Quelle ist das [Instituto Nacional de Estadística](https://www.ine.es), die
 
 ### Límites municipales, provinciales y autonómicos
 
-Quelle: http://centrodedescargas.cnig.es/CentroDescargas
+Quelle: [Instituto Geográfico Nacional](https://centrodedescargas.cnig.es/CentroDescargas/detalleArchivo?sec=9000029)
 
 Hier unter: Información geográfica de referencia. Verwaltungsgrenzen als **Polygone**: Autonome Regionen, Provinzen und Munizipien (organisatorisch absteigende Reihe). Beachten Sie bitte, dass es sich um politische Grenzen handelt, Portugal und Gibralta fehlen, dafür sind aber Ceuta und Melilla mit dabei.
 
@@ -88,15 +88,15 @@ Format: **Shape-Datei(en)**. SHP ist ein sehr weit verbreitetes Format für Geod
 
 ### Línea de costa
 
-Quelle: http://centrodedescargas.cnig.es/CentroDescargas
+Quelle: [Instituto Geográfico Nacional](https://centrodedescargas.cnig.es/CentroDescargas/detalleArchivo?sec=9000006)
 
 Hier unter: Información geográfica de referencia. **Linien** getrennt nach natürlicher Küste und überbauten Linien im Bereich der Hafenanlagen. Auch hier ohne Portugal und Gibralta. Format: shp (s.o.). 
 
 ### Modelo Digital del Terreno - MDT200
 
-Quelle: http://centrodedescargas.cnig.es/CentroDescargas
+Quelle: [Instituto Geográfico Nacional](https://centrodedescargas.cnig.es/CentroDescargas/detalleArchivo?sec=9074249) (PNOA_MDT200_ETRS89_HU31_BALEARES.TIF)
 
-Hier: Modelos Digitales de Elevaciones > MDT200 > Suche "Todos" > "Balears, Illes". Wählen Sie die kleinere Datei (PNOA_MDT200_ETRS89_HU31_Baleares). Inzwischen wird ein GeoTIFF angeboten. Früher war es eine Textdatei mit normierter Struktur (s.u.). Der sogenannte *header* liefert die  Anzahl der Zeilen und Spalten sowie die Zellgröße und die Lage der linken unteren Ecke. Es folgen die Zellwerte, meist als Matrix, was wegen der Angabe zur Anzahl der Zeilen und Spalten im *header* aber nicht notwendig ist. Die Daten beginnen stets oben links im Raster (wie wir lesen). Es gibt hierzu Alternativen, z.B. werden bei [Surfer-Dateien](https://www.goldensoftware.com/products/surfer), die Koordinaten der gegenüberliegenden Ecken und die Anzahl von Spalten und Zeilen definiert, woraus sich die nicht zwingend quadratische Auflösung je Zelle ergibt. QGIS kann diese Formate direkt lesen. Weitere Infos zu Rasterdaten, speziel GeoTIFF finden Sie bei [gaia-gis.it](https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=useful_tools).
+Inzwischen wird ein GeoTIFF angeboten. Früher war es eine Textdatei mit normierter Struktur (s.u.). Der sogenannte *header* liefert die  Anzahl der Zeilen und Spalten sowie die Zellgröße und die Lage der linken unteren Ecke. Es folgen die Zellwerte, meist als Matrix, was wegen der Angabe zur Anzahl der Zeilen und Spalten im *header* aber nicht notwendig ist. Die Daten beginnen stets oben links im Raster (wie wir lesen). Es gibt hierzu Alternativen, z.B. werden bei [Surfer-Dateien](https://www.goldensoftware.com/products/surfer), die Koordinaten der gegenüberliegenden Ecken und die Anzahl von Spalten und Zeilen definiert, woraus sich die nicht zwingend quadratische Auflösung je Zelle ergibt. QGIS kann diese Formate direkt lesen. Weitere Infos zu Rasterdaten, speziel GeoTIFF finden Sie bei [gaia-gis.it](https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=useful_tools).
 
 ```
 NCOLS 1544
