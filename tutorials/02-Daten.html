@@ -2764,7 +2764,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">21. April 2026</h4>
+<h4 class="date">23. April 2026</h4>
 
 </div>
 
@@ -2800,12 +2800,12 @@ Fundplatzdaten stammen die Daten vom Spanischen <a href="http://www.ign.es">Inst
 dem <a href="http://centrodedescargas.cnig.es/CentroDescargas/#"><em>Centro de
 descargas</em></a>. Die Form und Daten haben sich zwischenzeitlich
 gewandelt. Weitere Details sind über die Metadaten bei den Daten selbst
-zu finden (s.u.). Die Verfügbarkeit von diesen Daten ist in <a href="https://inspire.ec.europa.eu/">INSPIRE</a> begründet. Eine kurze
-Einführung zu diesem Thema finden Sie auf der Seite der deutschen
-Geodateninfrastuktur <a href="https://www.gdi-de.org/DE/GDI-DE/INSPIRE/inspire.html?lang=de">GDI-DE</a>.
-Beachten Sie bitte, dass freie Zugänglichkeit (CC-BY) nicht
-gleichbedeutend ist mit rechtsfreiem Raum. Das Mindeste ist zitieren,
-Genaueres entnehmen Sie bitte den jeweiligen ©-Hinweisen.</p>
+zu finden (s.u.). Die Verfügbarkeit von diesen Daten ist in <a href="https://knowledge-base.inspire.ec.europa.eu/index_en">INSPIRE</a>
+begründet. Den konkreten Mehrwert für uns durch die hieraus
+resultierende [GDI-DE]<a href="https://www.gdi-de.org/" class="uri">https://www.gdi-de.org/</a>) ist das <a href="https://www.geoportal.de/">Geodatenportal</a>. Beachten Sie bitte,
+dass freie Zugänglichkeit (CC-BY) nicht gleichbedeutend ist mit
+rechtsfreiem Raum. Das Mindeste ist zitieren, Genaueres entnehmen Sie
+bitte den jeweiligen ©-Hinweisen.</p>
 <p>Zwei unterschiedliche Nutzungsformen für Daten aus dem Internet
 stehen zur Verfügung:</p>
 <table>
@@ -2826,7 +2826,7 @@ stehen zur Verfügung:</p>
 <td align="left"><em>Download</em> der Daten mit anschließender lokaler
 Verwendung</td>
 <td align="left">stets verfügbar, erweitert nutzbar</td>
-<td align="left">statisch, veralten</td>
+<td align="left">statisch, ggf. veralten</td>
 </tr>
 <tr class="even">
 <td align="left">Webdienst (<em>wms</em>, <em>wcs</em>, <em>wfs</em>),
@@ -2942,7 +2942,7 @@ die Anzahl der Zeilen und Spalten sowie die Zellgröße und die Lage der
 linken unteren Ecke. Es folgen die Zellwerte, meist als Matrix, was
 wegen der Angabe zur Anzahl der Zeilen und Spalten im <em>header</em>
 aber nicht notwendig ist. Die Daten beginnen stets oben links im Raster
-(wie wir lesen). Es gibt hierzu Alternativen, z.B. werden bei <a href="https://www.goldensoftware.com/products/surfer">Surfer-Dateien</a>,
+(wie wir lesen). Es gibt hierzu Alternativen, z.B. werden bei <a href="https://www.goldensoftware.com/products/surfer/">Surfer-Dateien</a>,
 die Koordinaten der gegenüberliegenden Ecken und die Anzahl von Spalten
 und Zeilen definiert, woraus sich die nicht zwingend quadratische
 Auflösung je Zelle ergibt. QGIS kann diese Formate direkt lesen. Weitere
@@ -3075,7 +3075,7 @@ von Weiß bis Schwarz, aktuell werden diese zwischen -0.1 und 800 stetig
 verteilt, alles darüber wird Schwarz, alles darunter Weiß und eben nicht
 abgeschnitten.</p>
 <p>Klappen Sie mal das folgende Menü Min/Max-Werteeinstellungen für
-weitere Optionen auf, u.a. für ein Zurücksetzen auf Min/Max der
+weitere Optionen auf, u.a. für ein Zurücksetzen auf “() Min/Max” der
 Daten.</p>
 <p>Es folgt die Layerdarstellung. Wenn das DGM 200 über der eingangs
 geladenen WMS-Grundkarte (mapa base) liegt können Sie hier den
@@ -3092,7 +3092,7 @@ angezeigt. Drei oder mehr Stellen nach dem Komma suggerieren aber bei
 den vorliegenden Werten eine falsche Präzision. Sie sollten im Feld
 Beschriftungsgenauigkeit eine “0” eintragen. 2. Ergänzen Sie hier bei
 Beschriftungssuffix ein “m” oder beim Layernamen “m über NN”.</p>
-<p>Bei Variante 2 is das Mittelmeer rot, das geht nun gar nicht.
+<p>Bei Variante 2 is das Mittelmeer eingefärbt, das geht nun gar nicht.
 Natürlich könnten wir die Skala unten beschneiden, was aber auch die
 Legende beeinflussen würde. Wechseln Sie zum Bereich
 <strong>Transparenz</strong>. Im <em>header</em> der Textdatei stand
@@ -3101,8 +3101,8 @@ Das ist offensichtlich aber nicht sehr genau eingetragen und wir
 behelfen uns wie folgt: Das Icon “grünes Plus” am rechten Rand ergänzt
 einen weiteren Transparenzbereich, bei dem wir “Von” “-32767” “Nach” “0”
 eintragen, [Anwenden] und [OK]. Wenn Sie das Ergebnis kontrollieren
-erkennen Sie zwei Dinge: 1. Im Nordwesten, im feuchten Niederungsgebiet
-des Raiguer, sind einzelne Zellen nun leer und 2. wird die Küste mit
+erkennen Sie zwei Dinge: 1. Im Norden, im feuchten Niederungsgebiet des
+Raiguer, sind einzelne Zellen nun leer und 2. wird die Küste mit
 Rasterzellen von 200 m x 200 m nur ungenau nachgezeichnet. Ein Trick für
 Letzteres: Sie ergänzen bei den autonomen Gebieten mit dem grünen “+”
 eine weitere Füllung, schieben diese nach unten, ändern diese auf
@@ -3110,7 +3110,7 @@ einfache “Rand:Linie”, setzen Sie weiß, Strichbreite auf 10 mm und
 Versatz auf -5. Wenn’s wirklich schön werden soll müssen Sie ein Polygon
 für das Mittelmeer erzeugen und als Schnittmaske oben drauf legen.
 Variante 1 hat offensichtlich deutlicher Vorteile, sie ist insgesamt
-ruhiger und</p>
+ruhiger.</p>
 <p>Die Symbologie für Punktlayer ist weitgehend identisch mit Linien-
 und Polygon-Layern. Wählen Sie für die Fundpunkte im <em>dropdown</em>
 am oberen Fensterrand statt “Einzelsymbol” “Kategorisert”, Wert: Tipo,

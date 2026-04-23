@@ -2764,7 +2764,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">21. April 2026</h4>
+<h4 class="date">23. April 2026</h4>
 
 </div>
 
@@ -2789,8 +2789,7 @@ kleineren Projekten. Dies ist der Einstieg in die Arbeit mit QGIS.<br />
 </li>
 <li>Die erste Arbeit mit tabellierten Daten zu den Objekten führt dann
 auch schon in die Verwendung vorhandener Funktionen und die Arbeit mit
-dem Feldrechner ein.<br />
-</li>
+dem Feldrechner ein.</li>
 <li>Es folgt eine erste Übung mit räumlichen Abfragen und einer ersten
 Quellenkritik zum Datenbestand.<br />
 </li>
@@ -2813,9 +2812,10 @@ Beispiel von QGIS vermitteln. Dieses Tutorial ist keine umfassende
 Einführung in die Methoden und theoretischen Grundlagen räumlicher
 Analysen in der Archäologie. Es ist auch kein Ersatz für das
 umfangreiche Handbuch zu QGIS.</p>
-<p>Die verwendete <strong>QGIS-Version ist 3.34.8 - Prizren
-(LTR)</strong> und kann bei <a href="https://qgis.org">https://qgis.org</a> heruntergeladen werden.
-Informationen zu den Änderungen einzelner Versionen erhalten Sie bei <a href="https://qgis.org/project/visual-changelogs/">QGIS</a>.</p>
+<p>Die verwendete <strong>QGIS-Version ist 3.44.4-Solothurn LTR</strong>
+und kann bei <a href="https://qgis.org">https://qgis.org</a>
+heruntergeladen werden. Informationen zu den Änderungen einzelner
+Versionen erhalten Sie bei <a href="https://qgis.org/project/visual-changelogs/">QGIS</a>.</p>
 <table>
 <colgroup>
 <col width="100%" />
@@ -2873,14 +2873,14 @@ einzelnen Dateien (*.shp) als Datenquelle gearbeitet und mit jedem
 Arbeitsschritt eine neue Datei produziert. Ein absolutes <em>no go</em>
 für ein Datenbanksystem. GIS [pl.] entdecken erst langsam den 2.5D oder
 echten 3D-Bereich, sie sind nicht wirklich mit CAD-Programmen
-vergleichbar. Die statistischen Optionen stehen den Möglichkeiten in R
-oder anderen Softwarepaketen deutlich nach. Dennoch, ein GIS ist für die
-meisten Aufgaben in der Archäologie ein unverzichtbares und oft einfach
-zu nutzendes Werkzeug. Und im Vergleich zu den Bereichen “Schreiben” und
-“Grafik” haben wir relativ viele gute freie Software zu Auswahl.</p>
-<p>Diese Einführung ist kein Ersatz für das umfangreiche <a href="https://docs.qgis.org/3.34/de/docs/user_manual/index.html">Handbuch
+vergleichbar. Die statistischen Optionen stehen den Möglichkeiten in <a href="https://www.r-project.org/">R</a> oder anderen Softwarepaketen
+deutlich nach. Dennoch, ein GIS ist für die meisten Aufgaben in der
+Archäologie ein unverzichtbares und oft einfach zu nutzendes Werkzeug.
+Und im Vergleich zu den Bereichen “Schreiben” und “Grafik” haben wir
+relativ viele gute freie Software zu Auswahl.</p>
+<p>Diese Einführung ist kein Ersatz für das umfangreiche <a href="https://docs.qgis.org/3.44/de/docs/user_manual/index.html">Handbuch
 zu QGIS im Internet</a>. Erläuterungen u.a. zu den diversen Werkzeug-
-bzw. Icon-Leisten finden Sie dort unter “<a href="https://docs.qgis.org/3.34/de/docs/user_manual/introduction/qgis_gui.html">GUI</a>”.</p>
+bzw. Icon-Leisten finden Sie dort unter “<a href="https://docs.qgis.org/3.44/de/docs/user_manual/introduction/qgis_gui.html">GUI</a>”.</p>
 </div>
 <div id="software" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Software</h2>
@@ -2894,8 +2894,10 @@ GUI und einer sehr großen <em>Community</em>.</p></li>
 <li><p><a href="https://grass.osgeo.org/">Grass</a>: Ein seit den
 Anfängen von GIS etabliertes und sich entwickelndes System, in dem
 vermutlich alles möglich ist.</p></li>
-<li><p><a href="http://www.gvsig.org">gvSIG</a>: Ursprünglich aus
-Spanien stammend (Sistema Informativo Geográphico).</p></li>
+<li><p><a href="https://www.gvsig-services.com/">gvSIG</a>: Ursprünglich
+aus Spanien stammend (Sistema Informativo Geográphico), war die
+Community Edition (CE) bis 2018 vor allem im engl. Raum
+präsent.</p></li>
 <li><p><a href="https://saga-gis.sourceforge.io/en/index.html">SAGA</a>:
 Dieses System ist aus den Anforderungen der Geowissenschaften entstanden
 und bietet vor allem in diesem Bereich sehr viele
@@ -2950,7 +2952,7 @@ Projekten.</p>
 <div id="allgemeine-einstellungen" class="section level3" number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> Allgemeine
 Einstellungen</h3>
-<p>Unter “Einstellungen -&gt; Optionen” werden Einstellungen für
+<p>Unter “Einstellungen &gt; Optionen” werden Einstellungen für
 zukünftige Projekte gesetzt. Interessant sind folgende Bereiche:</p>
 <ul>
 <li>Allgemein:
@@ -2986,7 +2988,7 @@ Projekteinstellungen</h3>
 <p>Unter “Projekt -&gt; Eigenschaften” legen Sie die Parameter des
 Projektes fest. Hervorzuheben ist:</p>
 <ul>
-<li>Allgemein:
+<li><strong>Allgemein</strong>:
 <ul>
 <li>Projektheimatverzeichnis: es definiert, von wo aus der relative Pfad
 zu Daten startet. Zudem können Sie entscheiden, ob die Pfade zu den
@@ -2999,21 +3001,21 @@ nicht bieten und rate bei mangelnden Informationen zum Vorgabewert.</li>
 <li>Die Koordinatenanzeige ist üblich in der Karteneinheit. Sie können
 hier aber auch Grad erzwingen.</li>
 </ul></li>
-<li>Metadaten sind immer interessant und wichtig bei einer späteren
-Nachnutzung. Bei einem privaten Projekt mag das kurzfristig
-uninteressant erscheinen.</li>
+<li><strong>Metadaten</strong>: sind immer interessant und wichtig bei
+einer späteren Nachnutzung. Bei einem privaten Projekt mag das
+kurzfristig uninteressant erscheinen.</li>
 <li><strong>KBS / Koordiatenbezugssystem</strong>: Ein sehr wichtiger
 Parameter. <br> Das KBS muss dem Projektmaßstab und der Lage angemessen
 sein. WGS84 (EPSG 4326) passt weltweit, ist aber für ein kleinräumiges
 Projekt eher ungeeignet. Da ich mit Gradangaben bei Distanzen nicht
 wirklich etwas anfangen kann, wohl aber mit Metern, verwende ich meist
-ein projiziertes KBS der jeweiligen Region, z.B. DHDN 3° Streifen
-Gauß-Krüger (GK) Zone 3 (EPSG 31467). Für ein Projekt in
-Norddeutschland, hier sind 2 bis 3 Zonen bei GK betroffen, wäre ein UTM
-sinnvoll. Der rosafarbene Rahmen zeigt die jeweilige Gültigkeit des
-gewählten Systems an und erleichtert die Entscheidung.<br> Bei UTM
-müssen Sie noch zwischen ETRS89 und WGS84 als Ellipsoid wählen. Aktuell
-ist der Unterschied marginal aber nicht egal.</li>
+ein projiziertes KBS der jeweiligen Region, z.B. <a href="https://de.wikipedia.org/wiki/UTM-Koordinatensystem">UTM 32N</a>.
+Der rosafarbene Rahmen zeigt die jeweilige Gültigkeit des gewählten
+Systems an und erleichtert die Entscheidung.<br> Bei UTM müssen Sie noch
+zwischen <a href="https://de.wikipedia.org/wiki/Europ%C3%A4isches_Terrestrisches_Referenzsystem_1989">ETRS89</a>
+und <a href="https://de.wikipedia.org/wiki/World_Geodetic_System_1984">WGS84</a>
+als Ellipsoid wählen. Aktuell ist der Unterschied marginal aber nicht
+egal.</li>
 </ul>
 </div>
 </div>
@@ -3022,7 +3024,7 @@ ist der Unterschied marginal aber nicht egal.</li>
 Karte</h2>
 <p>Ausgangspunkt für eine Karte ist ein reguläres Netz über einer Kugel,
 bzw. Elipsoid, als Modell unserer Erde. Der Diercke Weltatlas der Schule
-bietet auch eine digitale Infoseite zur <a href="https://diercke.westermann.de/content/kartenprojektionen-978-3-14-100800-5-11-4-1">Kartenprojektion</a>,
+bietet auch eine digitale Infoseite zur <a href="https://diercke.de/content/kartenprojektionen-978-3-14-100800-5-11-4-1">Kartenprojektion</a>,
 ansonsten auch Wikipedia, Stichwort <a href="https://de.wikipedia.org/wiki/Kartennetzentwurf">Kartennetzentwurf</a>.
 Die Punkte der Erde werden von einem Elipsoid als Modell der Erde nach
 bestimmten Regeln in eine Ebene projiziert.</p>
@@ -3043,7 +3045,7 @@ nicht wieder zum Ausgangspunkt.</li>
 dargestellt, dafür aber die Abstände.</li>
 </ul>
 <p>Die meisten unserer Karten sind eher abstandstreu, wodurch es zu
-geneigten Längengraden kommt (z.B. <a href="https://diercke.westermann.de/content/deutschland-verwaltungsgliederung-978-3-14-100850-0-24-1-1">Diercke
+geneigten Längengraden kommt (z.B. <a href="https://diercke.de/content/deutschland-verwaltungsgliederung-978-3-14-100850-0-24-1-1">Diercke
 Deutschlandkarte</a>. Seekarten sind wegen der Navigation stets
 winkeltreu. An den Kartenschnitten kommt es hierdurch zu Sprüngen und
 Sie müssen mit einem Zirkel abgegriffene Distanzen am jeweiligen
