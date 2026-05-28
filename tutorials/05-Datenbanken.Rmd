@@ -239,8 +239,7 @@ Wie eingangs erläutert, beruht SpatiaLite ebenfalls auf SQLite, es kann keine R
 
 | Anmerkung |
 |:----|
-| Die ersten, nachfolgend erstellten Abfragen sind nicht zwingend elegant oder kompakt. Es geht um die Komponenten der GUI und eine schrittweise Einführung in die SQL-Syntax. |
-| Unterschiede  zwischen QGIS DB-Verwaltung und SpatiaLite GUI bei der Darstellung des Dateiinhaltes werden am Ende kurz erläutert. | 
+| Die Unterschiede zwischen der QGIS DB-Verwaltung und der SpatiaLite GUI bei der Erstellung und Darstellung der jeweiligen Dateien werden am Ende kurz erläutert. | 
 
 ### SpatiaLite installieren
 
@@ -255,9 +254,7 @@ Zu SpatiaLite gibt es zahlreiche ergänzende Infos:
 
 - SpatiaLite: [http://www.gaia-gis.it/gaia-sins/](http://www.gaia-gis.it/gaia-sins/){target="_blank"}
 - SpatiaLite Funktionsliste: [https://www.gaia-gis.it/gaia-sins/spatialite-sql-5.1.0.html](https://www.gaia-gis.it/gaia-sins/spatialite-sql-5.1.0.html){target="_blank"}
-- SpatiaLite-GUI: [https://www.gaia-gis.it/fossil/spatialite_gui/index](https://www.gaia-gis.it/fossil/spatialite_gui/index){target="_blank"}
-- SpatiaLite Wiki: [https://www.gaia-gis.it/gaia-sins/spatialite_topics.html](https://www.gaia-gis.it/gaia-sins/spatialite_topics.html){target="_blank"} (sehr alt)
-- SpatiaLite Cookbook: [http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html](http://www.gaia-gis.it/gaia-sins/spatialite-cookbook-5/index.html){target="_blank"} (sehr alt)
+- SpatiaLite Doku: [https://www.gaia-gis.it/fossil/libspatialite/wiki?name=misc-docs](https://www.gaia-gis.it/fossil/libspatialite/wiki?name=misc-docs){target="_blank"} (sehr alt)
  
 ### SpatiaLite GUI
 
