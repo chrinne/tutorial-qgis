@@ -2764,7 +2764,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">28. Mai 2026</h4>
+<h4 class="date">29. Mai 2026</h4>
 
 </div>
 
@@ -3126,7 +3126,7 @@ deklariert als “m” und die Verbindung der jeweiligen Geometrien durch
 die Funktion <em>st_within()</em>.</li>
 </ol>
 <pre class="sql"><code>select m.nameunit as &quot;Municipium&quot;, 
-       round(st_area(m.geometry)/100000, 1) as &quot;Fläche (km²)&quot;, 
+       round(sum(st_area(m.geometry))/100000, 1) as &quot;Fläche (km²)&quot;, 
        count(t.nr) as &quot;Anzahl Talaiots&quot;
 from (select * from sites where tipo_yacim like &#39;Talaiot%&#39;) as t,
    municipios as m
@@ -3147,7 +3147,7 @@ die Spalte “municipio_comarca_comarca” des letzten <em>join</em> und
 räume auch gleich mal auf.</li>
 </ol>
 <pre class="sql"><code>select c.comarca as &quot;comarca&quot;, group_concat(m.nameunit, &quot;, &quot;) as &quot;municipios&quot;, 
-   st_collect(geometry) as geometry
+   st_union(geometry) as geometry
 from municipios as m join municipio_comarca as c on (m.nameunit = c.municipio)
 group by 1;</code></pre>
 <p></br></p>

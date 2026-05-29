@@ -167,7 +167,7 @@ Ich komme nochmal auf die Frage nach der Anzahl der Talaiots je Naturraum zurüc
 
 ```{sql 'aggregiert falsche flaeche', eval=FALSE, message=FALSE, connection=t1db, include=TRUE, tab.cap = 'Aggregierte Tabelle, Municipios ohne Talaiots fehlen.'}
 select m.nameunit as "Municipium", 
-       round(st_area(m.geometry)/100000, 1) as "Fläche (km²)", 
+       round(sum(st_area(m.geometry))/100000, 1) as "Fläche (km²)", 
        count(t.nr) as "Anzahl Talaiots"
 from (select * from sites where tipo_yacim like 'Talaiot%') as t,
    municipios as m
@@ -181,7 +181,7 @@ group by 1;
 
 ```{sql 'aggregiert comarcas', , eval=FALSE, message=FALSE, connection=t1db, include=TRUE, tab.cap = 'Aggregieren der Municipien zu *comarcas*'}
 select c.comarca as "comarca", group_concat(m.nameunit, ", ") as "municipios", 
-   st_collect(geometry) as geometry
+   st_union(geometry) as geometry
 from municipios as m join municipio_comarca as c on (m.nameunit = c.municipio)
 group by 1;
 ```
