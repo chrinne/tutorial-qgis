@@ -66,8 +66,8 @@ Im Menü von QGIS wählen Sie "Vektor > Geometrieverarbeitungswerkzeuge > **Puff
 
 | Anmerkung |
 |----|
+| Einige Funktionen, z.B. "Variable Pufferbreite" erkennen die Layer aus der Spatialite-DB nicht. Verwenden Sie in diesem Fall die Grass-Funktion und den Parameter "Name der Spalte mit den Pfferdistanzen". |
 | Trotz identischen Namens bieten und liefern die Tools der diversen Pakete Unterschiede. Und die angewendeten Parameter sind alle wichtig, wenn das Ergebnis nachvollziehbar bleiben soll. |
-| Das Feld **"Gemometriespaltenname" wird pauschal ausgefüllt** und muss eigenständig korrekt ausgefüllt werden. |
 | Die von @linkeFruhesBauerntumUnd1976 behandelte Frage nach den Standortfaktoren könnte mit dem Werkzeug "Zonenhistogramm" beantwortet werden. Dieses zählt die Häufigkeit der in einem Polygon Vorhandenen, eindeutigen Werte eines Rasters. Beachten Sie, dass nur ein Band verarbeitet wird. Eine sichtbare Zelle mit drei Kanälen RGB: 10,255,40 (ein leuchtendes Grün), kann also nicht gezählt werden, wohl aber eine alternative, nominale Zahlenkodierung (1 = Wiese). Beachten Sie hierzu die komplexen Optionen des GDAL Rasterrechners für eine neue Kodierung in ein Band. |
 | **Der Layer ist aktuell temporär** und geht beim Schließen verloren. Es sei denn, Sie speichern das Ergebnis als neue, aber im Kern redundante Datei.|
 
@@ -89,18 +89,18 @@ Die Parameter und die Informationen zum Rückgabewert finden Sie unter:
 
 Im Ergebnis haben wir viele Kreise. Suchen Sie in der *toolbox* nach '**Zonenstatistik**' (zonal stat) und starten Sie diese. Wählen Sie folgende Parameter: "Eingabelayer": der Puffer, "Rasterlayer": das Geländemodell (DGM 200 alias mdt 200), "Rasterkanal": Kanal 1, "Ausgabespaltenpräfix": s_ (die Vergabe ist frei wählbar, sollte kurz sein und nicht mit einer Zahl starten) und bei "Zu berechnende Statistken": Wählen Sie bitte alle aus, bis auf 'Summe'. Im Ergebnis haben Sie bei der Attributtabelle des Verktolayers für jede gewählte Statistik eine neue Spalte. Hier werden dann die englischen Begriffe verwendet. Die **Reliefenergie** ist per Definition die Höhendifferenz in einer Flächeneinheit, Sie ist damit unabhängig von der absoluten Höhe über dem Meer. Zu den ermittelten Werten nachfolgend eine sehr knappe Erläuterung:
   
-- Anzahl / count: Anzahl der betroffenen Zellen
-- Summe (abgewählt): Summe der Zellwerte
-- Mittelwert / mean: der Durchschnitt der gültigen Zellwerte (Zentralwert)
-- Median / median: Der Wert in der Mitte der aufsteigend sortierten Zellwerte (Zentralwert)
-- Standardabweichung / stdev: Der Durchschnitt der Differenz jedes Zellwertes zum  Mittelwert aller Zellwerte (Streuungsmaß).
-- Minimalwert / min: der kleinste Wert in einer Zelle
-- Maximalwert / max: der größte Wert in einer Zelle
-- Bereich / range: Differenz zwischen den beiden vorgenannten Min. und Max. (Streuungsmaß, die Reliefenergie nach Definition)
-- Minderheit / minority: am seltensten vorkommende Wert 
-- Mehrheit / majority: am häufigsten auftretende Wert
-- Varietät / variety: Anzahl der unterschiedlichen, eindeutigen Werte
-- Varianz / variance: das Quadrat der Standardabweichung (Durchschnitt der quadrierten Differenzen jedes Wertes zum Mittelwert, Teil der Berechnung der Standardabweichung, Streuungsmaß).
+- count: Anzahl der betroffenen Zellen
+- Sum (abgewählt): Summe der Zellwerte
+- mean: der Durchschnitt der gültigen Zellwerte (Zentralwert)
+- median: Der Wert in der Mitte der aufsteigend sortierten Zellwerte (Zentralwert)
+- stdev: Der Durchschnitt der Differenz jedes Zellwertes zum  Mittelwert aller Zellwerte (Streuungsmaß).
+- min: der kleinste Wert in einer Zelle
+- max: der größte Wert in einer Zelle
+- range: Differenz zwischen den beiden vorgenannten Min. und Max. (Streuungsmaß, die Reliefenergie nach Definition)
+- minority: am seltensten vorkommende Wert 
+- majority: am häufigsten auftretende Wert
+- variety: Anzahl der unterschiedlichen, eindeutigen Werte
+- variance: das Quadrat der Standardabweichung (Durchschnitt der quadrierten Differenzen jedes Wertes zum Mittelwert, Teil der Berechnung der Standardabweichung, Streuungsmaß).
 
 Es gibt hier zahlreiche Werte, die einen Hinweis auf die Reliefenergie geben, vor allem:
   
@@ -177,9 +177,9 @@ Ein methodisches Problem der Triangulation ist der Randeffekt des Netzes. Da hie
 
 ## Thiessen-Polygone und triangulierte Distanzen
 
-### Vorgehen in QGIS
-
 Wie zu Beginn dieses Kapitels erwähnt sind die triangulierte Distanzen ein schlichtes aber durchaus interessantes Maß [@siegmundTriangulationAlsMethode1992; @zimmermannTesselierungUndTriangulation1992]. Wir können dies bei unserem vorliegenden Datensatz zu den Talaiots einmal durchspielen. Dabei haben wir aus der archäologischen Perspektive bestimmte Vorteile. Durch die klare Begrenzung des Untersuchungsgebietes als Insel sind Kanteneffekte zwar zu erwarten, entsprechen aber der unabdingbaren Realität auch wenn die "Wege" an einige Stellen über das Wasser führen. Der monumentale Charakter und der relativ späte Landesausbau mit dem vorhandenen Bewusstsein für diesen Denkmaltyp hat zu einer erwartbar guten Kenntnis (nicht zwingend Erhaltung) geführt. Wir können zudem mehrstufig Arbeiten und die gesamte Insel mit den Landschaftsgebieten (*comarcas*) oder der zuvor herausgestellten Lage vergleichen.
+
+### Vorgehen in QGIS
 
 Der Weg ist mehrstufig. Wenn Sie ausschließlich in QGIS arbeiten wollen, müssen Sie folgende Schritte durchlaufen:
   
@@ -213,7 +213,9 @@ Die zweite Möglichkeit ist, die Abfrage in eine neue Tabelle zu schreiben, enfe
 Die dritte Option ist etwas komplexer, kommt aber vollständig ohne redundante Daten aus. Mit Rekursion werden die einzelnen Elemente nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der Strecken in der Multi-Geometrie.
 
 ```{sql 'Anzahl der Elemente in der *GeomCollection* abfragen.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
-select NumGeometries(st_DelaunayTriangulation(st_collect(geometry),1))
+select NumGeometries(
+                st_DelaunayTriangulation(st_collect(geometry),1)
+                ) as num_geom
   from sites where Tipo_yacim like 'Talaiot%'
 ```
 

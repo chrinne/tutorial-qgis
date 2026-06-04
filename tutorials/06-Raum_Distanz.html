@@ -2787,7 +2787,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">GIS Einführung mit QGIS</h1>
 <h4 class="author">Christoph Rinne</h4>
-<h4 class="date">28. Mai 2026</h4>
+<h4 class="date">04. Juni 2026</h4>
 
 </div>
 
@@ -2915,14 +2915,15 @@ des Kreises wird hier nicht erwähnt, erfolgt aber auch.</p>
 </thead>
 <tbody>
 <tr class="odd">
+<td>Einige Funktionen, z.B. “Variable Pufferbreite” erkennen die Layer
+aus der Spatialite-DB nicht. Verwenden Sie in diesem Fall die
+Grass-Funktion und den Parameter “Name der Spalte mit den
+Pfferdistanzen”.</td>
+</tr>
+<tr class="even">
 <td>Trotz identischen Namens bieten und liefern die Tools der diversen
 Pakete Unterschiede. Und die angewendeten Parameter sind alle wichtig,
 wenn das Ergebnis nachvollziehbar bleiben soll.</td>
-</tr>
-<tr class="even">
-<td>Das Feld <strong>“Gemometriespaltenname” wird pauschal
-ausgefüllt</strong> und muss eigenständig korrekt ausgefüllt
-werden.</td>
 </tr>
 <tr class="odd">
 <td>Die von <span class="citation">Linke (<a href="#ref-linkeFruhesBauerntumUnd1976">1976</a>)</span> behandelte
@@ -2973,25 +2974,23 @@ Definition die Höhendifferenz in einer Flächeneinheit, Sie ist damit
 unabhängig von der absoluten Höhe über dem Meer. Zu den ermittelten
 Werten nachfolgend eine sehr knappe Erläuterung:</p>
 <ul>
-<li>Anzahl / count: Anzahl der betroffenen Zellen</li>
-<li>Summe (abgewählt): Summe der Zellwerte</li>
-<li>Mittelwert / mean: der Durchschnitt der gültigen Zellwerte
+<li>count: Anzahl der betroffenen Zellen</li>
+<li>Sum (abgewählt): Summe der Zellwerte</li>
+<li>mean: der Durchschnitt der gültigen Zellwerte (Zentralwert)</li>
+<li>median: Der Wert in der Mitte der aufsteigend sortierten Zellwerte
 (Zentralwert)</li>
-<li>Median / median: Der Wert in der Mitte der aufsteigend sortierten
-Zellwerte (Zentralwert)</li>
-<li>Standardabweichung / stdev: Der Durchschnitt der Differenz jedes
-Zellwertes zum Mittelwert aller Zellwerte (Streuungsmaß).</li>
-<li>Minimalwert / min: der kleinste Wert in einer Zelle</li>
-<li>Maximalwert / max: der größte Wert in einer Zelle</li>
-<li>Bereich / range: Differenz zwischen den beiden vorgenannten Min. und
-Max. (Streuungsmaß, die Reliefenergie nach Definition)</li>
-<li>Minderheit / minority: am seltensten vorkommende Wert</li>
-<li>Mehrheit / majority: am häufigsten auftretende Wert</li>
-<li>Varietät / variety: Anzahl der unterschiedlichen, eindeutigen
-Werte</li>
-<li>Varianz / variance: das Quadrat der Standardabweichung (Durchschnitt
-der quadrierten Differenzen jedes Wertes zum Mittelwert, Teil der
-Berechnung der Standardabweichung, Streuungsmaß).</li>
+<li>stdev: Der Durchschnitt der Differenz jedes Zellwertes zum
+Mittelwert aller Zellwerte (Streuungsmaß).</li>
+<li>min: der kleinste Wert in einer Zelle</li>
+<li>max: der größte Wert in einer Zelle</li>
+<li>range: Differenz zwischen den beiden vorgenannten Min. und Max.
+(Streuungsmaß, die Reliefenergie nach Definition)</li>
+<li>minority: am seltensten vorkommende Wert</li>
+<li>majority: am häufigsten auftretende Wert</li>
+<li>variety: Anzahl der unterschiedlichen, eindeutigen Werte</li>
+<li>variance: das Quadrat der Standardabweichung (Durchschnitt der
+quadrierten Differenzen jedes Wertes zum Mittelwert, Teil der Berechnung
+der Standardabweichung, Streuungsmaß).</li>
 </ul>
 <p>Es gibt hier zahlreiche Werte, die einen Hinweis auf die
 Reliefenergie geben, vor allem:</p>
@@ -3187,9 +3186,6 @@ u. a., 2019</a>; <a href="#ref-nakoinzRegressionInterpolation2016">Nakoinz und 
 <div id="thiessen-polygone-und-triangulierte-distanzen" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Thiessen-Polygone und
 triangulierte Distanzen</h2>
-<div id="vorgehen-in-qgis" class="section level3" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Vorgehen in
-QGIS</h3>
 <p>Wie zu Beginn dieses Kapitels erwähnt sind die triangulierte
 Distanzen ein schlichtes aber durchaus interessantes Maß <span class="citation">(<a href="#ref-siegmundTriangulationAlsMethode1992">Siegmund, 1992</a>; <a href="#ref-zimmermannTesselierungUndTriangulation1992">Zimmermann,
 1992</a>)</span>. Wir können dies bei unserem vorliegenden Datensatz zu
@@ -3203,6 +3199,9 @@ Bewusstsein für diesen Denkmaltyp hat zu einer erwartbar guten Kenntnis
 (nicht zwingend Erhaltung) geführt. Wir können zudem mehrstufig Arbeiten
 und die gesamte Insel mit den Landschaftsgebieten (<em>comarcas</em>)
 oder der zuvor herausgestellten Lage vergleichen.</p>
+<div id="vorgehen-in-qgis" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Vorgehen in
+QGIS</h3>
 <p>Der Weg ist mehrstufig. Wenn Sie ausschließlich in QGIS arbeiten
 wollen, müssen Sie folgende Schritte durchlaufen:</p>
 <ol style="list-style-type: decimal">
@@ -3283,7 +3282,9 @@ redundante Daten aus. Mit Rekursion werden die einzelnen Elemente
 nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber
 nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der
 Strecken in der Multi-Geometrie.</p>
-<pre class="sql"><code>select NumGeometries(st_DelaunayTriangulation(st_collect(geometry),1))
+<pre class="sql"><code>select NumGeometries(
+                st_DelaunayTriangulation(st_collect(geometry),1)
+                ) as num_geom
   from sites where Tipo_yacim like &#39;Talaiot%&#39;</code></pre>
 <p>Jetzt eine weitere Abfrage zur Erläuterung des Zählers mit Rekursion
 in SQL. Diese Abfrage besteht aus zwei Teilen, die mit dem einleitenden
