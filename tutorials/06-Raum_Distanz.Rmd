@@ -210,13 +210,12 @@ Wir könnten in QGIS mit der Funktion "Mehr- zu einteilig" dieses Multi-Objekt z
 
 Die zweite Möglichkeit ist, die Abfrage in eine neue Tabelle zu schreiben, enfernen Sie dazu in der vorangehenden SQL-Anweisung die "--" und dann die elementaren Geometrien dieser Tabelle abzufragen (vgl. [www.gaia-gis.it](https://www.gaia-gis.it/fossil/libspatialite/wiki?name=VirtualElementary)). Allerdings müsste dazu die Geometriespalte im System als Geometrie registriert werden. Das ist nicht schwierig, aber der Prozess führt dann insgesamt wieder zu redundanten Daten in der Datenbank.
 
-Die dritte Option ist etwas komplexer, kommt aber vollständig ohne redundante Daten aus. Mit Rekursion werden die einzelnen Elemente nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der Strecken in der Multi-Geometrie.
+Die dritte Option ist etwas komplexer, kommt aber vollständig ohne redundante Daten aus. Mit Rekursion werden die einzelnen Elemente nacheinander abgefragt. Das ist auf den ersten Blick irritierend aber nicht wirklich kompliziert. Zuerts eine Abfrage für die Anzahl der Strecken in der Multi-Geometrie, ergänzen Sie dies einfach vor der eben erstellten Abfrage, die sie in () setzen.
 
 ```{sql 'Anzahl der Elemente in der *GeomCollection* abfragen.', eval=FALSE, message=FALSE, connection=t1db, include=TRUE}
-select NumGeometries(
-                st_DelaunayTriangulation(st_collect(geometry),1)
-                ) as num_geom
-  from sites where Tipo_yacim like 'Talaiot%'
+select numgeometries(geometry) from 
+(select st_DelaunayTriangulation(st_collect(geometry),1) as geometry
+from sites where Tipo_yacim like 'Talaiot%');
 ```
 
 Jetzt eine weitere Abfrage zur Erläuterung des Zählers mit Rekursion in SQL. Diese Abfrage besteht aus zwei Teilen, die mit dem einleitenden *with recursive* zusammengefasst werden. Die erste Zeile definiert eine Funktion cnt() auf ein Element x. Diese Funktion wählt '1' als Startwert und wiederholt mit *UNION ALL* so lange die Addition von 1 zum aktuellen x, bis das gesetzte Limit erreicht wird. Die zweite Zeile ruft mit der Auswahl von x dann diese Funktion auf und liefert nacheinander die Zahlen.   
