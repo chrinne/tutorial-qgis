@@ -82,8 +82,7 @@ Den tabellarischen Vergleich früherer Versionen habe ich entfernt, meine Kenntn
 |pro SpatiaLite|contra SpatiaLite|
 |:----------|:----|
 |- Eine Datei für Vektordaten.|- Keine Rasterdaten möglich.
-|- Gute GUI, u.a. mit *spatialview*-Generator.||
-|- SQLite kann mit vieln freien GUI's genutzt werden.||
+|- SQLite kann mit vielen freien GUI's genutzt werden.||
 |- SQLite bzw. SQL kann in R über das DBI-Paket umfangreich angesprochen werden. || 
 |- Integration von GIS-Funktionen.||
 |- Integrierte Importfunktionen, auch ganzer Ordner mit Dateien (dxf, shp, asc, excel).|
@@ -231,7 +230,7 @@ group by 1;
 | Pla de Mallorca | 737.2 | 47 |
 | Raiguer | 471.4 | 29 |
 | Serra de Tramuntana | 831.0 | 42 |
-
+</br>
 
 ## SpatiaLite und SpatiaLite-GUI
 
@@ -240,6 +239,7 @@ Wie eingangs erläutert, beruht SpatiaLite ebenfalls auf SQLite, es kann keine R
 | Anmerkung |
 |:----|
 | Die Unterschiede zwischen der QGIS DB-Verwaltung und der SpatiaLite GUI bei der Erstellung und Darstellung der jeweiligen Dateien werden am Ende kurz erläutert. | 
+</br>
 
 ### SpatiaLite installieren
 
